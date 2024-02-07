@@ -1,2 +1,2 @@
 load_from:
-  - python_package: dbt_jaffle_shop
+  - python_package: dbt_dagster_poetry
