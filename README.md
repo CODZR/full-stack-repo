@@ -9,7 +9,6 @@ Whereas the original relies on manual dependency and environment management with
  `pip` and `requirements.txt` files, this version relies solely on [poetry](https://python-poetry.org/)
 for package and environment management.
 
-![](https://i.imgur.com/QDYNC3m.gif)
 
 ## sqlfluff + pre-commit
 This repo also uses [sqlfluff](https://docs.sqlfluff.com/en/stable/index.html) and
