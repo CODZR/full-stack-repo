@@ -1,0 +1,103 @@
+{
+  "python.pythonPath": "./.venv/bin/python",
+  /* Start vscode-dbt */
+  "files.associations": {
+    // the pattern on the left side can be whatever you want: e.g.
+    "**/jaffle_shop/**/*.sql": "jinja-sql", // just the .sqlfiles inside of jaffle_shop, or
+    "*.sql": "jinja-sql", // all .sql files
+    // optional: don't format models in `target/` dir
+    "**/target/**": "",
+    // I don't personally use these, but you can also have jinja work for `yaml` and `md` files
+    "**/<dbt-project-dir>/**/*.yaml": "jinja-yaml",
+    "**/<dbt-project-dir>/**/*.yml": "jinja-yaml",
+    "**/<dbt-project-dir>/**/docs/**/*.md": "jinja-md",
+    // the vscode-dbt docs say you may need this
+    "editor.quickSuggestions": {
+      "strings": "on"
+    }
+  },
+  /* End vscode-dbt */
+
+  /* Start SQL Fluff */
+  "sqlfluff.linter.run": "onType",
+  "sqlfluff.experimental.format.executeInTerminal": true,
+  "editor.formatOnSave": false,
+  // "sqlfluff.config": "${workspaceFolder}/.sqlfluff",
+  "sqlfluff.dialect": "postgres",
+  // "sqlfluff.env.environmentVariables": [
+  //   {
+  //     "key": "example_key",
+  //     "value": "example_value"
+  //   }
+  // ],
+  "sqlfluff.env.useDotEnvFile": true,
+  "sqlfluff.executablePath": "${workspaceFolder}/.venv/bin/sqlfluff",
+  "sqlfluff.ignoreLocalConfig": false,
+  "sqlfluff.ignoreParsing": false,
+  "sqlfluff.suppressNotifications": false,
+  "sqlfluff.workingDirectory": "${workspaceFolder}",
+  /* Linter */
+  "sqlfluff.linter.arguments": [],
+  "sqlfluff.linter.diagnosticSeverity": "warning",
+  "sqlfluff.linter.diagnosticSeverityByRule": [
+    {
+      "rule": "TMP",
+      "severity": "hint"
+    },
+    {
+      "rule": "PRS",
+      "severity": "information"
+    },
+  ],
+  "sqlfluff.linter.lintEntireProject": true,
+  /* Formatter */
+  // "sqlfluff.format.arguments": ["--FIX-EVEN-UNPARSABLE"],
+  "sqlfluff.format.enabled": true,
+  /* End SQL Fluff */
+  
+  
+  /* Start Extra settings */
+  // easier to see if there are unsaved changed
+  "workbench.editor.highlightModifiedTabs": true,
+  "workbench.editor.labelFormat": "medium",
+  // make Command Prompt the default shell for Windows instead of Powershell
+  "terminal.integrated.shell.windows": "C:\\Windows\\System32\\cmd.exe",
+
+  // make a vertical line so I don't make lines too long
+  "editor.rulers": [500],
+  // show whitespace as dots
+  // (easier to count out indentation and spot trailing whitesapce)
+  "editor.renderWhitespace": "all",
+  /* End Extra settings */
+
+  /* Start Find Related */
+  "findrelated.workspaceRulesets": [
+    {
+      "name": "sql",
+      "rules": [
+        {
+          "pattern": "^(.*/)?models/(.*/)?(.+\\.sql)$",
+          "locators": [
+            "**/compiled/**/$3"
+          ]
+        },
+        {
+          "pattern": "^(.*/)?compiled/(.*/)?(.+\\.sql)$",
+          "locators": [
+            "**/run/**/$3"
+          ]
+        },
+        {
+          "pattern": "^(.*/)?run/(.*/)?(.+\\.sql)$",
+          "locators": [
+            "**/models/**/$3"
+          ]
+        }
+      ]
+    }
+  ],
+  "findrelated.applyRulesets": [
+    "sql"
+  ],
+  /* End Find Related */
+}

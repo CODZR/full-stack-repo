@@ -1,0 +1,25 @@
+name: Lint Models
+
+on:
+  push:
+    branches:
+    - main
+  pull_request:
+    branches:
+    - main
+
+jobs:
+  lint-models:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: "actions/checkout@v4"
+
+      - uses: "actions/setup-python@v4"
+        with:
+          python-version: "3.11"
+
+      - name: Install SQLFluff
+        run: "pip install sqlfluff==2.3.2"
+
+      - name: Lint models
+        run: "sqlfluff lint models --dialect ansi"
