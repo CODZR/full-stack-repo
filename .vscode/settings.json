@@ -1,4 +1,6 @@
 {
+  "editor.defaultFormatter": "ms-python.black-formatter",
+  "editor.formatOnSave": true,
   "python.pythonPath": "./.venv/bin/python",
   /* Start vscode-dbt */
   "files.associations": {
@@ -21,7 +23,6 @@
   /* Start SQL Fluff */
   "sqlfluff.linter.run": "onType",
   "sqlfluff.experimental.format.executeInTerminal": true,
-  "editor.formatOnSave": false,
   // "sqlfluff.config": "${workspaceFolder}/.sqlfluff",
   "sqlfluff.dialect": "postgres",
   // "sqlfluff.env.environmentVariables": [

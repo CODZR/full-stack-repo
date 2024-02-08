@@ -1,13 +1,4 @@
-# dbt + duckdb + poetry
-
-This repo is simply a slightly different take on the
-[jaffle_shop_duckdb](https://github.com/dbt-labs/jaffle_shop_duckdb) repo.
-
-[now](https://github.com/CODZR/dbt-dagster-poetry)
-
-Whereas the original relies on manual dependency and environment management with `venv` and
- `pip` and `requirements.txt` files, this version relies solely on [poetry](https://python-poetry.org/)
-for package and environment management.
+# dbt + dagster + postgres + poetry
 
 
 ## sqlfluff + pre-commit
