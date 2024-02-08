@@ -1,7 +1,0 @@
-[32m2024-02-08 15:07:11 +0800[0m - dagster - [34mDEBUG[0m - everything_everywhere_job - dd353f07-2aac-4429-81ac-56a652756118 - 14770 - LOGS_CAPTURED - Started capturing logs in process (pid: 14770).
-[32m2024-02-08 15:07:11 +0800[0m - dagster - [34mDEBUG[0m - everything_everywhere_job - dd353f07-2aac-4429-81ac-56a652756118 - 14770 - users - STEP_START - Started execution of step "users".
-[32m2024-02-08 15:07:11 +0800[0m - dagster - [34mDEBUG[0m - everything_everywhere_job - dd353f07-2aac-4429-81ac-56a652756118 - 14770 - users - STEP_OUTPUT - Yielded output "result" of type "DataFrame". (Type check passed).
-[32m2024-02-08 15:07:11 +0800[0m - dagster - [34mDEBUG[0m - everything_everywhere_job - dd353f07-2aac-4429-81ac-56a652756118 - users - Writing file at: data/duckdb/raw_data/users using PickledObjectFilesystemIOManager...
-[32m2024-02-08 15:07:11 +0800[0m - dagster - [34mDEBUG[0m - everything_everywhere_job - dd353f07-2aac-4429-81ac-56a652756118 - 14770 - users - ASSET_MATERIALIZATION - Materialized value duckdb raw_data users.
-[32m2024-02-08 15:07:11 +0800[0m - dagster - [34mDEBUG[0m - everything_everywhere_job - dd353f07-2aac-4429-81ac-56a652756118 - 14770 - users - HANDLED_OUTPUT - Handled output "result" using IO manager "io_manager"
-[32m2024-02-08 15:07:11 +0800[0m - dagster - [34mDEBUG[0m - everything_everywhere_job - dd353f07-2aac-4429-81ac-56a652756118 - 14770 - users - STEP_SUCCESS - Finished execution of step "users" in 45ms.
