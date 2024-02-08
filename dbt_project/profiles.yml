@@ -1,0 +1,12 @@
+dbt_project:
+  target: local
+  outputs:
+    local:
+      type: postgres
+      threads: 2
+      host: 127.0.0.1
+      port: 5432
+      user: codzr
+      password: "140937"
+      dbname: dbt
+      schema: dbt_alice

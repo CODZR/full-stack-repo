@@ -1,0 +1,49 @@
+[32m2024-02-08 15:07:17 +0800[0m - dagster - [34mDEBUG[0m - everything_everywhere_job - dd353f07-2aac-4429-81ac-56a652756118 - 14816 - LOGS_CAPTURED - Started capturing logs in process (pid: 14816).
+[32m2024-02-08 15:07:17 +0800[0m - dagster - [34mDEBUG[0m - everything_everywhere_job - dd353f07-2aac-4429-81ac-56a652756118 - 14816 - dbt_project_assets_2 - STEP_START - Started execution of step "dbt_project_assets_2".
+[32m2024-02-08 15:07:17 +0800[0m - dagster - [34mINFO[0m - everything_everywhere_job - dd353f07-2aac-4429-81ac-56a652756118 - dbt_project_assets_2 - A dbt subsetted execution is being performed. Overriding default dbt selection arguments `['--select', 'fqn:*']` with arguments: `['--select', 'fqn:dbt_project.analytics.sku_stats fqn:dbt_project.analytics.orders_augmented fqn:dbt_project.analytics.daily_order_summary fqn:dbt_project.marketing.top_users fqn:dbt_project.analytics.company_stats fqn:dbt_project.marketing.company_perf fqn:dbt_project.cleaned.users_cleaned fqn:dbt_project.analytics.order_stats fqn:dbt_project.cleaned.orders_cleaned']`
+[32m2024-02-08 15:07:17 +0800[0m - dagster - [34mINFO[0m - everything_everywhere_job - dd353f07-2aac-4429-81ac-56a652756118 - dbt_project_assets_2 - Copying `/Volumes/workspace/data/dbt-dagster-poetry/dbt_project/target/partial_parse.msgpack` to `/Volumes/workspace/data/dbt-dagster-poetry/dbt_project/target/dbt_project_assets_2-dd353f0-1a7620b/partial_parse.msgpack` to take advantage of partial parsing.
+[32m2024-02-08 15:07:17 +0800[0m - dagster - [34mINFO[0m - everything_everywhere_job - dd353f07-2aac-4429-81ac-56a652756118 - dbt_project_assets_2 - Running dbt command: `dbt build --select fqn:dbt_project.analytics.sku_stats fqn:dbt_project.analytics.orders_augmented fqn:dbt_project.analytics.daily_order_summary fqn:dbt_project.marketing.top_users fqn:dbt_project.analytics.company_stats fqn:dbt_project.marketing.company_perf fqn:dbt_project.cleaned.users_cleaned fqn:dbt_project.analytics.order_stats fqn:dbt_project.cleaned.orders_cleaned`.
+[32m2024-02-08 15:07:19 +0800[0m - dagster - [34mINFO[0m - everything_everywhere_job - dd353f07-2aac-4429-81ac-56a652756118 - dbt_project_assets_2 - Finished dbt command: `dbt build --select fqn:dbt_project.analytics.sku_stats fqn:dbt_project.analytics.orders_augmented fqn:dbt_project.analytics.daily_order_summary fqn:dbt_project.marketing.top_users fqn:dbt_project.analytics.company_stats fqn:dbt_project.marketing.company_perf fqn:dbt_project.cleaned.users_cleaned fqn:dbt_project.analytics.order_stats fqn:dbt_project.cleaned.orders_cleaned`.
+[32m2024-02-08 15:07:19 +0800[0m - dagster - [34mERROR[0m - [31meverything_everywhere_job - dd353f07-2aac-4429-81ac-56a652756118 - 14816 - dbt_project_assets_2 - STEP_FAILURE - Execution of step "dbt_project_assets_2" failed.
+
+dagster_dbt.errors.DagsterDbtCliRuntimeError: The dbt CLI process with command `dbt build --select fqn:dbt_project.analytics.sku_stats fqn:dbt_project.analytics.orders_augmented fqn:dbt_project.analytics.daily_order_summary fqn:dbt_project.marketing.top_users fqn:dbt_project.analytics.company_stats fqn:dbt_project.marketing.company_perf fqn:dbt_project.cleaned.users_cleaned fqn:dbt_project.analytics.order_stats fqn:dbt_project.cleaned.orders_cleaned` failed with exit code 1. Check the stdout in the Dagster compute logs for the full information about the error, or view the dbt debug log: /Volumes/workspace/data/dbt-dagster-poetry/dbt_project/target/dbt_project_assets_2-dd353f0-1a7620b/dbt.log.
+
+Errors parsed from dbt logs:
+1 of 9 ERROR creating sql table model dbt_alice.orders_cleaned ................. [[31mERROR[0m in 0.05s]
+2 of 9 ERROR creating sql table model dbt_alice.users_cleaned .................. [[31mERROR[0m in 0.05s]
+  Database Error in model orders_cleaned (models/cleaned/orders_cleaned.sql)
+  relation "raw_data.orders" does not exist
+  LINE 20: from "dbt"."raw_data"."orders"
+                ^
+  compiled Code at target/dbt_project_assets_2-dd353f0-1a7620b/run/dbt_project/models/cleaned/orders_cleaned.sql
+  Database Error in model users_cleaned (models/cleaned/users_cleaned.sql)
+  relation "raw_data.users" does not exist
+  LINE 15: from "dbt"."raw_data"."users"
+                ^
+  compiled Code at target/dbt_project_assets_2-dd353f0-1a7620b/run/dbt_project/models/cleaned/users_cleaned.sql
+
+Stack Trace:
+  File "/Volumes/workspace/data/dbt-dagster-poetry/.venv/lib/python3.11/site-packages/dagster/_core/execution/plan/execute_plan.py", line 286, in dagster_event_sequence_for_step
+    for step_event in check.generator(step_events):
+  File "/Volumes/workspace/data/dbt-dagster-poetry/.venv/lib/python3.11/site-packages/dagster/_core/execution/plan/execute_step.py", line 487, in core_dagster_event_sequence_for_step
+    for user_event in _step_output_error_checked_user_event_sequence(
+  File "/Volumes/workspace/data/dbt-dagster-poetry/.venv/lib/python3.11/site-packages/dagster/_core/execution/plan/execute_step.py", line 169, in _step_output_error_checked_user_event_sequence
+    for user_event in user_event_sequence:
+  File "/Volumes/workspace/data/dbt-dagster-poetry/.venv/lib/python3.11/site-packages/dagster/_core/execution/plan/execute_step.py", line 95, in _process_asset_results_to_events
+    for user_event in user_event_sequence:
+  File "/Volumes/workspace/data/dbt-dagster-poetry/.venv/lib/python3.11/site-packages/dagster/_core/execution/plan/compute.py", line 212, in execute_core_compute
+    for step_output in _yield_compute_results(step_context, inputs, compute_fn, compute_context):
+  File "/Volumes/workspace/data/dbt-dagster-poetry/.venv/lib/python3.11/site-packages/dagster/_core/execution/plan/compute.py", line 181, in _yield_compute_results
+    for event in iterate_with_context(
+  File "/Volumes/workspace/data/dbt-dagster-poetry/.venv/lib/python3.11/site-packages/dagster/_utils/__init__.py", line 467, in iterate_with_context
+    next_output = next(iterator)
+                  ^^^^^^^^^^^^^^
+  File "/Volumes/workspace/data/dbt-dagster-poetry/dagster_project/assets/dbt/__init__.py", line 36, in dbt_project_assets
+    yield from dbt.cli(["build"], context=context).stream()
+  File "/Volumes/workspace/data/dbt-dagster-poetry/.venv/lib/python3.11/site-packages/dagster_dbt/core/resources_v2.py", line 388, in stream
+    for event in self.stream_raw_events():
+  File "/Volumes/workspace/data/dbt-dagster-poetry/.venv/lib/python3.11/site-packages/dagster_dbt/core/resources_v2.py", line 425, in stream_raw_events
+    self._raise_on_error()
+  File "/Volumes/workspace/data/dbt-dagster-poetry/.venv/lib/python3.11/site-packages/dagster_dbt/core/resources_v2.py", line 499, in _raise_on_error
+    raise DagsterDbtCliRuntimeError(
+[0m
