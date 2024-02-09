@@ -1,10 +1,13 @@
 [tool.poetry]
-name = "jaffle-shop"
+name = "dbt-dagster-poetry"
 version = "0.0.1"
 description = ""
 authors = ["<975336710@qq.com>"]
 readme = "README.md"
-packages = [{include = "dbt_jaffle_shop"}]
+packages = [{include = "dbt_project"}]
+
+[tool.dagster]
+module = "dagster_project"
 
 [[tool.poetry.source]]
 name = "ali"
