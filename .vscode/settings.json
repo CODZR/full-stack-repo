@@ -1,7 +1,7 @@
 {
   "editor.defaultFormatter": "ms-python.black-formatter",
   "editor.formatOnSave": true,
-  "python.pythonPath": "./.venv/bin/python",
+  "python.pythonPath": "./dagster-dbt/.venv/bin/python",
   /* Start vscode-dbt */
   "files.associations": {
     // the pattern on the left side can be whatever you want: e.g.
@@ -22,7 +22,7 @@
   /* Start SQL Fluff */
   "sqlfluff.linter.run": "onType",
   "sqlfluff.experimental.format.executeInTerminal": true,
-  // "sqlfluff.config": "${workspaceFolder}/.sqlfluff",
+  // "sqlfluff.config": "${workspaceFolder}/dagster-dbt/.sqlfluff",
   "sqlfluff.dialect": "postgres",
   // "sqlfluff.env.environmentVariables": [
   //   {
@@ -31,11 +31,11 @@
   //   }
   // ],
   "sqlfluff.env.useDotEnvFile": true,
-  "sqlfluff.executablePath": "${workspaceFolder}/.venv/bin/sqlfluff",
+  // "sqlfluff.executablePath": "${workspaceFolder}/dagster-dbt/.venv/bin/sqlfluff",
   "sqlfluff.ignoreLocalConfig": false,
   "sqlfluff.ignoreParsing": false,
   "sqlfluff.suppressNotifications": false,
-  "sqlfluff.workingDirectory": "${workspaceFolder}",
+  "sqlfluff.workingDirectory": "${workspaceFolder}/dagster-dbt/",
   /* Linter */
   "sqlfluff.linter.arguments": [],
   "sqlfluff.linter.diagnosticSeverity": "warning",
