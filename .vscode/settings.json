@@ -19,7 +19,6 @@
     }
   },
   /* End vscode-dbt */
-
   /* Start SQL Fluff */
   "sqlfluff.linter.run": "onType",
   "sqlfluff.experimental.format.executeInTerminal": true,
@@ -55,22 +54,20 @@
   // "sqlfluff.format.arguments": ["--FIX-EVEN-UNPARSABLE"],
   "sqlfluff.format.enabled": true,
   /* End SQL Fluff */
-  
-  
   /* Start Extra settings */
   // easier to see if there are unsaved changed
   "workbench.editor.highlightModifiedTabs": true,
   "workbench.editor.labelFormat": "medium",
   // make Command Prompt the default shell for Windows instead of Powershell
   "terminal.integrated.shell.windows": "C:\\Windows\\System32\\cmd.exe",
-
   // make a vertical line so I don't make lines too long
-  "editor.rulers": [500],
+  "editor.rulers": [
+    500
+  ],
   // show whitespace as dots
   // (easier to count out indentation and spot trailing whitesapce)
   "editor.renderWhitespace": "all",
   /* End Extra settings */
-
   /* Start Find Related */
   "findrelated.workspaceRulesets": [
     {
@@ -100,5 +97,6 @@
   "findrelated.applyRulesets": [
     "sql"
   ],
+  "dbt.queryLimit": 500,
   /* End Find Related */
 }
