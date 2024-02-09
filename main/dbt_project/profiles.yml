@@ -6,7 +6,7 @@ postcard_company:
   outputs:
     local:
       type: duckdb
-      path: /shared/db/datamart.duckdb
+      path: ../../shared/db/datamart.duckdb
       schema: postcard_company
       extensions:
         - postgres_scanner

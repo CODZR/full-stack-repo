@@ -6,7 +6,7 @@ version: 2
 sources:
   - name: reseller_csv
     meta:
-      external_location: "read_csv('/shared/csv/DailySales_*.csv', auto_detect=True)"
+      external_location: "read_csv('../../../shared/csv/DailySales_*.csv', auto_detect=True)"
     tables:
       - name: sales
   - name: reseller_json
@@ -16,7 +16,7 @@ sources:
       - name: sales
   - name: oltp
     meta:
-      external_location: "postgres_scan('postgresql://{{env_var('POSTGRES_USER')}}:{{env_var('POSTGRES_PASSWORD')}}@oltp:5432/sales_oltp','public', '{name}')"
+      external_location: "postgres_scan('postgresql://codzr:140937@localhost:5432/dbt','public', '{name}')"
     tables:
       - name: channels
       - name: customers

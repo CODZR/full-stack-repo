@@ -25,6 +25,7 @@ dagster-dbt = "^0.22.3"
 plotly = "^5.18.0"
 dbt-duckdb = "^1.7.1"
 dagster-duckdb = "^0.22.4"
+python-dotenv = "^1.0.1"
 
 [tool.poetry.group.dev.dependencies]
 sqlfluff = "^2.3.5"
