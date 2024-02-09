@@ -6,7 +6,7 @@ from dagster import Definitions, file_relative_path
 from dagster import job
 
 DBT_PROJECT_PATH = file_relative_path(__file__, "../dbt_project")
-DBT_PROFILES = file_relative_path(__file__, "../dbt_ project/config")
+DBT_PROFILES = file_relative_path(__file__, "../dbt_project/config")
 
 
 dbt_resource = dbt_cli_resource.configured(

@@ -6,9 +6,6 @@ authors = ["<975336710@qq.com>"]
 readme = "README.md"
 packages = [{include = "dbt_jaffle_shop"}]
 
-[tool.dagster]
-module_name = "dagster_project"
-
 [[tool.poetry.source]]
 name = "ali"
 url = "https://mirrors.aliyun.com/pypi/simple/"
