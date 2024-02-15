@@ -1,10 +1,10 @@
--- stg_stripe__payments.sql
+-- stg_vibe_stripe__payments.sql
 
 with
 
 source as (
 
-    select * from {{ source('stripe', 'payments') }}
+    select * from {{ source('vibe_stripe', 'raw_payments') }}
 
 ),
 

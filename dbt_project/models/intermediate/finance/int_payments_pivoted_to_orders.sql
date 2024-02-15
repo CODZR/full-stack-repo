@@ -6,7 +6,7 @@ with
 
 payments as (
 
-   select * from {{ ref('stg_stripe__payments') }}
+   select * from {{ ref('stg_vibe_stripe__payments') }}
 
 ),
 

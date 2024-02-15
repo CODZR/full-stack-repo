@@ -4,7 +4,7 @@ with
 
 source as (
 
-    select * from {{ source('vibe_shop','customers') }}
+    select * from {{ source('vibe_shop', 'raw_customers') }}
 
 ),
 

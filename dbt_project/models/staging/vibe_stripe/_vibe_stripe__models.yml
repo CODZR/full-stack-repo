@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: stg_stripe__payments
+  - name: stg_vibe_stripe__payments
     columns:
       - name: payment_id
         tests:

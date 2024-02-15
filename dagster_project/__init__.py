@@ -13,7 +13,7 @@ resources = {
         profiles_dir=DBT_PROFILES,
     ),
     "io_manager": DuckDBPandasIOManager(
-        database=os.path.join(DBT_PROJECT_PATH, "shop.duckdb")
+        database=os.path.join(DBT_PROJECT_PATH, "vibe_cdp.duckdb")
     ),
 }
 

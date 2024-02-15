@@ -3,7 +3,7 @@ name: 'dbt_project'
 config-version: 2
 version: '0.1'
 
-profile: 'vibe_shop'
+profile: 'vibe_cdp_profile'
 
 model-paths: ["models"]
 seed-paths: ["seeds"]
@@ -20,12 +20,13 @@ clean-targets:
 require-dbt-version: [">=1.0.0", "<2.0.0"]
 
 models:
-  vibe_shop:
+  dbt_project:
     materialized: table
     staging:
       materialized: view
 
 seeds:
-  vibe_shop:
+  dbt_project:
     stripe:
-      +schema: stripe
+      schema: stripe
+    
