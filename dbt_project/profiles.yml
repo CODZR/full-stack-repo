@@ -3,5 +3,5 @@ vibe_shop:
   outputs:
     local:
       type: duckdb
-      path: tutorial.duckdb
+      path: shop.duckdb
       schema: vibe_shop

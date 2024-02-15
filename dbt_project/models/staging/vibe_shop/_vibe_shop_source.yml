@@ -3,7 +3,8 @@ version: 2
 sources:
   - name: vibe_shop
     # database: dbt
-    schema: vibe_shop
+    # schema: vibe_shop # By default, schema will be the same as name
     tables:
       - name: customers
+      - name: delete_customers
       - name: orders
