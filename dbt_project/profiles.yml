@@ -1,7 +1,7 @@
-jaffle_shop:
+vibe_shop:
   target: local
   outputs:
     local:
       type: duckdb
       path: tutorial.duckdb
-      schema: jaffle_shop
+      schema: vibe_shop

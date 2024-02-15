@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: vibe_shop
+    # database: dbt
+    schema: vibe_shop
+    tables:
+      - name: customers
+      - name: orders

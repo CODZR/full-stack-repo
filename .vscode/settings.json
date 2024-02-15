@@ -5,7 +5,7 @@
   /* Start vscode-dbt */
   "files.associations": {
     // the pattern on the left side can be whatever you want: e.g.
-    "**/dbt_jaffle_shop/**/*.sql": "jinja-sql", // just the .sqlfiles inside of jaffle_shop, or
+    "**/dbt_vibe_shop/**/*.sql": "jinja-sql", // just the .sqlfiles inside of vibe_shop, or
     "*.sql": "jinja-sql", // all .sql files
     // optional: don't format models in `target/` dir
     "**/target/**": "",
