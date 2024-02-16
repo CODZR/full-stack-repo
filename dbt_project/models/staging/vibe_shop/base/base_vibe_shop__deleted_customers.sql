@@ -12,7 +12,6 @@ deleted_customers as (
 
     select
         id as customer_id,
-        deleted as deleted_at
 
     from source
 

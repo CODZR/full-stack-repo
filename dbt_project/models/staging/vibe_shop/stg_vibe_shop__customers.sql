@@ -19,7 +19,7 @@ join_and_mark_deleted_customers as (
     select
         customers.*,
         case
-            when deleted_customers.deleted_at is not null then true
+            when deleted_customers.customer_id is not null then true
             else false
         end as is_deleted
 

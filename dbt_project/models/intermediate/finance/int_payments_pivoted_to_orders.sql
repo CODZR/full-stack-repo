@@ -1,6 +1,6 @@
 -- int_payments_pivoted_to_orders.sql
 
-{%- set payment_methods = ['bank_transfer','credit_card','coupon','gift_card'] -%}
+{# {%- set payment_methods = ['bank_transfer','credit_card','coupon','gift_card'] -%} #}
 
 with
 
@@ -14,7 +14,7 @@ pivot_and_aggregate_payments_to_order_grain as (
 
    select
       order_id,
-      {% for payment_method in payment_methods -%}
+      {# {% for payment_method in payment_methods -%}
 
          sum(
             case
@@ -25,7 +25,7 @@ pivot_and_aggregate_payments_to_order_grain as (
             end
          ) as {{ payment_method }}_amount,
 
-      {%- endfor %}
+      {%- endfor %} #}
       sum(case when status = 'success' then amount end) as total_amount
 
    from payments

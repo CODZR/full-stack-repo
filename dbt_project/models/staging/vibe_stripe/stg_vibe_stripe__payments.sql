@@ -13,10 +13,10 @@ renamed as (
     select
         -- ids
         id as payment_id,
-        orderid as order_id,
+        order_id,
 
         -- strings
-        paymentmethod as payment_method,
+        payment_method,
         case
             when payment_method in ('stripe', 'paypal', 'credit_card', 'gift_card') then 'credit'
             else 'cash'
@@ -33,11 +33,6 @@ renamed as (
             else false
         end as is_completed_payment,
 
-        -- dates
-        date_trunc('day', created) as created_date,
-
-        -- timestamps
-        created::timestamp_ltz as created_at
 
     from source
 
