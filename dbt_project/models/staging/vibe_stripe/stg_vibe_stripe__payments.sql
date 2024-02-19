@@ -4,7 +4,7 @@ with
 
 source as (
 
-    select * from {{ source('vibe_stripe', 'raw_payments') }}
+    select * from {{ ref('raw_payments') }}
 
 ),
 
@@ -31,7 +31,7 @@ renamed as (
         case
             when status = 'successful' then true
             else false
-        end as is_completed_payment,
+        end as is_completed_payment
 
 
     from source

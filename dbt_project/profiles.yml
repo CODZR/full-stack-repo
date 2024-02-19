@@ -1,7 +1,12 @@
 vibe_cdp_profile:
-  target: local
+  target: dev
   outputs:
-    local:
-      type: duckdb
-      path: vibe_cdp.duckdb
-      schema: vibe
+    dev:
+      type: postgres
+      threads: 2
+      host: 127.0.0.1
+      port: 5432
+      user: codzr
+      password: "140937"
+      dbname: vibe_dbt
+      schema: dbt

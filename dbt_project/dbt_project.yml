@@ -27,7 +27,5 @@ models:
 
 seeds:
   dbt_project:
-    schema: shop
-    stripe:
-      schema: stripe
+    schema: seed
     

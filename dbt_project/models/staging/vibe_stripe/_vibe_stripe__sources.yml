@@ -1,8 +1,0 @@
-version: 2
-
-sources:
-  - name: vibe_stripe
-    # database: dbt
-    # schema: stripe # By default, schema will be the same as name
-    tables:
-      - name: raw_payments

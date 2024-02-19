@@ -1,6 +1,6 @@
 import os
 
-from dagster import Definitions, load_assets_from_modules
+from dagster import Definitions, load_assets_from_modules, FilesystemIOManager
 from dagster_dbt import DbtCliClientResource
 from dagster_duckdb_pandas import DuckDBPandasIOManager
 
@@ -12,8 +12,8 @@ resources = {
         project_dir=DBT_PROJECT_PATH,
         profiles_dir=DBT_PROFILES,
     ),
-    "io_manager": DuckDBPandasIOManager(
-        database=os.path.join(DBT_PROJECT_PATH, "vibe_cdp.duckdb")
+    "io_manager": FilesystemIOManager(
+        base_dir="data"  # 相对路径，在 dagster dev 运行的文件夹下
     ),
 }
 
