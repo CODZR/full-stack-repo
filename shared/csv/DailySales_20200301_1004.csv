@@ -1,0 +1,10 @@
+Transaction ID,Product name,Quantity,Total amount,Sales Channel,Customer First Name,Customer Last Name,Customer Email,Series City,Created Date,Reseller ID
+14,4.25x6 All the love from Wien (Vienna),6,22.799999999999997,web,Catherine,Everitt,Catherine.Everitt@example.com,Wien (Vienna),2020-01-03,1004
+15,6x11 Merry Christmas from Glasgow,4,8.0,web,Debra,Anderson,Debra.Anderson@example.com,Glasgow,2020-01-03,1004
+16,5.5x8.5 Greetings from Barnaul,5,8.0,web,Sandra,Chandler,Sandra.Chandler@example.com,Barnaul,2020-01-03,1004
+17,4.25x6 Greetings from Paris,3,13.200000000000001,mobile app,Neil,Bush,Neil.Bush@example.com,Paris,2020-01-03,1004
+18,5x7 All the love from St Petersburg,4,17.2,web,Robin,Dyer,Robin.Dyer@example.com,St Petersburg,2020-01-03,1004
+19,6x9 All the love from Genova,1,2.9,mobile app,Ben,Macdougall,Ben.Macdougall@example.com,Genova,2020-01-03,1004
+20,5x7 Come visit me in Napoli (Naples),1,2.3,web,Vivian,Novak,Vivian.Novak@example.com,Napoli (Naples),2020-01-03,1004
+21,5.5x8.5 All the love from Moskva (Moscow),3,12.899999999999999,mobile app,Juan,Dilley,Juan.Dilley@example.com,Moskva (Moscow),2020-01-03,1004
+22,5.5x8.5 Merry Christmas from Saratov,6,19.799999999999997,web,Margaret,Ebling,Margaret.Ebling@example.com,Saratov,2020-01-03,1004

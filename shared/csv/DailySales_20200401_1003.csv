@@ -1,0 +1,9 @@
+Transaction ID,Product name,Quantity,Total amount,Sales Channel,Customer First Name,Customer Last Name,Customer Email,Series City,Created Date,Reseller ID
+13,5.5x8.5 Greetings from Perm,2,8.4,mobile app,Daniel,Lee,Daniel.Lee@example.com,Perm,2020-01-04,1003
+14,4.25x6 All the love from Vladivostok,5,14.5,mobile app,Eric,Morgan,Eric.Morgan@example.com,Vladivostok,2020-01-04,1003
+15,6x9 Come visit me in Kryvy Rig,6,9.600000000000001,web,Elizabeth,Wood,Elizabeth.Wood@example.com,Kryvy Rig,2020-01-04,1003
+16,4x6 Merry Christmas from Warszawa (Warsaw),6,13.799999999999999,web,Mark,Zack,Mark.Zack@example.com,Warszawa (Warsaw),2020-01-04,1003
+17,6x9 Come visit me in Wroclaw (Breslau),3,12.899999999999999,mobile app,Nancy,Crout,Nancy.Crout@example.com,Wroclaw (Breslau),2020-01-04,1003
+18,5.5x8.5 Merry Christmas from Bucuresti (Bucharest),5,18.5,mobile app,Brenda,Guyette,Brenda.Guyette@example.com,Bucuresti (Bucharest),2020-01-04,1003
+19,6x11 Come visit me in Mykolaiv ,3,10.5,web,Carolyn,Coats,Carolyn.Coats@example.com,Mykolaiv ,2020-01-04,1003
+20,4x6 Come visit me in Lisboa (Lisbon),3,5.699999999999999,web,Tammy,Lange,Tammy.Lange@example.com,Lisboa (Lisbon),2020-01-04,1003

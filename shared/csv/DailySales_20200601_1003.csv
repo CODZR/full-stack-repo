@@ -1,0 +1,10 @@
+Transaction ID,Product name,Quantity,Total amount,Sales Channel,Customer First Name,Customer Last Name,Customer Email,Series City,Created Date,Reseller ID
+27,6x11 Just settled in Leeds,4,10.8,web,Roosevelt,Little,Roosevelt.Little@example.com,Leeds,2020-01-06,1003
+28,6x11 Merry Christmas from Oslo,6,26.400000000000002,web,Nancy,Rainey,Nancy.Rainey@example.com,Oslo,2020-01-06,1003
+29,4.25x6 All the love from Palermo,3,11.399999999999999,web,Rosa,Koth,Rosa.Koth@example.com,Palermo,2020-01-06,1003
+30,4.25x6 Come visit me in Sheffield,5,10.5,web,Thomas,Roberts,Thomas.Roberts@example.com,Sheffield,2020-01-06,1003
+31,4x6 Merry Christmas from Zagreb,2,5.8,web,Glenn,Buckman,Glenn.Buckman@example.com,Zagreb,2020-01-06,1003
+32,4.25x6 Just settled in Nizhny Novgorod,2,7.2,mobile app,Anna,Alvardo,Anna.Alvardo@example.com,Nizhny Novgorod,2020-01-06,1003
+33,4x6 Come visit me in Mykolaiv ,3,8.100000000000001,web,Roberta,Dyer,Roberta.Dyer@example.com,Mykolaiv ,2020-01-06,1003
+34,5x7 Greetings from Birmingham,1,3.6,in-store,Hollis,Allred,Hollis.Allred@example.com,Birmingham,2020-01-06,1003
+35,6x9 Greetings from Roma,4,8.8,mobile app,George,Davis,George.Davis@example.com,Roma,2020-01-06,1003

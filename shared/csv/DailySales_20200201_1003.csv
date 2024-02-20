@@ -1,0 +1,6 @@
+Transaction ID,Product name,Quantity,Total amount,Sales Channel,Customer First Name,Customer Last Name,Customer Email,Series City,Created Date,Reseller ID
+3,4x6 Just settled in Kishinev,4,6.4,in-store,Rebecca,Jernigan,Rebecca.Jernigan@example.com,Kishinev,2020-01-02,1003
+4,6x9 Come visit me in Amsterdam,2,8.4,mobile app,Adam,Davila,Adam.Davila@example.com,Amsterdam,2020-01-02,1003
+5,5x7 Come visit me in Perm,5,12.5,in-store,Paul,Alley,Paul.Alley@example.com,Perm,2020-01-02,1003
+6,4.25x6 Come visit me in Lódz,1,2.3,web,Israel,Cave,Israel.Cave@example.com,Lódz,2020-01-02,1003
+7,6x11 Come visit me in Torino (Turin),5,10.5,web,Earl,Ross,Earl.Ross@example.com,Torino (Turin),2020-01-02,1003

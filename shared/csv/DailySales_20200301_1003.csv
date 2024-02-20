@@ -1,0 +1,6 @@
+Transaction ID,Product name,Quantity,Total amount,Sales Channel,Customer First Name,Customer Last Name,Customer Email,Series City,Created Date,Reseller ID
+8,6x11 All the love from Salonika,6,10.2,mobile app,Debra,Mallory,Debra.Mallory@example.com,Salonika,2020-01-03,1003
+9,6x9 Just settled in St Petersburg,3,8.100000000000001,mobile app,Linda,Puotinen,Linda.Puotinen@example.com,St Petersburg,2020-01-03,1003
+10,5x7 Come visit me in Leeds,6,20.4,web,John,Wilson,John.Wilson@example.com,Leeds,2020-01-03,1003
+11,6x9 All the love from Kobenhavn (Copenhagen),4,17.2,mobile app,Adrienne,Mermis,Adrienne.Mermis@example.com,Kobenhavn (Copenhagen),2020-01-03,1003
+12,5.5x8.5 Merry Christmas from Berlin,1,2.4,mobile app,Leon,Burgos,Leon.Burgos@example.com,Berlin,2020-01-03,1003

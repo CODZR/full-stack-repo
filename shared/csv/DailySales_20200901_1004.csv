@@ -1,0 +1,11 @@
+Transaction ID,Product name,Quantity,Total amount,Sales Channel,Customer First Name,Customer Last Name,Customer Email,Series City,Created Date,Reseller ID
+52,5.5x8.5 Just settled in Riga,4,16.8,in-store,Miguel,Ingersoll,Miguel.Ingersoll@example.com,Riga,2020-01-09,1004
+53,5.5x8.5 Greetings from Nizhny Novgorod,4,9.6,in-store,Mary,Osburn,Mary.Osburn@example.com,Nizhny Novgorod,2020-01-09,1004
+54,6x9 All the love from Paris,3,11.399999999999999,web,Tracy,Irby,Tracy.Irby@example.com,Paris,2020-01-09,1004
+55,4x6 Come visit me in Perm,5,7.5,in-store,Tracy,Green,Tracy.Green@example.com,Perm,2020-01-09,1004
+56,5x7 Greetings from Ryazan,6,21.6,web,Lindsey,Talbot,Lindsey.Talbot@example.com,Ryazan,2020-01-09,1004
+57,5.5x8.5 All the love from Zaragoza,2,7.8,web,Joann,Brewer,Joann.Brewer@example.com,Zaragoza,2020-01-09,1004
+58,4x6 Merry Christmas from Rostov-Na-Donu,1,2.1,web,Kim,Thompson,Kim.Thompson@example.com,Rostov-Na-Donu,2020-01-09,1004
+59,6x11 All the love from Krasnoyarsk,2,8.4,web,Robert,Moravek,Robert.Moravek@example.com,Krasnoyarsk,2020-01-09,1004
+60,5x7 Just settled in Napoli (Naples),6,19.200000000000003,web,Eric,Hudson,Eric.Hudson@example.com,Napoli (Naples),2020-01-09,1004
+61,4.25x6 Merry Christmas from Hannover,3,9.3,web,Robert,Acosta,Robert.Acosta@example.com,Hannover,2020-01-09,1004

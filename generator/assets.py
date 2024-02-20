@@ -3,8 +3,8 @@ from random import randrange, choice, randint
 from datetime import date, timedelta, datetime
 import names
 
-sdate = date(2019, 1, 1)   # start date
-edate = date(2020, 12, 31)   # end date
+sdate = date(2020, 1, 1)   # start date
+edate = date(2020, 1, 10)   # end date
 
 delta = edate - sdate       # as timedelta
 

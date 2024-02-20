@@ -1,2 +1,12 @@
-{{ config(schema='raw') }}
-SELECT *, CURRENT_TIMESTAMP AS loaded_timestamp FROM {{ source('oltp','channels') }}
+{{ config(
+  schema = 'raw'
+) }}
+
+SELECT
+  *,
+  CURRENT_TIMESTAMP AS loaded_timestamp
+FROM
+  {{ source(
+    'dbt',
+    'channels'
+  ) }}

@@ -1,0 +1,4 @@
+Transaction ID,Product name,Quantity,Total amount,Sales Channel,Customer First Name,Customer Last Name,Customer Email,Series City,Created Date,Reseller ID
+0,5.5x8.5 All the love from Volgograd,6,25.200000000000003,mobile app,Steve,Williams,Steve.Williams@example.com,Volgograd,2020-01-01,1003
+1,6x11 All the love from Madrid,1,2.5,mobile app,Lashawn,Smith,Lashawn.Smith@example.com,Madrid,2020-01-01,1003
+2,6x11 Greetings from Ufa,4,16.8,web,Robert,Stegman,Robert.Stegman@example.com,Ufa,2020-01-01,1003

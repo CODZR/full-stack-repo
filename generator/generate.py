@@ -26,8 +26,10 @@ CONNECTION = psycopg2.connect(
     database=os.environ["POSTGRES_DATABASE"],
 )
 
+schema_name = 'dbt'
 
-def generate_oltp(n=1000000):
+
+def generate_oltp(n=10000):
     print("Generating transactions")
 
     trans = []
@@ -66,10 +68,10 @@ def insert_oltp_transactions():
 
         cur.execute("DROP TABLE IF EXISTS transactions")
         cur.execute(
-            "CREATE TABLE transactions(transaction_id serial primary key, customer_id int, product_id int, amount money, qty int, channel_id int, bought_date date )"
+            "CREATE TABLE {}.transactions(transaction_id serial primary key, customer_id int, product_id int, amount money, qty int, channel_id int, bought_date date )".format(schema_name)
         )
 
-        query = "INSERT INTO transactions({}) VALUES %s".format(",".join(columns))
+        query = "INSERT INTO {}.transactions({}) VALUES %s".format(schema_name, ",".join(columns))
 
         # convert projects values to sequence of sequences
         values = [[value for value in tran.values()] for tran in trans]
@@ -89,10 +91,10 @@ def insert_oltp_resellers():
 
         cur.execute("DROP TABLE IF EXISTS resellers")
         cur.execute(
-            "CREATE TABLE resellers(reseller_id int, reseller_name VARCHAR(255), commission_pct decimal)"
+            "CREATE TABLE {}.resellers(reseller_id int, reseller_name VARCHAR(255), commission_pct decimal)".format(schema_name)
         )
 
-        query = "INSERT INTO resellers({}) VALUES %s".format(",".join(columns))
+        query = "INSERT INTO {}.resellers({}) VALUES %s".format(schema_name, ",".join(columns))
 
         # convert projects values to sequence of seqeences
         values = [[value for value in tran.values()] for tran in RESELLERS_TRANSACTIONS]
@@ -111,9 +113,9 @@ def insert_oltp_channels():
         cur = conn.cursor()
 
         cur.execute("DROP TABLE IF EXISTS channels")
-        cur.execute("CREATE TABLE channels(channel_id int, channel_name VARCHAR(255))")
+        cur.execute("CREATE TABLE {}.channels(channel_id int, channel_name VARCHAR(255))".format(schema_name))
 
-        query = "INSERT INTO channels({}) VALUES %s".format(",".join(columns))
+        query = "INSERT INTO {}.channels({}) VALUES %s".format(schema_name, ",".join(columns))
 
         # convert projects values to sequence of seqeences
         values = [[value for value in tran.values()] for tran in CHANNELS]
@@ -127,7 +129,7 @@ def insert_oltp_customers():
     print("Inserting customers")
 
     trans = []
-    for i in range(100000):
+    for i in range(5000):
         first_name = choice(FIRST_NAMES)
         last_name = choice(LAST_NAMES)
         trans.append(
@@ -146,10 +148,10 @@ def insert_oltp_customers():
 
         cur.execute("DROP TABLE IF EXISTS customers")
         cur.execute(
-            "CREATE TABLE customers(customer_id int, first_name VARCHAR(255), last_name VARCHAR(255), email VARCHAR(255))"
+            "CREATE TABLE {}.customers(customer_id int, first_name VARCHAR(255), last_name VARCHAR(255), email VARCHAR(255))".format(schema_name)
         )
 
-        query = "INSERT INTO customers({}) VALUES %s".format(",".join(columns))
+        query = "INSERT INTO {}.customers({}) VALUES %s".format(schema_name, ",".join(columns))
 
         values = [[value for value in tran.values()] for tran in trans]
 
@@ -170,10 +172,10 @@ def insert_oltp_products():
 
         cur.execute("DROP TABLE IF EXISTS products")
         cur.execute(
-            "CREATE TABLE products(product_id int, name VARCHAR(255), city VARCHAR(255), price money)"
+            "CREATE TABLE {}.products(product_id int, name VARCHAR(255), city VARCHAR(255), price money)".format(schema_name)
         )
 
-        query = "INSERT INTO products({}) VALUES %s".format(",".join(columns))
+        query = "INSERT INTO {}.products({}) VALUES %s".format(schema_name, ",".join(columns))
 
         values = [[value for value in tran.values()] for tran in trans]
 
@@ -182,7 +184,7 @@ def insert_oltp_products():
         conn.commit()
 
 
-def generate_csv(resellerid, n=50000):
+def generate_csv(resellerid, n=5000):
     print("Generating CSV data")
     export = []
 
@@ -237,14 +239,14 @@ def insert_csv():
             new_format = date_nameformat[0] + date_nameformat[2] + date_nameformat[1]
 
             with open(
-                f"/shared/csv/DailySales_{new_format}_{resellerid}.csv", "w", newline=""
+                f"shared/csv/DailySales_{new_format}_{resellerid}.csv", "w", newline=""
             ) as output_file:
                 dict_writer = csv.DictWriter(output_file, keys)
                 dict_writer.writeheader()
                 dict_writer.writerows(data)
 
 
-def generate_json(resellerid, n=50000):
+def generate_json(resellerid, n=5000):
     print("Generating JSON data")
     export = []
 
@@ -303,22 +305,22 @@ def insert_json():
             new_format = date_nameformat[0] + date_nameformat[2] + date_nameformat[1]
 
             with open(
-                f"/shared/json/rawDailySales_{new_format}_{resellerid}.json", "w"
+                f"shared/json/rawDailySales_{new_format}_{resellerid}.json", "w"
             ) as output_file:
                 dump(data, output_file)
 
 
-def cleanup(directory, ext):
-
+def cleanup(cur_directory, ext):
     import os
 
-    filelist = [f for f in os.listdir(directory) if f.endswith(ext)]
+    filelist = [f for f in os.listdir(cur_directory) if f.endswith(ext)]
     for f in filelist:
-        os.remove(os.path.join(directory, f))
+        os.remove(os.path.join(cur_directory, f))
 
 
-cleanup("/shared/json", "json")
-cleanup("/shared/csv", "csv")
+
+cleanup("shared/json", "json")
+cleanup("shared/csv", "csv")
 insert_oltp_channels()
 insert_oltp_customers()
 insert_oltp_products()
