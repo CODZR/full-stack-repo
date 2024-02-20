@@ -1,14 +1,14 @@
 version: 2
 
 models:
-  - name: stg_vibe_shop__customers
+  - name: stg_shop__customers
     columns:
       - name: customer_id
         tests:
           - unique
           - not_null
 
-  - name: stg_vibe_shop__orders
+  - name: stg_shop__orders
     columns:
       - name: order_id
         tests:

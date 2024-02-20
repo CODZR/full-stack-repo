@@ -1,11 +1,10 @@
 {
-  "editor.defaultFormatter": "ms-python.black-formatter",
+  "editor.defaultFormatter": "henriblancke.vscode-dbt-formatter",
   "editor.formatOnSave": true,
   "python.pythonPath": "./.venv/bin/python",
   /* Start vscode-dbt */
   "files.associations": {
     // the pattern on the left side can be whatever you want: e.g.
-    "**/dbt_vibe_shop/**/*.sql": "jinja-sql", // just the .sqlfiles inside of vibe_shop, or
     "*.sql": "jinja-sql", // all .sql files
     // optional: don't format models in `target/` dir
     "**/target/**": "",

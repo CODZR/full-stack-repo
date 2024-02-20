@@ -1,16 +1,16 @@
--- stg_vibe_shop__customers.sql
+-- stg_shop__customers.sql
 
 with
 
 customers as (
 
-    select * from {{ ref('base_vibe_shop__customers') }}
+    select * from {{ ref('base_shop__customers') }}
 
 ),
 
 deleted_customers as (
 
-    select * from {{ ref('base_vibe_shop__deleted_customers') }}
+    select * from {{ ref('base_shop__deleted_customers') }}
 
 ),
 

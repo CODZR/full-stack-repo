@@ -4,7 +4,7 @@ with
 
 customers as (
 
-    select * from {{ ref('stg_vibe_shop__customers')}}
+    select * from {{ ref('stg_shop__customers')}}
 
 ),
 

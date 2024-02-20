@@ -1,4 +1,4 @@
--- base_vibe_shop__deleted_customers.sql
+-- base_shop__deleted_customers.sql
 
 with source as (
 

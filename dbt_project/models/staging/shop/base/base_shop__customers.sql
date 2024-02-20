@@ -1,4 +1,4 @@
--- base_vibe_shop__customers.sql
+-- base_shop__customers.sql
 
 with
 

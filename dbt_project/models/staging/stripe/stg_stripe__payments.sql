@@ -1,4 +1,4 @@
--- stg_vibe_stripe__payments.sql
+-- stg_stripe__payments.sql
 
 with
 

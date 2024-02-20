@@ -4,7 +4,7 @@ with
 
 orders as  (
 
-    select * from {{ ref('stg_vibe_shop__orders' )}}
+    select * from {{ ref('stg_shop__orders' )}}
 
 ),
 
