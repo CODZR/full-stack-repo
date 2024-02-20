@@ -11,4 +11,4 @@ SELECT
   geography_key,
   product_price
 FROM
-  {{ ref('stg_products') }}
+  {{ ref('stg_postcard__products') }}

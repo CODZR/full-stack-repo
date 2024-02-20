@@ -9,4 +9,4 @@ SELECT
   original_channel_id,
   channel_name
 FROM
-  {{ ref('stg_channels') }}
+  {{ ref('stg_postcard__channels') }}

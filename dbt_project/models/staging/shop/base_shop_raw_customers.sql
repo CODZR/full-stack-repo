@@ -1,13 +1,18 @@
-with source as (
-      select * from {{ ref('raw_customers') }}
+WITH source AS (
+    SELECT
+        *
+    FROM
+        {{ ref('raw_shop_customers') }}
 ),
-renamed as (
-    select
+renamed AS (
+    SELECT
         {{ adapter.quote("id") }},
         {{ adapter.quote("first_name") }},
         {{ adapter.quote("last_name") }}
-
-    from source
+    FROM
+        source
 )
-select * from renamed
-  
+SELECT
+    *
+FROM
+    renamed

@@ -11,4 +11,4 @@ SELECT
   customer_email,
   sales_agent_key
 FROM
-  {{ ref('stg_customers') }}
+  {{ ref('stg_postcard__customers') }}

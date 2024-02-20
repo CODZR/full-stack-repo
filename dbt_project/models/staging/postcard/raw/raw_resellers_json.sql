@@ -1,4 +1,12 @@
-{{ config(schema='raw') }}
-SELECT *, CURRENT_TIMESTAMP AS loaded_timestamp
+{{ config(
+  schema = 'raw'
+) }}
 
-FROM {{ source('reseller_json','sales') }}
+SELECT
+  *,
+  CURRENT_TIMESTAMP AS loaded_timestamp
+FROM
+  {{ source(
+    'reseller_json',
+    'sales'
+  ) }}

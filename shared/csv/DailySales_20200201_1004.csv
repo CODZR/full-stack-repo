@@ -1,8 +1,6 @@
 Transaction ID,Product name,Quantity,Total amount,Sales Channel,Customer First Name,Customer Last Name,Customer Email,Series City,Created Date,Reseller ID
-7,4.25x6 Greetings from Zagreb,4,11.2,web,Thomas,Grilli,Thomas.Grilli@example.com,Zagreb,2020-01-02,1004
-8,5x7 Greetings from Volgograd,1,1.5,mobile app,Tracy,Hitchcock,Tracy.Hitchcock@example.com,Volgograd,2020-01-02,1004
-9,5.5x8.5 Greetings from Lódz,6,26.400000000000002,web,Richard,Fuentes,Richard.Fuentes@example.com,Lódz,2020-01-02,1004
-10,4.25x6 Come visit me in Izhevsk,4,13.2,web,Leo,Chung,Leo.Chung@example.com,Izhevsk,2020-01-02,1004
-11,5x7 Merry Christmas from Bremen,3,4.5,web,Joe,Pratt,Joe.Pratt@example.com,Bremen,2020-01-02,1004
-12,6x9 Come visit me in Tula,3,7.800000000000001,web,Seth,Post,Seth.Post@example.com,Tula,2020-01-02,1004
-13,6x9 Merry Christmas from Tula,1,3.5,web,Lilia,Stone,Lilia.Stone@example.com,Tula,2020-01-02,1004
+5,4.25x6 Greetings from Lvov,5,19.0,mobile app,Elliot,Hurtado,Elliot.Hurtado@example.com,Lvov,2020-01-02,1004
+6,5x7 All the love from Hannover,6,22.200000000000003,mobile app,Bonnie,Singleton,Bonnie.Singleton@example.com,Hannover,2020-01-02,1004
+7,4.25x6 All the love from Praha (Prague),6,9.0,mobile app,Elizabeth,Houston,Elizabeth.Houston@example.com,Praha (Prague),2020-01-02,1004
+8,4.25x6 Come visit me in Stockholm,6,16.200000000000003,web,Calvin,Cody,Calvin.Cody@example.com,Stockholm,2020-01-02,1004
+9,6x9 Greetings from Napoli (Naples),6,16.799999999999997,mobile app,Anthony,Camargo,Anthony.Camargo@example.com,Napoli (Naples),2020-01-02,1004

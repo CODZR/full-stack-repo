@@ -1,22 +1,19 @@
 -- base_shop__customers.sql
-
-with
-
-source as (
-
-    select * from {{ ref('raw_customers') }}
-
+WITH source AS (
+    SELECT
+        *
+    FROM
+        {{ ref('raw_shop_customers') }}
 ),
-
-customers as (
-
-    select
-        id as customer_id,
+customers AS (
+    SELECT
+        id AS customer_id,
         first_name,
         last_name
-
-    from source
-
+    FROM
+        source
 )
-
-select * from customers
+SELECT
+    *
+FROM
+    customers

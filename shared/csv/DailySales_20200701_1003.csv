@@ -1,8 +1,9 @@
 Transaction ID,Product name,Quantity,Total amount,Sales Channel,Customer First Name,Customer Last Name,Customer Email,Series City,Created Date,Reseller ID
-36,5x7 Just settled in Naberezhnye Tchelny,1,3.2,web,Krista,Wahba,Krista.Wahba@example.com,Naberezhnye Tchelny,2020-01-07,1003
-37,4.25x6 Just settled in Donetsk ,4,8.4,mobile app,Melva,Johnston,Melva.Johnston@example.com,Donetsk ,2020-01-07,1003
-38,6x11 Greetings from Poznan,2,5.4,web,Anna,Harris,Anna.Harris@example.com,Poznan,2020-01-07,1003
-39,4x6 All the love from Sofia,5,10.5,web,Lynn,Settles,Lynn.Settles@example.com,Sofia,2020-01-07,1003
-40,4.25x6 Just settled in Saratov,3,9.0,mobile app,James,Pepper,James.Pepper@example.com,Saratov,2020-01-07,1003
-41,6x9 Greetings from Helsinki,6,13.799999999999999,web,George,Weddington,George.Weddington@example.com,Helsinki,2020-01-07,1003
-42,6x11 Come visit me in Köln (Cologne),1,2.3,mobile app,Joseph,Macdougall,Joseph.Macdougall@example.com,Köln (Cologne),2020-01-07,1003
+45,4.25x6 Come visit me in Izhevsk,4,15.6,in-store,Lonnie,Luckow,Lonnie.Luckow@example.com,Izhevsk,2020-01-07,1003
+46,5.5x8.5 Just settled in London,5,15.0,web,Alfonso,Knott,Alfonso.Knott@example.com,London,2020-01-07,1003
+47,4.25x6 Merry Christmas from Odessa,1,2.7,mobile app,Matilda,Falco,Matilda.Falco@example.com,Odessa,2020-01-07,1003
+48,4.25x6 Merry Christmas from Ryazan,5,22.0,web,Francisco,Renz,Francisco.Renz@example.com,Ryazan,2020-01-07,1003
+49,4.25x6 Come visit me in Palermo,2,7.2,mobile app,Victor,Perkins,Victor.Perkins@example.com,Palermo,2020-01-07,1003
+50,4x6 Come visit me in Naberezhnye Tchelny,6,22.200000000000003,mobile app,Donald,Hogeland,Donald.Hogeland@example.com,Naberezhnye Tchelny,2020-01-07,1003
+51,5x7 Greetings from Kemerovo,5,8.5,mobile app,Winnie,Taylor,Winnie.Taylor@example.com,Kemerovo,2020-01-07,1003
+52,6x11 Greetings from Tolyatti,6,21.6,web,Aaron,Hogeland,Aaron.Hogeland@example.com,Tolyatti,2020-01-07,1003

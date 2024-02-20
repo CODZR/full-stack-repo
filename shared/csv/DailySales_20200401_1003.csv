@@ -1,9 +1,14 @@
 Transaction ID,Product name,Quantity,Total amount,Sales Channel,Customer First Name,Customer Last Name,Customer Email,Series City,Created Date,Reseller ID
-13,5.5x8.5 Greetings from Perm,2,8.4,mobile app,Daniel,Lee,Daniel.Lee@example.com,Perm,2020-01-04,1003
-14,4.25x6 All the love from Vladivostok,5,14.5,mobile app,Eric,Morgan,Eric.Morgan@example.com,Vladivostok,2020-01-04,1003
-15,6x9 Come visit me in Kryvy Rig,6,9.600000000000001,web,Elizabeth,Wood,Elizabeth.Wood@example.com,Kryvy Rig,2020-01-04,1003
-16,4x6 Merry Christmas from Warszawa (Warsaw),6,13.799999999999999,web,Mark,Zack,Mark.Zack@example.com,Warszawa (Warsaw),2020-01-04,1003
-17,6x9 Come visit me in Wroclaw (Breslau),3,12.899999999999999,mobile app,Nancy,Crout,Nancy.Crout@example.com,Wroclaw (Breslau),2020-01-04,1003
-18,5.5x8.5 Merry Christmas from Bucuresti (Bucharest),5,18.5,mobile app,Brenda,Guyette,Brenda.Guyette@example.com,Bucuresti (Bucharest),2020-01-04,1003
-19,6x11 Come visit me in Mykolaiv ,3,10.5,web,Carolyn,Coats,Carolyn.Coats@example.com,Mykolaiv ,2020-01-04,1003
-20,4x6 Come visit me in Lisboa (Lisbon),3,5.699999999999999,web,Tammy,Lange,Tammy.Lange@example.com,Lisboa (Lisbon),2020-01-04,1003
+16,6x9 Just settled in Naberezhnye Tchelny,1,2.2,mobile app,Darlene,Poulin,Darlene.Poulin@example.com,Naberezhnye Tchelny,2020-01-04,1003
+17,6x11 Greetings from Leeds,6,19.799999999999997,mobile app,Michelle,Davenport,Michelle.Davenport@example.com,Leeds,2020-01-04,1003
+18,4x6 Just settled in Beograd (Belgrade),5,7.5,mobile app,Lisa,Greenberg,Lisa.Greenberg@example.com,Beograd (Belgrade),2020-01-04,1003
+19,5x7 All the love from Vilnius,2,4.0,mobile app,Fred,Waldrep,Fred.Waldrep@example.com,Vilnius,2020-01-04,1003
+20,6x9 Merry Christmas from Stuttgart,3,5.699999999999999,mobile app,Rhonda,Beck,Rhonda.Beck@example.com,Stuttgart,2020-01-04,1003
+21,4.25x6 Greetings from Köln (Cologne),3,6.0,in-store,Gay,Lopez,Gay.Lopez@example.com,Köln (Cologne),2020-01-04,1003
+22,4x6 Come visit me in Paris,6,24.0,mobile app,Andrea,Edmondson,Andrea.Edmondson@example.com,Paris,2020-01-04,1003
+23,6x9 Merry Christmas from Samara,5,22.0,in-store,Johnny,Komar,Johnny.Komar@example.com,Samara,2020-01-04,1003
+24,5x7 Merry Christmas from Leeds,6,13.799999999999999,mobile app,Walter,Berthiaume,Walter.Berthiaume@example.com,Leeds,2020-01-04,1003
+25,5.5x8.5 Merry Christmas from Sarajevo,1,2.7,web,Sara,Dominguez,Sara.Dominguez@example.com,Sarajevo,2020-01-04,1003
+26,6x9 Just settled in Ryazan,3,7.199999999999999,mobile app,Ronald,Hurtado,Ronald.Hurtado@example.com,Ryazan,2020-01-04,1003
+27,6x11 All the love from Yaroslave,3,13.200000000000001,web,Myrtle,Kilgore,Myrtle.Kilgore@example.com,Yaroslave,2020-01-04,1003
+28,4.25x6 All the love from Odessa,4,6.8,web,Mary,Moulton,Mary.Moulton@example.com,Odessa,2020-01-04,1003

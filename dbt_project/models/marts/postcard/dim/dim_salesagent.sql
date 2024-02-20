@@ -10,7 +10,7 @@ SELECT
     reseller_name,
     commission_pct
 FROM
-    {{ ref('stg_resellers') }}
+    {{ ref('stg_postcard__resellers') }}
 UNION ALL
 SELECT
     0 AS sales_agent_key,

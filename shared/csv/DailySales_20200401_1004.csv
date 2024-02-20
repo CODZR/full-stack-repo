@@ -1,8 +1,4 @@
 Transaction ID,Product name,Quantity,Total amount,Sales Channel,Customer First Name,Customer Last Name,Customer Email,Series City,Created Date,Reseller ID
-23,5x7 Merry Christmas from Sofia,6,9.0,web,James,Hemenway,James.Hemenway@example.com,Sofia,2020-01-04,1004
-24,4x6 All the love from Athinai (Athens),1,2.8,web,Robert,Connors,Robert.Connors@example.com,Athinai (Athens),2020-01-04,1004
-25,6x11 Just settled in Glasgow,5,11.0,web,Brenda,Abel,Brenda.Abel@example.com,Glasgow,2020-01-04,1004
-26,6x11 Just settled in Rostov-Na-Donu,3,11.399999999999999,mobile app,Robin,Perrine,Robin.Perrine@example.com,Rostov-Na-Donu,2020-01-04,1004
-27,5.5x8.5 Come visit me in Riga,3,10.8,mobile app,Everett,Smith,Everett.Smith@example.com,Riga,2020-01-04,1004
-28,5.5x8.5 Just settled in Samara,3,4.5,in-store,Pauline,Choudhury,Pauline.Choudhury@example.com,Samara,2020-01-04,1004
-29,6x11 Merry Christmas from Vladivostok,3,5.4,in-store,Leslie,Gilmore,Leslie.Gilmore@example.com,Vladivostok,2020-01-04,1004
+24,5x7 All the love from Penza,3,6.0,web,John,Harrison,John.Harrison@example.com,Penza,2020-01-04,1004
+25,6x11 Greetings from Izhevsk,1,2.6,mobile app,Betty,Martin,Betty.Martin@example.com,Izhevsk,2020-01-04,1004
+26,5.5x8.5 Come visit me in Sofia,5,8.0,web,Kelly,Yazzie,Kelly.Yazzie@example.com,Sofia,2020-01-04,1004

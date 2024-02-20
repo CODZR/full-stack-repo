@@ -27,5 +27,6 @@ models:
 
 seeds:
   dbt_project:
-    schema: seed
+    schema: raw
+
     

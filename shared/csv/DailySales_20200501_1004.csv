@@ -1,3 +1,7 @@
 Transaction ID,Product name,Quantity,Total amount,Sales Channel,Customer First Name,Customer Last Name,Customer Email,Series City,Created Date,Reseller ID
-30,5x7 All the love from Khabarovsk,3,9.600000000000001,web,Graciela,Strapp,Graciela.Strapp@example.com,Khabarovsk,2020-01-05,1004
-31,6x11 Merry Christmas from Tyumen,1,4.0,web,Cindy,Shorey,Cindy.Shorey@example.com,Tyumen,2020-01-05,1004
+27,5x7 Just settled in München (Munich),1,3.2,web,Mary,Fuller,Mary.Fuller@example.com,München (Munich),2020-01-05,1004
+28,5.5x8.5 Just settled in Kazan,1,4.1,mobile app,James,Huling,James.Huling@example.com,Kazan,2020-01-05,1004
+29,6x11 Greetings from Amsterdam,6,26.400000000000002,mobile app,Sheila,Mullins,Sheila.Mullins@example.com,Amsterdam,2020-01-05,1004
+30,4.25x6 Merry Christmas from Napoli (Naples),5,18.0,mobile app,Barry,Bivins,Barry.Bivins@example.com,Napoli (Naples),2020-01-05,1004
+31,6x11 Merry Christmas from Palermo,4,11.2,mobile app,Joyce,Thompson,Joyce.Thompson@example.com,Palermo,2020-01-05,1004
+32,5x7 Just settled in Kobenhavn (Copenhagen),2,3.4,in-store,John,Mullins,John.Mullins@example.com,Kobenhavn (Copenhagen),2020-01-05,1004

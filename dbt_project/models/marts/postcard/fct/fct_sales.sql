@@ -18,4 +18,4 @@ SELECT
     commissionpaid,
     product_price
 FROM
-    {{ ref('stg_transactions') }}
+    {{ ref('stg_postcard__transactions') }}

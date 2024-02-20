@@ -26,7 +26,7 @@ CONNECTION = psycopg2.connect(
     database=os.environ["POSTGRES_DATABASE"],
 )
 
-schema_name = 'dbt'
+schema_name = 'oltp'
 
 
 def generate_oltp(n=10000):

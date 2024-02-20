@@ -21,7 +21,7 @@ WITH products AS (
     FROM
         {{ ref('raw_products') }}
         e
-        JOIN {{ ref('geography') }}
+        JOIN {{ ref('raw_geography') }}
         g
         ON g.cityname = e.city
 )
