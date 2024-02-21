@@ -18,13 +18,7 @@ from assets import (
     random_date,
 )
 
-CONNECTION = psycopg2.connect(
-    user=os.environ["POSTGRES_USER"],
-    password=os.environ["POSTGRES_PASSWORD"],
-    host=os.environ["POSTGRES_HOST"],
-    port="5432",
-    database=os.environ["POSTGRES_DATABASE"],
-)
+
 
 schema_name = 'oltp'
 

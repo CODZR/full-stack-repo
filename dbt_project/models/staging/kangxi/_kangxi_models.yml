@@ -1,0 +1,9 @@
+version: 2
+
+models:
+  - name: stg_kangxi__hanzi
+    columns:
+      - name: hanzi_id
+        tests:
+          - unique
+          - not_null
