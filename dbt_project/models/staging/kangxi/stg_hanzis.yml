@@ -1,9 +1,33 @@
-# version: 2
+version: 2
 
-# models:
-#   - name: stg_hanzis
-#     columns:
-#       - name: hanzi_id
-#         tests:
-#           - unique
-#           - not_null
+models:
+  - name: stg_hanzis
+    description: "staging hanzis"
+    config:
+      contract:
+        enforced: true
+    columns:
+      - name: hanzi_id
+        data_type: int
+        description: "primary key of hanzi"
+        constraints:
+          - type: not_null
+          - type: primary_key
+          - type: check
+        tests:
+          - not_null
+          - unique
+      
+      - name: zi
+        data_type: varchar(255)
+        description: "字"
+        constraints:
+          - type: not_null
+      
+      - name: pinyin
+        data_type: varchar(255)
+        description: "拼音"
+        constraints:
+          - type: not_null
+
+      

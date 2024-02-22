@@ -34,5 +34,7 @@ seeds:
       schema: qa
     health:
       schema: health
+    kangxi:
+      schema: kangxi
 
     
