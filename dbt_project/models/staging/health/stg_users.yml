@@ -1,15 +1,15 @@
 version: 2
 
 models:
-  - name: stg_faqs
-    description: "staging faqs"
+  - name: stg_users
+    description: "staging users"
     config:
       contract:
         enforced: true
     columns:
-      - name: faq_id
+      - name: user_id
         data_type: int
-        description: "primary key of faq"
+        description: "primary key of user"
         constraints:
           - type: not_null
           - type: primary_key
@@ -17,13 +17,13 @@ models:
         tests:
           - not_null
           - unique
-      
-      - name: question
+      - name: username
         data_type: varchar(255)
-        description: "faq question"
-      
-      - name: answer
-        data_type: text
-        description: "faq answer"
+      - name: password
+        data_type: varchar(64)
+      - name: phone
+        data_type: varchar(64)
+      - name: role
+        data_type: varchar(32)
 
       

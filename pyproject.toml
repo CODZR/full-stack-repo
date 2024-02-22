@@ -35,6 +35,7 @@ dbt = "^1.0.0.35.25"
 names = "^0.3.0"
 sqlfluff-templater-dbt = "^2.3.5"
 sqlfluff = "^2.3.5"
+sqlfmt = "^0.0.3"
 
 
 [build-system]

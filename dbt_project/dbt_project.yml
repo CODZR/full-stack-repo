@@ -22,6 +22,9 @@ require-dbt-version: [">=1.0.0", "<2.0.0"]
 models:
   dbt_project:
     materialized: table
+    +persist_docs:
+      relation: true 
+      columns: true
     staging:
       materialized: table
       

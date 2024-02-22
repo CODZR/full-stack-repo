@@ -1,5 +1,5 @@
 {
-  "editor.defaultFormatter": "dorzey.vscode-sqlfluff",
+  "editor.defaultFormatter": "henriblancke.vscode-dbt-formatter",
   "editor.formatOnSave": true,
   "python.pythonPath": "./.venv/bin/python",
   /* Start vscode-dbt */
@@ -18,23 +18,23 @@
     }
   },
   /* End vscode-dbt */
+  "dbt.sqlFmtPath": "${workspaceFolder}/.venv/bin/sqlfmt",
   /* Start SQL Fluff */
-  "sqlfluff.executablePath": "${workspaceFolder}/.venv/bin/sqlfluff",
-  "sqlfluff.config": "${workspaceFolder}/dbt_project/.sqlfluff",
-  "sqlfluff.dialect": "postgres",
-  // "sqlfluff.suppressNotifications": false,
-  /* Linter */
-  "sqlfluff.linter.arguments": [],
-  "sqlfluff.linter.diagnosticSeverity": "warning",
-  /* Formatter */
-  "sqlfluff.format.enabled": true,
+  // "sqlfluff.executablePath": "${workspaceFolder}/.venv/bin/sqlfluff",
+  // "sqlfluff.config": "${workspaceFolder}/dbt_project/.sqlfluff",
+  // "sqlfluff.dialect": "postgres",
+  // // "sqlfluff.suppressNotifications": false,
+  // /* Linter */
+  // "sqlfluff.linter.arguments": [],
+  // "sqlfluff.linter.diagnosticSeverity": "warning",
+  // /* Formatter */
+  // "sqlfluff.format.enabled": true,
   /* End SQL Fluff */
   /* Start Extra settings */
   // easier to see if there are unsaved changed
   "workbench.editor.highlightModifiedTabs": true,
   "workbench.editor.labelFormat": "medium",
   // make Command Prompt the default shell for Windows instead of Powershell
-  "terminal.integrated.shell.windows": "C:\\Windows\\System32\\cmd.exe",
   // make a vertical line so I don't make lines too long
   "editor.rulers": [
     500
@@ -44,34 +44,6 @@
   "editor.renderWhitespace": "all",
   /* End Extra settings */
   /* Start Find Related */
-  "findrelated.workspaceRulesets": [
-    {
-      "name": "sql",
-      "rules": [
-        {
-          "pattern": "^(.*/)?models/(.*/)?(.+\\.sql)$",
-          "locators": [
-            "**/compiled/**/$3"
-          ]
-        },
-        {
-          "pattern": "^(.*/)?compiled/(.*/)?(.+\\.sql)$",
-          "locators": [
-            "**/run/**/$3"
-          ]
-        },
-        {
-          "pattern": "^(.*/)?run/(.*/)?(.+\\.sql)$",
-          "locators": [
-            "**/models/**/$3"
-          ]
-        }
-      ]
-    }
-  ],
-  "findrelated.applyRulesets": [
-    "sql"
-  ],
   "dbt.queryLimit": 500,
   /* End Find Related */
 }

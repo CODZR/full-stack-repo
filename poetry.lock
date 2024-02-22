@@ -3639,6 +3639,26 @@ url = "https://mirrors.aliyun.com/pypi/simple"
 reference = "ali"
 
 [[package]]
+name = "sqlfmt"
+version = "0.0.3"
+description = "An uncompromising SQL query formatter."
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "sqlfmt-0.0.3-py3-none-any.whl", hash = "sha256:d43016d0e89d689e032bb18a48b03fd236c93e94401ddef9cd4f19e28593f7b8"},
+    {file = "sqlfmt-0.0.3.tar.gz", hash = "sha256:ed7987c12f9f2471382dfbf9fb2f70ca6d19efc8c7db97c95920289f3b7ac4ea"},
+]
+
+[package.dependencies]
+sqlfluff = ">=2.0,<3.0"
+typer = ">=0.7,<1.0"
+
+[package.source]
+type = "legacy"
+url = "https://mirrors.aliyun.com/pypi/simple"
+reference = "ali"
+
+[[package]]
 name = "sqlparse"
 version = "0.4.4"
 description = "A non-validating SQL parser."
@@ -4464,4 +4484,4 @@ reference = "ali"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "5943b60e022893ab6594aeb88f4d2c25e3acb776b012376d0fe371b0b1d8f31a"
+content-hash = "ab37a01b7dd6327ab1b666c49a5d1af4335d35fe7668893a76ed74c06a0dfee7"

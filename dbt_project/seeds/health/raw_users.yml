@@ -1,7 +1,7 @@
 version: 2 
 
 seeds: 
-  - name: raw_user
+  - name: raw_users
     config:
       column_types: 
         id: integer

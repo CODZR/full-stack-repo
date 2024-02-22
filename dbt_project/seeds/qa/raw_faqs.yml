@@ -1,11 +1,9 @@
-version: 2 
+version: 2
 
-seeds: 
+seeds:
   - name: raw_faqs
     config:
-      column_types: 
+      column_types:
         id: integer
         question: varchar(255)
         answer: text
-        
-
