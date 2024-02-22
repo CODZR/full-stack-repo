@@ -1,0 +1,14 @@
+version: 2 
+
+seeds: 
+  - name: raw_user
+    config:
+      column_types: 
+        id: integer
+        answer: text
+        username: varchar(128)
+        password: varchar(64)
+        phone: varchar(64)
+        role: varchar(64)
+        
+

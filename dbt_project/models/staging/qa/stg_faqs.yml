@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: stg_faqs
+    columns:
+      - name: faq_id
+        description: "primary key of faq"
+        tests:
+          - not_null
+          - unique
+      
+      - name: question
+        description: "faq question"
+      
+      - name: answer
+        description: "faq answer"
+
+      

@@ -1,5 +1,5 @@
 {
-  "editor.defaultFormatter": "henriblancke.vscode-dbt-formatter",
+  "editor.defaultFormatter": "dorzey.vscode-sqlfluff",
   "editor.formatOnSave": true,
   "python.pythonPath": "./.venv/bin/python",
   /* Start vscode-dbt */
@@ -19,38 +19,14 @@
   },
   /* End vscode-dbt */
   /* Start SQL Fluff */
-  "sqlfluff.linter.run": "onType",
-  "sqlfluff.experimental.format.executeInTerminal": true,
-  // "sqlfluff.config": "${workspaceFolder}/main/.sqlfluff",
+  "sqlfluff.executablePath": "${workspaceFolder}/.venv/bin/sqlfluff",
+  "sqlfluff.config": "${workspaceFolder}/dbt_project/.sqlfluff",
   "sqlfluff.dialect": "postgres",
-  // "sqlfluff.env.environmentVariables": [
-  //   {
-  //     "key": "example_key",
-  //     "value": "example_value"
-  //   }
-  // ],
-  "sqlfluff.env.useDotEnvFile": true,
-  // "sqlfluff.executablePath": "${workspaceFolder}/main/.venv/bin/sqlfluff",
-  "sqlfluff.ignoreLocalConfig": false,
-  "sqlfluff.ignoreParsing": false,
-  "sqlfluff.suppressNotifications": false,
-  "sqlfluff.workingDirectory": "${workspaceFolder}/main/",
+  // "sqlfluff.suppressNotifications": false,
   /* Linter */
   "sqlfluff.linter.arguments": [],
   "sqlfluff.linter.diagnosticSeverity": "warning",
-  "sqlfluff.linter.diagnosticSeverityByRule": [
-    {
-      "rule": "TMP",
-      "severity": "hint"
-    },
-    {
-      "rule": "PRS",
-      "severity": "information"
-    },
-  ],
-  "sqlfluff.linter.lintEntireProject": true,
   /* Formatter */
-  // "sqlfluff.format.arguments": ["--FIX-EVEN-UNPARSABLE"],
   "sqlfluff.format.enabled": true,
   /* End SQL Fluff */
   /* Start Extra settings */
