@@ -15,6 +15,7 @@
 		"commit": "pnpm format && git add -A && git-cz && git push"
 	},
 	"dependencies": {
+		"@chakra-ui/icons": "^2.1.1",
 		"@chakra-ui/next-js": "^2.2.0",
 		"@chakra-ui/react": "^2.8.2",
 		"@emotion/react": "^11.11.1",
@@ -23,7 +24,8 @@
 		"framer-motion": "^10.16.5",
 		"next": "14.0.3",
 		"react": "18.2.0",
-		"react-dom": "18.2.0"
+		"react-dom": "18.2.0",
+		"react-hook-form": "^7.50.1"
 	},
 	"devDependencies": {
 		"@types/react": "18.2.39",

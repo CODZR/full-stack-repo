@@ -1,0 +1,53 @@
+.verifyWrapper{
+	position: relative;
+	overflow: hidden;
+	border-radius: 100px;
+	border: 1px solid #1C79C1;
+	
+	.verifyTrigger {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 50px;
+		background: #1C79C1;
+    position: absolute;
+    z-index: -1;
+	}
+	.verifyBox {
+		position: relative;
+		z-index: 1;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-family: Roboto, sans-serif;
+		font-size: 20px;
+		color: #1C79C1;
+		font-weight: normal;
+		width: 100%;
+		height: 50px;
+		cursor: pointer;
+		padding: 0;
+		margin: 0;
+	}
+}
+
+// :global {
+// 	@keyframes textColorInvert {
+// 		0% {
+// 			color: rgb(28, 121, 193);
+// 		}
+// 		100% {
+// 			color: rgb(72, 147, 205);
+// 		}
+// 	}
+
+// 	@keyframes textColorIReverse {
+// 		0% {
+// 			color: rgb(72, 147, 205);
+// 		}
+// 		100% {
+// 			color: rgb(28, 121, 193);
+// 		}
+// 	}
+// }
