@@ -1,0 +1,32 @@
+.mobileLayout {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	.logo {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+		margin-bottom: 32px;
+		:global {
+			.svg-icon {
+				width: 242px;
+				height: 24px;
+			}
+		}
+	}
+	p {
+		margin-bottom: 16px;
+		font-size: 24px;
+		font-weight: 500;
+		color: #333;
+	}
+	span {
+		padding: 0 32px;
+		font-size: 16px;
+		color: #333;
+		text-align: center;
+	}
+}

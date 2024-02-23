@@ -1,0 +1,65 @@
+@v-btn-default: #f0f2ff;
+@v-btn-default-hover: #e5e9ff;
+@v-btn-primary: #405eff;
+@v-btn-primary-hover: #3552ee;
+.inlineSpin {
+	display: inline-flex;
+	&.disabledCursor {
+		cursor: not-allowed;
+	}
+}
+.button {
+	display: inline-flex;
+	gap: 4px;
+	align-items: center;
+	justify-content: center;
+	padding: 7px 16px;
+	font-size: 14px;
+	color: @v-purple;
+	cursor: pointer;
+	background-color: @v-blue-light;
+	border-radius: 4px;
+	&:active {
+		opacity: 0.7;
+	}
+	&.isDefault {
+		min-height: 40px;
+		&:hover {
+			background-color: @v-btn-default-hover;
+		}
+	}
+	&.isPrimary {
+		min-height: 40px;
+		font-weight: 500;
+		color: #fff;
+		background-color: @v-btn-primary;
+		&:hover {
+			background-color: @v-btn-primary-hover;
+		}
+	}
+	&.isDisabled {
+		cursor: not-allowed;
+		opacity: 0.65;
+	}
+	&.isDanger {
+		min-height: 40px;
+		color: #f95050;
+		&:hover {
+			background-color: @v-btn-default-hover;
+		}
+	}
+	&.isText {
+		padding: 4px;
+		margin-left: -4px;
+		background-color: unset;
+	}
+	&.isHoverText {
+		padding: 4px;
+		margin-left: -4px;
+		background-color: unset;
+		&:hover {
+			background-color: @v-blue-light;
+			border-radius: 4px;
+		}
+	}
+}

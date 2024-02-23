@@ -1,0 +1,38 @@
+.antd-ellipsis {
+	position: relative;
+	&-expanded-content {
+		word-break: break-all;
+		white-space: pre-line;
+	}
+	&-overflow-content {
+		display: inline-block;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		vertical-align: bottom;
+		&-line-clamp {
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: pre;
+			vertical-align: bottom;
+			-webkit-box-orient: vertical;
+			// 修复safari自带的tooltip
+			&::before {
+				display: block;
+				content: '';
+			}
+		}
+	}
+	&-content-copy {
+		position: absolute;
+		top: 0;
+		left: 0;
+		display: inline-block;
+		visibility: hidden;
+	}
+	&-expand {
+		margin-left: 4px;
+		cursor: pointer;
+		outline: none;
+	}
+}

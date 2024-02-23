@@ -1,0 +1,52 @@
+.dropdownWrapper {
+	padding: 8px 0;
+	cursor: pointer;
+	background-color: #222;
+	border: 1px solid #434343;
+	border-radius: 4px;
+	box-shadow: 2px 4px 15px rgb(0 0 0 / 10%), 4px 16px 32px rgb(0 0 0 / 10%);
+	.dropdownItem {
+		display: flex;
+		gap: 32px;
+		align-items: center;
+		justify-content: space-between;
+		// min-width: 150px;
+		height: 32px;
+		padding: 8px 16px;
+		font-size: 14px;
+		line-height: 18px;
+		color: #f1f1f1;
+		cursor: pointer;
+		&:hover {
+			background-color: @v-purple;
+		}
+		&.drowdownItemDisabled {
+			color: #727272;
+			cursor: not-allowed;
+			&:hover {
+				background-color: unset;
+			}
+		}
+		&.multipleRow {
+			flex-direction: row-reverse;
+			gap: 8px;
+			justify-content: flex-end;
+		}
+		.tickIcon {
+			width: 32px;
+			height: 32px;
+			color: #a1a1a1;
+			visibility: hidden;
+			&.visible {
+				visibility: visible;
+			}
+		}
+	}
+	.divider {
+		width: auto;
+		height: 1px;
+		margin-right: 16px;
+		margin-left: 16px;
+		background-color: #434343;
+	}
+}

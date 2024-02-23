@@ -1,0 +1,85 @@
+.inputWrapper {
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	padding: 11px 12px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	outline: none;
+	appearance: none;
+	&.disabled {
+		opacity: 0.5;
+	}
+	&:hover,
+	&:focus-within {
+		border: 1px solid @v-purple;
+		transition: all 0.3s;
+	}
+	input {
+		flex: 1;
+		width: 100%;
+		padding: 0;
+		font-family: 'Fira Sans', sans-serif;
+		font-size: inherit;
+		border: unset;
+		&::placeholder {
+			font-family: 'Fira Sans', sans-serif;
+			font-size: inherit;
+			color: #a1a1a1;
+		}
+		&:focus-visible {
+			outline: unset;
+		}
+	}
+}
+.withPrefix {
+	padding: 0 12px 0 8px;
+	input {
+		padding-top: 10px;
+		padding-bottom: 10px;
+		padding-left: 4px;
+	}
+}
+.withClear {
+	display: flex;
+	flex: 1;
+	align-items: center;
+	input ~ span {
+		height: 20px;
+	}
+}
+.disabledMask {
+	position: absolute;
+	top: -1px;
+	right: -1px;
+	bottom: -1px;
+	left: -1px;
+	z-index: 10;
+	cursor: not-allowed;
+	content: '';
+	background-color: rgb(255 255 255 / 25%);
+	border-radius: 4px;
+}
+:global {
+	.rc-input-affix-wrapper {
+		display: flex;
+		gap: 4px;
+		align-items: center;
+		width: 100%;
+	}
+	.rc-input-show-count-suffix {
+		color: #727272;
+	}
+	.rc-input-suffix {
+		display: flex;
+		flex-direction: row-reverse;
+		gap: 8px;
+		align-items: center;
+		margin-left: 8px;
+		.rc-input-clear-icon {
+			height: 20px;
+		}
+	}
+}

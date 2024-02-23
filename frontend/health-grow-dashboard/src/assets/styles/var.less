@@ -1,0 +1,126 @@
+/* stylelint-disable less/color-no-invalid-hex */
+
+/* Global definition less */
+@navbarHeight: 64px;
+
+@v-font-family: 'Fira Sans', sans-serif;
+@v-font-size: 14px;
+
+@v-white: #fff;
+@v-black: #222;
+@v-purple: #405eff;
+@v-blue-light: #f0f2ff;
+
+@mobileWidth: 700px;
+@desktopWidth: 1024px;
+@widescreenWidth: 1280px;
+@fullhdWidth: 1440px;
+.flexAllCenter {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.bold14 {
+	font-size: 14px;
+	font-weight: 500;
+}
+.bold18 {
+	font-size: 18px;
+	font-weight: 500;
+}
+.addCircleIcon(@iconWidth: 26px, @plusWidth: 10px, @bgColor: @v-blue-light) {
+	position: relative;
+	width: @iconWidth;
+	height: @iconWidth;
+	background-color: @bgColor;
+	border-radius: 50%;
+	&::before,
+	&::after {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: @plusWidth;
+		height: 1.5px;
+		content: '';
+		background-color: @v-purple;
+		transform: translate(-50%, -50%);
+	}
+	&::after {
+		transform: translate(-50%, -50%) rotate(90deg);
+	}
+}
+.textEllipsis(@width: auto) {
+	width: @width;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.hideScrollbar {
+	&::-webkit-scrollbar {
+		width: 0;
+		height: 0;
+		background-color: #fff;
+	}
+}
+.disabled {
+	cursor: not-allowed;
+	opacity: 0.65;
+}
+
+// V1 hover bg
+.v1HoverItem {
+	&:hover {
+		padding-right: 4px;
+		padding-left: 4px;
+		margin-right: -4px;
+		margin-left: -4px;
+		background-color: @v-blue-light;
+		border-radius: 4px;
+	}
+}
+.flex1 {
+	flex: 1;
+}
+// Media
+.createMinMediaSearch(@minWdith: 0, @rules: {}) {
+	@media screen and (min-width: @minWdith) {
+		@rules();
+	}
+}
+.createMaxMediaSearch(@maxWdith: 9999px, @rules: {}) {
+	@media screen and (max-width: @maxWdith) {
+		@rules();
+	}
+}
+.from(@minWidth, @rules) {
+	.createMinMediaSearch(@minWidth, @rules);
+}
+.until(@maxWidth, @rules: {}) {
+	.createMaxMediaSearch(@maxWidth, @rules);
+}
+.between(@minWdith: 0, @minWdith: 9999px, @rules: {}) {
+	@media screen and (min-width: @minWdith) and (max-width: @maxWdith) {
+		@rules();
+	}
+}
+.mobile(@rules: {}) {
+	.createMaxMediaSearch(@mobileWidth - 1px, @rules);
+}
+.touch(@rules: {}) {
+	.createMaxMediaSearch(@desktopWidth - 1px, @rules);
+}
+.untilWidescreen(@rules: {}) {
+	.createMaxMediaSearch(@widescreenWidth - 1px, @rules);
+}
+.untilFullhd(@rules: {}) {
+	.createMaxMediaSearch(@fullhdWidth - 1px, @rules);
+}
+.desktop(@rules: {}) {
+	.createMinMediaSearch(@desktopWidth, @rules);
+}
+.widescreen(@rules: {}) {
+	.createMinMediaSearch(@widescreenWidth, @rules);
+}
+.fullhd(@rules: {}) {
+	.createMinMediaSearch(@fullhdWidth, @rules);
+}
