@@ -6,6 +6,8 @@ models:
     config:
       contract:
         enforced: true
+    constraints:
+      - type: not_null
     columns:
       - name: hanzi_id
         data_type: int
@@ -13,21 +15,87 @@ models:
         constraints:
           - type: not_null
           - type: primary_key
-          - type: check
         tests:
           - not_null
           - unique
-      
       - name: zi
         data_type: varchar(255)
         description: "字"
         constraints:
           - type: not_null
-      
       - name: pinyin
         data_type: varchar(255)
         description: "拼音"
-        constraints:
-          - type: not_null
+      - name: bushou
+        data_type: varchar(255)
+        description: "部首"
+      - name: bushoubh
+        data_type: int(11)
+        description: "部首笔画"
+      - name: zbh
+        data_type: int(11)
+        description: "总笔画"
+      - name: kxzdbh
+        data_type: varchar(255)
+        description: "康熙字典笔画"
+      - name: wb86
+        data_type: varchar(255)
+        description: "五笔86"
+      - name: wb98
+        data_type: varchar(255)
+        description: "五笔98"
+      - name: unicode
+        data_type: varchar(255)
+        description: "UniCode"
+      - name: hzwx
+        data_type: varchar(255)
+        description: "汉子五行"
+      - name: jxyy
+        data_type: varchar(255)
+        description: "吉凶寓意"
+      - name: cyz
+        data_type: varchar(255)
+        description: "是否为常用字"
+      - name: xmx
+        data_type: varchar(255)
+        description: "姓名学"
+      - name: bsdx
+        data_type: varchar(255)
+        description: "笔顺读写"
+      - name: jbjs
+        data_type: text
+        description: "基本解释"
+      - name: xhzdxxjs
+        data_type: text
+        description: "新华字典详细解释"
+      - name: hydzdjs
+        data_type: text
+        description: "汉语大字典解释"
+      - name: kxzdjs
+        data_type: text
+        description: "康熙字典解释"
+      - name: swjzxj
+        data_type: text
+        description: "说文解字详解"
+      - name: swjzxjpic
+        data_type: varchar(255)
+        description: "说文解字详解图片"
+      - name: zyybpic
+        data_type: varchar(255)
+        description: "字源演变图片"
+      - name: xgsf
+        data_type: text
+        description: "相关书法"
+      - name: xgcy
+        data_type: text
+        description: "相关词语"
+      - name: xgchengyu
+        data_type: text
+        description: "相关成语"
+      - name: xgsc
+        data_type: text
+        description: "相关诗词"
+      - name: kxzdpic
+        data_type: varchar(255)
+        description: "康熙字典原图"
 
-      

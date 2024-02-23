@@ -30,11 +30,5 @@ models:
       
 seeds:
   dbt_project:
-    qa:
-      schema: qa
-    health:
-      schema: health
-    kangxi:
-      schema: kangxi
-
+    schema: raw
     

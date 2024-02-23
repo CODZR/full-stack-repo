@@ -5,5 +5,30 @@ seeds:
     config:
       column_types:
         id: integer
-        zi: varchar(255)
-        pinyin: varchar(255)
+        zi: varchar(64)
+        pinyin: varchar(64)
+        bushou: varchar(64)
+        bushoubh: integer
+        zbh: integer
+        kxzdbh: integer
+        wb86: varchar(64)
+        wb98: varchar(64)
+        unicode: varchar(64)
+        hzwx: text
+        jxyy: text
+        cyz: text
+        xmx: text
+        bsdx: text
+        jbjs: text
+        xhzdxxjs: text
+        hydzdjs: text
+        kxzdjs: text
+        swjzxj: text
+        swjzxjpic: text
+        zyybpic: text
+        xgsf: text
+        xgcy: text
+        xgchengyu: text
+        xgsc: text
+        kxzdpic: text
+

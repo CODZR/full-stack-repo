@@ -22,11 +22,8 @@ numpy = "^1.26.4"
 scipy = "^1.12.0"
 dagster-dbt = "^0.22.3"
 plotly = "^5.18.0"
-dbt-duckdb = "^1.7.1"
-dagster-duckdb = "^0.22.4"
 python-dotenv = "^1.0.1"
 pandas = "^2.0.0"
-dagster-duckdb-pandas = "^0.22.3"
 
 [tool.poetry.group.dev.dependencies]
 dagit = "^1.6.3"
