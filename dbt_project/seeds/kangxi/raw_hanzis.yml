@@ -3,6 +3,7 @@ version: 2
 seeds:
   - name: raw_hanzis
     config:
+      delimiter: ','
       column_types:
         id: integer
         zi: varchar(64)
@@ -14,21 +15,21 @@ seeds:
         wb86: varchar(64)
         wb98: varchar(64)
         unicode: varchar(64)
-        hzwx: text
-        jxyy: text
-        cyz: text
-        xmx: text
-        bsdx: text
+        hzwx: varchar(255)
+        jxyy: varchar(255)
+        cyz: varchar(255)
+        xmx: varchar(255)
+        bsdx: varchar(255)
         jbjs: text
         xhzdxxjs: text
         hydzdjs: text
         kxzdjs: text
         swjzxj: text
-        swjzxjpic: text
-        zyybpic: text
+        swjzxjpic: varchar(255)
+        zyybpic: varchar(255)
         xgsf: text
         xgcy: text
         xgchengyu: text
         xgsc: text
-        kxzdpic: text
+        kxzdpic: varchar(255)
 

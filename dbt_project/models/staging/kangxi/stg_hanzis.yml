@@ -2,16 +2,14 @@ version: 2
 
 models:
   - name: stg_hanzis
-    description: "staging hanzis"
+    description: "staging hanzis表"
     config:
       contract:
         enforced: true
-    constraints:
-      - type: not_null
     columns:
       - name: hanzi_id
         data_type: int
-        description: "primary key of hanzi"
+        description: "汉字的id"
         constraints:
           - type: not_null
           - type: primary_key
@@ -23,6 +21,7 @@ models:
         description: "字"
         constraints:
           - type: not_null
+          - type: unique
       - name: pinyin
         data_type: varchar(255)
         description: "拼音"
@@ -30,13 +29,13 @@ models:
         data_type: varchar(255)
         description: "部首"
       - name: bushoubh
-        data_type: int(11)
+        data_type: int
         description: "部首笔画"
       - name: zbh
-        data_type: int(11)
+        data_type: int
         description: "总笔画"
       - name: kxzdbh
-        data_type: varchar(255)
+        data_type: int
         description: "康熙字典笔画"
       - name: wb86
         data_type: varchar(255)
