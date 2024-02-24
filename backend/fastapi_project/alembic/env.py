@@ -33,8 +33,8 @@ target_metadata = SQLModel.metadata
 def get_url():
     user = os.getenv("POSTGRES_USER", "postgres")
     password = os.getenv("POSTGRES_PASSWORD", "")
-    server = os.getenv("POSTGRES_SERVER", "db")
-    db = os.getenv("POSTGRES_DB", "app")
+    server = os.getenv("POSTGRES_HOST", "localhost")
+    db = os.getenv("POSTGRES_DATABASE", "vibe_dbt")
     return f"postgresql+psycopg://{user}:{password}@{server}/{db}"
 
 
@@ -69,7 +69,9 @@ def run_migrations_online():
     configuration = config.get_section(config.config_ini_section)
     configuration["sqlalchemy.url"] = get_url()
     connectable = engine_from_config(
-        configuration, prefix="sqlalchemy.", poolclass=pool.NullPool,
+        configuration,
+        prefix="sqlalchemy.",
+        poolclass=pool.NullPool,
     )
 
     with connectable.connect() as connection:
