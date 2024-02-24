@@ -1,0 +1,14 @@
+version: 2 
+
+seeds: 
+  - name: raw_users
+    config:
+      column_types: 
+        id: integer
+        email: varchar(128)
+        is_active: boolean
+        is_superuser: boolean
+        full_name: varchar(128)
+        hashed_password: varchar(128)
+        
+

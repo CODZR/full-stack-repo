@@ -1,0 +1,39 @@
+version: 2
+
+models:
+  - name: user
+    description: "staging users"
+    config:
+      contract:
+        enforced: true
+    columns:
+      - name: id
+        data_type: int
+        description: "primary key of user"
+        constraints:
+          - type: not_null
+          - type: primary_key
+          - type: check
+        tests:
+          - not_null
+          - unique
+      - name: email
+        data_type: varchar(128)
+        constraints:
+          - type: not_null
+      - name: is_active
+        data_type: boolean
+        constraints:
+          - type: not_null
+      - name: is_superuser
+        data_type: boolean
+        constraints:
+          - type: not_null
+      - name: full_name
+        data_type: varchar(128)
+      - name: hashed_password
+        data_type: varchar(128)
+        constraints:
+          - type: not_null
+
+      

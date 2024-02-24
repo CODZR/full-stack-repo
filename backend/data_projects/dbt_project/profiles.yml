@@ -9,4 +9,4 @@ vibe_cdp_profile:
       user: codzr
       password: "140937"
       dbname: vibe_dbt
-      schema: dbt
+      schema: public

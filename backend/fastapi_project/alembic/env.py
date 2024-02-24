@@ -3,7 +3,7 @@ from __future__ import with_statement
 import os
 
 from alembic import context
-from sqlalchemy import engine_from_config, pool
+from sqlalchemy import URL, engine_from_config, pool
 from logging.config import fileConfig
 
 # this is the Alembic Config object, which provides
@@ -31,11 +31,15 @@ target_metadata = SQLModel.metadata
 
 
 def get_url():
-    user = os.getenv("POSTGRES_USER", "postgres")
-    password = os.getenv("POSTGRES_PASSWORD", "")
-    server = os.getenv("POSTGRES_HOST", "localhost")
-    db = os.getenv("POSTGRES_DATABASE", "vibe_dbt")
-    return f"postgresql+psycopg://{user}:{password}@{server}/{db}"
+    return URL(
+        drivername="postgresql",
+        host=os.environ.get("POSTGRES_HOST", "localhost"),
+        port=5432,
+        database=os.environ.get("POSTGRES_DATABASE", "vibe_dbt"),
+        username=os.environ.get("POSTGRES_USER", "codzr"),
+        password=os.environ.get("POSTGRES_PASSWORD", ""),
+        query={},
+    )
 
 
 def run_migrations_offline():
