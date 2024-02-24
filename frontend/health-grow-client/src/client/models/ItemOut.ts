@@ -4,7 +4,7 @@
 /* eslint-disable */
 
 export type ItemOut = {
-    title: string;
-    description?: string;
-    id: number;
+	title: string;
+	description?: string;
+	id: number;
 };

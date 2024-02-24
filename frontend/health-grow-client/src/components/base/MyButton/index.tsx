@@ -1,6 +1,6 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { Button, Box } from '@chakra-ui/react';
+import React, { useState } from 'react';
 import type { ButtonProps } from '@chakra-ui/react';
+import { Button } from '@chakra-ui/react';
 
 enum buttonSchema {
 	default = 'teal',

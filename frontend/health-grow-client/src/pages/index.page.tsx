@@ -1,9 +1,10 @@
 'use client';
 
+import { useRouter } from 'next/router';
+
 import { useOnceEffect } from '@/hooks/useHooks';
 import Layout from '@/layout';
 import { ROUTE_PATH_MAP } from '@/models/global/constants';
-import { useRouter } from 'next/router';
 
 export default function Home() {
 	const router = useRouter();

@@ -4,6 +4,6 @@
 /* eslint-disable */
 
 export type ItemUpdate = {
-    title?: string;
-    description?: string;
+	title?: string;
+	description?: string;
 };

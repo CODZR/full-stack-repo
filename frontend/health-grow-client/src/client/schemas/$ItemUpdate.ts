@@ -3,12 +3,12 @@
 /* tslint:disable */
 /* eslint-disable */
 export const $ItemUpdate = {
-    properties: {
-        title: {
-    type: 'string',
-},
-        description: {
-    type: 'string',
-},
-    },
+	properties: {
+		title: {
+			type: 'string'
+		},
+		description: {
+			type: 'string'
+		}
+	}
 } as const;

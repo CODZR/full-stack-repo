@@ -1,21 +1,19 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { Box, Button, Center, Container, FormControl, Input } from '@chakra-ui/react';
-import { useToast } from '@chakra-ui/react';
+import { FormControl, Input, useToast } from '@chakra-ui/react';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
+
+import LoginWrapper from './components/LoginWrapper';
+import SignForm from './components/SignForm';
+import VerifyProgress from './components/VerifyProgress';
+import { MyButton } from '@/components';
 
 import '@/assets/css/global.css';
 
 import Logo from '@/assets/images/fastapi-logo.svg';
 import { Body_login_login_access_token as AccessToken } from '@/client/models/Body_login_login_access_token';
 import Layout from '@/layout';
-
-import styles from './index.module.less';
-import SignForm from './components/SignForm';
-import VerifyProgress from './components/VerifyProgress';
-import { MyButton } from '@/components';
-import LoginWrapper from './components/LoginWrapper';
 
 const Login: React.FC = () => {
 	const router = useRouter();
@@ -56,8 +54,8 @@ const Login: React.FC = () => {
 		<Layout>
 			<LoginWrapper>
 				<>
-					<Image priority width={352} height={65} alt="FastAPI logo" src={Logo} />
-					<FormControl mt={8} id="email">
+					<Image alt="FastAPI logo" height={65} src={Logo} width={352} priority />
+					<FormControl id="email" mt={8}>
 						<Input {...register('username')} placeholder="Email" type="text" />
 					</FormControl>
 					<SignForm register={register} />

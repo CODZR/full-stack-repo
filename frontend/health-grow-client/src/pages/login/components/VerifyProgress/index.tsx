@@ -1,4 +1,5 @@
-import { useState, useRef } from 'react';
+import { useRef, useState } from 'react';
+
 import styles from './index.module.less';
 
 interface Props {
@@ -69,7 +70,7 @@ const VerifyProgress = (props: Props) => {
 	return (
 		<div className={styles.verifyWrapper} onMouseDown={onVerifyMouseDown} onMouseUp={onVerifyMouseUp}>
 			<div className={styles.verifyTrigger} style={{ width: progressPercent + '%' }} />
-			<div ref={verifyBoxRef} className={styles.verifyBox}>
+			<div className={styles.verifyBox} ref={verifyBoxRef}>
 				Press &amp; Hold until verified
 			</div>
 		</div>

@@ -1,12 +1,12 @@
-import { ViewOffIcon, ViewIcon } from '@chakra-ui/icons';
+import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import {
-	useBoolean,
+	Center,
 	FormControl,
-	InputGroup,
-	Input,
-	InputRightElement,
 	Icon,
-	Center
+	Input,
+	InputGroup,
+	InputRightElement,
+	useBoolean
 } from '@chakra-ui/react';
 
 interface Props {
