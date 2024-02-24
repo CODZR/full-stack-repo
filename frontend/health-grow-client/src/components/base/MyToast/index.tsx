@@ -1,12 +1,12 @@
 import { createStandaloneToast } from '@chakra-ui/react';
 
-const { ToastContainer, toast } = createStandaloneToast();
+const { ToastContainer, toast: chakraToast } = createStandaloneToast();
 
 export default ToastContainer;
 
-export const Message = {
+export const toast = {
 	success: (content: string, duration?: number) => {
-		toast({
+		chakraToast({
 			status: 'success',
 			title: content,
 			position: 'top',
@@ -15,7 +15,7 @@ export const Message = {
 		});
 	},
 	error: (content: string, duration?: number) => {
-		toast({
+		chakraToast({
 			status: 'error',
 			title: content,
 			position: 'top',
@@ -24,7 +24,7 @@ export const Message = {
 		});
 	},
 	info: (content: string, duration?: number) => {
-		toast({
+		chakraToast({
 			status: 'info',
 			title: content,
 			position: 'top',
@@ -33,7 +33,7 @@ export const Message = {
 		});
 	},
 	warning: (content: string, duration?: number) => {
-		toast({
+		chakraToast({
 			status: 'warning',
 			title: content,
 			position: 'top',

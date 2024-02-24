@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // import { useUserStore } from '../store';
-import { Message } from '@/components/MyToast';
+import { toast } from '@comp/base/MyToast';
 
 // import 'element-plus/theme-chalk/src/loading.scss';
 import { jsonToHump, jsonToUnderline } from '@/utils/format';
@@ -45,7 +45,7 @@ requester.interceptors.response.use(
 		// eslint-disable-next-line no-undef
 		const res = response.data;
 		if (response.status === 401) {
-			Message.error('The token has expired. Please log in again');
+			toast.error('The token has expired. Please log in again');
 		}
 		jsonToHump(res);
 		return res.data;
@@ -53,7 +53,7 @@ requester.interceptors.response.use(
 	(error) => {
 		// eslint-disable-next-line no-undef
 		console.log('http ' + error); // for debug
-		Message.error(error.message);
+		toast.error(error.message);
 		return Promise.reject(error);
 	}
 );

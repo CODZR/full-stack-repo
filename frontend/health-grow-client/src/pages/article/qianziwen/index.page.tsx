@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 import ZiCard from './components/ZiCard';
-import MyModal from '@/components/MyModal';
+import MyModal from '@/components/base/MyModal';
 
 import Layout from '@/layout';
 import { searchHanziAPI } from '@/services/hanzi';

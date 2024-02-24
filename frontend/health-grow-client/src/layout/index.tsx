@@ -1,7 +1,7 @@
 import Head from 'next/head';
 
 import { Providers } from './components/ChakraProvider';
-import ToastContainer from '@/components/MyToast';
+import ToastContainer from '@/components/base/MyToast';
 
 export const metadata = {
 	title: 'Health grow client',
