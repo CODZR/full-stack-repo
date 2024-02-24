@@ -1,6 +1,6 @@
 FROM python:3.10
 
-WORKDIR /main/
+WORKDIR /fastapi_project/
 
 # Install Poetry
 RUN curl -sSL https://install.python-poetry.org | POETRY_HOME=/opt/poetry python && \
@@ -9,11 +9,11 @@ RUN curl -sSL https://install.python-poetry.org | POETRY_HOME=/opt/poetry python
     poetry config virtualenvs.create false
 
 # Copy poetry.lock* in case it doesn't exist in the repo
-COPY ./main/pyproject.toml ./main/poetry.lock* /main/
+COPY ./fastapi_project/pyproject.toml ./fastapi_project/poetry.lock* /fastapi_project/
 
 # Allow installing dev dependencies to run tests
 ARG INSTALL_DEV=false
-RUN bash -c "if [ $INSTALL_DEV == 'true' ] ; then poetry install --no-root ; else poetry install --no-root --only main ; fi"
+RUN bash -c "if [ $INSTALL_DEV == 'true' ] ; then poetry install --no-root ; else poetry install --no-root --only fastapi_project ; fi"
 
 # For development, Jupyter remote kernel, Hydrogen
 # Using inside the container:
@@ -23,12 +23,12 @@ RUN bash -c "if [ $INSTALL_JUPYTER == 'true' ] ; then pip install jupyterlab ; f
 
 ENV C_FORCE_ROOT=1
 
-COPY ./main /main
-WORKDIR /main
+COPY ./fastapi_project /fastapi_project
+WORKDIR /fastapi_project
 
-ENV PYTHONPATH=/main
+ENV PYTHONPATH=/fastapi_project
 
-COPY ./main/worker-start.sh /worker-start.sh
+COPY ./fastapi_project/worker-start.sh /worker-start.sh
 
 RUN chmod +x /worker-start.sh
 
