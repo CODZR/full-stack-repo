@@ -1,14 +1,14 @@
 version: 2
 
 models:
-  - name: dim_faq
+  - name: dim_faqs
     description: "dim faq table"
     config:
       contract:
         enforced: true
     columns:
-      - name: id
-        data_type: int
+      - name: faq_id
+        data_type: varchar(64)
         description: "primary key of faq"
         constraints:
           - type: not_null
