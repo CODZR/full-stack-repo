@@ -1,19 +1,18 @@
 {{ config(
   materialized = 'table',
-  schema = 'kangxi',
-  sort = 'hanzi_id',
+  sort = 'id',
 ) }}
 {# {{ config(
 materialized = 'incremental',
-unique_key = 'hanzi_id',
+unique_key = 'id',
 schema = 'kangxi',
-sort = 'hanzi_id',
+sort = 'id',
 on_schema_change = "fail"
 ) }}
 #}
 
 SELECT
-  id AS hanzi_id,
+  id,
   zi,
   pinyin,
   bushou,

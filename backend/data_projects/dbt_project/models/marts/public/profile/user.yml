@@ -2,7 +2,7 @@ version: 2
 
 models:
   - name: user
-    description: "staging users"
+    description: "public user table"
     config:
       contract:
         enforced: true

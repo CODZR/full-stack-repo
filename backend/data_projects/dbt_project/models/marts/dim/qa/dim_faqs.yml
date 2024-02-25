@@ -1,0 +1,29 @@
+version: 2
+
+models:
+  - name: dim_faq
+    description: "dim faq table"
+    config:
+      contract:
+        enforced: true
+    columns:
+      - name: id
+        data_type: int
+        description: "primary key of faq"
+        constraints:
+          - type: not_null
+          - type: primary_key
+          - type: check
+        tests:
+          - not_null
+          - unique
+      
+      - name: question
+        data_type: varchar(255)
+        description: "faq question"
+      
+      - name: answer
+        data_type: text
+        description: "faq answer"
+
+      

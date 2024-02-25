@@ -1,13 +1,13 @@
 version: 2
 
 models:
-  - name: stg_hanzis
-    description: "staging hanzis表"
+  - name: hanzi
+    description: "public hanzi table"
     config:
       contract:
         enforced: true
     columns:
-      - name: hanzi_id
+      - name: id
         data_type: int
         description: "汉字的id"
         constraints:
