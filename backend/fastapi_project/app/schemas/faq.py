@@ -9,12 +9,12 @@ class FaqBase(BaseModel):
     description: Optional[str] = None
 
 
-# Properties to receive on item creation
+# Properties to receive on faq creation
 class FaqCreate(FaqBase):
     title: str
 
 
-# Properties to receive on item update
+# Properties to receive on faq update
 class FaqUpdate(FaqBase):
     pass
 

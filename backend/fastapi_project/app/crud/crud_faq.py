@@ -5,7 +5,7 @@ from sqlalchemy.orm import Session
 
 from app.crud.base import CRUDBase
 from app.models import Faq
-from app.schemas.item import FaqCreate, FaqUpdate
+from app.schemas.faq import FaqCreate, FaqUpdate
 
 
 class CRUDFaq(CRUDBase[Faq, FaqCreate, FaqUpdate]):
@@ -31,4 +31,4 @@ class CRUDFaq(CRUDBase[Faq, FaqCreate, FaqUpdate]):
         )
 
 
-item = CRUDFaq(Faq)
+faq = CRUDFaq(Faq)

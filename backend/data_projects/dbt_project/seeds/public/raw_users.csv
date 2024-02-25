@@ -1,2 +1,0 @@
-id,email,is_active,is_superuser,full_name,hashed_password
-1,andrew@vibe.us,true,true,admin,$2b$12$F3mKGVvOVy1UArqRU0amQOyQPpLg3F1U17VobEtCNtn4JAiE.8xSG

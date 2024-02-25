@@ -26,4 +26,12 @@ models:
         data_type: text
         description: "faq answer"
 
+      - name: owner_id
+        data_type: int
+        description: "foreign key owner_id"
+        constraints:
+          - type: not_null
+          - type: foreign_key
+            expression: public.user(id)
+
       

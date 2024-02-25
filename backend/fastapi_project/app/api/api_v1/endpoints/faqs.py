@@ -10,11 +10,11 @@ router = APIRouter()
 
 
 @router.get("/", response_model=list[FaqOut])
-def read_items(
+def read_faqs(
     session: SessionDep, current_user: CurrentUser, skip: int = 0, limit: int = 100
 ) -> Any:
     """
-    Retrieve items.
+    Retrieve faqs.
     """
 
     if current_user.is_superuser:
@@ -28,62 +28,62 @@ def read_items(
 
 
 @router.get("/{id}", response_model=FaqOut)
-def read_item(session: SessionDep, current_user: CurrentUser, id: int) -> Any:
+def read_faq(session: SessionDep, current_user: CurrentUser, id: int) -> Any:
     """
-    Get item by ID.
+    Get faq by ID.
     """
-    item = session.get(Faq, id)
-    if not item:
+    faq = session.get(Faq, id)
+    if not faq:
         raise HTTPException(status_code=404, detail="Faq not found")
-    if not current_user.is_superuser and (item.owner_id != current_user.id):
+    if not current_user.is_superuser and (faq.owner_id != current_user.id):
         raise HTTPException(status_code=400, detail="Not enough permissions")
-    return item
+    return faq
 
 
 @router.post("/", response_model=FaqOut)
-def create_item(
-    *, session: SessionDep, current_user: CurrentUser, item_in: FaqCreate
+def create_faq(
+    *, session: SessionDep, current_user: CurrentUser, faq_in: FaqCreate
 ) -> Any:
     """
-    Create new item.
+    Create new faq.
     """
-    item = Faq.model_validate(item_in, update={"owner_id": current_user.id})
-    session.add(item)
+    faq = Faq.model_validate(faq_in, update={"owner_id": current_user.id})
+    session.add(faq)
     session.commit()
-    session.refresh(item)
-    return item
+    session.refresh(faq)
+    return faq
 
 
 @router.put("/{id}", response_model=FaqOut)
-def update_item(
-    *, session: SessionDep, current_user: CurrentUser, id: int, item_in: FaqUpdate
+def update_faq(
+    *, session: SessionDep, current_user: CurrentUser, id: int, faq_in: FaqUpdate
 ) -> Any:
     """
-    Update an item.
+    Update an faq.
     """
-    item = session.get(Faq, id)
-    if not item:
+    faq = session.get(Faq, id)
+    if not faq:
         raise HTTPException(status_code=404, detail="Faq not found")
-    if not current_user.is_superuser and (item.owner_id != current_user.id):
+    if not current_user.is_superuser and (faq.owner_id != current_user.id):
         raise HTTPException(status_code=400, detail="Not enough permissions")
-    update_dict = item_in.model_dump(exclude_unset=True)
-    item.sqlmodel_update(update_dict)
-    session.add(item)
+    update_dict = faq_in.model_dump(exclude_unset=True)
+    faq.sqlmodel_update(update_dict)
+    session.add(faq)
     session.commit()
-    session.refresh(item)
-    return item
+    session.refresh(faq)
+    return faq
 
 
 @router.delete("/{id}")
-def delete_item(session: SessionDep, current_user: CurrentUser, id: int) -> Message:
+def delete_faq(session: SessionDep, current_user: CurrentUser, id: int) -> Message:
     """
-    Delete an item.
+    Delete an faq.
     """
-    item = session.get(Faq, id)
-    if not item:
+    faq = session.get(Faq, id)
+    if not faq:
         raise HTTPException(status_code=404, detail="Faq not found")
-    if not current_user.is_superuser and (item.owner_id != current_user.id):
+    if not current_user.is_superuser and (faq.owner_id != current_user.id):
         raise HTTPException(status_code=400, detail="Not enough permissions")
-    session.delete(item)
+    session.delete(faq)
     session.commit()
     return Message(message="Faq deleted successfully")

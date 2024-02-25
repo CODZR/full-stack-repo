@@ -6,6 +6,7 @@
 SELECT
   id,
   question,
-  answer
+  answer,
+  1 AS owner_id
 FROM
   {{ ref('raw_faqs') }}

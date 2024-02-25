@@ -1,20 +1,20 @@
-from .crud_faq import item
+from .crud_faq import faq
 from .crud_user import user
 
 # For a new basic set of CRUD operations you could just do
 
 # from .base import CRUDBase
-# from app.models.item import Faq
-# from app.schemas.item import FaqCreate, FaqUpdate
+# from app.models.faq import Faq
+# from app.schemas.faq import FaqCreate, FaqUpdate
 
-# item = CRUDBase[Faq, FaqCreate, FaqUpdate](Faq)
+# faq = CRUDBase[Faq, FaqCreate, FaqUpdate](Faq)
 from sqlmodel import Session, select
 from app.core.security import get_password_hash, verify_password
 from app.models import UserCreate, User
 
 
 def create_user(*, session: Session, user_create: UserCreate) -> User:
-    db_obj = User.from_orm(
+    db_obj = User.model_validate(
         user_create, update={"hashed_password": get_password_hash(user_create.password)}
     )
     session.add(db_obj)

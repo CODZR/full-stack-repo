@@ -1,6 +1,8 @@
 {{ config(
   materialized = 'table',
   unique_key = 'id',
+  indexes = [ {'columns': ['email'],
+  'unique': True },]
 ) }}
 
 SELECT

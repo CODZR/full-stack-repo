@@ -86,8 +86,6 @@ class Settings(BaseSettings):
         )
 
     EMAIL_TEST_USER: EmailStr = "andrew@vibe.us"  # type: ignore
-    FIRST_SUPERUSER: EmailStr = "andrew@vibe.us"  # type: ignore
-    FIRST_SUPERUSER_PASSWORD: str = "admin123456"
     USERS_OPEN_REGISTRATION: bool = False
 
     class Config:

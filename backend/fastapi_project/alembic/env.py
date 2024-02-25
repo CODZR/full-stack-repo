@@ -35,7 +35,7 @@ def get_url():
         drivername="postgresql",
         host=os.environ.get("POSTGRES_HOST", "localhost"),
         port=5432,
-        database=os.environ.get("POSTGRES_DATABASE", "vibe_dbt"),
+        database=os.environ.get("vibe-cdp"),
         username=os.environ.get("POSTGRES_USER", "codzr"),
         password=os.environ.get("POSTGRES_PASSWORD", ""),
         query={},
