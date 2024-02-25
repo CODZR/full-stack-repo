@@ -1,13 +1,13 @@
-from .crud_item import item
+from .crud_faq import item
 from .crud_user import user
 
 # For a new basic set of CRUD operations you could just do
 
 # from .base import CRUDBase
-# from app.models.item import Item
-# from app.schemas.item import ItemCreate, ItemUpdate
+# from app.models.item import Faq
+# from app.schemas.item import FaqCreate, FaqUpdate
 
-# item = CRUDBase[Item, ItemCreate, ItemUpdate](Item)
+# item = CRUDBase[Faq, FaqCreate, FaqUpdate](Faq)
 from sqlmodel import Session, select
 from app.core.security import get_password_hash, verify_password
 from app.models import UserCreate, User

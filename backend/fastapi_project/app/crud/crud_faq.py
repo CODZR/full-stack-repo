@@ -4,14 +4,14 @@ from fastapi.encoders import jsonable_encoder
 from sqlalchemy.orm import Session
 
 from app.crud.base import CRUDBase
-from app.models import Item
-from app.schemas.item import ItemCreate, ItemUpdate
+from app.models import Faq
+from app.schemas.item import FaqCreate, FaqUpdate
 
 
-class CRUDItem(CRUDBase[Item, ItemCreate, ItemUpdate]):
+class CRUDFaq(CRUDBase[Faq, FaqCreate, FaqUpdate]):
     def create_with_owner(
-        self, db: Session, *, obj_in: ItemCreate, owner_id: int
-    ) -> Item:
+        self, db: Session, *, obj_in: FaqCreate, owner_id: int
+    ) -> Faq:
         obj_in_data = jsonable_encoder(obj_in)
         db_obj = self.model(**obj_in_data, owner_id=owner_id)
         db.add(db_obj)
@@ -21,14 +21,14 @@ class CRUDItem(CRUDBase[Item, ItemCreate, ItemUpdate]):
 
     def get_multi_by_owner(
         self, db: Session, *, owner_id: int, skip: int = 0, limit: int = 100
-    ) -> List[Item]:
+    ) -> List[Faq]:
         return (
             db.query(self.model)
-            .filter(Item.owner_id == owner_id)
+            .filter(Faq.owner_id == owner_id)
             .offset(skip)
             .limit(limit)
             .all()
         )
 
 
-item = CRUDItem(Item)
+item = CRUDFaq(Faq)

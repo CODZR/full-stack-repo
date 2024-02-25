@@ -1,0 +1,14 @@
+{
+	"name": "qaSummary",
+	"description": "Save total cost and total income",
+	"parameters": {
+		"type": "object",
+		"properties": {
+			"fileId": {
+				"type": "string",
+				"description": "qa summary file id"
+			}
+		},
+		"required": ["fileId"]
+	}
+}

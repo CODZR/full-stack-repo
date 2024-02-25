@@ -1,0 +1,56 @@
+{
+  "resources": [
+    {
+      "name": "slack_respond_message_role",
+      "resource_type": "iam_role",
+      "role_arn": "arn:aws:iam::663354718506:role/vira-live-slack_respond_message",
+      "role_name": "vira-live-slack_respond_message"
+    },
+    {
+      "name": "slack_respond_message",
+      "resource_type": "lambda_function",
+      "lambda_arn": "arn:aws:lambda:us-west-2:663354718506:function:vira-live-slack_respond_message"
+    },
+    {
+      "name": "slack_respond_message-sqs-event-source",
+      "resource_type": "sqs_event",
+      "queue_arn": "arn:aws:sqs:us-west-2:663354718506:vira-live-slack-respond-message",
+      "event_uuid": "beb71135-2cb8-4c52-ab36-ea07319c0c23",
+      "queue": "vira-live-slack-respond-message",
+      "lambda_arn": "arn:aws:lambda:us-west-2:663354718506:function:vira-live-slack_respond_message"
+    },
+    {
+      "name": "api_handler_role",
+      "resource_type": "iam_role",
+      "role_arn": "arn:aws:iam::663354718506:role/vira-live-api_handler",
+      "role_name": "vira-live-api_handler"
+    },
+    {
+      "name": "api_handler",
+      "resource_type": "lambda_function",
+      "lambda_arn": "arn:aws:lambda:us-west-2:663354718506:function:vira-live"
+    },
+    {
+      "name": "rest_api",
+      "resource_type": "rest_api",
+      "rest_api_id": "9djwvpp7u1",
+      "rest_api_url": "https://9djwvpp7u1.execute-api.us-west-2.amazonaws.com/vira-live-api/"
+    },
+    {
+      "name": "api_gateway_custom_domain",
+      "resource_type": "domain_name",
+      "hosted_zone_id": "Z2FDTNDATAQYW2",
+      "alias_domain_name": "d17aahvp4j654p.cloudfront.net",
+      "certificate_arn": "arn:aws:acm:us-east-1:663354718506:certificate/ffb1bc86-d47c-4293-9af3-8f41a8fc541e",
+      "security_policy": "TLS_1_2",
+      "domain_name": "vira.vibe.dev",
+      "api_mapping": [
+        {
+          "key": "/"
+        }
+      ]
+    }
+  ],
+  "schema_version": "2.0",
+  "backend": "api"
+}

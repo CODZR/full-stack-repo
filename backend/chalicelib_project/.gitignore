@@ -1,0 +1,13 @@
+.DS_Store
+
+/venv39/
+
+.chalice/deployments/
+.chalice/venv/
+
+__pycache__/
+
+notebooks/playground.ipynb
+
+local_log.py
+.env

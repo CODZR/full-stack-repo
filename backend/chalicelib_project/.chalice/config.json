@@ -1,0 +1,32 @@
+{
+  "version": "2.0",
+  "app_name": "vira",
+  "stages": {
+    "dev": {
+      "app_name": "vira-dev",
+      "api_gateway_custom_domain": {
+        "domain_name": "vira-dev.vibe.dev",
+        "certificate_arn": "arn:aws:acm:us-east-1:663354718506:certificate/ffb1bc86-d47c-4293-9af3-8f41a8fc541e"
+      },
+      "api_gateway_stage": "vira-dev-api",
+      "autogen_policy": false,
+      "iam_policy_file": "iam_policy.json",
+      "environment_variables": {
+        "CHALICE_APP_NAME": "vira-dev"
+      }
+    },
+    "live": {
+      "app_name": "vira-live",
+      "api_gateway_custom_domain": {
+        "domain_name": "vira.vibe.dev",
+        "certificate_arn": "arn:aws:acm:us-east-1:663354718506:certificate/ffb1bc86-d47c-4293-9af3-8f41a8fc541e"
+      },
+      "api_gateway_stage": "vira-live-api",
+      "autogen_policy": false,
+      "iam_policy_file": "iam_policy.json",
+      "environment_variables": {
+        "CHALICE_APP_NAME": "vira-live"
+      }
+    }
+  }
+}

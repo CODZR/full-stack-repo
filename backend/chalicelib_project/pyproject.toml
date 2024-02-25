@@ -1,0 +1,10 @@
+[tool.black]
+line-length = 120
+target-version = ['py39']
+
+[tool.pyright]
+include = ["app.py", "chalicelib"]
+exclude = ["**/__pycache__"]
+venv = "venv39"
+pythonVersion = "3.9"
+reportUnusedImport = "warning"

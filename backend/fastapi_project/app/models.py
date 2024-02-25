@@ -43,7 +43,7 @@ class UpdatePassword(SQLModel):
 class User(UserBase, table=True):
     id: Union[int, None] = Field(default=None, primary_key=True)
     hashed_password: str
-    items: list["Item"] = Relationship(back_populates="owner")
+    items: list["Faq"] = Relationship(back_populates="owner")
 
 
 # Properties to return via API, id is always required
@@ -52,25 +52,25 @@ class UserOut(UserBase):
 
 
 # Shared properties
-class ItemBase(SQLModel):
+class FaqBase(SQLModel):
     title: str
     description: Union[str, None] = None
 
 
 # Properties to receive on item creation
-class ItemCreate(ItemBase):
+class FaqCreate(FaqBase):
     title: str
 
 
 # Properties to receive on item update
-class ItemUpdate(ItemBase):
+class FaqUpdate(FaqBase):
     title: Union[str, None] = None
 
 
 # Database model, database table inferred from class name
-class Item(ItemBase, table=True):
+class Faq(FaqBase, table=True):
     id: Union[int, None] = Field(default=None, primary_key=True)
-    title: str
+    question: str
     owner_id: Union[int, None] = Field(
         default=None, foreign_key="user.id", nullable=False
     )
@@ -78,7 +78,7 @@ class Item(ItemBase, table=True):
 
 
 # Properties to return via API, id is always required
-class ItemOut(ItemBase):
+class FaqOut(FaqBase):
     id: int
 
 
