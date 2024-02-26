@@ -13,25 +13,22 @@ models:
         constraints:
           - type: not_null
           - type: primary_key
-          - type: check
         tests:
           - not_null
           - unique
-      
       - name: question
         data_type: varchar(255)
         description: "faq question"
-      
       - name: answer
         data_type: text
         description: "faq answer"
-
-      - name: owner_id
+      - name: user_id
         data_type: int
-        description: "foreign key owner_id"
+        description: "foreign key user_id"
         constraints:
           - type: not_null
           - type: foreign_key
             expression: public.user(id)
-
-      
+        tests:
+          - not_null
+   

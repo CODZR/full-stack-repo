@@ -7,4 +7,4 @@ seeds:
         id: integer
         question: varchar(255)
         answer: text
-        owner_id: integer
+
