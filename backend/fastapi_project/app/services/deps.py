@@ -8,17 +8,12 @@ from sqlmodel import Session
 
 from app.core import security
 from app.core.config import settings
-from app.db.engine import engine
+from app.db.base import get_db
 from app.models import TokenPayload, User
 
 reusable_oauth2 = OAuth2PasswordBearer(
     tokenUrl=f"{settings.API_V1_STR}/login/access-token"
 )
-
-
-def get_db() -> Generator:
-    with Session(engine) as session:
-        yield session
 
 
 SessionDep = Annotated[Session, Depends(get_db)]

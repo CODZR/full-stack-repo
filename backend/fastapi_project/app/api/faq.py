@@ -3,7 +3,7 @@ from typing import Any
 from fastapi import APIRouter, HTTPException
 from sqlmodel import select
 
-from app.api.deps import CurrentUser, SessionDep
+from app.services.deps import CurrentUser, SessionDep
 from app.models import Faq, FaqCreate, FaqOut, FaqUpdate, Message
 
 router = APIRouter()
@@ -22,7 +22,7 @@ def read_faqs(
         return session.exec(statement).all()
     else:
         statement = (
-            select(Faq).where(Faq.owner_id == current_user.id).offset(skip).limit(limit)
+            select(Faq).where(Faq.user_id == current_user.id).offset(skip).limit(limit)
         )
         return session.exec(statement).all()
 
@@ -35,7 +35,7 @@ def read_faq(session: SessionDep, current_user: CurrentUser, id: int) -> Any:
     faq = session.get(Faq, id)
     if not faq:
         raise HTTPException(status_code=404, detail="Faq not found")
-    if not current_user.is_superuser and (faq.owner_id != current_user.id):
+    if not current_user.is_superuser and (faq.user_id != current_user.id):
         raise HTTPException(status_code=400, detail="Not enough permissions")
     return faq
 
@@ -47,7 +47,7 @@ def create_faq(
     """
     Create new faq.
     """
-    faq = Faq.model_validate(faq_in, update={"owner_id": current_user.id})
+    faq = Faq.model_validate(faq_in, update={"user_id": current_user.id})
     session.add(faq)
     session.commit()
     session.refresh(faq)
@@ -64,7 +64,7 @@ def update_faq(
     faq = session.get(Faq, id)
     if not faq:
         raise HTTPException(status_code=404, detail="Faq not found")
-    if not current_user.is_superuser and (faq.owner_id != current_user.id):
+    if not current_user.is_superuser and (faq.user_id != current_user.id):
         raise HTTPException(status_code=400, detail="Not enough permissions")
     update_dict = faq_in.model_dump(exclude_unset=True)
     faq.sqlmodel_update(update_dict)
@@ -82,7 +82,7 @@ def delete_faq(session: SessionDep, current_user: CurrentUser, id: int) -> Messa
     faq = session.get(Faq, id)
     if not faq:
         raise HTTPException(status_code=404, detail="Faq not found")
-    if not current_user.is_superuser and (faq.owner_id != current_user.id):
+    if not current_user.is_superuser and (faq.user_id != current_user.id):
         raise HTTPException(status_code=400, detail="Not enough permissions")
     session.delete(faq)
     session.commit()

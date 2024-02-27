@@ -4,12 +4,14 @@ from fastapi.encoders import jsonable_encoder
 from sqlalchemy.orm import Session
 
 from app.crud.base import CRUDBase
-from app.models import Faq
-from app.schemas.faq import FaqCreate, FaqUpdate
+from app.models import Hanzi
+from app.schemas.hanzi import HanziCreate, HanziUpdate
 
 
-class CRUDFaq(CRUDBase[Faq, FaqCreate, FaqUpdate]):
-    def create_with_user(self, db: Session, *, obj_in: FaqCreate, user_id: int) -> Faq:
+class CRUDHanzi(CRUDBase[Hanzi, HanziCreate, HanziUpdate]):
+    def create_with_user(
+        self, db: Session, *, obj_in: HanziCreate, user_id: int
+    ) -> Hanzi:
         obj_in_data = jsonable_encoder(obj_in)
         db_obj = self.model(**obj_in_data, user_id=user_id)
         db.add(db_obj)
@@ -19,14 +21,14 @@ class CRUDFaq(CRUDBase[Faq, FaqCreate, FaqUpdate]):
 
     def get_multi_by_user(
         self, db: Session, *, user_id: int, skip: int = 0, limit: int = 100
-    ) -> List[Faq]:
+    ) -> List[Hanzi]:
         return (
             db.query(self.model)
-            .filter(Faq.user_id == user_id)
+            .filter(Hanzi.user_id == user_id)
             .offset(skip)
             .limit(limit)
             .all()
         )
 
 
-faq = CRUDFaq(Faq)
+hanzi = CRUDHanzi(Hanzi)

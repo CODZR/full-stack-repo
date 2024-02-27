@@ -2,14 +2,6 @@
   materialized = 'table',
   sort = 'id',
 ) }}
-{# {{ config(
-materialized = 'incremental',
-unique_key = 'id',
-schema = 'kangxi',
-sort = 'id',
-on_schema_change = "fail"
-) }}
-#}
 
 SELECT
   id,

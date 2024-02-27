@@ -4,7 +4,7 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlmodel import select
 
 from app import crud
-from app.api.deps import (
+from app.services.deps import (
     CurrentUser,
     SessionDep,
     get_current_active_superuser,

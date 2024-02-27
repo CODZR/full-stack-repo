@@ -19,7 +19,7 @@ def test_create_faq(
     assert content["title"] == data["title"]
     assert content["description"] == data["description"]
     assert "id" in content
-    assert "owner_id" in content
+    assert "user_id" in content
 
 
 def test_read_faq(
@@ -35,4 +35,4 @@ def test_read_faq(
     assert content["title"] == faq.title
     assert content["description"] == faq.description
     assert content["id"] == faq.id
-    assert content["owner_id"] == faq.owner_id
+    assert content["user_id"] == faq.user_id

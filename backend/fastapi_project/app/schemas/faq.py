@@ -23,7 +23,7 @@ class FaqUpdate(FaqBase):
 class FaqInDBBase(FaqBase):
     id: int
     title: str
-    owner_id: int
+    user_id: int
 
     class Config:
         orm_mode = True
