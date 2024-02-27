@@ -8,7 +8,7 @@ from app.db.base_class import ModelBase
 
 
 class Message(ModelBase):
-    __tablename__ = "message"
+    __tablename__ = "messages"
     __table_args__ = {"extend_existing": True}
 
     message: str

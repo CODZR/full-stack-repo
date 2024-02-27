@@ -10,6 +10,9 @@ from app.db.base_class import ModelBase
 
 # Shared properties
 class UserBase(ModelBase):
+    __tablename__ = "users"
+    __table_args__ = {"extend_existing": True}
+
     email: EmailStr = Column(String(255), unique=True, index=True)
     is_active: bool = Column(Boolean, default=True, nullable=False)
     is_superuser: bool = Column(Boolean, default=False, nullable=False)
