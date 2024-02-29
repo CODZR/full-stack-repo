@@ -1,201 +1,71 @@
-from typing import Any, List
+from fastapi import APIRouter, HTTPException, status
+from fastapi.params import Depends
+from sqlalchemy.orm import Session
+from datetime import datetime
+from typing import List
 
-from fastapi import APIRouter, Depends, HTTPException
-from sqlmodel import select
+from app import models, schemas
+from app.db.base import get_db
+from app.db.crud import CRUDBase
+from app.utils.invitation import confirm_invitation_token
+from app.utils.security import get_password_hash
+from app.services.oauth2 import add_new_role_in_org
 
-from app import crud
-from app.services.deps import (
-    CurrentUser,
-    SessionDep,
-    get_current_active_superuser,
-)
-from app.core.config import settings
-from app.core.security import get_password_hash, verify_password
-from app.models import (
-    Message,
-    UpdatePassword,
-    User,
-    UserCreate,
-    UserCreateOpen,
-    UserOut,
-    UserUpdate,
-    UserUpdateMe,
-)
-from app.utils import send_new_account_email
-
-router = APIRouter()
+user_router = APIRouter(prefix='/user', tags=['User'])
+user_crud = CRUDBase(model=models.User)
 
 
-@router.get(
-    "/",
-    dependencies=[Depends(get_current_active_superuser)],
-    response_model=List[UserOut],
-)
-def read_users(session: SessionDep, skip: int = 0, limit: int = 100) -> Any:
-    """
-    Retrieve users.
-    """
-    statement = select(User).offset(skip).limit(limit)
-    users = session.exec(statement).all()
-    return users
+@user_router.post('', response_model=schemas.UserDetails)
+def create_user(
+    data: schemas.UserCreateRequest,
+    db: Session = Depends(get_db)
+):
+    token_data = confirm_invitation_token(token=data.token)
+    invitation = db.query(models.Invitation
+                          ).filter_by(unique_token=data.token
+                                      ).first()
 
+    if data.password != data.confirm_password:
+        raise HTTPException(status_code=400, detail='Password did not match')
 
-@router.post(
-    "/", dependencies=[Depends(get_current_active_superuser)], response_model=UserOut
-)
-def create_user(*, session: SessionDep, user_in: UserCreate) -> Any:
-    """
-    Create new user.
-    """
-    user = crud.get_user_by_email(session=session, email=user_in.email)
-    if user:
+    if (not token_data or not invitation or
+            invitation.expires_at < datetime.now()):
         raise HTTPException(
             status_code=400,
-            detail="The user with this username already exists in the system.",
-        )
+            detail='Invalid information or expired invitation link')
 
-    user = crud.create_user(session=session, user_create=user_in)
-    if settings.EMAILS_ENABLED and user_in.email:
-        send_new_account_email(
-            email_to=user_in.email, username=user_in.email, password=user_in.password
-        )
-    return user
-
-
-@router.patch("/me", response_model=UserOut)
-def update_user_me(
-    *, session: SessionDep, user_in: UserUpdateMe, current_user: CurrentUser
-) -> Any:
-    """
-    Update own user.
-    """
-
-    user_data = user_in.model_dump(exclude_unset=True)
-    current_user.sqlmodel_update(user_data)
-    session.add(current_user)
-    session.commit()
-    session.refresh(current_user)
-    return current_user
-
-
-@router.patch("/me/password", response_model=Message)
-def update_password_me(
-    *, session: SessionDep, body: UpdatePassword, current_user: CurrentUser
-) -> Any:
-    """
-    Update own password.
-    """
-    if not verify_password(body.current_password, current_user.hashed_password):
-        raise HTTPException(status_code=400, detail="Incorrect password")
-    if body.current_password == body.new_password:
+    existing_user = db.query(models.User
+                             ).filter(models.User.email == invitation.email
+                                      ).first()
+    if existing_user:
         raise HTTPException(
-            status_code=400, detail="New password cannot be the same as the current one"
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Email already exists"
         )
-    hashed_password = get_password_hash(body.new_password)
-    current_user.hashed_password = hashed_password
-    session.add(current_user)
-    session.commit()
-    return Message(message="Password updated successfully")
+
+    user = schemas.UserCreate(
+        full_name=data.full_name,
+        email=invitation.email,
+        organization_name=invitation.organization,
+        organizational_role=invitation.organizational_role,
+        password=get_password_hash(data.password),
+        role=invitation.role,
+        invited_by_id=invitation.created_by_id
+    )
+    user.model_dump()
+    user_dict = user_crud.create(db=db, obj_in=user)
+
+    # Add role to the new user
+    add_new_role_in_org(
+        user.email, invitation.role, invitation.organization, db
+    )
+
+    return user_dict
 
 
-@router.get("/me", response_model=UserOut)
-def read_user_me(session: SessionDep, current_user: CurrentUser) -> Any:
-    """
-    Get current user.
-    """
-    return current_user
-
-
-@router.post("/open", response_model=UserOut)
-def create_user_open(session: SessionDep, user_in: UserCreateOpen) -> Any:
-    """
-    Create new user without the need to be logged in.
-    """
-    if not settings.USERS_OPEN_REGISTRATION:
-        raise HTTPException(
-            status_code=403,
-            detail="Open user registration is forbidden on this server",
-        )
-    user = crud.get_user_by_email(session=session, email=user_in.email)
-    if user:
-        raise HTTPException(
-            status_code=400,
-            detail="The user with this username already exists in the system",
-        )
-    user_create = UserCreate.from_orm(user_in)
-    user = crud.create_user(session=session, user_create=user_create)
-    return user
-
-
-@router.get("/{user_id}", response_model=UserOut)
-def read_user_by_id(
-    user_id: int, session: SessionDep, current_user: CurrentUser
-) -> Any:
-    """
-    Get a specific user by id.
-    """
-    user = session.get(User, user_id)
-    if user == current_user:
-        return user
-    if not current_user.is_superuser:
-        raise HTTPException(
-            # TODO: Review status code
-            status_code=400,
-            detail="The user doesn't have enough privileges",
-        )
-    return user
-
-
-@router.patch(
-    "/{user_id}",
-    dependencies=[Depends(get_current_active_superuser)],
-    response_model=UserOut,
-)
-def update_user(
-    *,
-    session: SessionDep,
-    user_id: int,
-    user_in: UserUpdate,
-) -> Any:
-    """
-    Update a user.
-    """
-
-    db_user = session.get(User, user_id)
-    if not db_user:
-        raise HTTPException(
-            status_code=404,
-            detail="The user with this username does not exist in the system",
-        )
-    user_data = user_in.model_dump(exclude_unset=True)
-    extra_data = {}
-    if "password" in user_data:
-        password = user_data["password"]
-        hashed_password = get_password_hash(password)
-        extra_data["hashed_password"] = hashed_password
-    db_user.sqlmodel_update(user_data, update=extra_data)
-    session.add(db_user)
-    session.commit()
-    session.refresh(db_user)
-    return db_user
-
-
-@router.delete("/{user_id}")
-def delete_user(
-    session: SessionDep, current_user: CurrentUser, user_id: int
-) -> Message:
-    """
-    Delete a user.
-    """
-    user = session.get(User, user_id)
-    if not user:
-        raise HTTPException(status_code=404, detail="User not found")
-    if not current_user.is_superuser:
-        raise HTTPException(status_code=400, detail="Not enough permissions")
-    if user == current_user:
-        raise HTTPException(
-            status_code=400, detail="Users are not allowed to delete themselves"
-        )
-    session.delete(user)
-    session.commit()
-    return Message(message="User deleted successfully")
+@user_router.get('')
+def get_users(
+    db: Session = Depends(get_db)
+) -> List[schemas.UserList]:
+    db_users = db.query(models.User)
+    return db_users

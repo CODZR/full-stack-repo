@@ -13,9 +13,8 @@ email-validator = "^2.1.0.post1"
 celery = "^5.3.5"
 passlib = {extras = ["bcrypt"], version = "^1.6.5"}
 tenacity = "^8.2.3"
-pydantic = "<2.0"
+pydantic = "^2.5.3"
 emails = "^0.6"
-
 gunicorn = "^21.2.0"
 jinja2 = "^3.1.2"
 alembic = "^1.12.1"
@@ -24,6 +23,11 @@ httpx = "^0.25.1"
 psycopg = {extras = ["binary"], version = "^3.1.13"}
 sqlmodel = "^0.0.16"
 psycopg2 = "^2.9.9"
+casbin = "^1.36.0"
+casbin-sqlalchemy-adapter = "^0.5.2"
+apscheduler = "^3.10.4"
+itsdangerous = "^2.1.2"
+fastapi-mail = "^1.4.1"
 
 [tool.poetry.group.dev.dependencies]
 mypy = "^1.7.0"
@@ -33,6 +37,8 @@ autoflake = "^2.2.1"
 flake8 = "^6.1.0"
 pytest = "^7.4.3"
 pytest-cov = "^4.1.0"
+python-dotenv = "^1.0.1"
+
 
 [tool.isort]
 multi_line_output = 3

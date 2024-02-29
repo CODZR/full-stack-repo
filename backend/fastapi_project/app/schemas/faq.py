@@ -1,39 +1,34 @@
-from typing import Optional
+from typing import Optional, Text
 
-from pydantic import BaseModel
+from pydantic import UUID4, BaseModel
+
+
+from app.schemas.base import SchemaBasic
 
 
 # Shared properties
-class FaqBase(BaseModel):
-    title: Optional[str] = None
-    description: Optional[str] = None
+class FaqBasic(BaseModel):
+    question: str = None
+    answer: Text = None
 
 
-# Properties to receive on faq creation
-class FaqCreate(FaqBase):
-    title: str
+class FaqList(FaqBasic, SchemaBasic):
+    class Config:
+        from_attributes = True
 
 
-# Properties to receive on faq update
-class FaqUpdate(FaqBase):
-    pass
+class FaqCreate(FaqBasic):
+    class Config:
+        from_attributes = True
 
 
-# Properties shared by models stored in DB
-class FaqInDBBase(FaqBase):
-    id: int
-    title: str
-    user_id: int
+class FaqDetails(FaqBasic, SchemaBasic):
+    class Config:
+        from_attributes = True
+
+
+class FaqUpdate(FaqBasic):
 
     class Config:
-        orm_mode = True
-
-
-# Properties to return to client
-class Faq(FaqInDBBase):
-    pass
-
-
-# Properties properties stored in DB
-class FaqInDB(FaqInDBBase):
-    pass
+        extra = "forbid"
+        from_attributes = True

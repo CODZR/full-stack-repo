@@ -1,39 +1,66 @@
+from pydantic import BaseModel, EmailStr, UUID4
 from typing import Optional
 
-from pydantic import BaseModel, EmailStr
+from app.schemas.base import IDSchema, TimestampSchema
 
 
-# Shared properties
-class UserBase(BaseModel):
-    email: Optional[EmailStr] = None
-    is_active: Optional[bool] = True
-    is_superuser: bool = False
-    full_name: Optional[str] = None
-
-
-# Properties to receive via API on creation
-class UserCreate(UserBase):
+class UserBasic(BaseModel):
     email: EmailStr
-    password: str
-
-
-# Properties to receive via API on update
-class UserUpdate(UserBase):
-    password: Optional[str] = None
-
-
-class UserInDBBase(UserBase):
-    id: Optional[int] = None
+    full_name: str
+    organization_name: str = None
+    organizational_role: str = None
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 
-# Additional properties to return via API
-class User(UserInDBBase):
-    pass
+class UserCreateRequest(BaseModel):
+    full_name: str
+    password: str
+    confirm_password: str
+    token: str
+
+    class Config:
+        extra = "forbid"
+        from_attributes = True
 
 
-# Additional properties stored in DB
-class UserInDB(UserInDBBase):
-    hashed_password: str
+class UserCreate(BaseModel):
+    email: EmailStr
+    full_name: str
+    password: str
+    organization_name: str
+    organizational_role: str = Optional
+    role: str
+    invited_by_id: UUID4 = Optional
+
+    class Config:
+        extra = "forbid"
+        from_attributes = True
+
+
+class UserDetails(TimestampSchema, UserBasic, IDSchema):
+    role: str
+    invited_by_id: UUID4 = Optional
+
+    class Config:
+        from_attributes = True
+
+
+class UserUpdate(IDSchema):
+    email: Optional[EmailStr]
+    password: Optional[str]
+    full_name: Optional[str]
+    bio: Optional[str]
+
+    class Config:
+        extra = "forbid"
+        from_attributes = True
+
+
+class UserList(BaseModel):
+    email: EmailStr
+    full_name: str
+
+    class Config:
+        from_attributes = True

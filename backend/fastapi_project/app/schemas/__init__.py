@@ -1,4 +1,6 @@
-from .faq import Faq, FaqCreate, FaqInDB, FaqUpdate
-from .msg import Msg
-from .token import Token, TokenPayload
-from .user import User, UserCreate, UserInDB, UserUpdate
+from app.schemas.auth import *
+from app.schemas.base import *
+from app.schemas.user import *
+from app.schemas.blog import *
+from app.schemas.faq import *
+from app.schemas.invitation import *

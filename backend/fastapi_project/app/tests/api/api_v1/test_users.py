@@ -4,7 +4,7 @@ from fastapi.testclient import TestClient
 from sqlalchemy.orm import Session
 
 from app import crud
-from app.core.config import settings
+from core.config import settings
 from app.schemas.user import UserCreate
 from app.tests.utils.utils import random_email, random_lower_string
 

@@ -1,6 +1,5 @@
-import uuid
 from datetime import datetime
-from typing import Any
+import uuid
 
 from pydantic import BaseModel, Field
 
@@ -16,10 +15,5 @@ class TimestampSchema(BaseModel):
     updated_at: datetime = Field(default=None)
 
 
-class PersistentDeletion(BaseModel):
-    deleted_at: datetime = Field(default=None)
-    is_deleted: bool = False
-
-
-class SchemaBase(IDSchema, TimestampSchema):
+class SchemaBasic(IDSchema, TimestampSchema):
     pass
