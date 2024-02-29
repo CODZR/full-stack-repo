@@ -25,7 +25,6 @@ class Faq(DeclarativeBase, IDMixin, TimestampMixin):
 
     question = Column(String(255), nullable=False)
     answer = Column(Text, nullable=False)
-    user = relationship("User", back_populates="faqs")
 
 
 class User(DeclarativeBase, IDMixin, TimestampMixin):
