@@ -18,6 +18,35 @@ from app.db.base_class import DeclarativeBase, IDMixin, TimestampMixin
 from sqlalchemy.orm import relationship
 
 
+class User(DeclarativeBase, IDMixin, TimestampMixin):
+    __tablename__ = "users"
+    __table_args__ = {"extend_existing": True}
+
+    id = Column(UUID(as_uuid=True), default=uuid.uuid4, primary_key=True, index=True)
+    email = Column(String(255), unique=True, index=True, nullable=False)
+    username = Column(String(255), index=True, nullable=False)
+    role = Column(String(255), nullable=False)
+    password = Column(String(255), nullable=False)
+    created_at = Column(DateTime, default=func.now())
+    updated_at = Column(DateTime, default=func.now(), onupdate=func.now())
+
+    blogs = relationship("Blog", back_populates="user")
+
+
+class Blog(DeclarativeBase, IDMixin, TimestampMixin):
+    __tablename__ = "blogs"
+    __table_args__ = {"extend_existing": True}
+
+    id = Column(UUID(as_uuid=True), default=uuid.uuid4, primary_key=True, index=True)
+    title = Column(String(100), unique=True, index=True, nullable=False)
+    user_id = Column(UUID(as_uuid=True), ForeignKey("users.id"), index=True)
+    body = Column(String(255), nullable=False)
+    created_at = Column(DateTime, default=func.now())
+    updated_at = Column(DateTime, default=func.now(), onupdate=func.now())
+
+    user = relationship("User", back_populates="blogs", foreign_keys=[user_id])
+
+
 # Database model, database table inferred from class name
 class Faq(DeclarativeBase, IDMixin, TimestampMixin):
     __tablename__ = "faqs"
@@ -27,86 +56,33 @@ class Faq(DeclarativeBase, IDMixin, TimestampMixin):
     answer = Column(Text, nullable=False)
 
 
-class User(DeclarativeBase, IDMixin, TimestampMixin):
-    __tablename__ = "users"
+class Hanzi(DeclarativeBase, IDMixin, TimestampMixin):
+    __tablename__ = "hanzis"
     __table_args__ = {"extend_existing": True}
 
-    id = Column(UUID(as_uuid=True), default=uuid.uuid4, primary_key=True, index=True)
-    full_name = Column(String(50), index=True, nullable=False)
-    email = Column(String(255), unique=True, index=True, nullable=False)
-    organization_name = Column(String(256), nullable=False)
-    organizational_role = Column(String(256), nullable=True)
-    role = Column(String(256), nullable=False)
-    password = Column(String(255), nullable=False)
-    created_at = Column(DateTime, default=func.now())
-    updated_at = Column(DateTime, default=func.now(), onupdate=func.now())
-    invited_by_id = Column(UUID(as_uuid=True), ForeignKey("users.id"), nullable=True)
-
-    blogs = relationship("Blog", back_populates="user")
-    invitations = relationship("Invitation", back_populates="created_by")
-
-
-class Blog(DeclarativeBase, IDMixin, TimestampMixin):
-    __tablename__ = "blogs"
-    __table_args__ = {"extend_existing": True}
-
-    id = Column(UUID(as_uuid=True), default=uuid.uuid4, primary_key=True, index=True)
-    title = Column(String(100), unique=True, index=True, nullable=False)
-    sub_title = Column(String(100), unique=True, index=True)
-    author = Column(UUID(as_uuid=True), ForeignKey("users.id"), index=True)
-    body = Column(String(255), nullable=False)
-    created_at = Column(DateTime, default=func.now())
-    updated_at = Column(DateTime, default=func.now(), onupdate=func.now())
-
-    user = relationship("User", back_populates="blogs")
-
-
-class CasbinRule(DeclarativeBase, IDMixin, TimestampMixin):
-    __tablename__ = "casbin_rule"
-    __table_args__ = {"extend_existing": True}
-
-    id = Column(Integer, primary_key=True, autoincrement=True)
-    ptype = Column(String(255))
-    v0 = Column(String(255))
-    v1 = Column(String(255))
-    v2 = Column(String(255))
-    v3 = Column(String(255))
-    v4 = Column(String(255))
-    v5 = Column(String(255))
-
-
-class Invitation(DeclarativeBase, IDMixin, TimestampMixin):
-    __tablename__ = "invitations"
-    __table_args__ = {"extend_existing": True}
-
-    id = Column(UUID(as_uuid=True), primary_key=True, index=True, default=uuid.uuid4)
-    full_name = Column(String(150), nullable=False)
-    email = Column(String(100), nullable=False, index=True)
-    organization = Column(String(100), nullable=False)
-    organizational_role = Column(String(100), nullable=False)
-    role = Column(String(100), nullable=False)
-    status = Column(String(100), nullable=False, default="Invited")
-    unique_token = Column(String, nullable=False, unique=True, index=True)
-    created_at = Column(DateTime, default=datetime.utcnow)
-    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
-    resent_count = Column(Integer, default=0)
-    created_by_id = Column(UUID(as_uuid=True), ForeignKey("users.id"))
-
-    created_by = relationship("User", back_populates="invitations")
-
-    @property
-    def expires_at(self):
-        return self.updated_at + timedelta(hours=Settings.INVITATION_URL_MAX_AGE)
-
-
-class Role(DeclarativeBase, IDMixin, TimestampMixin):
-    __tablename__ = "roles"
-    __table_args__ = {"extend_existing": True}
-
-    id = Column(UUID(as_uuid=True), default=uuid.uuid4, primary_key=True, index=True)
-    name = Column(String(32), nullable=False, unique=True)
-    description = Column(String(128), nullable=True)
-    created_at = Column(DateTime, nullable=False, default=datetime.now)
-    updated_at = Column(
-        DateTime, nullable=False, default=datetime.now, onupdate=datetime.now
-    )
+    zi = Column(String(64), nullable=False)
+    pinyin = Column(String(64), nullable=False)
+    bushou = Column(String(64), nullable=False)
+    bushoubh = Column(Integer, nullable=False)
+    zbh = Column(Integer, nullable=False)
+    kxzdbh = Column(Integer, nullable=False)
+    wb86 = Column(String(64), nullable=False)
+    wb98 = Column(String(64), nullable=False)
+    unicode = Column(String(64), nullable=False)
+    hzwx = Column(String(255), nullable=False)
+    jxyy = Column(String(255), nullable=False)
+    cyz = Column(String(255), nullable=False)
+    xmx = Column(String(255), nullable=False)
+    bsdx = Column(String(255), nullable=False)
+    jbjs = Column(Text, nullable=False)
+    xhzdxxjs = Column(Text, nullable=False)
+    hydzdjs = Column(Text, nullable=False)
+    kxzdjs = Column(Text, nullable=False)
+    swjzxj = Column(Text, nullable=False)
+    swjzxjpic = Column(String(255), nullable=False)
+    zyybpic = Column(String(255), nullable=False)
+    xgsf = Column(Text, nullable=False)
+    xgcy = Column(Text, nullable=False)
+    xgchengyu = Column(Text, nullable=False)
+    xgsc = Column(Text, nullable=False)
+    kxzdpic = Column(String(255), nullable=False)

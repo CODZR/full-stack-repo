@@ -6,7 +6,6 @@ from app.schemas.base import IDSchema, TimestampSchema
 
 class BlogBasic(BaseModel):
     title: str
-    sub_title: str = None
     author: UUID4
 
 
@@ -21,7 +20,6 @@ class BlogList(BlogBasicWithAuthor, IDSchema):
 
 class BlogCreate(BaseModel):
     title: str
-    sub_title: str = None
     body: str
     author: UUID4 = "57785471-bc81-4062-a621-15657ccc0a0c"
 
@@ -36,7 +34,6 @@ class BlogDetails(TimestampSchema, BlogCreate, IDSchema):
 
 class BlogUpdate(IDSchema):
     title: Optional[str]
-    sub_title: Optional[str]
     body: Optional[str]
 
     class Config:

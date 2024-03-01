@@ -3,6 +3,7 @@
   unique_key = 'id',
 ) }}
 
+{% set time_now = modules.datetime.datetime.now() %}
 WITH public_user AS (
 
   SELECT
@@ -13,8 +14,7 @@ WITH public_user AS (
 SELECT
   id,
   question,
-  answer,
-  1 AS user_id
+  answer
 FROM
   {{ ref('raw_faqs') }}
   public_faq

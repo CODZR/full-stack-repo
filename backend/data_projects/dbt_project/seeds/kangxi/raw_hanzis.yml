@@ -32,4 +32,5 @@ seeds:
         xgchengyu: text
         xgsc: text
         kxzdpic: varchar(255)
-
+        created_at: timestamp
+        updated_at: timestamp

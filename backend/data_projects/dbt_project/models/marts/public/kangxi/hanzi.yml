@@ -88,13 +88,21 @@ models:
       - name: xgcy
         data_type: text
         description: "相关词语"
+        
       - name: xgchengyu
         data_type: text
         description: "相关成语"
+        
       - name: xgsc
         data_type: text
         description: "相关诗词"
+        
       - name: kxzdpic
         data_type: varchar(255)
         description: "康熙字典原图"
+        
+      # - name: created_at
+      #   data_type: timestamp
+      # - name: updated_at
+      #   data_type: timestamp
 

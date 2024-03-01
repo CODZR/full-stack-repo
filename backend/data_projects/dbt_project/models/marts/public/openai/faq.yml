@@ -22,13 +22,10 @@ models:
       - name: answer
         data_type: text
         description: "faq answer"
-      - name: user_id
-        data_type: int
-        description: "foreign key user_id"
-        constraints:
-          - type: not_null
-          - type: foreign_key
-            expression: public.user(id)
-        tests:
-          - not_null
+      # - name: created_at
+      #   data_type: timestamp
+      # - name: updated_at
+      #   data_type: timestamp
+
+      
    

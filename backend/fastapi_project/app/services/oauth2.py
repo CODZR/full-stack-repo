@@ -15,10 +15,7 @@ oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/oauth-login")
 adapter = casbin_sqlalchemy_adapter.Adapter(engine)
 
 
-def get_current_user(
-    data: str = Depends(oauth2_scheme),
-    db: Session = Depends(get_db)
-):
+def get_current_user(data: str = Depends(oauth2_scheme), db: Session = Depends(get_db)):
     credentials_exception = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
         detail="Could not validate credentials",
@@ -42,13 +39,12 @@ def get_current_user_authorization(
     if not (enforcer.enforce(sub, dom, obj, act)):
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Method not authorized for this user")
+            detail="Method not authorized for this user",
+        )
     return current_user
 
 
-def add_new_role_in_org(
-    email: str, role: str, dom: str, db: Session = Depends(get_db)
-) -> None:
+def add_new_role_in_org(email: str, db: Session = Depends(get_db)) -> None:
     enforcer = casbin.Enforcer("core/model.conf", adapter)
-    enforcer.add_role_for_user_in_domain(email, role, dom)
+    enforcer.add_role_for_user_in_domain(email, role)
     db.commit()  # Ensure changes are persisted

@@ -1,13 +1,13 @@
 version: 2 
 
 seeds: 
-  - name: raw_users
+  - name: raw_blogs
     config:
       column_types: 
         id: integer
-        email: varchar(255)
-        username: varchar(255)
-        password: varchar(255)
+        title: varchar(255)
+        body: text
+        user_id: integer
         created_at: timestamp
         updated_at: timestamp
 

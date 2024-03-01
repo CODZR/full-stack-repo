@@ -7,4 +7,6 @@ seeds:
         id: integer
         question: varchar(255)
         answer: text
+        created_at: timestamp
+        updated_at: timestamp
 

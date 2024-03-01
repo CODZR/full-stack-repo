@@ -6,7 +6,7 @@ from app.schemas.base import IDSchema, TimestampSchema
 
 class UserBasic(BaseModel):
     email: EmailStr
-    full_name: str
+    username: str
     organization_name: str = None
     organizational_role: str = None
 
@@ -15,7 +15,7 @@ class UserBasic(BaseModel):
 
 
 class UserCreateRequest(BaseModel):
-    full_name: str
+    username: str
     password: str
     confirm_password: str
     token: str
@@ -27,12 +27,8 @@ class UserCreateRequest(BaseModel):
 
 class UserCreate(BaseModel):
     email: EmailStr
-    full_name: str
+    username: str
     password: str
-    organization_name: str
-    organizational_role: str = Optional
-    role: str
-    invited_by_id: UUID4 = Optional
 
     class Config:
         extra = "forbid"
@@ -41,7 +37,6 @@ class UserCreate(BaseModel):
 
 class UserDetails(TimestampSchema, UserBasic, IDSchema):
     role: str
-    invited_by_id: UUID4 = Optional
 
     class Config:
         from_attributes = True
@@ -50,7 +45,7 @@ class UserDetails(TimestampSchema, UserBasic, IDSchema):
 class UserUpdate(IDSchema):
     email: Optional[EmailStr]
     password: Optional[str]
-    full_name: Optional[str]
+    username: Optional[str]
     bio: Optional[str]
 
     class Config:
@@ -60,7 +55,7 @@ class UserUpdate(IDSchema):
 
 class UserList(BaseModel):
     email: EmailStr
-    full_name: str
+    username: str
 
     class Config:
         from_attributes = True

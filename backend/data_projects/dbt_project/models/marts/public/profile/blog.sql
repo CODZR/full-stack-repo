@@ -1,17 +1,21 @@
 {{ config(
   materialized = 'table',
   unique_key = 'id',
-  indexes = [ {'columns': ['email'],
-  'unique': True },]
 ) }}
 
 {% set time_now = modules.datetime.datetime.now() %}
+WITH public_user AS (
 
+  SELECT
+    id AS user_id
+  FROM
+    {{ ref('user') }}
+)
 SELECT
   id,
-  email,
-  username,
-  password,
+  title,
+  BODY,
+  1 AS user_id,
   COALESCE(
     created_at,
     '{{ time_now }}'
@@ -21,4 +25,7 @@ SELECT
     '{{ time_now }}'
   ) AS updated_at
 FROM
-  {{ ref('raw_users') }}
+  {{ ref('raw_blogs') }}
+  public_blog
+  LEFT JOIN public_user
+  ON public_blog.id = public_user.user_id

@@ -7,7 +7,7 @@ class LoginRequest(BaseModel):
     password: str
 
     class Config:
-        extra = 'forbid'
+        extra = "forbid"
 
 
 class LoginResponse(BaseModel):
@@ -27,7 +27,7 @@ class TokenPayload(BaseModel):
 
 class TokenData(BaseModel):
     email: Optional[str] = None
-    full_name: Optional[str] = None
+    username: Optional[str] = None
     role: Optional[str] = None
     organization_name: Optional[str] = None
 

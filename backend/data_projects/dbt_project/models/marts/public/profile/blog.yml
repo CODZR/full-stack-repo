@@ -1,37 +1,35 @@
 version: 2
 
 models:
-  - name: user
-    description: "public user table"
+  - name: blog
+    description: "public blog table"
     config:
       contract:
         enforced: true
     columns:
       - name: id
         data_type: int
-        description: "primary key of user"
         constraints:
           - type: not_null
           - type: primary_key
-          - type: check
         tests:
           - not_null
           - unique
-      - name: email
+      - name: title
         data_type: varchar(255)
+      - name: body
+        data_type: text
+      - name: user_id
+        data_type: int
         constraints:
           - type: not_null
-      - name: username
-        data_type: varchar(122558)
-        constraints:
-          - type: not_null
-      - name: password
-        data_type: varchar(255)
-        constraints:
-          - type: not_null
+          - type: foreign_key
+            expression: public.user(id)
+        tests:
+          - not_null
       - name: created_at
         data_type: timestamp
       - name: updated_at
         data_type: timestamp
-
       
+   
