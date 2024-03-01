@@ -3,7 +3,6 @@
   unique_key = 'id',
 ) }}
 
-{% set time_now = modules.datetime.datetime.now() %}
 WITH public_user AS (
 
   SELECT

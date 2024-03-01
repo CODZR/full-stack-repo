@@ -102,7 +102,7 @@ models:
         description: "康熙字典原图"
         
       # - name: created_at
-      #   data_type: timestamp
+      #   data_type: timestamptz
       # - name: updated_at
-      #   data_type: timestamp
+      #   data_type: timestamptz
 

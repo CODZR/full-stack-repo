@@ -5,20 +5,12 @@
   'unique': True },]
 ) }}
 
-{% set time_now = modules.datetime.datetime.now() %}
-
 SELECT
   id,
   email,
   username,
   password,
-  COALESCE(
-    created_at,
-    '{{ time_now }}'
-  ) AS created_at,
-  COALESCE(
-    updated_at,
-    '{{ time_now }}'
-  ) AS updated_at
+  COALESCE(created_at, now()) AS created_at,
+  COALESCE(updated_at, now()) AS updated_at
 FROM
   {{ ref('raw_users') }}

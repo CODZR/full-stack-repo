@@ -23,9 +23,9 @@ models:
         data_type: text
         description: "faq answer"
       # - name: created_at
-      #   data_type: timestamp
+      #   data_type: timestamptz
       # - name: updated_at
-      #   data_type: timestamp
+      #   data_type: timestamptz
 
       
    

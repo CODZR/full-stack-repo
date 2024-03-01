@@ -8,6 +8,6 @@ seeds:
         title: varchar(255)
         body: text
         user_id: integer
-        created_at: timestamp
-        updated_at: timestamp
+        created_at: timestamptz
+        updated_at: timestamptz
 

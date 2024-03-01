@@ -3,7 +3,7 @@
   unique_key = 'id',
 ) }}
 
-{% set time_now = modules.datetime.datetime.now() %}
+{% set time_now = modules.datetime.datetime.utcnow() %}
 WITH public_user AS (
 
   SELECT
@@ -16,14 +16,8 @@ SELECT
   title,
   BODY,
   1 AS user_id,
-  COALESCE(
-    created_at,
-    '{{ time_now }}'
-  ) AS created_at,
-  COALESCE(
-    updated_at,
-    '{{ time_now }}'
-  ) AS updated_at
+  COALESCE(created_at, now()) AS created_at,
+  COALESCE(updated_at, now()) AS updated_at
 FROM
   {{ ref('raw_blogs') }}
   public_blog
