@@ -7,8 +7,7 @@ from app.schemas.base import IDSchema, TimestampSchema
 class UserBasic(BaseModel):
     email: EmailStr
     username: str
-    organization_name: str = None
-    organizational_role: str = None
+    role: str
 
     class Config:
         from_attributes = True

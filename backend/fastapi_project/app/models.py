@@ -1,8 +1,6 @@
 from datetime import datetime, timedelta
 import uuid
 from sqlalchemy import (
-    UUID,
-    Boolean,
     Column,
     DateTime,
     ForeignKey,
@@ -19,10 +17,10 @@ from sqlalchemy.orm import relationship
 
 
 class User(DeclarativeBase, IDMixin, TimestampMixin):
-    __tablename__ = "users"
+    __tablename__ = "user"
     __table_args__ = {"extend_existing": True}
 
-    id = Column(UUID(as_uuid=True), default=uuid.uuid4, primary_key=True, index=True)
+    id = Column(Integer, primary_key=True, index=True)
     email = Column(String(255), unique=True, index=True, nullable=False)
     username = Column(String(255), index=True, nullable=False)
     role = Column(String(255), nullable=False)
@@ -34,22 +32,22 @@ class User(DeclarativeBase, IDMixin, TimestampMixin):
 
 
 class Blog(DeclarativeBase, IDMixin, TimestampMixin):
-    __tablename__ = "blogs"
+    __tablename__ = "blog"
     __table_args__ = {"extend_existing": True}
 
-    id = Column(UUID(as_uuid=True), default=uuid.uuid4, primary_key=True, index=True)
+    id = Column(Integer, primary_key=True, index=True)
     title = Column(String(100), unique=True, index=True, nullable=False)
-    user_id = Column(UUID(as_uuid=True), ForeignKey("users.id"), index=True)
-    body = Column(String(255), nullable=False)
+    content = Column(String(255), nullable=False)
     created_at = Column(DateTime, default=func.now())
     updated_at = Column(DateTime, default=func.now(), onupdate=func.now())
 
-    user = relationship("User", back_populates="blogs", foreign_keys=[user_id])
+    user_id = Column(Integer, ForeignKey("user.id"), index=True)
+    user = relationship("User", back_populates="blogs")
 
 
 # Database model, database table inferred from class name
-class Faq(DeclarativeBase, IDMixin, TimestampMixin):
-    __tablename__ = "faqs"
+class Faq(DeclarativeBase, IDMixin):
+    __tablename__ = "faq"
     __table_args__ = {"extend_existing": True}
 
     question = Column(String(255), nullable=False)
@@ -57,7 +55,7 @@ class Faq(DeclarativeBase, IDMixin, TimestampMixin):
 
 
 class Hanzi(DeclarativeBase, IDMixin, TimestampMixin):
-    __tablename__ = "hanzis"
+    __tablename__ = "hanzi"
     __table_args__ = {"extend_existing": True}
 
     zi = Column(String(64), nullable=False)

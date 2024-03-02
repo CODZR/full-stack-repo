@@ -1,4 +1,4 @@
-from typing import Any
+from typing import Any, List
 
 from fastapi import APIRouter, HTTPException
 from sqlmodel import select
@@ -16,11 +16,17 @@ faq_router = APIRouter(prefix="/faq", tags=["Faq"])
 faq_crud = CRUDBase(model=models.Faq)
 
 
+@faq_router.get("")
+def get_faqs(db: Session = Depends(get_db)) -> List[schemas.FaqList]:
+    db_faqs = db.query(models.Faq)
+    return db_faqs
+
+
 @faq_router.post("", response_model=schemas.FaqDetails)
 def create_faq(
     new_faq: schemas.FaqCreate,
     db: Session = Depends(get_db),
-    current_user=Depends(get_current_user),
+    current_faq=Depends(get_current_user),
 ):
     new_faq.model_dump()
     faq = faq_crud.create(db=db, obj_in=new_faq)

@@ -3,7 +3,7 @@ from typing import Optional, Text
 from pydantic import UUID4, BaseModel
 
 
-from app.schemas.base import SchemaBasic
+from app.schemas.base import IDSchema
 
 
 # Shared properties
@@ -12,7 +12,7 @@ class FaqBasic(BaseModel):
     answer: Text = None
 
 
-class FaqList(FaqBasic, SchemaBasic):
+class FaqList(FaqBasic, IDSchema):
     class Config:
         from_attributes = True
 
@@ -22,7 +22,7 @@ class FaqCreate(FaqBasic):
         from_attributes = True
 
 
-class FaqDetails(FaqBasic, SchemaBasic):
+class FaqDetails(FaqBasic, IDSchema):
     class Config:
         from_attributes = True
 

@@ -1,3 +1,4 @@
+from typing import List
 from fastapi import APIRouter, HTTPException, status
 from fastapi.params import Depends
 from sqlalchemy.orm import Session
@@ -9,15 +10,21 @@ from app.db.crud import CRUDBase
 from app.services.oauth2 import get_current_user
 
 
-blog_router = APIRouter(prefix='/blog', tags=['Blog'])
+blog_router = APIRouter(prefix="/blog", tags=["Blog"])
 blog_crud = CRUDBase(model=models.Blog)
 
 
-@blog_router.post('', response_model=schemas.BlogDetails)
+@blog_router.get("")
+def get_blogs(db: Session = Depends(get_db)) -> List[schemas.BlogList]:
+    db_blogs = db.query(models.Blog)
+    return db_blogs
+
+
+@blog_router.post("", response_model=schemas.BlogDetails)
 def create_blog(
     new_blog: schemas.BlogCreate,
     db: Session = Depends(get_db),
-    current_user = Depends(get_current_user)
+    current_user=Depends(get_current_user),
 ):
     new_blog.model_dump()
     blog = blog_crud.create(db=db, obj_in=new_blog)

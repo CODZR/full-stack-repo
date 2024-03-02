@@ -13,7 +13,6 @@ models:
         constraints:
           - type: not_null
           - type: primary_key
-          - type: check
         tests:
           - not_null
           - unique
@@ -29,6 +28,8 @@ models:
         data_type: varchar(255)
         constraints:
           - type: not_null
+      - name: role
+        data_type: varchar(255)
       - name: created_at
         data_type: timestamptz
       - name: updated_at

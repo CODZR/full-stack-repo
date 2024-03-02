@@ -17,7 +17,7 @@ models:
           - unique
       - name: title
         data_type: varchar(255)
-      - name: body
+      - name: content
         data_type: text
       - name: user_id
         data_type: int

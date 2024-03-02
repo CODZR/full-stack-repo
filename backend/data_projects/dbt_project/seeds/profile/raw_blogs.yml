@@ -6,7 +6,7 @@ seeds:
       column_types: 
         id: integer
         title: varchar(255)
-        body: text
+        content: text
         user_id: integer
         created_at: timestamptz
         updated_at: timestamptz

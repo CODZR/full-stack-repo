@@ -1,16 +1,16 @@
-from pydantic import BaseModel, UUID4
-from typing import Optional
+from pydantic import BaseModel
+from typing import Optional, Text
 
 from app.schemas.base import IDSchema, TimestampSchema
 
 
 class BlogBasic(BaseModel):
     title: str
-    author: UUID4
+    content: Text
 
 
 class BlogBasicWithAuthor(BlogBasic):
-    author: UUID4
+    user_id: int
 
 
 class BlogList(BlogBasicWithAuthor, IDSchema):
@@ -20,8 +20,8 @@ class BlogList(BlogBasicWithAuthor, IDSchema):
 
 class BlogCreate(BaseModel):
     title: str
-    body: str
-    author: UUID4 = "57785471-bc81-4062-a621-15657ccc0a0c"
+    content: str
+    user_id: int = "57785471-bc81-4062-a621-15657ccc0a0c"
 
     class Config:
         from_attributes = True
@@ -34,7 +34,7 @@ class BlogDetails(TimestampSchema, BlogCreate, IDSchema):
 
 class BlogUpdate(IDSchema):
     title: Optional[str]
-    body: Optional[str]
+    content: Optional[str]
 
     class Config:
         extra = "forbid"

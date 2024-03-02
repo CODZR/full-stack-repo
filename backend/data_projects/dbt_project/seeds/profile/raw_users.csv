@@ -1,3 +1,3 @@
 id,email,username,role,password,created_at,updated_at
-1,andrew@vibe.us,andrew,admin,dzr123,,
-2,test@vibe.us,test,admin,test123,2024-03-01T11:18:52.349Z,2024-03-01T11:18:52.349Z
+1,andrew@vibe.us,andrew,admin,$2b$12$lkxW09XfFogwpLWg8O9cUOaNeYICWEqTtek1kHv66wXipn51uZthS,,
+2,test@vibe.us,test,guest,$2b$12$PAOyU0piAz5zrby.7H7JO.aw3HcxQ0vhtxnw4wfUHOAvScFfv.dtS,2024-03-01T11:18:52.349Z,2024-03-01T11:18:52.349Z

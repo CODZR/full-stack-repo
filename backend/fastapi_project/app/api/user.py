@@ -14,6 +14,12 @@ user_router = APIRouter(prefix="/user", tags=["User"])
 user_crud = CRUDBase(model=models.User)
 
 
+@user_router.get("")
+def get_users(db: Session = Depends(get_db)) -> List[schemas.UserList]:
+    db_users = db.query(models.User)
+    return db_users
+
+
 @user_router.post("", response_model=schemas.UserDetails)
 def create_user(data: schemas.UserCreateRequest, db: Session = Depends(get_db)):
     token_data = data.token
@@ -47,9 +53,3 @@ def create_user(data: schemas.UserCreateRequest, db: Session = Depends(get_db)):
     add_new_role_in_org(user.email, data.role, db)
 
     return user_dict
-
-
-@user_router.get("")
-def get_users(db: Session = Depends(get_db)) -> List[schemas.UserList]:
-    db_users = db.query(models.User)
-    return db_users

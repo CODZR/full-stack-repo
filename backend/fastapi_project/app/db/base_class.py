@@ -16,8 +16,8 @@ class DeclarativeBase:
 
 
 class IDMixin:
-    id = Column(String(48), primary_key=True, default=uuid4, nullable=False)
-    idx = Column(Integer, default=1)
+    id = Column(Integer, primary_key=True, nullable=False)
+    # idx = Column(Integer, default=1)
 
 
 class TimestampMixin:
@@ -37,5 +37,5 @@ class SoftDeleteMixin:
     is_deleted = Column(Boolean, default=False)
 
 
-class ModelBase(DeclarativeBase, IDMixin, TimestampMixin):
-    pass
+# class ModelBase(DeclarativeBase, IDMixin, TimestampMixin):
+#     pass

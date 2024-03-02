@@ -1,1 +1,4 @@
-id,title,sub_title,body,user_id,created_at,updated_at
+id,title,content,user_id,created_at,updated_at
+1,test blog,你好，这是一篇测试blog,1,,
+2,test blog2,你好，这是一篇测试blog2,1,,
+3,test blog3,你好，这是一篇测试blog3,2,,

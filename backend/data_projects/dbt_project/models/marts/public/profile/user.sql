@@ -10,6 +10,7 @@ SELECT
   email,
   username,
   password,
+  role,
   COALESCE(created_at, now()) AS created_at,
   COALESCE(updated_at, now()) AS updated_at
 FROM

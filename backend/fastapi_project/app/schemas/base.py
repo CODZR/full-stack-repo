@@ -6,8 +6,8 @@ from pydantic import BaseModel, Field
 
 # -------------- mixins --------------
 class IDSchema(BaseModel):
-    id: uuid.UUID = Field(default_factory=uuid.uuid4)
-    idx: int = Field(default_factory=None)
+    id: int = Field(default_factory=None)
+    # idx: int = Field(default_factory=None)
 
 
 class TimestampSchema(BaseModel):
