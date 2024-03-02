@@ -7,35 +7,28 @@ from app.schemas.base import IDSchema, TimestampSchema
 class BlogBasic(BaseModel):
     title: str
     content: Text
-
-
-class BlogBasicWithAuthor(BlogBasic):
     user_id: int
 
 
-class BlogList(BlogBasicWithAuthor, IDSchema):
+class BlogList(BlogBasic, IDSchema):
     class Config:
         from_attributes = True
 
 
-class BlogCreate(BaseModel):
-    title: str
-    content: str
-    user_id: int = "57785471-bc81-4062-a621-15657ccc0a0c"
+class BlogCreate(BlogBasic):
 
     class Config:
         from_attributes = True
 
 
-class BlogDetails(TimestampSchema, BlogCreate, IDSchema):
+class BlogDetails(BlogBasic, IDSchema):
     class Config:
         from_attributes = True
 
 
-class BlogUpdate(IDSchema):
+class BlogUpdate(BlogBasic):
     title: Optional[str]
     content: Optional[str]
 
     class Config:
-        extra = "forbid"
         from_attributes = True

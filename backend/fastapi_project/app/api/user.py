@@ -1,26 +1,29 @@
-from fastapi import APIRouter, HTTPException, status
+from typing import List
+from fastapi import APIRouter, HTTPException, Response, status
 from fastapi.params import Depends
 from sqlalchemy.orm import Session
-from datetime import datetime
-from typing import List
+from app.utils.security import get_password_hash
 
+from core.logger import logger
 from app import models, schemas
 from app.db.base import get_db
 from app.db.crud import CRUDBase
-from app.utils.security import get_password_hash
-from app.services.oauth2 import add_new_role_in_org
+from app.services.oauth2 import add_new_role_in_org, get_current_user
 
-user_router = APIRouter(prefix="/user", tags=["User"])
+
+user_router = APIRouter(tags=["User"])
 user_crud = CRUDBase(model=models.User)
 
 
-@user_router.get("")
-def get_users(db: Session = Depends(get_db)) -> List[schemas.UserList]:
-    db_users = db.query(models.User)
+@user_router.get("/users")
+def list_users(
+    page: int = 1, limit: int = 10, db: Session = Depends(get_db)
+) -> List[schemas.UserList]:
+    db_users = user_crud.list_multi(db=db, page=int(page), limit=(limit))
     return db_users
 
 
-@user_router.post("", response_model=schemas.UserDetails)
+@user_router.post("/users", response_model=schemas.UserDetails)
 def create_user(data: schemas.UserCreateRequest, db: Session = Depends(get_db)):
     token_data = data.token
 
@@ -53,3 +56,33 @@ def create_user(data: schemas.UserCreateRequest, db: Session = Depends(get_db)):
     add_new_role_in_org(user.email, data.role, db)
 
     return user_dict
+
+
+@user_router.get("/user/{user_id}")
+def find_user(user_id: int, db: Session = Depends(get_db)) -> schemas.UserDetails:
+    db_user = user_crud.get(db, user_id)
+    return db_user
+
+
+@user_router.put("/user/{user_id}", response_model=schemas.UserUpdate)
+def update_user(
+    user_id: int,
+    updated_user: schemas.UserUpdate,
+    db: Session = Depends(get_db),
+    current_user=Depends(get_current_user),
+):
+    updated_user.model_dump()
+    user = user_crud.update(db=db, obj_id=user_id, obj_in=updated_user)
+    return user
+
+
+@user_router.delete(
+    "/user/{user_id}", status_code=status.HTTP_204_NO_CONTENT, response_class=Response
+)
+def delete_user(
+    user_id: int,
+    db: Session = Depends(get_db),
+    current_user=Depends(get_current_user),
+):
+    user = user_crud.delete(db, user_id)
+    return user
