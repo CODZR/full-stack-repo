@@ -1,4 +1,4 @@
-from typing import Optional, Text
+from typing import List, Optional, Text
 
 from pydantic import UUID4, BaseModel
 
@@ -56,3 +56,11 @@ class HanziUpdate(HanziBasic):
     class Config:
         extra = "forbid"
         from_attributes = True
+
+
+class HanziItems(BaseModel):
+    items: List[HanziList]
+
+
+class HanziItem(BaseModel):
+    item: HanziDetails

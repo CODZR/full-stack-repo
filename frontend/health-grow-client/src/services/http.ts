@@ -10,7 +10,7 @@ import { jsonToHump, jsonToUnderline } from '@/utils/format';
 
 const requester = axios.create({
 	// baseURL: 'https://dzrlab.top/api',
-	baseURL: 'http://127.0.0.1:7001/api',
+	baseURL: 'http://127.0.0.1:7002/api',
 	// baseURL: '/api',
 	timeout: 25000, // 设置超时时间
 	withCredentials: true, // 允许携带cookie
@@ -44,11 +44,12 @@ requester.interceptors.response.use(
 	(response) => {
 		// eslint-disable-next-line no-undef
 		const res = response.data;
+		console.log('res: ', res);
 		if (response.status === 401) {
 			toast.error('The token has expired. Please log in again');
 		}
 		jsonToHump(res);
-		return res.data;
+		return res;
 	},
 	(error) => {
 		// eslint-disable-next-line no-undef

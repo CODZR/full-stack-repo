@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import styles from './index.module.less';
 
@@ -6,14 +6,22 @@ interface Props {
 	setDisableSubmit: rcSetFn<boolean>;
 }
 
+const randomStepArr = [0.5, 1, 1.5];
+
 const VerifyProgress = (props: Props) => {
 	const { setDisableSubmit } = props;
 
 	const [progressPercent, setProgressPercent] = useState(0);
 
+	const timeStepBase = useRef(25);
 	const timerId = useRef<any>(null);
 	const nextPercent = useRef(0);
 	const verifyBoxRef = useRef(null as HTMLDivElement);
+
+	const resetTimeStepBase = () => {
+		const randomIndex = Math.floor(Math.random() * randomStepArr.length);
+		timeStepBase.current = randomStepArr[randomIndex] * 25;
+	};
 
 	const setupProgress = (increment: boolean) => {
 		if (progressPercent === 100) return;
@@ -43,7 +51,7 @@ const VerifyProgress = (props: Props) => {
 			} else {
 				setupProgress(increment);
 			}
-		}, 25);
+		}, timeStepBase.current);
 	};
 
 	const onVerified = () => {
@@ -52,7 +60,8 @@ const VerifyProgress = (props: Props) => {
 	};
 
 	const onVerifyMouseDown = () => {
-		const animationTime = 2500 * (1 - progressPercent / 100);
+		resetTimeStepBase();
+		const animationTime = timeStepBase.current * 100 * (1 - progressPercent / 100);
 		verifyBoxRef.current.style.animation = `${animationTime}ms ease 0s 1 normal none running textColorInvert`;
 		clearInterval(timerId.current);
 		setupProgress(true);
@@ -61,7 +70,7 @@ const VerifyProgress = (props: Props) => {
 	const onVerifyMouseUp = () => {
 		if (progressPercent === 100) return;
 
-		const animationTime = 1250 * (progressPercent / 100);
+		const animationTime = timeStepBase.current * 50 * (progressPercent / 100);
 		verifyBoxRef.current.style.animation = `${animationTime}ms ease 0s 1 normal none running textColorIReverse`;
 		clearInterval(timerId.current);
 		setupProgress(false);
