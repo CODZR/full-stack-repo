@@ -36,7 +36,7 @@ const handleReqElMsg = <T>(fn: Promise<Item>, action: string, name: string, iden
 };
 
 export async function searchHanziAPI(zi: string) {
-	const item = handleReqElMsg<Item>(requester.get(`hanzis/search?zi=${zi}`), 'Search', 'Hanzi', zi);
+	const item = handleReqElMsg<Item>(requester.get(`hanzi/search?zi=${zi}`), 'Search', 'Hanzi', zi);
 
 	return item;
 }

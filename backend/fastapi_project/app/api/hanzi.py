@@ -27,14 +27,8 @@ def list_hanzis(page: int = 1, limit: int = 10, db: Session = Depends(get_db)):
     return HanziItems(items=db_hanzis)
 
 
-@hanzi_router.get("/hanzis/search", response_model=HanziItem)
-def search_hanzi(zi: str, db: Session = Depends(get_db)) -> HanziDetails:
-    db_hanzi = hanzi_crud.get_by_field(db, "zi", zi)
-    return HanziItem(item=db_hanzi)
-
-
 @hanzi_router.post(
-    "/hanzis", status_code=status.HTTP_201_CREATED, response_model=HanziItems
+    "/hanzis", status_code=status.HTTP_201_CREATED, response_model=HanziItem
 )
 def create_hanzi(
     new_hanzi: HanziCreate,
@@ -46,13 +40,19 @@ def create_hanzi(
     return HanziItem(hanzi)
 
 
-@hanzi_router.get("/hanzi/{hanzi_id}")
-def find_hanzi(hanzi_id: int, db: Session = Depends(get_db)) -> HanziDetails:
+@hanzi_router.get("/hanzi/search", response_model=HanziItem)
+def search_hanzi(zi: str, db: Session = Depends(get_db)) -> HanziDetails:
+    db_hanzi = hanzi_crud.get_by_field(db, "zi", zi)
+    return HanziItem(item=db_hanzi)
+
+
+@hanzi_router.get("/hanzi/{hanzi_id}", response_model=HanziItem)
+def find_hanzi(hanzi_id: int, db: Session = Depends(get_db)):
     db_hanzi = hanzi_crud.get(db, hanzi_id)
     return HanziItem(item=db_hanzi)
 
 
-@hanzi_router.put("/hanzi/{hanzi_id}", response_model=HanziItems)
+@hanzi_router.put("/hanzi/{hanzi_id}", response_model=HanziItem)
 def update_hanzi(
     hanzi_id: int,
     updated_hanzi: HanziUpdate,
