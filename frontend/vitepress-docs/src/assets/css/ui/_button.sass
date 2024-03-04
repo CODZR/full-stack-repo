@@ -1,0 +1,99 @@
+.co-button
+  display: inline-flex
+  justify-content: center
+  align-items: center
+  line-height: 1
+  height: 32px
+  white-space: nowrap
+  cursor: pointer
+  background-color: var(--co-button-bg-color)
+  border: var(--co-border)
+  border-color: var(--co-button-border-color)
+  color: var(--co-button-text-color)
+  -webkit-appearance: none
+  text-align: center
+  box-sizing: border-box
+  outline: 0
+  transition: .1s
+  font-weight: var(--co-button-font-weight)
+  -webkit-user-select: none
+  user-select: none
+  vertical-align: middle
+  padding: 8px 15px
+  font-size: var(--co-font-size-base)
+  border-radius: var(--co-border-radius-base)
+  &:hover
+    color: var(--co-button-hover-text-color)
+    border-color: var(--co-button-hover-border-color)
+    background-color: var(--co-button-hover-bg-color)
+    outline: 0
+
+.co-button
+  --co-button-font-weight: var(--co-font-weight-primary)
+  --co-button-border-color: var(--co-border-color)
+  --co-button-bg-color: var(--co-fill-color-blank)
+  --co-button-text-color: var(--co-text-color-regular)
+  --co-button-disabled-text-color: var(--co-disabled-text-color)
+  --co-button-disabled-bg-color: var(--co-fill-color-blank)
+  --co-button-disabled-border-color: var(--co-border-color-light)
+  --co-button-divide-border-color: rgba(255, 255, 255, .5)
+  --co-button-hover-text-color: var(--co-color-primary)
+  --co-button-hover-bg-color: var(--co-color-primary-light-9)
+  --co-button-hover-border-color: var(--co-color-primary-light-7)
+  --co-button-active-text-color: var(--co-button-hover-text-color)
+  --co-button-active-border-color: var(--co-color-primary)
+  --co-button-active-bg-color: var(--co-button-hover-bg-color)
+  --co-button-outline-color: var(--co-color-primary-light-5)
+  --co-button-hover-link-text-color: var(--co-color-info)
+  --co-button-active-color: var(--co-text-color-primary)
+.co-button--primary
+  --co-button-text-color: var(--co-color-white)
+  --co-button-bg-color: var(--co-color-primary)
+  --co-button-border-color: var(--co-color-primary)
+  --co-button-hover-text-color: var(--co-color-white)
+  --co-button-hover-bg-color: var(--co-color-primary-light-3)
+  --co-button-hover-border-color: var(--co-color-primary-light-3)
+  --co-button-active-bg-color: var(--co-color-primary-dark-2)
+  --co-button-active-border-color: var(--co-color-primary-dark-2)
+  --co-button-disabled-text-color: var(--co-color-white)
+  --co-button-disabled-bg-color: var(--co-color-primary-light-5)
+  --co-button-disabled-border-color: var(--co-color-primary-light-5)    
+.co-button--success
+  --co-button-text-color: var(--co-color-white)
+  --co-button-bg-color: var(--co-color-success)
+  --co-button-border-color: var(--co-color-success)
+  --co-button-hover-text-color: var(--co-color-white)
+  --co-button-hover-bg-color: var(--co-color-success-light-3)
+  --co-button-hover-border-color: var(--co-color-success-light-3)
+  --co-button-active-bg-color: var(--co-color-success-dark-2)
+  --co-button-active-border-color: var(--co-color-success-dark-2)
+  --co-button-disabled-text-color: var(--co-color-white)
+  --co-button-disabled-bg-color: var(--co-color-success-light-5)
+  --co-button-disabled-border-color: var(--co-color-success-light-5)
+.co-button--danger
+  --co-button-text-color: var(--co-color-white)
+  --co-button-bg-color: var(--co-color-danger)
+  --co-button-border-color: var(--co-color-danger)
+  --co-button-hover-text-color: var(--co-color-white)
+  --co-button-hover-bg-color: var(--co-color-danger-light-3)
+  --co-button-hover-border-color: var(--co-color-danger-light-3)
+  --co-button-active-bg-color: var(--co-color-danger-dark-2)
+  --co-button-active-border-color: var(--co-color-danger-dark-2)
+  --co-button-disabled-text-color: var(--co-color-white)
+  --co-button-disabled-bg-color: var(--co-color-danger-light-5)
+  --co-button-disabled-border-color: var(--co-color-danger-light-5)
+.co-button--info
+  --co-button-text-color: var(--co-color-white)
+  --co-button-bg-color: var(--co-color-info)
+  --co-button-border-color: var(--co-color-info)
+  --co-button-outline-color: var(--co-color-info-light-5)
+  --co-button-active-color: var(--co-color-info-dark-2)
+  --co-button-hover-text-color: var(--co-color-white)
+  --co-button-hover-link-text-color: var(--co-color-info-light-5)
+  --co-button-hover-bg-color: var(--co-color-info-light-3)
+  --co-button-hover-border-color: var(--co-color-info-light-3)
+  --co-button-active-bg-color: var(--co-color-info-dark-2)
+  --co-button-active-border-color: var(--co-color-info-dark-2)
+  --co-button-disabled-text-color: var(--co-color-white)
+  --co-button-disabled-bg-color: var(--co-color-info-light-5)
+  --co-button-disabled-border-color: var(--co-color-info-light-5)

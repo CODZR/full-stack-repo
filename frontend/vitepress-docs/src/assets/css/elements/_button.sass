@@ -1,0 +1,58 @@
+.button:not(.is-not-uniform)
+  position: relative
+  font-family: $family-head
+  font-weight: $vibe-bold
+  text-align: center
+  text-decoration: none
+  white-space: nowrap
+  border-width: 2px
+  border-style: solid
+  +tablet
+    padding: 12px 40px
+    width: auto
+    min-width: unset
+    font-size: 20px
+  +mobile
+    width: 100%
+    padding: 12px 16px
+    font-size: 18px
+  &.is-vibe-link
+    padding: 0
+  &.is-rounded
+    border-radius: 9999px
+  &.is-black
+    background-color: #0a0a0a
+    border-color: transparent
+    color: #fff
+    &.is-outlined
+      background-color: transparent
+      border-color: #0a0a0a
+      color: #0a0a0a
+  &.is-primary
+    background-color: #f66
+    border-color: transparent
+    color: #fff
+    font-weight: 500
+
+.cta .button
+  &:not(:first-child)
+    margin-left: 32px
+    +mobile
+      margin: 20px 0
+
+.cta .is-vibe-link
+  height: auto
+  padding: 0
+  font-family: $family-body
+  font-weight: $vibe-bold
+  color: $vibe-purple
+  border: none
+  background-color: transparent
+  &:hover
+    text-decoration: underline
+  +tablet
+    font-size: 18px
+    line-height: 22px
+  +mobile
+    font-size: 16px
+    line-height: 19px
