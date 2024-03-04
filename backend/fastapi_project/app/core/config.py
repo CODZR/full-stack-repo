@@ -12,10 +12,10 @@ if not os.getenv("POSTGRES_PASSWORD"):
 
 PSQL_DATABASE_URL = URL(
     drivername="postgresql",
-    host=os.environ.get("POSTGRES_HOST"),
+    host="db",
     port=5432,
-    database=os.environ.get("POSTGRES_DATABASE"),
-    username=os.environ.get("POSTGRES_USER"),
+    database=os.environ.get("POSTGRES_DATABASE", "vibe_dbts"),
+    username=os.environ.get("POSTGRES_USER", "codzr"),
     password=os.environ.get("POSTGRES_PASSWORD"),
     query={},
 )
@@ -31,10 +31,6 @@ class Settings(BaseSettings):
     BASE_URL: str = os.getenv("BASE_URL", "")
 
     # DB
-    POSTGRES_HOST: str = os.environ.get("POSTGRES_HOST", "localhost")
-    POSTGRES_USER: str = os.environ.get("POSTGRES_USER", "codzr")
-    POSTGRES_PASSWORD: str = os.environ.get("POSTGRES_PASSWORD")
-    POSTGRES_DATABASE: str = os.environ.get("POSTGRES_DATABASE", "vibe_dbt")
     SQLALCHEMY_DATABASE_URI: str = str(PSQL_DATABASE_URL)
 
     # JWT

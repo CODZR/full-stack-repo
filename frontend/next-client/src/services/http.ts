@@ -10,7 +10,7 @@ import { jsonToHump, jsonToUnderline } from '@/utils/format';
 
 const requester = axios.create({
 	// baseURL: 'https://dzrlab.top/api',
-	baseURL: 'http://127.0.0.1:7002/api',
+	baseURL: 'http://127.0.0.1:7001/api',
 	// baseURL: '/api',
 	timeout: 25000, // 设置超时时间
 	withCredentials: true, // 允许携带cookie
