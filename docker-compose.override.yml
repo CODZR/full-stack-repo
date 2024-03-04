@@ -43,11 +43,17 @@ services:
   #   volumes:
   #     - ./fastbackend/:/app
 
-  # frontend-client:
-  #   build:
-  #     context: ./frontend/next-client
-  #     args:
-  #       FRONTEND_ENV: dev
+  vitepress-docs:
+    build:
+      context: ./frontend/vitepress-docs
+      args:
+        FRONTEND_ENV: dev
+
+  frontend-client:
+    build:
+      context: ./frontend/next-client
+      args:
+        FRONTEND_ENV: dev
 
   # frontend-dashboard:
   #   build:

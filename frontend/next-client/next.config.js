@@ -1,6 +1,10 @@
 const path = require('path');
 
 module.exports = {
+	output: 'export',
+	images: {
+		unoptimized: true
+	},
 	swcMinify: true,
 	pageExtensions: ['page.js', 'page.tsx', 'page.ts'],
 	eslint: {

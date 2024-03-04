@@ -28,7 +28,7 @@ services:
   #   image: mher/flower:0.9.7
   
   fast-backend:
-    image: '${DOCKER_IMAGE_FAST_BACKEND?Variable not set}:${TAG-latest}'
+    image: 'fast-backend:${TAG-latest}'
     depends_on:
       - db
     env_file:
@@ -47,15 +47,22 @@ services:
   # celeryworker:
   #   image: '${DOCKER_IMAGE_CELERYWORKER?Variable not set}:${TAG-latest}'
  
-  # frontend-client:
-  #   image: '${DOCKER_IMAGE_FRONTEND_CLIENT?Variable not set}:${TAG-latest}'
-  #   build:
-  #     context: ./next-client
-  #     args:
-  #       FRONTEND_ENV: ${FRONTEND_ENV-production}
+  vitepress-docs:
+    image: 'vitepress-docs:${TAG-latest}'
+    build:
+      context: ./frontend/vitepress-docs
+      args:
+        FRONTEND_ENV: ${FRONTEND_ENV-production}
+
+  frontend-client:
+    image: 'frontend-client:${TAG-latest}'
+    build:
+      context: ./frontend/next-client
+      args:
+        FRONTEND_ENV: ${FRONTEND_ENV-production}
  
   # frontend-dashboard:
-  #   image: '${DOCKER_IMAGE_NEW_FRONTEND?Variable not set}:${TAG-latest}'
+  #   image: 'frontend-dashboard:${TAG-latest}'
   #   build:
   #     context: ./frontend/react-dashboard
   #     labels:

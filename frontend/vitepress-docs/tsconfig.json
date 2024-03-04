@@ -24,8 +24,6 @@
     //生成枚举的映射代码
     "preserveConstEnums": true,
     //根目录
-    //输出目录
-    "outDir": "./ts-out-dir",
     //是否输出src2.js.map文件
     "sourceMap": false,
     //变量定义了但是未使用
@@ -42,17 +40,34 @@
     "skipLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"],
-      "@img/*": ["src/assets/img/*"],
-      "@css/*": ["src/assets/css/*"],
-      "@vcomp/*": ["src/components/*"],
-      "~/*": ["typings/*"]
+      "@/*": [
+        "src/*"
+      ],
+      "@img/*": [
+        "src/assets/img/*"
+      ],
+      "@css/*": [
+        "src/assets/css/*"
+      ],
+      "@vcomp/*": [
+        "src/components/*"
+      ],
+      "~/*": [
+        "typings/*"
+      ]
     },
     //指定默认读取的目录
     //"typeRoots": ["./node_modules/@types/", "./types"],
-    "lib": ["ES2018", "DOM"]
+    "lib": [
+      "ES2018",
+      "DOM"
+    ]
   },
-  "include": ["src", "vite-config", "typings"],
+  "include": [
+    "src",
+    "vite-config",
+    "typings"
+  ],
   "exclude": [
     "node_modules",
     "dist"

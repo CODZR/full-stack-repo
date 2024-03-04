@@ -25,8 +25,6 @@
 		//生成枚举的映射代码
 		"preserveConstEnums": true,
 		//根目录
-		//输出目录
-		"outDir": "./ts-out-dir",
 		//是否输出src2.js.map文件
 		"sourceMap": false,
 		//变量定义了但是未使用

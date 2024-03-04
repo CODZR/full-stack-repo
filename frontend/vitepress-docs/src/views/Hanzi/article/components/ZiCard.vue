@@ -63,20 +63,26 @@
 
     <h3>说文解字详解图片</h3>
     <div class="image-wrapper">
-      <v-template v-for="(url, idx) in getImgUrlArr(wenzi.swjzxjpic)" :key="idx">
+      <v-template
+        v-for="(url, idx) in getImgUrlArr(wenzi.swjzxjpic)"
+        :key="idx"
+      >
         <img
-        :src="url"
-        :alt="`说文解字详解图片${ idx }`"
+          :src="url"
+          :alt="`说文解字详解图片${ idx }`"
         >
       </v-template>
     </div>
 
     <h3>字源演变图片</h3>
     <div class="image-wrapper">
-      <v-template v-for="(url, idx) in getImgUrlArr(wenzi.zyybpic)" :key="idx">
+      <v-template
+        v-for="(url, idx) in getImgUrlArr(wenzi.zyybpic)"
+        :key="idx"
+      >
         <img
-        :src="url"
-        :alt="`字源演变图片${ idx }`"
+          :src="url"
+          :alt="`字源演变图片${ idx }`"
         >
       </v-template>
     </div>
@@ -95,10 +101,13 @@
 
     <h3>康熙字典原图</h3>
     <div class="image-wrapper">
-      <v-template v-for="(url, idx) in getImgUrlArr(wenzi.kxzdpic)" :key="idx">
+      <v-template
+        v-for="(url, idx) in getImgUrlArr(wenzi.kxzdpic)"
+        :key="idx"
+      >
         <img
-        :src="url"
-        :alt="`康熙字典原图${ idx }`"
+          :src="url"
+          :alt="`康熙字典原图${ idx }`"
         >
       </v-template>
     </div>

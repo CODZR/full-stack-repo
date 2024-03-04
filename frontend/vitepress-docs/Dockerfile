@@ -1,13 +1,13 @@
 # Stage 0, "build-stage", based on Node.js, to build and compile the frontend
 FROM node:18.12.1 as build-stage
 
-WORKDIR /next-client
+WORKDIR /vitepress-docs
 
-COPY package*.json /next-client/
+COPY package*.json /vitepress-docs/
 
 RUN pnpm install
 
-COPY ./ /next-client/
+COPY ./ /vitepress-docs/
 
 ARG FRONTEND_ENV=production
 
@@ -24,6 +24,6 @@ RUN pnpm run build
 # Stage 1, based on Nginx, to have only the compiled app, ready for production with Nginx
 FROM nginx:1.15
 
-COPY --from=build-stage /next-client/out/ /usr/share/nginx/next-client
+COPY --from=build-stage /vitepress-docs/docs/.vitepress/dist/ /usr/share/nginx/vitepress-docs
 
-COPY ./nginx.conf /etc/nginx/conf.d/next-client.conf
+COPY ./nginx.conf /etc/nginx/extra-conf.d/vitepress-docs.conf
