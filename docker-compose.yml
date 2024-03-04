@@ -28,22 +28,22 @@ services:
       - SERVER_NAME=${DOMAIN?Variable not set}
       - SERVER_HOST=https://${DOMAIN?Variable not set}
       # Allow explicit env var override for tests
-      - SMTP_HOST=${SMTP_HOST}
+      # - SMTP_HOST=${SMTP_HOST}
     build:
       context: ./backend/fastapi_project
-      dockerfile: fastbackend.dockerfile
+      dockerfile: Dockerfile
       args:
         INSTALL_DEV: ${INSTALL_DEV-false}
    
   # celeryworker:
   #   image: '${DOCKER_IMAGE_CELERYWORKER?Variable not set}:${TAG-latest}'
  
-  frontend-client:
-    image: '${DOCKER_IMAGE_FRONTEND_CLIENT?Variable not set}:${TAG-latest}'
-    build:
-      context: ./health-grow-client
-      args:
-        FRONTEND_ENV: ${FRONTEND_ENV-production}
+  # frontend-client:
+  #   image: '${DOCKER_IMAGE_FRONTEND_CLIENT?Variable not set}:${TAG-latest}'
+  #   build:
+  #     context: ./health-grow-client
+  #     args:
+  #       FRONTEND_ENV: ${FRONTEND_ENV-production}
  
   # frontend-dashboard:
   #   image: '${DOCKER_IMAGE_NEW_FRONTEND?Variable not set}:${TAG-latest}'

@@ -21,15 +21,5 @@ RUN bash -c "if [ $INSTALL_DEV == 'true' ] ; then poetry install --no-root ; els
 ARG INSTALL_JUPYTER=false
 RUN bash -c "if [ $INSTALL_JUPYTER == 'true' ] ; then pip install jupyterlab ; fi"
 
-ENV C_FORCE_ROOT=1
-
 COPY ./fastapi_project /fastapi_project
-WORKDIR /fastapi_project
-
 ENV PYTHONPATH=/fastapi_project
-
-COPY ./fastapi_project/worker-start.sh /worker-start.sh
-
-RUN chmod +x /worker-start.sh
-
-CMD ["bash", "/worker-start.sh"]
