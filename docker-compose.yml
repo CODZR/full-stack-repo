@@ -50,14 +50,14 @@ services:
   # frontend-client:
   #   image: '${DOCKER_IMAGE_FRONTEND_CLIENT?Variable not set}:${TAG-latest}'
   #   build:
-  #     context: ./health-grow-client
+  #     context: ./next-client
   #     args:
   #       FRONTEND_ENV: ${FRONTEND_ENV-production}
  
   # frontend-dashboard:
   #   image: '${DOCKER_IMAGE_NEW_FRONTEND?Variable not set}:${TAG-latest}'
   #   build:
-  #     context: ./frontend/health-grow-dashboard
+  #     context: ./frontend/react-dashboard
   #     labels:
   #       - traefik.enable=true
   #       - traefik.constraint-label-stack=${TRAEFIK_TAG?Variable not set}

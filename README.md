@@ -23,8 +23,8 @@ backend
 ├─ pyproject.toml                       # python package 配置（poetry）
 ├─ poetry.lock                          # poetry package版本锁定
 frontend
-├─ health-grow-client                   # 服务端渲染 SSR（next，webpack）
+├─ next-client                   # 服务端渲染 SSR（next，webpack）
 │ ├─ ...
-├─ health-grow-dashboard                # 单页面 SPA（react，vite）
+├─ react-dashboard                # 单页面 SPA（react，vite）
 │ ├─ ...
 ```

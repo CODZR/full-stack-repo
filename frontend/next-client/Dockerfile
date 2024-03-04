@@ -1,13 +1,13 @@
 # Stage 0, "build-stage", based on Node.js, to build and compile the frontend
 FROM node:18.12.1 as build-stage
 
-WORKDIR /health-grow-client
+WORKDIR /next-client
 
-COPY package*.json /health-grow-client/
+COPY package*.json /next-client/
 
 RUN pnpm install
 
-COPY ./ /health-grow-client/
+COPY ./ /next-client/
 
 ARG FRONTEND_ENV=production
 
@@ -24,7 +24,7 @@ RUN pnpm run build
 # Stage 1, based on Nginx, to have only the compiled app, ready for production with Nginx
 FROM nginx:1.15
 
-COPY --from=build-stage /health-grow-client/dist/ /usr/share/nginx/html
+COPY --from=build-stage /next-client/dist/ /usr/share/nginx/html
 
 COPY ./nginx.conf /etc/nginx/conf.d/default.conf
 COPY ./nginx-backend-not-found.conf /etc/nginx/extra-conf.d/backend-not-found.conf

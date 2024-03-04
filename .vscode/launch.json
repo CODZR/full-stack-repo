@@ -25,7 +25,7 @@
       "request": "launch",
       "name": "Debug Frontend: Launch Chrome against http://localhost:3000",
       "url": "http://localhost:3000",
-      "webRoot": "${workspaceFolder}/frontend/health-grow-client"
+      "webRoot": "${workspaceFolder}/frontend/next-client"
     },
   ]
 }

@@ -1,11 +1,10 @@
 version: "3.3"
 services:
-
   # proxy:
   #   ports:
   #     - "80:80"
   #     - "8090:8080"
- 
+
   db:
     ports:
       - "5432:5432"
@@ -43,10 +42,10 @@ services:
   # celeryworker:
   #   volumes:
   #     - ./fastbackend/:/app
- 
+
   # frontend-client:
   #   build:
-  #     context: ./frontend/health-grow-client
+  #     context: ./frontend/next-client
   #     args:
   #       FRONTEND_ENV: dev
 
