@@ -2,6 +2,12 @@ from typing import List
 from fastapi import APIRouter, HTTPException, Response, status
 from fastapi.params import Depends
 from sqlalchemy.orm import Session
+from app.schemas.user import (
+    UserDetails,
+    UserItem,
+    UserItems,
+    UserUpdate,
+)
 from app.utils.security import get_password_hash
 
 from core.logger import logger
@@ -15,12 +21,10 @@ user_router = APIRouter(tags=["User"])
 user_crud = CRUDBase(model=models.User)
 
 
-@user_router.get("/users")
-def list_users(
-    page: int = 1, limit: int = 10, db: Session = Depends(get_db)
-) -> List[schemas.UserList]:
+@user_router.get("/users", response_model=UserItems)
+def list_users(page: int = 1, limit: int = 10, db: Session = Depends(get_db)):
     db_users = user_crud.list_multi(db=db, page=int(page), limit=(limit))
-    return db_users
+    return UserItems(items=db_users)
 
 
 @user_router.post("/users", response_model=schemas.UserDetails)
@@ -58,31 +62,36 @@ def create_user(data: schemas.UserCreateRequest, db: Session = Depends(get_db)):
     return user_dict
 
 
-@user_router.get("/user/{user_id}")
-def find_user(user_id: int, db: Session = Depends(get_db)) -> schemas.UserDetails:
+@user_router.get("/user/search", response_model=UserItem)
+def search_user(zi: str, db: Session = Depends(get_db)) -> UserDetails:
+    db_user = user_crud.get_by_field(db, "zi", zi)
+    return UserItem(item=db_user)
+
+
+@user_router.get("/user/{user_id}", response_model=UserItem)
+def find_user(user_id: int, db: Session = Depends(get_db)):
     db_user = user_crud.get(db, user_id)
-    return db_user
+    return UserItem(item=db_user)
 
 
-@user_router.put("/user/{user_id}", response_model=schemas.UserUpdate)
+@user_router.put("/user/{user_id}", response_model=UserItem)
 def update_user(
     user_id: int,
-    updated_user: schemas.UserUpdate,
+    updated_user: UserUpdate,
     db: Session = Depends(get_db),
     current_user=Depends(get_current_user),
 ):
     updated_user.model_dump()
     user = user_crud.update(db=db, obj_id=user_id, obj_in=updated_user)
-    return user
+
+    return UserItem(item=user)
 
 
-@user_router.delete(
-    "/user/{user_id}", status_code=status.HTTP_204_NO_CONTENT, response_class=Response
-)
+@user_router.delete("/user/{user_id}", status_code=status.HTTP_204_NO_CONTENT)
 def delete_user(
     user_id: int,
     db: Session = Depends(get_db),
     current_user=Depends(get_current_user),
 ):
-    user = user_crud.delete(db, user_id)
-    return user
+    user_crud.delete(db, user_id)
+    return ""

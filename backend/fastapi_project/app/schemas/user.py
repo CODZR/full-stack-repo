@@ -1,5 +1,5 @@
 from pydantic import BaseModel, EmailStr, UUID4
-from typing import Optional
+from typing import List, Optional
 
 from app.schemas.base import IDSchema, TimestampSchema
 
@@ -58,3 +58,11 @@ class UserList(BaseModel):
 
     class Config:
         from_attributes = True
+
+
+class UserItems(BaseModel):
+    items: List[UserList]
+
+
+class UserItem(BaseModel):
+    item: UserDetails

@@ -1,4 +1,4 @@
-from typing import Optional, Text
+from typing import List, Optional, Text
 
 from pydantic import UUID4, BaseModel
 
@@ -32,3 +32,11 @@ class FaqUpdate(FaqBasic):
     class Config:
         extra = "forbid"
         from_attributes = True
+
+
+class FaqItems(BaseModel):
+    items: List[FaqList]
+
+
+class FaqItem(BaseModel):
+    item: FaqDetails
