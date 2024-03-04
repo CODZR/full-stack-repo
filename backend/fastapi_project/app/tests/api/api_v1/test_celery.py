@@ -2,7 +2,7 @@ from typing import Dict
 
 from fastapi.testclient import TestClient
 
-from core.config import settings
+from app.core.config import settings
 
 
 def test_celery_worker_test(

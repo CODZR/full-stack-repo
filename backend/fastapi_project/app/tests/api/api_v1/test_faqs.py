@@ -1,7 +1,7 @@
 from fastapi.testclient import TestClient
 from sqlalchemy.orm import Session
 
-from core.config import settings
+from app.core.config import settings
 from app.tests.utils.faq import create_random_faq
 
 

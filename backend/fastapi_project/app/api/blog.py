@@ -3,7 +3,7 @@ from fastapi import APIRouter, HTTPException, Response, status
 from fastapi.params import Depends
 from sqlalchemy.orm import Session
 
-from core.logger import logger
+from app.core.logger import logger
 from app import models, schemas
 from app.db.base import get_db
 from app.db.crud import CRUDBase

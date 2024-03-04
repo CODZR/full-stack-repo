@@ -1,0 +1,57 @@
+version: "3.3"
+services:
+
+  # proxy:
+  #   ports:
+  #     - "80:80"
+  #     - "8090:8080"
+ 
+  db:
+    ports:
+      - "5432:5432"
+
+  # pgadmin:
+  #   ports:
+  #     - "5050:5050"
+
+  # queue:
+  #   ports:
+  #     - "5671:5671"
+  #     - "5672:5672"
+  #     - "15672:15672"
+  #     - "15671:15671"
+
+  # flower:
+  #   ports:
+  #     - "5555:5555"
+
+  fast-backend:
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./backend/fastapi_project/:/app
+    environment:
+      - SERVER_HOST=http://${DOMAIN?Variable not set}
+    build:
+      context: ./fastbackend
+      dockerfile: fastbackend.dockerfile
+      args:
+        INSTALL_DEV: ${INSTALL_DEV-true}
+    # command: sleep infinity  # Infinite loop to keep container alive doing nothing
+    command: /start-reload.sh
+
+  # celeryworker:
+  #   volumes:
+  #     - ./fastbackend/:/app
+ 
+  frontend-client:
+    build:
+      context: ./frontend/health-grow-client
+      args:
+        FRONTEND_ENV: dev
+
+  # frontend-dashboard:
+  #   build:
+  #     context: ./frontend
+  #     args:
+  #       FRONTEND_ENV: dev

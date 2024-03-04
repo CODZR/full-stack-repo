@@ -10,7 +10,7 @@ from app.schemas.hanzi import (
     HanziUpdate,
 )
 
-from core.logger import logger
+from app.core.logger import logger
 from app import models, schemas
 from app.db.base import get_db
 from app.db.crud import CRUDBase

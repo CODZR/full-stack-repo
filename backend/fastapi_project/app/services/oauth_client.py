@@ -10,7 +10,7 @@ from fastapi.security.utils import get_authorization_scheme_param
 from starlette.requests import Request
 from starlette.status import HTTP_401_UNAUTHORIZED
 
-from core.config import settings
+from app.core.config import settings
 
 with warnings.catch_warnings():
     warnings.filterwarnings("ignore", message="int_from_bytes is deprecated")
@@ -30,7 +30,9 @@ def create_client_access_token(
     return encoded_jwt
 
 
-def get_subject_from_token(token: str =  Header(alias='Authorization')):#, secret_key: str='secret'):
+def get_subject_from_token(
+    token: str = Header(alias="Authorization"),
+):  # , secret_key: str='secret'):
     try:
         payload = jwt.decode(token, settings.OAUTH_CLIENT_SECRET, algorithms=["HS256"])
         sub = payload["sub"]
@@ -43,7 +45,7 @@ def get_subject_from_token(token: str =  Header(alias='Authorization')):#, secre
 class OAuth2ClientCredentialsRequestForm:
     def __init__(
         self,
-        grant_type: str = 'client_credentials', #Form(None, regex="^(client_credentials)$"),
+        grant_type: str = "client_credentials",  # Form(None, regex="^(client_credentials)$"),
         scope: str = Form(""),
         client_id: Optional[str] = Form(None),
         client_secret: Optional[str] = Form(None),

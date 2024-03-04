@@ -8,8 +8,8 @@ from typing import Optional, Union, Any
 from app.db.base import get_db
 from app.db.crud import CRUDBase
 from app import models
-from core.config import settings
-from core.logger import logger
+from app.core.config import settings
+from app.core.logger import logger
 from app.schemas.auth import TokenPayload
 from app.services.oauth_client import OAuth2ClientCredentials
 

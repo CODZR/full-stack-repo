@@ -9,7 +9,7 @@ from sqlalchemy import (
     Text,
     func,
 )
-from core.config import Settings
+from app.core.config import Settings
 
 
 from app.db.base_class import DeclarativeBase, IDMixin, TimestampMixin

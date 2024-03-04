@@ -10,7 +10,7 @@ from app.schemas.user import (
 )
 from app.utils.security import get_password_hash
 
-from core.logger import logger
+from app.core.logger import logger
 from app import models, schemas
 from app.db.base import get_db
 from app.db.crud import CRUDBase

@@ -1,0 +1,64 @@
+version: "3.3"
+services:
+
+  # proxy:
+  #   image: traefik:v2.2
+  db:
+    image: postgres:14
+    volumes:
+      - app-db-data:/var/lib/postgresql/data/pgdata
+    env_file:
+      - .env
+    environment:
+      - PGDATA=/var/lib/postgresql/data/pgdata
+
+  # pgadmin:
+  #   image: dpage/pgadmin4
+  # queue:
+  #   image: rabbitmq:3
+  # flower:
+  #   image: mher/flower:0.9.7
+  fast-backend:
+    image: '${DOCKER_IMAGE_FAST_BACKEND?Variable not set}:${TAG-latest}'
+    depends_on:
+      - db
+    env_file:
+      - .env
+    environment:
+      - SERVER_NAME=${DOMAIN?Variable not set}
+      - SERVER_HOST=https://${DOMAIN?Variable not set}
+      # Allow explicit env var override for tests
+      - SMTP_HOST=${SMTP_HOST}
+    build:
+      context: ./backend/fastapi_project
+      dockerfile: fastbackend.dockerfile
+      args:
+        INSTALL_DEV: ${INSTALL_DEV-false}
+   
+  # celeryworker:
+  #   image: '${DOCKER_IMAGE_CELERYWORKER?Variable not set}:${TAG-latest}'
+ 
+  frontend-client:
+    image: '${DOCKER_IMAGE_FRONTEND_CLIENT?Variable not set}:${TAG-latest}'
+    build:
+      context: ./health-grow-client
+      args:
+        FRONTEND_ENV: ${FRONTEND_ENV-production}
+ 
+  # frontend-dashboard:
+  #   image: '${DOCKER_IMAGE_NEW_FRONTEND?Variable not set}:${TAG-latest}'
+  #   build:
+  #     context: ./frontend/health-grow-dashboard
+  #     labels:
+  #       - traefik.enable=true
+  #       - traefik.constraint-label-stack=${TRAEFIK_TAG?Variable not set}
+  #       - traefik.http.routers.${STACK_NAME?Variable not set}-new-frontend-http.rule=PathPrefix(`/`)
+  #       - traefik.http.services.${STACK_NAME?Variable not set}-new-frontend.loadbalancer.server.port=80
+
+volumes:
+  app-db-data:
+
+# networks:
+#   traefik-public:
+#     # Allow setting it to false for testing
+#     external: ${TRAEFIK_PUBLIC_NETWORK_IS_EXTERNAL-true}
