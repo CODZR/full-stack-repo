@@ -10,9 +10,9 @@ services:
     ports:
       - "5432:5432"
 
-  # pgadmin:
-  #   ports:
-  #     - "5050:5050"
+  pgadmin:
+    ports:
+      - "5050:5050"
 
   # queue:
   #   ports:
@@ -27,7 +27,7 @@ services:
 
   fast-backend:
     ports:
-      - "8888:8888"
+      - "7002:7002"
     volumes:
       - ./backend/fastapi_project/:/app
     environment:
@@ -38,7 +38,7 @@ services:
       args:
         INSTALL_DEV: ${INSTALL_DEV-true}
     # command: sleep infinity  # Infinite loop to keep container alive doing nothing
-    command: /start-reload.sh
+    # command: /start-reload.sh
 
   # celeryworker:
   #   volumes:

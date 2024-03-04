@@ -19,4 +19,4 @@ ENV PYTHONPATH=/fastapi_project
 
 COPY ./app /fastapi_project/app
 
-CMD ["./scripts/start-dev.sh"]
+CMD ["./scripts/start-prod.sh"]

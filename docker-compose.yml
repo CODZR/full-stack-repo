@@ -12,12 +12,21 @@ services:
     environment:
       - PGDATA=/var/lib/postgresql/data/pgdata
 
-  # pgadmin:
-  #   image: dpage/pgadmin4
+  pgadmin:
+    image: dpage/pgadmin4
+    depends_on:
+      - db
+    environment:
+      PGADMIN_DEFAULT_EMAIL: andrew@vibe.us
+      PGADMIN_DEFAULT_PASSWORD: admin123
+    env_file:
+      - .env
+
   # queue:
   #   image: rabbitmq:3
   # flower:
   #   image: mher/flower:0.9.7
+  
   fast-backend:
     image: '${DOCKER_IMAGE_FAST_BACKEND?Variable not set}:${TAG-latest}'
     depends_on:
