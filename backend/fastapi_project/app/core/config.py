@@ -12,10 +12,10 @@ if not os.getenv("POSTGRES_PASSWORD"):
 
 PSQL_DATABASE_URL = URL(
     drivername="postgresql",
-    host="db",
-    port=5432,
-    database=os.environ.get("POSTGRES_DATABASE", "vibe_dbts"),
-    username=os.environ.get("POSTGRES_USER", "codzr"),
+    host=os.environ.get("POSTGRES_HOST"),
+    port=os.environ.get("POSTGRES_PORT"),
+    database=os.environ.get("POSTGRES_DB"),
+    username=os.environ.get("POSTGRES_USER"),
     password=os.environ.get("POSTGRES_PASSWORD"),
     query={},
 )

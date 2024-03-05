@@ -1,16 +1,14 @@
 [tool.poetry]
-name = "app"
+name = "fastapi_project"
 version = "0.1.0"
 description = ""
 authors = ["Admin <admin@example.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.10"
-uvicorn = "^0.24.0.post1"
 fastapi = "^0.104.1"
 python-multipart = "^0.0.6"
 email-validator = "^2.1.0.post1"
-celery = "^5.3.5"
 passlib = {extras = ["bcrypt"], version = "^1.6.5"}
 tenacity = "^8.2.3"
 pydantic = "^2.5.3"
@@ -25,6 +23,8 @@ casbin-sqlalchemy-adapter = "^0.5.2"
 apscheduler = "^3.10.4"
 itsdangerous = "^2.1.2"
 fastapi-mail = "^1.4.1"
+python-json-logger = "^2.0.7"
+uvicorn = "^0.24.0.post1"
 
 [tool.poetry.group.dev.dependencies]
 mypy = "^1.7.0"

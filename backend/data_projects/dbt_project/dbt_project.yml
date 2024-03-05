@@ -1,9 +1,9 @@
-name: 'dbt_project'
+name: "dbt_project"
 
 config-version: 2
-version: '0.1'
+version: "0.1"
 
-profile: 'vibe_cdp_profile'
+profile: "vibe_cdp_profile"
 
 model-paths: ["models"]
 seed-paths: ["seeds"]
@@ -13,9 +13,9 @@ macro-paths: ["macros"]
 
 target-path: "target"
 clean-targets:
-    - "target"
-    - "dbt_modules"
-    - "logs"
+  - "target"
+  - "dbt_modules"
+  - "logs"
 
 require-dbt-version: [">=1.0.0", "<2.0.0"]
 
@@ -23,12 +23,11 @@ models:
   dbt_project:
     materialized: table
     +persist_docs:
-      relation: true 
+      relation: true
       columns: true
     staging:
       materialized: table
-      
+
 seeds:
   dbt_project:
     schema: raw
-    

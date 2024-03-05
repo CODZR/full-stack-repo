@@ -12,15 +12,15 @@ services:
     environment:
       - PGDATA=/var/lib/postgresql/data/pgdata
 
-  pgadmin:
-    image: dpage/pgadmin4
-    depends_on:
-      - db
-    environment:
-      PGADMIN_DEFAULT_EMAIL: andrew@vibe.us
-      PGADMIN_DEFAULT_PASSWORD: admin123
-    env_file:
-      - .env
+  # pgadmin:
+  #   image: dpage/pgadmin4
+  #   depends_on:
+  #     - db
+  #   environment:
+  #     PGADMIN_DEFAULT_EMAIL: andrew@vibe.us
+  #     PGADMIN_DEFAULT_PASSWORD: admin123
+  #   env_file:
+  #     - .env
 
   # queue:
   #   image: rabbitmq:3
@@ -54,12 +54,12 @@ services:
       args:
         FRONTEND_ENV: ${FRONTEND_ENV-production}
 
-  frontend-client:
-    image: 'frontend-client:${TAG-latest}'
-    build:
-      context: ./frontend/next-client
-      args:
-        FRONTEND_ENV: ${FRONTEND_ENV-production}
+  # frontend-client:
+  #   image: 'frontend-client:${TAG-latest}'
+  #   build:
+  #     context: ./frontend/next-client
+  #     args:
+  #       FRONTEND_ENV: ${FRONTEND_ENV-production}
  
   # frontend-dashboard:
   #   image: 'frontend-dashboard:${TAG-latest}'

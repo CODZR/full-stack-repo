@@ -1,25 +1,25 @@
 FROM python:3.10
 
-WORKDIR /fastapi_project/
+RUN mkdir /fastapi_project
+WORKDIR /fastapi_project
 
 
-RUN apt-get update && \
-    apt-get install -y gcc libpq-dev && \
-    apt clean && \
-    rm -rf /var/cache/apt/*
+# Install Poetry
+RUN curl -sSL https://install.python-poetry.org | POETRY_HOME=/opt/poetry python && \
+    cd /usr/local/bin && \
+    ln -s /opt/poetry/bin/poetry && \
+    poetry config virtualenvs.create true
 
-ENV PYTHONDONTWRITEBYTECODE=1 \
-    PYTHONUNBUFFERED=1 \
-    PYTHONIOENCODING=utf-8
+COPY ./pyproject.toml ./poetry.lock* /fastapi_project/
+# Allow installing dev dependencies to run tests
+RUN poetry install --only main 
 
-COPY requirements/ /tmp/requirements
+COPY ./app /fastapi_project/app
+COPY ./scripts /fastapi_project/scripts
+COPY ./gunicorn /fastapi_project/gunicorn
 
-RUN pip install -U pip && \
-    pip install --no-cache-dir -r /tmp/requirements/base.txt
 
-
-COPY . /fastapi_project
-
-RUN chmod +x /fastapi_project/scripts/*
-
-CMD ["./scripts/start-prod.sh"]
+RUN poetry run uvicorn app.main:app --port=7001 --reload
+# 启动Gunicorn
+# RUN chmod +x /fastapi_project/scripts/*
+# CMD ["./scripts/start-local.sh"]

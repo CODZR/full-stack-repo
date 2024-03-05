@@ -1,4 +1,3 @@
-# import pandas as pd
 # import plotly.express as px
 from dagster import  file_relative_path
 from dagster_dbt import load_assets_from_dbt_project
