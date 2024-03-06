@@ -9,10 +9,10 @@ services:
     ports:
       - "5432:5432"
 
-  # pgadmin:
-  #   ports:
-  #     # 暴露的端口:运行的端口
-  #     - "5050:5050"
+  pgadmin:
+    ports:
+      # 暴露的端口:运行的端口
+      - "5050:5050"
 
   # queue:
   #   ports:

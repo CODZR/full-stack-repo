@@ -17,7 +17,7 @@
       "jinja": true,
       "envFile": "${workspaceFolder}/backend/fastapi_project/.venv",
       "env": {
-        "POSTGRES_SERVER": "localhost"
+        "POSTGRES_HOST": "localhost"
       }
     },
     {

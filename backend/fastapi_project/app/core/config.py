@@ -19,6 +19,7 @@ PSQL_DATABASE_URL = URL(
     password=os.environ.get("POSTGRES_PASSWORD"),
     query={},
 )
+print(f"row: 13 - col: 1 PSQL_DATABASE_URL -> {PSQL_DATABASE_URL}")
 
 
 class Settings(BaseSettings):

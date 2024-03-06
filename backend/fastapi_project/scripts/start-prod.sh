@@ -2,36 +2,20 @@
 
 set -e
 
-HOST=${HOST:-"0.0.0.0"}
-PORT=${PORT:-"7001"}
-BIND=${BIND:-"$HOST:$PORT"}
-WORKERS_PER_CORE=${WORKERS_PER_CORE:-"1"}
-MAX_WORKERS=${MAX_WORKERS}
-WEB_CONCURRENCY=${WEB_CONCURRENCY}
-GRACEFUL_TIMEOUT=${GRACEFUL_TIMEOUT:-"120"}
-TIMEOUT=${TIMEOUT:-"120"}
-KEEP_ALIVE=${KEEP_ALIVE:-"5"}
-LOG_LEVEL=${LOG_LEVEL:-"info"}
-
-# Calculate web concurrency
-CORES=$(nproc)
-DEFAULT_WEB_CONCURRENCY=$((WORKERS_PER_CORE * CORES + 1))
-WEB_CONCURRENCY=${WEB_CONCURRENCY:-$DEFAULT_WEB_CONCURRENCY}
-if [ -n "$MAX_WORKERS" ]; then
-    WEB_CONCURRENCY=$(($WEB_CONCURRENCY < $MAX_WORKERS ? $WEB_CONCURRENCY : $MAX_WORKERS))
-fi
-
 # Gunicorn配置变量
-loglevel=$LOG_LEVEL
-workers=$WEB_CONCURRENCY
-bind=$BIND
-# worker_tmp_dir="/dev/shm"
-worker_tmp_dir="./shm"
-graceful_timeout=$GRACEFUL_TIMEOUT
-timeout=$TIMEOUT
-keepalive=$KEEP_ALIVE
-logconfig=${LOG_CONFIG:-"./logging_prod.ini"}
+MODULE_NAME=${MODULE_NAME:-"app.main"}
+VARIABLE_NAME=${VARIABLE_NAME:-"app"}
+export APP_MODULE=${APP_MODULE:-"$MODULE_NAME:$VARIABLE_NAME"}
+HOST=${HOST:-"0.0.0.0"}
+export PORT=${PORT:-"7001"}
+BIND=${BIND:-"$HOST:$PORT"}
+LOG_LEVEL=${LOG_LEVEL:-"info"}
+LOG_CONFIG=${LOG_CONFIG:-"./logging_prod.ini"}
+WEB_CONCURRENCY=${WEB_CONCURRENCY:-"2"}
+WORKER_CLASS=${WORKER_CLASS:-"uvicorn.workers.UvicornWorker"}
 
-echo "Local Server started"
+
 # Start Gunicorn
-exec gunicorn -w $workers --bind $bind --worker-tmp-dir $worker_tmp_dir --graceful-timeout $graceful_timeout --timeout $timeout --keep-alive $keepalive --log-level $loglevel --log-config $logconfig
+echo gunicorn --forwarded-allow-ips "*" -k "$WORKER_CLASS" -w $WEB_CONCURRENCY --bind $BIND --log-level $LOG_LEVEL --log-config $LOG_CONFIG "$APP_MODULE"
+exec gunicorn --forwarded-allow-ips "*" -k "$WORKER_CLASS" -w $WEB_CONCURRENCY --bind $BIND --log-level $LOG_LEVEL --log-config $LOG_CONFIG "$APP_MODULE"
+

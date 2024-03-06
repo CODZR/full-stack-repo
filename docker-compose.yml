@@ -1,4 +1,5 @@
 version: "3.3"
+
 services:
 
   # proxy:
@@ -12,15 +13,15 @@ services:
     environment:
       - PGDATA=/var/lib/postgresql/data/pgdata
 
-  # pgadmin:
-  #   image: dpage/pgadmin4
-  #   depends_on:
-  #     - db
-  #   environment:
-  #     PGADMIN_DEFAULT_EMAIL: andrew@vibe.us
-  #     PGADMIN_DEFAULT_PASSWORD: admin123
-  #   env_file:
-  #     - .env
+  pgadmin:
+    image: dpage/pgadmin4
+    depends_on:
+      - db
+    environment:
+      PGADMIN_DEFAULT_EMAIL: andrew@vibe.us
+      PGADMIN_DEFAULT_PASSWORD: admin123
+    env_file:
+      - .env
 
   # queue:
   #   image: rabbitmq:3
@@ -32,12 +33,12 @@ services:
     depends_on:
       - db
     env_file:
-      - .env
+      - ./.env
     environment:
-      - SERVER_NAME=${DOMAIN?Variable not set}
-      - SERVER_HOST=https://${DOMAIN?Variable not set}
-      # Allow explicit env var override for tests
-      # - SMTP_HOST=${SMTP_HOST}
+      - POSTGRES_HOST=${POSTGRES_HOST}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
     build:
       context: ./backend/fastapi_project
       dockerfile: Dockerfile

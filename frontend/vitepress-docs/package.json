@@ -4,7 +4,7 @@
   "scripts": {
     "clean": "rimraf node_modules dist",
     "dev": "pnpm lint && vitepress dev docs --port=3000",
-    "build": "pnpm lint && vitepress build docs",
+    "build": "vitepress build docs",
     "serve": "pnpm lint && pnpm build && vitepress serve docs",
     "lint": "eslint --fix --ext .js,.ts,.vue ./src"
   },
