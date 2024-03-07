@@ -17,9 +17,6 @@ services:
     image: dpage/pgadmin4:${TAG-latest}
     depends_on:
       - db
-    environment:
-      PGADMIN_DEFAULT_EMAIL: andrew@vibe.us
-      PGADMIN_DEFAULT_PASSWORD: admin123
     env_file:
       - .env
 
@@ -28,14 +25,14 @@ services:
   # flower:
   #   image: mher/flower:0.9.7
   
-  # fastapi-project:
+  # backend-fastapi-project:
   #   image: 'fastapi-project:${TAG-latest}'
   #   depends_on:
   #     - db
   #   env_file:
   #     - ./.env
   #   environment:
-  #     - POSTGRES_HOST=${POSTGRES_HOST}
+  #     - POSTGRES_SERVER=${POSTGRES_SERVER}
   #     - POSTGRES_USER=${POSTGRES_USER}
   #     - POSTGRES_DB=${POSTGRES_DB}
   #     - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
@@ -48,21 +45,21 @@ services:
   # celeryworker:
   #   image: '${DOCKER_IMAGE_CELERYWORKER?Variable not set}:${TAG-latest}'
  
-  vitepress-docs:
+  frontend-vitepress-docs:
     image: 'vitepress-docs:${TAG-latest}'
     build:
       context: ./frontend/vitepress-docs
       args:
         FRONTEND_ENV: ${FRONTEND_ENV-production}
 
-  next-client:
+  frontend-next-client:
     image: 'next-client:${TAG-latest}'
     build:
       context: ./frontend/next-client
       args:
         FRONTEND_ENV: ${FRONTEND_ENV-production}
  
-  # react-dashboard:
+  # frontend-react-dashboard:
   #   image: 'react-dashboard:${TAG-latest}'
   #   build:
   #     context: ./frontend/react-dashboard

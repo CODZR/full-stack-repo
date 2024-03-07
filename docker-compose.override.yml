@@ -7,7 +7,7 @@ services:
 
   db:
     ports:
-      - "5432:5432"
+      - "5436:5432"
 
   pgadmin:
     ports:
@@ -25,7 +25,7 @@ services:
   #   ports:
   #     - "5555:5555"
 
-  # fastapi-project:
+  # backend-fastapi-project:
   #   ports:
   #     - "7001:7001"
   #   volumes:
@@ -44,7 +44,7 @@ services:
   #   volumes:
   #     - ./fastbackend/:/app
 
-  vitepress-docs:
+  frontend-vitepress-docs:
     ports:
       - "3010:80"
     build:
@@ -52,7 +52,7 @@ services:
       args:
         FRONTEND_ENV: production
 
-  next-client:
+  frontend-next-client:
     ports:
       - "3011:80"
     build:
@@ -60,7 +60,7 @@ services:
       args:
         FRONTEND_ENV: production
 
-  # react-dashboard:
+  # frontend-react-dashboard:
   #   build:
   #     context: ./frontend
   #     args:
