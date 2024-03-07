@@ -1,6 +1,6 @@
-import { resolve } from 'path';
-import { createVitePlugins } from '../../vite-config/plugin';
-import { nav, sidebar, footer } from './configs';
+import { resolve } from "path";
+import { createVitePlugins } from "../../vite-config/plugin";
+import { nav, sidebar, footer } from "./configs";
 
 function pathResolve(dir) {
   return resolve(__dirname, ".", dir);
@@ -8,19 +8,19 @@ function pathResolve(dir) {
 
 async function config() {
   // const base = await getBase()
-  const base = process.env.BASE || '/'
+  const base = process.env.BASE || "/";
 
   return {
     // ...base,
     base: base,
 
     vite: {
-      base: '/',
+      base: "/",
       // optimizeDeps: {
       //   include: ['element-plus'],
       // },
       ssr: {
-        noExternal: ['swiper'],
+        noExternal: ["swiper"],
       },
       plugins: createVitePlugins(),
       css: {
@@ -28,14 +28,14 @@ async function config() {
           //remove build charset warning
           plugins: [
             {
-              postcssPlugin: 'internal:charset-removal',
+              postcssPlugin: "internal:charset-removal",
               AtRule: {
                 charset: (atRule) => {
-                  if (atRule.name === 'charset') atRule.remove();
-                }
-              }
-            }
-          ]
+                  if (atRule.name === "charset") atRule.remove();
+                },
+              },
+            },
+          ],
         },
         // preprocessorOptions: {
         //   scss: { //define global scss variable
@@ -45,9 +45,9 @@ async function config() {
         // }
       },
       build: {
-        target: 'modules',
-        assetsDir: 'assets', // 指定生成静态资源的存放路径
-        minify: 'terser', // 混淆器，terser构建后文件体积更小
+        target: "modules",
+        assetsDir: "assets", // 指定生成静态资源的存放路径
+        minify: "terser", // 混淆器，terser构建后文件体积更小
         terserOptions: {
           compress: {
             keep_infinity: true,
@@ -60,23 +60,23 @@ async function config() {
       },
       resolve: {
         alias: [
-          { find: '@', replacement: pathResolve('../../src') },
-          { find: '@vcomp', replacement: pathResolve('../../src/components') },
-          { find: '@img', replacement: pathResolve('../../src/assets/img') },
-          { find: '@css', replacement: pathResolve('../../src/assets/css') },
-          { find: '@js', replacement: pathResolve('../../src/assets/js') }
-        ]
+          { find: "@", replacement: pathResolve("../../src") },
+          { find: "@vcomp", replacement: pathResolve("../../src/components") },
+          { find: "@img", replacement: pathResolve("../../src/assets/img") },
+          { find: "@css", replacement: pathResolve("../../src/assets/css") },
+          { find: "@js", replacement: pathResolve("../../src/assets/js") },
+        ],
       },
       hot: true,
       hotOnly: false,
     },
 
-    lang: 'en-US',
-    title: 'Health',
-    description: 'Health Website by codzr',
+    lang: "en-US",
+    title: "Health",
+    description: "Health Website by codzr",
 
     themeConfig: {
-      logoName: 'vibe',
+      logoName: "vibe",
       docsDir: "/",
 
       nav,
@@ -84,8 +84,8 @@ async function config() {
       sidebar,
 
       footer,
-    }
-  }
+    },
+  };
 }
 
 export default config();

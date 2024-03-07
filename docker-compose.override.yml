@@ -52,13 +52,13 @@ services:
       args:
         FRONTEND_ENV: dev
 
-  # frontend-client:
-  #   ports:
-  #     - "3011:80"
-  #   build:
-  #     context: ./frontend/next-client
-  #     args:
-  #       FRONTEND_ENV: dev
+  frontend-client:
+    ports:
+      - "3011:80"
+    build:
+      context: ./frontend/next-client
+      args:
+        FRONTEND_ENV: dev
 
   # frontend-dashboard:
   #   build:

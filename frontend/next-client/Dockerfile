@@ -3,28 +3,20 @@ FROM node:18.12.1 as build-stage
 
 WORKDIR /next-client
 
-COPY package*.json /next-client/
+COPY . /next-client
 
-RUN npm install pnpm -g
-RUN pnpm install
+RUN npm install pnpm -g && pnpm install && pnpm build
 
-COPY ./ /next-client/
 
 ARG FRONTEND_ENV=production
 
-ENV NEXT_APP_ENV=${FRONTEND_ENV}
-
 ENV NODE_OPTIONS="--openssl-legacy-provider"
-
-# Comment out the next line to disable tests
-# RUN pnpm run test:unit
-
-RUN pnpm run build
-
 
 # Stage 1, based on Nginx, to have only the compiled app, ready for production with Nginx
 FROM nginx:1.15
 
-COPY --from=build-stage /next-client/out/ /usr/share/nginx/html
+COPY --from=build-stage /next-client/dist/ /usr/share/nginx/html
 
 COPY ./nginx.conf /etc/nginx/conf.d/default.conf
+
+RUN rm -rf /next-client/node_modules

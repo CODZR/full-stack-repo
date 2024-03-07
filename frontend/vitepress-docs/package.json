@@ -6,7 +6,8 @@
     "dev": "pnpm lint && vitepress dev docs --port=3000",
     "build": "vitepress build docs",
     "serve": "pnpm lint && pnpm build && vitepress serve docs",
-    "lint": "eslint --fix --ext .js,.ts,.vue ./src"
+    "lint": "eslint --fix --ext .js,.ts,.vue ./src",
+    "rm": "rm"
   },
   "dependencies": {
     "@vue/compiler-sfc": "^3.2.37",

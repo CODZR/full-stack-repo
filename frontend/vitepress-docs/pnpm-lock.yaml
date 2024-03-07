@@ -16,7 +16,7 @@ dependencies:
     version: registry.npmmirror.com/axios@0.27.1
   gsap:
     specifier: ^3.11.1
-    version: registry.npmmirror.com/gsap@3.11.1
+    version: link:src/packages/gsap
   hammerjs:
     specifier: ^2.0.8
     version: registry.npmmirror.com/hammerjs@2.0.8
@@ -3357,12 +3357,6 @@ packages:
     dependencies:
       lodash: registry.npmmirror.com/lodash@4.17.21
     dev: true
-
-  registry.npmmirror.com/gsap@3.11.1:
-    resolution: {integrity: sha512-UKuJ0UPhntFHMwT6URFQ4cTQv88xc7Kd9Dhxt7qX9IPhC+d+/a5wKW5E5Vn33hZ53nBI1JfApcEbzKgXkcuPZw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/gsap/-/gsap-3.11.1.tgz}
-    name: gsap
-    version: 3.11.1
-    dev: false
 
   registry.npmmirror.com/hammerjs@2.0.8:
     resolution: {integrity: sha512-tSQXBXS/MWQOn/RKckawJ61vvsDpCom87JgxiYdGwHdOa0ht0vzUWDlfioofFCRU0L+6NGDt6XzbgoJvZkMeRQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/hammerjs/-/hammerjs-2.0.8.tgz}

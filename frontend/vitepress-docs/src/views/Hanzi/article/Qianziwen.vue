@@ -64,21 +64,18 @@ const closeSearchHanziDialog = () => {
 };
 </script>
 
-<style scoped>
-.body {
-  display: inline-flex;
-  max-width: calc(38px * 20);
-  flex-wrap: wrap;
-  .char {
-    margin: 0;
-    padding: 10px;
-    background-color: #f2f2f2;
-    border: 1px dashed #ccc;
-    line-height: 1;
-    cursor: pointer;
-    &.default-cursor {
-      cursor: default;
-    }
-  }
-}
+<style lang="sass" scoped>
+.body
+  display: inline-flex
+  max-width: calc(38px * 20)
+  flex-wrap: wrap
+  .char
+    margin: 0
+    padding: 10px
+    background-color: #f2f2f2
+    border: 1px dashed #ccc
+    line-height: 1
+    cursor: pointer
+    &.default-cursor
+      cursor: default
 </style>
