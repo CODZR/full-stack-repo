@@ -1,5 +1,7 @@
 FROM python:3.10
 
+ENV POSTGRES_SERVER=host.docker.internal
+
 WORKDIR /fastapi-project
 
 # Install Poetry
@@ -13,7 +15,6 @@ COPY ./ /fastapi-project
 # Allow installing dev dependencies to run tests
 RUN poetry install --only main 
 
-RUN poetry run gunicorn --forwarded-allow-ips "*" -k uvicorn.workers.UvicornWorker -w 2 --bind 0.0.0.0:7001 --log-level info --log-config ./logging_prod.ini app.main:app 
-# 启动Gunicorn
-# RUN chmod +x /fastapi-project/scripts/*
-# CMD ["./scripts/start-local.sh"]
+RUN poetry run gunicorn -c gunicorn.conf app.main:app
+# CMD ["poetry", "run", "gunicorn", "-c", "./gunicorn.conf", "app.main:app"]
+

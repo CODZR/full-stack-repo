@@ -6,7 +6,20 @@ Refactoring...
 
 本仓库将各个项目放在一起仅为了方便学习，**dev 请直接在对应目录下运行 vscode**
 
-### 二、文件资源目录 📚
+### 二、运行
+
+```
+# 持续运行
+docker compose -f docker-compose.yml -f docker-compose.override.yml up -d
+
+# 清空
+docker compose -f docker-compose.yml -f docker-compose.override.yml down
+
+# 只重新启动某个server，调整docker-compose.single.yml后运行
+docker compose -f docker-compose.single.yml up -d --build
+```
+
+### 三、文件资源目录 📚
 
 ```text
 backend
