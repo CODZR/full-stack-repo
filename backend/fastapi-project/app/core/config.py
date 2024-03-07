@@ -1,6 +1,6 @@
 import os
 from typing import Any, Dict, Optional, ClassVar
-from pydantic import ConfigDict, validator
+from pydantic import ConfigDict, PostgresDsn, validator
 from pydantic_settings import BaseSettings
 from sqlalchemy import URL
 
@@ -10,16 +10,14 @@ if not os.getenv("POSTGRES_PASSWORD"):
     load_dotenv()
 
 
-PSQL_DATABASE_URL = URL(
-    drivername="postgresql",
+PSQL_DATABASE_URL = PostgresDsn.build(
+    scheme="postgresql+psycopg2",
     host=os.environ.get("POSTGRES_SERVER"),
-    port=os.environ.get("POSTGRES_PORT"),
-    database=os.environ.get("POSTGRES_DB"),
+    port=int(os.environ.get("POSTGRES_PORT")),
+    path=os.environ.get("POSTGRES_DB"),
     username=os.environ.get("POSTGRES_USER"),
     password=os.environ.get("POSTGRES_PASSWORD"),
-    query={},
 )
-print(f"row: 13 - col: 1 PSQL_DATABASE_URL -> {PSQL_DATABASE_URL}")
 
 
 class Settings(BaseSettings):
