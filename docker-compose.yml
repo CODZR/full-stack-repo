@@ -20,18 +20,7 @@ services:
         max-size: "20m"
         max-file: "10"
 
-  pgadmin:
-    image: dpage/pgadmin4:${TAG-latest}
-    depends_on:
-      - db
-    env_file:
-      - .env
 
-  # queue:
-  #   image: rabbitmq:3
-  # flower:
-  #   image: mher/flower:0.9.7
-  
   backend-fastapi-project:
     image: 'backend-fastapi-project:${TAG-latest}'
     depends_on:
@@ -49,27 +38,41 @@ services:
       args:
         INSTALL_DEV: ${INSTALL_DEV-false}
    
-  # celeryworker:
-  #   image: '${DOCKER_IMAGE_CELERYWORKER?Variable not set}:${TAG-latest}'
+  # pgadmin:
+  #   image: dpage/pgadmin4:${TAG-latest}
+  #   depends_on:
+  #     - db
+  #   env_file:
+  #     - .env
  
-  frontend-vitepress-docs:
-    image: 'frontend-vitepress-docs:${TAG-latest}'
-    build:
-      context: ./frontend/vitepress-docs
-      args:
-        FRONTEND_ENV: ${FRONTEND_ENV-production}
+  # frontend-vitepress-docs:
+  #   image: 'frontend-vitepress-docs:${TAG-latest}'
+  #   build:
+  #     context: ./frontend/vitepress-docs
+  #     args:
+  #       FRONTEND_ENV: ${FRONTEND_ENV-production}
 
-  frontend-next-client:
-    image: 'frontend-next-client:${TAG-latest}'
-    build:
-      context: ./frontend/next-client
-      args:
-        FRONTEND_ENV: ${FRONTEND_ENV-production}
+  # frontend-next-client:
+  #   image: 'frontend-next-client:${TAG-latest}'
+  #   build:
+  #     context: ./frontend/next-client
+  #     args:
+  #       FRONTEND_ENV: ${FRONTEND_ENV-production}
  
   # frontend-react-dashboard:
   #   image: 'frontend-react-dashboard:${TAG-latest}'
   #   build:
   #     context: ./frontend/react-dashboard
+ 
+
+  # queue:
+  #   image: rabbitmq:3
+  # flower:
+  #   image: mher/flower:0.9.7
+  
+
+  # celeryworker:
+  #   image: '${DOCKER_IMAGE_CELERYWORKER?Variable not set}:${TAG-latest}'
  
 volumes:
   db-data:

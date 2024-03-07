@@ -1,0 +1,4 @@
+[2024-03-07 21:39:23,275] [INFO] [uvicorn.access] 127.0.0.1:51886 - "GET /docs HTTP/1.1" 200
+[2024-03-07 21:39:23,786] [INFO] [uvicorn.access] 127.0.0.1:51886 - "GET /openapi.json HTTP/1.1" 200
+[2024-03-07 21:39:25,173] [INFO] [uvicorn.access] 127.0.0.1:51886 - "GET /docs HTTP/1.1" 200
+[2024-03-07 21:39:25,243] [INFO] [uvicorn.access] 127.0.0.1:51886 - "GET /openapi.json HTTP/1.1" 200

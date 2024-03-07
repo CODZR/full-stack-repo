@@ -14,9 +14,6 @@ docker compose -f docker-compose.yml -f docker-compose.override.yml up -d
 
 # 清空
 docker compose -f docker-compose.yml -f docker-compose.override.yml down
-
-# 只重新启动某个server，调整docker-compose.single.yml后运行
-docker compose -f docker-compose.single.yml up -d --build
 ```
 
 ### 三、文件资源目录 📚

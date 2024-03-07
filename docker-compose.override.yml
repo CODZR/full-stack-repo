@@ -9,22 +9,6 @@ services:
     ports:
       - "5432:5432"
 
-  pgadmin:
-    ports:
-      # 暴露的端口:运行的端口
-      - "5050:5050"
-
-  # queue:
-  #   ports:
-  #     - "5671:5671"
-  #     - "5672:5672"
-  #     - "15672:15672"
-  #     - "15671:15671"
-
-  # flower:
-  #   ports:
-  #     - "5555:5555"
-
   backend-fastapi-project:
     ports:
       - "7001:7001"
@@ -40,28 +24,48 @@ services:
     # command: sleep infinity  # Infinite loop to keep container alive doing nothing
     # command: /start-reload.sh
 
-  # celeryworker:
-  #   volumes:
-  #     - ./fastbackend/:/app
 
-  frontend-vitepress-docs:
-    ports:
-      - "3010:80"
-    build:
-      context: ./frontend/vitepress-docs
-      args:
-        FRONTEND_ENV: production
+  # pgadmin:
+  #   ports:
+  #     # 暴露的端口:运行的端口
+  #     - "5050:5050"
 
-  frontend-next-client:
-    ports:
-      - "3011:80"
-    build:
-      context: ./frontend/next-client
-      args:
-        FRONTEND_ENV: production
+
+  # frontend-vitepress-docs:
+  #   ports:
+  #     - "3010:80"
+  #   build:
+  #     context: ./frontend/vitepress-docs
+  #     args:
+  #       FRONTEND_ENV: production
+
+  # frontend-next-client:
+  #   ports:
+  #     - "3011:80"
+  #   build:
+  #     context: ./frontend/next-client
+  #     args:
+  #       FRONTEND_ENV: production
 
   # frontend-react-dashboard:
   #   build:
   #     context: ./frontend
   #     args:
   #       FRONTEND_ENV: dev
+
+
+
+  # queue:
+  #   ports:
+  #     - "5671:5671"
+  #     - "5672:5672"
+  #     - "15672:15672"
+  #     - "15671:15671"
+
+  # flower:
+  #   ports:
+  #     - "5555:5555"
+
+  # celeryworker:
+  #   volumes:
+  #     - ./fastbackend/:/app
