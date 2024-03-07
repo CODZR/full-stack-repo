@@ -25,27 +25,27 @@ services:
     # command: /start-reload.sh
 
 
-  # pgadmin:
-  #   ports:
-  #     # 暴露的端口:运行的端口
-  #     - "5050:5050"
+  pgadmin:
+    ports:
+      # 暴露的端口:运行的端口
+      - "5050:5050"
 
 
-  # frontend-vitepress-docs:
-  #   ports:
-  #     - "3010:80"
-  #   build:
-  #     context: ./frontend/vitepress-docs
-  #     args:
-  #       FRONTEND_ENV: production
+  frontend-vitepress-docs:
+    ports:
+      - "3010:80"
+    build:
+      context: ./frontend/vitepress-docs
+      args:
+        FRONTEND_ENV: production
 
-  # frontend-next-client:
-  #   ports:
-  #     - "3011:80"
-  #   build:
-  #     context: ./frontend/next-client
-  #     args:
-  #       FRONTEND_ENV: production
+  frontend-next-client:
+    ports:
+      - "3011:80"
+    build:
+      context: ./frontend/next-client
+      args:
+        FRONTEND_ENV: production
 
   # frontend-react-dashboard:
   #   build:

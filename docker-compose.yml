@@ -38,26 +38,26 @@ services:
       args:
         INSTALL_DEV: ${INSTALL_DEV-false}
    
-  # pgadmin:
-  #   image: dpage/pgadmin4:${TAG-latest}
-  #   depends_on:
-  #     - db
-  #   env_file:
-  #     - .env
+  pgadmin:
+    image: dpage/pgadmin4:${TAG-latest}
+    depends_on:
+      - db
+    env_file:
+      - .env
  
-  # frontend-vitepress-docs:
-  #   image: 'frontend-vitepress-docs:${TAG-latest}'
-  #   build:
-  #     context: ./frontend/vitepress-docs
-  #     args:
-  #       FRONTEND_ENV: ${FRONTEND_ENV-production}
+  frontend-vitepress-docs:
+    image: 'frontend-vitepress-docs:${TAG-latest}'
+    build:
+      context: ./frontend/vitepress-docs
+      args:
+        FRONTEND_ENV: ${FRONTEND_ENV-production}
 
-  # frontend-next-client:
-  #   image: 'frontend-next-client:${TAG-latest}'
-  #   build:
-  #     context: ./frontend/next-client
-  #     args:
-  #       FRONTEND_ENV: ${FRONTEND_ENV-production}
+  frontend-next-client:
+    image: 'frontend-next-client:${TAG-latest}'
+    build:
+      context: ./frontend/next-client
+      args:
+        FRONTEND_ENV: ${FRONTEND_ENV-production}
  
   # frontend-react-dashboard:
   #   image: 'frontend-react-dashboard:${TAG-latest}'

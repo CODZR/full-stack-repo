@@ -2,5 +2,5 @@
 .coverage
 htmlcov
 
-app.log
+run/*
 .env
