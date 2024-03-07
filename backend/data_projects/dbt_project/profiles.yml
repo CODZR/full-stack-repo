@@ -5,7 +5,7 @@ vibe_cdp_profile:
       type: postgres
       threads: 2
       host: 127.0.0.1
-      port: 5432
+      port: 5436
       user: codzr
       password: "140937"
       dbname: vibe_dbt

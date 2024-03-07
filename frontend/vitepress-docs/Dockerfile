@@ -1,15 +1,11 @@
 # Stage 0, "build-stage", based on Node.js, to build and compile the frontend
 FROM node:18.12.1 as build-stage
 
-RUN mkdir /vitepress-docs 
 WORKDIR /vitepress-docs
 
-COPY ./package.json ./pnpm-lock.yaml /vitepress-docs/
-COPY ./src /vitepress-docs/src
+COPY . /vitepress-docs
 
-RUN npm install pnpm -g
-RUN pnpm install
-RUN pnpm build
+RUN npm install pnpm -g && pnpm install && pnpm build
 
 
 ARG FRONTEND_ENV=production

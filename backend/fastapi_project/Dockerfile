@@ -1,12 +1,11 @@
 FROM python:3.10
 
 ENV POSTGRES_HOST=db
-ENV POSTGRES_PORT=5432
+ENV POSTGRES_PORT=5436
 ENV POSTGRES_USER=codzr
 ENV POSTGRES_DB=vibe_dbt
 ENV POSTGRES_PASSWORD=140937
 
-RUN mkdir /fastapi_project
 WORKDIR /fastapi_project
 
 # Install Poetry
