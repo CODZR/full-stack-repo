@@ -7,7 +7,7 @@ services:
 
   db:
     ports:
-      - "5436:5432"
+      - "5432:5432"
 
   pgadmin:
     ports:
@@ -25,15 +25,15 @@ services:
   #   ports:
   #     - "5555:5555"
 
-  # fast-backend:
+  # fastapi-project:
   #   ports:
   #     - "7001:7001"
   #   volumes:
-  #     - ./backend/fastapi_project/:/app
+  #     - ./backend/fastapi-project/:/app
   #   environment:
   #     - SERVER_HOST=http://${DOMAIN?Variable not set}
   #   build:
-  #     context: ./backend/fastapi_project
+  #     context: ./backend/fastapi-project
   #     dockerfile: Dockerfile
   #     args:
   #       INSTALL_DEV: ${INSTALL_DEV-true}
@@ -50,17 +50,17 @@ services:
     build:
       context: ./frontend/vitepress-docs
       args:
-        FRONTEND_ENV: dev
+        FRONTEND_ENV: production
 
-  frontend-client:
+  next-client:
     ports:
       - "3011:80"
     build:
       context: ./frontend/next-client
       args:
-        FRONTEND_ENV: dev
+        FRONTEND_ENV: production
 
-  # frontend-dashboard:
+  # react-dashboard:
   #   build:
   #     context: ./frontend
   #     args:

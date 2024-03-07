@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "chalicelib_project"
+name = "chalicelib-project"
 version = "0.1.0"
 description = ""
 authors = ["Admin <admin@example.com>"]

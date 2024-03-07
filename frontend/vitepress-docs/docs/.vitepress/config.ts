@@ -54,9 +54,6 @@ async function config() {
             drop_console: true,
           },
         },
-        // rollupOptions: {
-        //   external: ['gsap']
-        // }
       },
       resolve: {
         alias: [

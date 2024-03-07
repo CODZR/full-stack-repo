@@ -18,5 +18,3 @@ FROM nginx:1.15
 COPY --from=build-stage /vitepress-docs/docs/.vitepress/dist/ /usr/share/nginx/html
 
 COPY ./nginx.conf /etc/nginx/conf.d/default.conf
-
-RUN rm -rf /vitepress-docs/node_modules

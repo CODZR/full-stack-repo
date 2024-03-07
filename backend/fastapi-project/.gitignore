@@ -3,3 +3,4 @@
 htmlcov
 
 app.log
+.env

@@ -13,9 +13,9 @@
         "app.main:app",
         "--reload"
       ],
-      "cwd": "${workspaceFolder}/backend/fastapi_project",
+      "cwd": "${workspaceFolder}/backend/fastapi-project",
       "jinja": true,
-      "envFile": "${workspaceFolder}/backend/fastapi_project/.venv",
+      "envFile": "${workspaceFolder}/backend/fastapi-project/.venv",
       "env": {
         "POSTGRES_HOST": "localhost"
       }
