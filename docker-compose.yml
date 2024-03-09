@@ -34,7 +34,6 @@ services:
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
     build:
       context: ./backend/fastapi-project
-      dockerfile: Dockerfile
    
   pgadmin:
     image: dpage/pgadmin4:${TAG-latest}

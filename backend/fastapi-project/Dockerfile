@@ -16,7 +16,7 @@ COPY ./ /fastapi-project
 # Allow installing dev dependencies to run tests
 RUN poetry install --only main 
 
-# RUN poetry run gunicorn -c ./config/gunicorn_prod.conf app.main:app
-# CMD ["poetry", "run", "gunicorn", "-c", "./config/gunicorn_prod.conf", "app.main:app"]
-# RUN poetry run supervisord -c ./config/supervisord_prod.conf
+# RUN poetry run gunicorn -c ./config/gunicorn.conf app.main:app
+# CMD ["poetry", "run", "gunicorn", "-c", "./config/gunicorn.conf", "app.main:app"]
+RUN poetry run supervisord -c ./config/supervisord_prod.conf
 
