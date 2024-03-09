@@ -18,5 +18,5 @@ RUN poetry install --only main
 
 # RUN poetry run gunicorn -c ./config/gunicorn_prod.conf app.main:app
 # CMD ["poetry", "run", "gunicorn", "-c", "./config/gunicorn_prod.conf", "app.main:app"]
-RUN poetry run supervisord -c ./config/supervisord_prod.conf
+# RUN poetry run supervisord -c ./config/supervisord_prod.conf
 

@@ -12,17 +12,7 @@ services:
   backend-fastapi-project:
     ports:
       - "7001:7001"
-    volumes:
-      - ./backend/fastapi-project/:/app
-    environment:
-      - SERVER_HOST=http://${DOMAIN}
-    build:
-      context: ./backend/fastapi-project
-      dockerfile: Dockerfile
-      args:
-        INSTALL_DEV: ${INSTALL_DEV-true}
-    # command: sleep infinity  # Infinite loop to keep container alive doing nothing
-    # command: /start-reload.sh
+    
 
 
   pgadmin:

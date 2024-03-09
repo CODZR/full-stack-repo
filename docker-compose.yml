@@ -35,8 +35,6 @@ services:
     build:
       context: ./backend/fastapi-project
       dockerfile: Dockerfile
-      args:
-        INSTALL_DEV: ${INSTALL_DEV-false}
    
   pgadmin:
     image: dpage/pgadmin4:${TAG-latest}

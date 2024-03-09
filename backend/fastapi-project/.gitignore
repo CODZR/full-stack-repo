@@ -2,5 +2,5 @@
 .coverage
 htmlcov
 
-run/*
+/run
 .env
