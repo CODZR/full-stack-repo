@@ -21,19 +21,19 @@ services:
         max-file: "10"
 
 
-  backend-fastapi-project:
-    image: 'backend-fastapi-project:${TAG-latest}'
-    depends_on:
-      - db
-    env_file:
-      - ./.env
-    environment:
-      - POSTGRES_SERVER=${POSTGRES_SERVER}
-      - POSTGRES_USER=${POSTGRES_USER}
-      - POSTGRES_DB=${POSTGRES_DB}
-      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
-    build:
-      context: ./backend/fastapi-project
+  # backend-fastapi-project:
+  #   image: 'backend-fastapi-project:${TAG-latest}'
+  #   depends_on:
+  #     - db
+  #   env_file:
+  #     - ./.env
+  #   environment:
+  #     - POSTGRES_SERVER=${POSTGRES_SERVER}
+  #     - POSTGRES_USER=${POSTGRES_USER}
+  #     - POSTGRES_DB=${POSTGRES_DB}
+  #     - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+  #   build:
+  #     context: ./backend/fastapi-project
    
   pgadmin:
     image: dpage/pgadmin4:${TAG-latest}

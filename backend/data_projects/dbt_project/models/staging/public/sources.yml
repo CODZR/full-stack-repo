@@ -1,0 +1,46 @@
+version: 2
+
+sources:
+  - name: log2_dev
+    schema: log2_dev  
+    description: "staging raw_orders"
+    tables:
+      - name: log2_raw_order
+        columns:
+          - name: id
+            tests:
+              - not_null
+              - unique
+          - name: created_at
+          - name: latest_ship_date
+          - name: latest_delivery_date
+          - name: shopify_id
+          - name: email
+          - name: note
+          - name: shipping_phone
+          - name: shipping_name
+          - name: shipping_address1
+          - name: shipping_address2
+          - name: shipping_company
+          - name: shipping_city
+          - name: shipping_state
+          - name: shipping_zip
+          - name: shipping_country
+          - name: order_from
+          - name: marketplace
+          - name: business_verification_required
+          - name: finance_verification_required
+          - name: cs_review_required
+          - name: items
+          - name: attachment
+      - name: log2_raw_order_attachment
+        columns:
+          - name: order_id
+            tests:
+              - not_null
+              - unique
+          - name: business_verified,
+          - name: finance_verified,
+          - name: cs_verified,
+
+      

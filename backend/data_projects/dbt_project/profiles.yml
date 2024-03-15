@@ -1,5 +1,5 @@
 vibe_cdp_profile:
-  target: dev
+  target: prod
   outputs:
     dev:
       type: postgres
@@ -8,5 +8,14 @@ vibe_cdp_profile:
       port: 5432
       user: codzr
       password: "140937"
-      dbname: vibe_dbt
+      dbname: vibe_dbt_dev
+      schema: dev
+    prod:
+      type: postgres
+      threads: 2
+      host: 127.0.0.1
+      port: 5432
+      user: codzr
+      password: "140937"
+      dbname: vibe_dbt_dev
       schema: public

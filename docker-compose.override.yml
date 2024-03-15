@@ -9,9 +9,10 @@ services:
     ports:
       - "5432:5432"
 
-  backend-fastapi-project:
-    ports:
-      - "7001:7001"
+  # backend-fastapi-project:
+  #   ports:
+  #     - "7001:7001"
+  #     - "9001:9001"
     
 
 
