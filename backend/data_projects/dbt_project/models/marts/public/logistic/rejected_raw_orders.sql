@@ -4,16 +4,6 @@
   schema = 'logistic'
 ) }}
 
-WITH raw_order_attachments AS (
-
-  SELECT
-    *
-  FROM
-    {{ source(
-      'log2_dev',
-      'log2_raw_order_attachment'
-    ) }}
-)
 SELECT
   id,
   shopify_id,
@@ -35,17 +25,18 @@ SELECT
   marketplace,
   business_verification_required,
   finance_verification_required,
-  cs_review_required
+  cs_review_required,
+  cs_verified,
+  business_verified,
+  finance_verified
 FROM
   {{ ref(
     'stg_raw_orders'
   ) }}
   stg_raw_orders
-  JOIN raw_order_attachments
-  ON stg_raw_orders.id = raw_order_attachments.order_id
 WHERE
   (
-    raw_order_attachments.business_verified IS FALSE
-    OR raw_order_attachments.finance_verified IS FALSE
-    OR raw_order_attachments.cs_verified IS FALSE
+    business_verified IS FALSE
+    OR finance_verified IS FALSE
+    OR cs_verified IS FALSE
   )
