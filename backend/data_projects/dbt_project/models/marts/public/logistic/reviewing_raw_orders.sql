@@ -5,7 +5,7 @@
 ) }}
 
 SELECT
-  raw_order_id,
+  id,
   created_at,
   shopify_id,
   note,
@@ -23,36 +23,31 @@ FROM
 WHERE
   (
     (
-      business_verification_required = TRUE
-      AND business_verified = NULL
-    )
-    OR (
-      finance_verification_required = TRUE
-      AND finance_verified = NULL
-    )
-    OR (
-      cs_review_required = TRUE
-      AND cs_verified = NULL
-    )
-  )
-  OR(
-    (
-      cs_verified != FALSE
-      AND business_verified != FALSE
-      AND finance_verified != FALSE
+      cs_verified IS NULL
+      OR cs_verified != FALSE
     )
     AND (
+      business_verified IS NULL
+      OR business_verified != FALSE
+    )
+    AND (
+      finance_verified IS NULL
+      OR finance_verified != FALSE
+    )
+  )
+  AND (
+    (
       (
         business_verification_required = TRUE
-        AND business_verified != TRUE
+        AND business_verified IS NULL
       )
       OR (
         finance_verification_required = TRUE
-        AND finance_verified != TRUE
+        AND finance_verified IS NULL
       )
       OR (
         cs_review_required = TRUE
-        AND cs_verified != TRUE
+        AND cs_verified IS NULL
       )
     )
   )

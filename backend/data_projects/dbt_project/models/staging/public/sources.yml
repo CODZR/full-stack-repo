@@ -40,7 +40,12 @@ sources:
               - not_null
               - unique
           - name: business_verified,
-          - name: finance_verified,
-          - name: cs_verified,
+      - name: log2_assigned_raw_order
+        columns:
+          - name: raw_order_id
+            tests:
+              - not_null
+              - unique
+          - name: order_id,
 
       

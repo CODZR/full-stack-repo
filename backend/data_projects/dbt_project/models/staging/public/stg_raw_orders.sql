@@ -18,11 +18,11 @@ WITH raw_order_attachments AS (
     ) }}
 )
 SELECT
-  id AS raw_order_id,
+  id,
+  shopify_id,
   created_at,
   latest_ship_date,
   latest_delivery_date,
-  shopify_id,
   email,
   note,
   shipping_phone,
@@ -50,3 +50,19 @@ FROM
   raw_orders
   LEFT JOIN raw_order_attachments
   ON raw_orders.id = raw_order_attachments.order_id
+WHERE
+  NOT (
+    EXISTS (
+      SELECT
+        raw_order_id,
+        order_id
+      FROM
+        {{ source(
+          'log2_dev',
+          'log2_assigned_raw_order'
+        ) }}
+        assigned_raw_orders
+      WHERE
+        raw_orders.id = assigned_raw_orders.raw_order_id
+    )
+  )
