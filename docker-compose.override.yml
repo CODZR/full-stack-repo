@@ -1,4 +1,4 @@
-version: "3.3"
+version: "3.7"
 services:
   # proxy:
   #   ports:
@@ -9,10 +9,10 @@ services:
     ports:
       - "5432:5432"
 
-  # backend-fastapi-project:
-  #   ports:
-  #     - "7001:7001"
-  #     - "9001:9001"
+  backend-fastapi-project:
+    ports:
+      - "7001:7001"
+      - "9001:9001"
     
 
 

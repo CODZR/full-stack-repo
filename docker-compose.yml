@@ -1,9 +1,6 @@
-version: "3.3"
+version: "3.7"
 
 services:
-  # proxy:
-  #   image: traefik:v2.2
-
   db:
     image: postgres:15
     volumes:
@@ -20,28 +17,25 @@ services:
         max-size: "20m"
         max-file: "10"
 
+  backend-fastapi-project:
+    image: 'backend-fastapi-project:${TAG-latest}'
+    env_file:
+      - ./.env
+    environment:
+      - POSTGRES_SERVER=${POSTGRES_SERVER}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    build:
+      context: ./backend/fastapi-project
 
-  # backend-fastapi-project:
-  #   image: 'backend-fastapi-project:${TAG-latest}'
-  #   depends_on:
-  #     - db
-  #   env_file:
-  #     - ./.env
-  #   environment:
-  #     - POSTGRES_SERVER=${POSTGRES_SERVER}
-  #     - POSTGRES_USER=${POSTGRES_USER}
-  #     - POSTGRES_DB=${POSTGRES_DB}
-  #     - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
-  #   build:
-  #     context: ./backend/fastapi-project
-   
   pgadmin:
     image: dpage/pgadmin4:${TAG-latest}
     depends_on:
       - db
     env_file:
       - .env
- 
+
   frontend-vitepress-docs:
     image: 'frontend-vitepress-docs:${TAG-latest}'
     build:
@@ -55,26 +49,25 @@ services:
       context: ./frontend/next-client
       args:
         FRONTEND_ENV: ${FRONTEND_ENV-production}
- 
   # frontend-react-dashboard:
   #   image: 'frontend-react-dashboard:${TAG-latest}'
   #   build:
   #     context: ./frontend/react-dashboard
- 
+
 
   # queue:
   #   image: rabbitmq:3
   # flower:
   #   image: mher/flower:0.9.7
-  
+
 
   # celeryworker:
   #   image: '${DOCKER_IMAGE_CELERYWORKER?Variable not set}:${TAG-latest}'
- 
+
 volumes:
   db-data:
 
-# networks:
-#   traefik-public:
-#     # Allow setting it to false for testing
-#     external: ${TRAEFIK_PUBLIC_NETWORK_IS_EXTERNAL-true}
+    # networks:
+    #   traefik-public:
+    #     # Allow setting it to false for testing
+    #     external: ${TRAEFIK_PUBLIC_NETWORK_IS_EXTERNAL-true}

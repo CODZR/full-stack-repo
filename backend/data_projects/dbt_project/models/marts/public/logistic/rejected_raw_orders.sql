@@ -1,7 +1,8 @@
 {{ config(
   materialized = 'view',
   unique_key = 'id',
-  schema = 'logistic'
+  schema = 'logistic',
+  on_delete: cascade
 ) }}
 
 SELECT
