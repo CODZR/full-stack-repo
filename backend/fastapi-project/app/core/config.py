@@ -12,8 +12,8 @@ if not os.getenv("POSTGRES_PASSWORD"):
 
 PSQL_DATABASE_URL = PostgresDsn.build(
     scheme="postgresql+psycopg2",
-    host=os.environ.get("POSTGRES_SERVER"),
-    port=int(os.environ.get("POSTGRES_PORT")),
+    host=os.environ.get("POSTGRES_SERVER") or "localhost",
+    port=int(os.environ.get("POSTGRES_PORT") or 5432),
     path=os.environ.get("POSTGRES_DB"),
     username=os.environ.get("POSTGRES_USER"),
     password=os.environ.get("POSTGRES_PASSWORD"),
