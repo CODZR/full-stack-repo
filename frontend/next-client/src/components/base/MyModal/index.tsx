@@ -7,7 +7,8 @@ import {
 	ModalContent,
 	ModalFooter,
 	ModalHeader,
-	ModalOverlay
+	ModalOverlay,
+	useBreakpointValue
 } from '@chakra-ui/react';
 
 interface Props extends ModalProps {
@@ -18,9 +19,9 @@ const MyModal = (props: Props) => {
 	const { isOpen, onClose, children } = props;
 
 	return (
-		<Modal closeOnOverlayClick={false} isOpen={isOpen} onClose={onClose}>
+		<Modal {...props} closeOnOverlayClick={false} isOpen={isOpen} onClose={onClose}>
 			<ModalOverlay />
-			<ModalContent>
+			<ModalContent maxW="min(90%, 1024px)">
 				<ModalHeader>Create your account</ModalHeader>
 				<ModalCloseButton />
 				<ModalBody pb={6}>{children}</ModalBody>

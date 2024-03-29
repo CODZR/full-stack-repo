@@ -6,39 +6,36 @@ import { Message } from '@vcomp/ui';
 import requester from './http';
 // import { resItemData, resItemsData, loginForm } from './type';
 
-const handleReqElMsg = (fn, action: string, name: string, identifier?) => {
-  return new Promise((resolve, reject) => {
-    const isCreation = action === 'Create';
-    fn.then((data) => {
-      resolve(data);
-      Message.success(
-        `${action} ${name} (ID: ${
-          isCreation ? data.id : identifier
-        }) successfully.`
-      );
-    }).catch((err: any) => {
-      Message.error(
-        `${action} ${name} ${isCreation ? '' : identifier} failed.`
-      );
-      reject(err);
-    });
-  });
-};
-
-const jsonClone = (obj: object): any => JSON.parse(JSON.stringify(obj));
-
-/* 天气 */
-export async function queryHanziAPI() {
-  const res = await requester.get('hanzis');
-  return res;
+interface Items<T = UnknownObj> {
+	items: T[];
+	total?: number;
+	page?: number;
+	perPage?: number;
 }
 
+interface Item<T = UnknownObj> {
+	item: T;
+
+	[key: string]: any;
+}
+
+const handleReqElMsg = <T>(fn: Promise<Item>, action: string, name: string, identifier?): Promise<T> => {
+	return new Promise(async (resolve, reject) => {
+		let item = null;
+		const isCreation = action === 'Create';
+		fn.then((data) => {
+			item = data?.item || data;
+			resolve(item);
+			Message.success(`${action} ${name} (ID: ${isCreation ? item.id : identifier}) successfully.`);
+		}).catch((err: any) => {
+			Message.error(`${action} ${name} ${isCreation ? '' : identifier} failed.`);
+			reject(err);
+		});
+	});
+};
+
 export async function searchHanziAPI(zi: string) {
-  const res = handleReqElMsg(
-    requester.get(`hanzi/search?zi=${zi}`),
-    'Search',
-    'Hanzi',
-    zi
-  );
-  return res;
+	const item = handleReqElMsg<Item>(requester.get(`hanzi/search?zi=${zi}`), 'Search', 'Hanzi', zi);
+
+	return item;
 }
