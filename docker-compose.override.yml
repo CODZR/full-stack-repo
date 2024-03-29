@@ -9,18 +9,15 @@ services:
     ports:
       - "5432:5432"
 
+  pgadmin:
+    ports:
+      - "5050:5050"
+
+
   backend-fastapi-project:
     ports:
       - "7001:7001"
       - "9001:9001"
-    
-
-
-  pgadmin:
-    ports:
-      # 暴露的端口:运行的端口
-      - "5050:5050"
-
 
   frontend-vitepress-docs:
     ports:

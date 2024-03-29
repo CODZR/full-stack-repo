@@ -17,6 +17,14 @@ services:
         max-size: "20m"
         max-file: "10"
 
+  pgadmin:
+    image: dpage/pgadmin4:${TAG-latest}
+    depends_on:
+      - db
+    env_file:
+      - .env
+
+
   backend-fastapi-project:
     image: 'backend-fastapi-project:${TAG-latest}'
     depends_on:
@@ -30,13 +38,7 @@ services:
     build:
       context: ./backend/fastapi-project
 
-  pgadmin:
-    image: dpage/pgadmin4:${TAG-latest}
-    depends_on:
-      - db
-    env_file:
-      - .env
-
+  
   frontend-vitepress-docs:
     image: 'frontend-vitepress-docs:${TAG-latest}'
     build:

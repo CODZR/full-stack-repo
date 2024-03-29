@@ -43,6 +43,13 @@ def create_hanzi(
 @hanzi_router.get("/hanzi/search", response_model=HanziItem)
 def search_hanzi(zi: str, db: Session = Depends(get_db)) -> HanziDetails:
     db_hanzi = hanzi_crud.get_by_field(db, "zi", zi)
+
+    if not db_hanzi:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"Hanzi with zi {zi} does not exist",
+        )
+
     return HanziItem(item=db_hanzi)
 
 
