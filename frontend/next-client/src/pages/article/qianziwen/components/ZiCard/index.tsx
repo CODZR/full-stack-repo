@@ -8,7 +8,7 @@ const ZiCard = (props: Props) => {
 	const { wenzi } = props;
 
 	const getImgUrlArr = (str) => {
-		const serverPrefix = 'http://127.0.0.1:7001';
+		const serverPrefix = '';
 		const prefix = '/img';
 		const splitStr = str.split(prefix);
 		splitStr.shift();
