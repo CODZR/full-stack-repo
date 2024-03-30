@@ -15,12 +15,10 @@ interface InputRef {
 // declare type MouseEventHandler<T = Element> = EventHandler<MouseEvent<T>>;
 
 // // react 定义的MouseEventHandler有点问题, 做下兼容处理
-interface NewClickEventTarget extends Partial<HTMLElement & EventTarget> {}
-interface NewClickEvent
-	extends Partial<Event & BaseSyntheticEvent<E, NewClickEventTarget, NewClickEventTarget>> {}
-interface NewInputEventTarget extends Partial<HTMLInputElement & EventTarget> {}
-interface NewInputEvent
-	extends Partial<Event & BaseSyntheticEvent<E, NewInputEventTarget, NewInputEventTarget>> {}
+type NewClickEventTarget = Partial<HTMLElement & EventTarget>
+type NewClickEvent = Partial<Event & BaseSyntheticEvent<E, NewClickEventTarget, NewClickEventTarget>>
+type NewInputEventTarget = Partial<HTMLInputElement & EventTarget>
+type NewInputEvent = Partial<Event & BaseSyntheticEvent<E, NewInputEventTarget, NewInputEventTarget>>
 
 interface BaseSyntheticEvent<E = object, C = any, T = any> {
 	nativeEvent: E;
