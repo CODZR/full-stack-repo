@@ -5,8 +5,10 @@ WORKDIR /next-client
 
 COPY . /next-client
 
-RUN npm install pnpm -g && pnpm install && pnpm build && rm -rf /next-client/node_modules
-
+RUN npm config set registry https://registry.npm.taobao.org \
+	&& npm install pnpm -g \
+	&& pnpm install \
+	&& pnpm build
 
 ARG FRONTEND_ENV=production
 

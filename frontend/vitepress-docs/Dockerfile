@@ -5,8 +5,10 @@ WORKDIR /vitepress-docs
 
 COPY . /vitepress-docs
 
-RUN npm install pnpm -g && pnpm install && pnpm build
-
+RUN npm config set registry https://registry.npm.taobao.org \
+  && npm install pnpm -g \
+  && pnpm install \
+  && pnpm build
 
 ARG FRONTEND_ENV=production
 
