@@ -5,7 +5,7 @@ WORKDIR /vitepress-docs
 
 COPY . /vitepress-docs
 
-RUN npm config set registry https://registry.npm.taobao.org \
+RUN npm config set registry https://npm.aliyun.com/ \
   && npm install pnpm -g \
   && pnpm install \
   && pnpm build
