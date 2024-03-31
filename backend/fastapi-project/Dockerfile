@@ -5,7 +5,7 @@ ENV POSTGRES_SERVER=host.docker.internal
 WORKDIR /fastapi-project
 
 # Install Poetry using pip
-RUN pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple \
+RUN pip config set global.index-url https://mirrors.aliyun.com/pypi/simple/ \
     && pip install poetry
 
 COPY ./ /fastapi-project

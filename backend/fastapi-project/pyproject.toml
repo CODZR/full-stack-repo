@@ -4,6 +4,11 @@ version = "0.1.0"
 description = ""
 authors = ["Admin <admin@example.com>"]
 
+[[tool.poetry.source]]
+name = "mirrors"
+url = "https://pypi.tuna.tsinghua.edu.cn/simple/"
+priority = "default"
+
 [tool.poetry.dependencies]
 python = "^3.10"
 fastapi = "^0.104.1"
