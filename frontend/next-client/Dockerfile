@@ -5,7 +5,7 @@ WORKDIR /next-client
 
 COPY . /next-client
 
-RUN npm config set registry https://npm.aliyun.com/ \
+RUN npm config set http://mirrors.cloud.tencent.com/npm/ \
 	&& npm install pnpm -g \
 	&& pnpm install \
 	&& pnpm build
