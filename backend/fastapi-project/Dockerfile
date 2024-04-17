@@ -9,7 +9,7 @@ RUN pip config set global.index-url https://mirrors.aliyun.com/pypi/simple/ \
     && pip install poetry
 
 COPY ./ /fastapi-project
-RUN mkdir ./run
+RUN mkdir /fastapi-project/run
 
 # Allow installing dev dependencies to run tests
 RUN poetry install --only main
