@@ -1,4 +1,4 @@
-FROM python:3.10
+FROM python:3.11
 
 # ENV POSTGRES_SERVER=120.55.86.100
 ENV POSTGRES_SERVER=host.docker.internal
