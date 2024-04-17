@@ -1,6 +1,6 @@
 FROM python:3.10
 
-ENV POSTGRES_SERVER=host.docker.internal
+ENV POSTGRES_SERVER=120.55.86.100
 
 WORKDIR /fastapi-project
 
