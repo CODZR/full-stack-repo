@@ -1,14 +1,5 @@
 <template>
   <NavBar v-if="showNavbar">
-    <!-- <template #search>
-      <slot name="navbar-search">
-        <AlgoliaSearchBox
-          v-if="theme.algolia"
-          :options="theme.algolia"
-          :multilang="isMultiLang"
-        />
-      </slot>
-    </template> -->
   </NavBar>
 
   <Blog v-if="isBlog">
