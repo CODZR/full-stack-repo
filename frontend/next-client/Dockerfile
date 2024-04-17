@@ -5,7 +5,7 @@ WORKDIR /next-client
 
 COPY . /next-client
 
-RUN npm config set http://mirrors.cloud.tencent.com/npm/ \
+RUN npm config set https://mirrors.huaweicloud.com/repository/npm \
 	&& npm install pnpm -g \
 	&& pnpm install \
 	&& pnpm build
