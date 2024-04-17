@@ -5,39 +5,39 @@ services:
   #     - "80:80"
   #     - "8090:8080"
 
-  db:
-    ports:
-      - "5432:5432"
-
-  pgadmin:
-    ports:
-      - "5050:80"
-
-
-  backend-fastapi-project:
-    ports:
-      - "7001:7001"
-      - "9001:9001"
-
-  backend-data-projects:
-    ports:
-      - "7010:7010"
-
-  # frontend-vitepress-docs:
+  # db:
   #   ports:
-  #     - "3010:80"
-  #   build:
-  #     context: ./frontend/vitepress-docs
-  #     args:
-  #       FRONTEND_ENV: production
+  #     - "5432:5432"
 
-  # frontend-next-client:
+  # pgadmin:
   #   ports:
-  #     - "3011:80"
-  #   build:
-  #     context: ./frontend/next-client
-  #     args:
-  #       FRONTEND_ENV: production
+  #     - "5050:80"
+
+
+  # backend-fastapi-project:
+  #   ports:
+  #     - "7001:7001"
+  #     - "9001:9001"
+
+  # backend-data-projects:
+  #   ports:
+  #     - "7010:7010"
+
+  frontend-vitepress-docs:
+    ports:
+      - "3010:80"
+    build:
+      context: ./frontend/vitepress-docs
+      args:
+        FRONTEND_ENV: production
+
+  frontend-next-client:
+    ports:
+      - "3011:80"
+    build:
+      context: ./frontend/next-client
+      args:
+        FRONTEND_ENV: production
 
   # frontend-react-dashboard:
   #   build:

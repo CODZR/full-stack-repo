@@ -20,16 +20,16 @@ export const commonEnv = {
 
 export const devEnv = {
 	NODE_ENV: 'development',
-	VITE_REST_BASE_URL: 'http://127.0.0.1:7001/'
+	VITE_REST_BASE_URL: 'https://api.dzrlab.top/'
 };
 export const betaEnv = {
 	NODE_ENV: 'beta',
-	VITE_REST_BASE_URL: 'https://dzrlab.top/'
+	VITE_REST_BASE_URL: 'https://api.dzrlab.top/api/'
 };
 
 export const prodEnv = {
 	NODE_ENV: 'production',
-	VITE_REST_BASE_URL: 'https://dzrlab.top/'
+	VITE_REST_BASE_URL: 'https://api.dzrlab.top/api/'
 };
 
 export type EnvSettings = {
