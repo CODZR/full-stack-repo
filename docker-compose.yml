@@ -54,19 +54,20 @@ services:
       context: ./backend/data_projects
 
   
-  frontend-vitepress-docs:
-    image: 'frontend-vitepress-docs:${TAG-latest}'
-    build:
-      context: ./frontend/vitepress-docs
-      args:
-        FRONTEND_ENV: ${FRONTEND_ENV-production}
+  # frontend-vitepress-docs:
+  #   image: 'frontend-vitepress-docs:${TAG-latest}'
+  #   build:
+  #     context: ./frontend/vitepress-docs
+  #     args:
+  #       FRONTEND_ENV: ${FRONTEND_ENV-production}
 
-  frontend-next-client:
-    image: 'frontend-next-client:${TAG-latest}'
-    build:
-      context: ./frontend/next-client
-      args:
-        FRONTEND_ENV: ${FRONTEND_ENV-production}
+  # frontend-next-client:
+  #   image: 'frontend-next-client:${TAG-latest}'
+  #   build:
+  #     context: ./frontend/next-client
+  #     args:
+  #       FRONTEND_ENV: ${FRONTEND_ENV-production}
+  
   # frontend-react-dashboard:
   #   image: 'frontend-react-dashboard:${TAG-latest}'
   #   build:

@@ -23,21 +23,21 @@ services:
     ports:
       - "7010:7010"
 
-  frontend-vitepress-docs:
-    ports:
-      - "3010:80"
-    build:
-      context: ./frontend/vitepress-docs
-      args:
-        FRONTEND_ENV: production
+  # frontend-vitepress-docs:
+  #   ports:
+  #     - "3010:80"
+  #   build:
+  #     context: ./frontend/vitepress-docs
+  #     args:
+  #       FRONTEND_ENV: production
 
-  frontend-next-client:
-    ports:
-      - "3011:80"
-    build:
-      context: ./frontend/next-client
-      args:
-        FRONTEND_ENV: production
+  # frontend-next-client:
+  #   ports:
+  #     - "3011:80"
+  #   build:
+  #     context: ./frontend/next-client
+  #     args:
+  #       FRONTEND_ENV: production
 
   # frontend-react-dashboard:
   #   build:
