@@ -7,6 +7,7 @@ COPY . /next-client
 
 RUN npm config set https://mirrors.huaweicloud.com/repository/npm \
 	&& npm install pnpm -g \
+	&& pnpm config set https://mirrors.huaweicloud.com/repository/npm \
 	&& pnpm install \
 	&& pnpm build
 
