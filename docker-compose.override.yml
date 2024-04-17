@@ -5,19 +5,23 @@ services:
   #     - "80:80"
   #     - "8090:8080"
 
-  # db:
-  #   ports:
-  #     - "5432:5432"
+  db:
+    ports:
+      - "5432:5432"
 
-  # pgadmin:
-  #   ports:
-  #     - "5050:5050"
+  pgadmin:
+    ports:
+      - "5050:80"
 
 
-  # backend-fastapi-project:
-  #   ports:
-  #     - "7001:7001"
-  #     - "9001:9001"
+  backend-fastapi-project:
+    ports:
+      - "7001:7001"
+      - "9001:9001"
+
+  backend-data-projects:
+    ports:
+      - "7010:7010"
 
   frontend-vitepress-docs:
     ports:

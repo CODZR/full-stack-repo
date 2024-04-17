@@ -1,42 +1,57 @@
 version: "3.7"
 
 services:
-  # db:
-  #   image: postgres:15
-  #   volumes:
-  #     - db-data:/var/lib/postgresql/data
-  #   env_file:
-  #     - .env
-  #   environment:
-  #     - POSTGRES_USER=${POSTGRES_USER}
-  #     - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
-  #     - POSTGRES_DB=${POSTGRES_DB}
-  #   restart: on-failure
-  #   logging:
-  #     options:
-  #       max-size: "20m"
-  #       max-file: "10"
+  db:
+    image: postgres:15
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    env_file:
+      - .env
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+    restart: on-failure
+    logging:
+      options:
+        max-size: "20m"
+        max-file: "10"
 
-  # pgadmin:
-  #   image: dpage/pgadmin4:${TAG-latest}
-  #   depends_on:
-  #     - db
-  #   env_file:
-  #     - .env
+  pgadmin:
+    image: dpage/pgadmin4:${TAG-latest}
+    depends_on:
+      - db
+    env_file:
+      - .env
 
 
-  # backend-fastapi-project:
-  #   image: 'backend-fastapi-project:${TAG-latest}'
-  #   depends_on:
-  #     - db
-  #   env_file:
-  #     - ./.env
-  #   environment:
-  #     - POSTGRES_USER=${POSTGRES_USER}
-  #     - POSTGRES_DB=${POSTGRES_DB}
-  #     - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
-  #   build:
-  #     context: ./backend/fastapi-project
+  backend-fastapi-project:
+    image: 'backend-fastapi-project:${TAG-latest}'
+    depends_on:
+      - db
+    env_file:
+      - ./.env
+    environment:
+      - POSTGRES_PORT=${POSTGRES_PORT}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    build:
+      context: ./backend/fastapi-project
+
+  backend-data-projects:
+    image: 'backend-data-projects:${TAG-latest}'
+    depends_on:
+      - db
+    env_file:
+      - ./.env
+    environment:
+      - POSTGRES_PORT=${POSTGRES_PORT}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    build:
+      context: ./backend/data_projects
 
   
   frontend-vitepress-docs:
