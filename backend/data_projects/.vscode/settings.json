@@ -18,7 +18,7 @@
     }
   },
   /* End vscode-dbt */
-  "dbt.sqlFmtPath": "${workspaceFolder}/.venv/bin/sqlfmt",
+  // "dbt.sqlFmtPath": "${workspaceFolder}/.venv/bin/sqlfmt",
   /* Start SQL Fluff */
   // "sqlfluff.executablePath": "${workspaceFolder}/.venv/bin/sqlfluff",
   // "sqlfluff.config": "${workspaceFolder}/dbt_project/.sqlfluff",
