@@ -12,8 +12,7 @@ RUN pip config set global.index-url https://mirrors.aliyun.com/pypi/simple/ \
 COPY ./ /data_projects
 
 # Allow installing dev dependencies to run tests
-# RUN poetry install --only main
+RUN poetry install --only main
 
-CMD ["poetry", "install", "--only", "main" ]
+# CMD ["poetry", "run", "--only", "main" ]
 # CMD ["poetry", "run", "gunicorn", "-c", "./config/gunicorn.conf", "app.main:app"]
-# CMD ["poetry", "run", "supervisord", "-n", "-c", "./config/supervisord.prod.conf"]
