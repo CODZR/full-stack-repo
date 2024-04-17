@@ -3729,13 +3729,13 @@ reference = "ali"
 
 [[package]]
 name = "virtualenv"
-version = "20.25.3"
+version = "20.25.2"
 description = "Virtual Python Environment builder"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "virtualenv-20.25.3-py3-none-any.whl", hash = "sha256:8aac4332f2ea6ef519c648d0bc48a5b1d324994753519919bddbb1aff25a104e"},
-    {file = "virtualenv-20.25.3.tar.gz", hash = "sha256:7bb554bbdfeaacc3349fa614ea5bff6ac300fc7c335e9facf3a3bcfc703f45be"},
+    {file = "virtualenv-20.25.2-py3-none-any.whl", hash = "sha256:6e1281a57849c8a54da89ba82e5eb7c8937b9d057ff01aaf5bc9afaa3552e90f"},
+    {file = "virtualenv-20.25.2.tar.gz", hash = "sha256:fa7edb8428620518010928242ec17aa7132ae435319c29c1651d1cf4c4173aad"},
 ]
 
 [package.dependencies]
@@ -3924,4 +3924,4 @@ reference = "ali"
 [metadata]
 lock-version = "2.0"
 python-versions = "~3.11.7"
-content-hash = "9960f69c7706832c0d0c4a6c07b83d0112968bb7c173830e69f17638cb1425c1"
+content-hash = "69c67afa3dd8a9cf1f56474dfffd681a1afabd876491f12b49ce648fbe6b28d4"
