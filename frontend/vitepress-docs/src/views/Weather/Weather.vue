@@ -45,12 +45,6 @@
         class="v-weather-icon"
       >
       </div>
-      <div
-        v-if="type=== 'multiline'"
-        ref="svgContainer"
-        class="v-weather-icon"
-        :style="`width: ${iconSize}px; height: ${iconSize}px`"
-      ></div>
      
       <template v-if="size === 'small' && type === 'multiline'">
         <p>{{ position.area }}</p>
@@ -148,10 +142,6 @@ import { Loading, Message } from '@vcomp/ui';
 import { twoSum, threeSum, fourSum } from './nSumOfNums';
 import { getLocationByIpAPI, getWeatherAPI } from '@/api';
 
-// import Lottie from 'lottie-web';
-const weatherJson = ref(null);
-// import 'ant-design-vue/lib/Message/style/index.css'
-import weatherIcon from './iconJson';
 
 const props = defineProps({
   size: {
@@ -243,25 +233,9 @@ const calBodyTemperature = () => {
   return (1.07 * T + 0.2 * e - 0.65 * V - 2.7).toFixed(2);
 };
 
-const initLottiePlayer = () => {
-  const container = proxy.$refs.svgContainer;
-
-  const player = document.createElement('lottie-player');
-  player.id = 'weather-lottie-player';
-  player.background = 'transparent';
-  player.loop = true;
-  player.autoplay = true;
-  player.speed = 1;
-  player.style = `width: ${props.iconSize}px; height: ${props.iconSize}px; border: 5px solid #fff; border-radius: 50%;`;
-
-  container.appendChild(player);
-};
 
 
 onMounted(async () => {
-  import('https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js');
-  initLottiePlayer();
-
   convartColor();
 
   const ip = await getIpByIpify();
@@ -288,21 +262,7 @@ const convartColor = () => {
   ];
 };
 
-const showIcon = () =>  {
-  const jsonIcon = weatherIcon[weather.value.weather]
-    ? weatherIcon[weather.value.weather](convartedColor.value[0] / 255, convartedColor.value[1] / 255, convartedColor.value[2] / 255)
-    : null;
-  
-  if (jsonIcon) {
-    const player = document.getElementById('weather-lottie-player');
-    console.log('player: ', player.load);
-    player.addEventListener('rendered', (e) => {
-      player?.load && player.load(jsonIcon);
-    });
-  } else {
-    getWeather();
-  }
-};
+
 
 
 const getDefaultWeather = () => {
@@ -333,18 +293,12 @@ const getWeather = async (city) => {
   try {
     Loading.show();
     const res = await axios.get(apiLink);
-    console.log('res: ', res);
     Loading.close();
     const weatherData = res.data.data;
     if (res.status === 200 && res.data.error === 0 && weatherData.weather) {
       weather.value = weatherData.weather;
       position.value = weatherData.location;
       bodyTemperature.value = calBodyTemperature();
-      
-      if (weatherData.location.error_msg !== '成功。') {
-        Message.warn(weatherData.location.error_msg);
-      }
-      showIcon();
     } else {
       getDefaultWeather();
     }
@@ -357,38 +311,6 @@ const getWeather = async (city) => {
     Message.error('未知错误!');
   }
 };
-// const getWeather = async (city) => {
-//   if (!location) {
-//     Message.error('获取位置信息失败');
-//     return;
-//   }
-//   const cityPos = cityPosEnum[city];
-//   const lat = cityPos ? cityPos.latitude :location.latitude;
-//   const lng = cityPos ? cityPos.longitude : location.longitude;
-//   const params = {
-//     location: `${lng},${lat}`
-//     // location: '120.298501,30.41875'
-//   };
-  
-  
-//   try {
-//     Loading.show();
-//     getWeatherAPI(params).then(data => {
-//       console.log('data: ', data);
-//       //   showIcon();
-//       weather.value = data.now;
-//     });
-//     Loading.close();
- 
-
-//     weatherIframeLink.value = weather.value.city
-//       ? `https://widget-page.qweather.net/h5/index.html?md=0123456&bg=1&lc=${weather.value.city}&key=506922bf101b43668f4db06f843b9fd2&v=_1662948186215`
-//       : 'https://widget-page.qweather.net/h5/index.html?md=0123456&bg=1&lc=auto&key=506922bf101b43668f4db06f843b9fd2&v=_1662948186215';
-//   } catch (err) {
-//     console.log(err);
-//     Message.error('未知错误!');
-//   }
-// };
 
 const clothEnum = {
   9: '较厚的羽绒服',
@@ -438,59 +360,6 @@ const showWeatherDialog = () =>  {
   });
 
 };
-
-// const getLocation = async () => {
-//   if (typeof window !== 'undefined' && window.navigator.geolocation) {
-//     window.navigator.geolocation.getCurrentPosition(
-//       (position) => {
-//         location = {
-//           latitude: position.coords.latitude.toFixed(6),
-//           longitude: position.coords.longitude.toFixed(6)
-//         };
-//       },
-//       (error) => {
-//         console.log('error: ', error);
-//         switch (error.code) {
-//         case 0:
-//           Message.warn('获取位置信息出错！将使用IP定位');
-//           break;
-//         case 1:
-//           Message.warn('您设置了阻止该页面获取位置信息！将使用IP定位');
-//           break;
-//         case 2:
-//           Message.warn('浏览器无法确定您的位置！将使用IP定位');
-//           break;
-//         case 3:
-//           Message.warn('获取位置信息超时！将使用IP定位');
-//           break;
-//         }
-//       }
-//     );
-//   } else {
-//     Message.warn('该浏览器不支持 HTML5 的定位功能！将使用IP定位');
-//     console.log('该浏览器不支持 HTML5 的定位功能！将使用IP定位: ');
-//   }
-
-//   if (!location) {
-//     Loading.show();
-//     const ip = sessionStorage.Ip || await getIpByIpify();
-//     console.log('ip: ', ip);
-//     ip && getLocationByIpAPI(ip).then(data => {
-//       console.log('data: ', data);
-//       const res = data.result;
-//       const cityInfo = res.adInfo;
-//       const locationData = data.result.location;
-//       location = {
-//         latitude: locationData.lat,
-//         longitude: locationData.lng,
-//       };
-//       getWeather();
-//     });
-//     Loading.close();
-//   } else {
-//     getWeather();
-//   }
-// };
 
 function getIpByIpify() {
   Loading.show();
