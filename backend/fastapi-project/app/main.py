@@ -11,6 +11,8 @@ from app.db.base_class import DeclarativeBase
 # from scheduler.invitation import invitation_scheduler
 from app.routes import router as api_router
 
+# from fastapi.staticfiles import StaticFiles
+
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -24,6 +26,7 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(lifespan=lifespan, debug=True)
 
+# app.mount("/public", StaticFiles(directory="public"), "public")
 
 origins = [
     "http://localhost:3010",
