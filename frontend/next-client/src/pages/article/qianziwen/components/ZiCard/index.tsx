@@ -7,7 +7,9 @@ interface Props {
 const ZiCard = (props: Props) => {
 	const { wenzi } = props;
 
-	const getImgUrlArr = (str) => {
+	const getImgUrlArr = (str: string) => {
+		if (!str) return [];
+
 		// const serverPrefix = 'http://127.0.0.1:3011';
 		const serverPrefix = 'https://dzrlab.top/public';
 		const prefix = '/img';
