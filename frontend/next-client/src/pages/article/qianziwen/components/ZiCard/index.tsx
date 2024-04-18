@@ -19,6 +19,31 @@ const ZiCard = (props: Props) => {
 		return splitStr.map((item) => serverPrefix + prefix + item);
 	};
 
+	const splitTextByBracket = (text: string) => {
+		let res = '';
+		for (let i = 0, len = text.length; i < len; i++) {
+			const char = text[i];
+			if (char === '【') {
+				res += '<div class="divider1">' + char;
+			} else if (char === '〖') {
+				res += '<div class="divider2">' + char;
+			} else if (['】', '〗'].includes(char)) {
+				res += char + '</div>';
+			} else if (char === '(' && typeof Number(text[i]) === 'number') {
+				res += '<br>' + char;
+			} else {
+				res += char;
+			}
+		}
+		return res;
+	};
+
+	const splitTextByDot = (text: string) => {
+		if (!text) return '';
+		// 去掉第一个换行
+		return text.split('·').join('<br>').replace('<br>', '');
+	};
+
 	return (
 		<div className={styles.ziWrapper}>
 			<h2>{wenzi.zi}</h2>
@@ -63,19 +88,19 @@ const ZiCard = (props: Props) => {
 			<p>{wenzi.bsdx}</p>
 
 			<h3>基本解释</h3>
-			<p>{wenzi.jbjs}</p>
+			<p dangerouslySetInnerHTML={{ __html: splitTextByBracket(wenzi.jbjs) }}></p>
 
 			<h3>新华字典详细解释</h3>
-			<p>{wenzi.xhzdxxjs}</p>
+			<p dangerouslySetInnerHTML={{ __html: splitTextByBracket(wenzi.xhzdxxjs) }}></p>
 
 			<h3>汉语大字典解释</h3>
-			<p>{wenzi.hydzdjs}</p>
+			<p dangerouslySetInnerHTML={{ __html: splitTextByBracket(wenzi.hydzdjs) }}></p>
 
 			<h3>康熙字典解释</h3>
-			<p>{wenzi.kxzdjs}</p>
+			<p dangerouslySetInnerHTML={{ __html: splitTextByBracket(wenzi.kxzdjs) }}></p>
 
 			<h3>说文解字详解</h3>
-			<p>{wenzi.swjzxj}</p>
+			<p dangerouslySetInnerHTML={{ __html: splitTextByBracket(wenzi.swjzxj) }}></p>
 
 			<h3>说文解字详解图片</h3>
 			<div className="image-wrapper">
@@ -99,13 +124,13 @@ const ZiCard = (props: Props) => {
 			</div>
 
 			<h3>相关词语</h3>
-			<p>{wenzi.xgcy}</p>
+			<p dangerouslySetInnerHTML={{ __html: splitTextByDot(wenzi.xgcy) }}></p>
 
 			<h3>相关成语</h3>
-			<p>{wenzi.xgchengyu}</p>
+			<p dangerouslySetInnerHTML={{ __html: splitTextByDot(wenzi.xgchengyu) }}></p>
 
 			<h3>相关诗词</h3>
-			<p>{wenzi.xgsc}</p>
+			<p dangerouslySetInnerHTML={{ __html: splitTextByDot(wenzi.xgsc) }}></p>
 
 			<h3>康熙字典原图</h3>
 			<div className={styles.imageWrapper}>
