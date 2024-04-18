@@ -12,7 +12,7 @@ lerna-debug.log*
 
 node_modules
 # only ignore root dist directory
-/dist
+/out
 dist-ssr
 *.local
 stats.html

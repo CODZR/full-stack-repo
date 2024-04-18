@@ -15,6 +15,8 @@ export default function Home() {
 			setTimeout(() => {
 				router.push(ROUTE_PATH_MAP.LOGIN);
 			}, 300);
+		} else {
+			router.push(location.pathname);
 		}
 	});
 

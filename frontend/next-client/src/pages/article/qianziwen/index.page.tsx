@@ -41,7 +41,7 @@ const QianziwenPage = () => {
 				<div className={styles.body}>
 					{qianziwenBody.map((char, idx) => (
 						<p
-							className={cls(styles.char, (idx + 1) % 5 === 0 ? 'default-cursor' : '')}
+							className={cls(styles.char, (idx + 1) % 5 === 0 ? styles.symbol : '')}
 							key={idx}
 							onClick={() => showSearchDialog(char)}
 						>

@@ -90,7 +90,11 @@ const ZiCard = (props: Props) => {
 			</div>
 
 			<h3>相关书法</h3>
-			<p>{wenzi.xgsf}</p>
+			<div className="image-wrapper">
+				{getImgUrlArr(wenzi.xgsf).map((url, idx) => (
+					<img alt={`相关书法${idx}`} key={idx} src={url} />
+				))}
+			</div>
 
 			<h3>相关词语</h3>
 			<p>{wenzi.xgcy}</p>
