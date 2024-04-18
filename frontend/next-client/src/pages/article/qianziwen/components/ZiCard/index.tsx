@@ -10,7 +10,7 @@ const ZiCard = (props: Props) => {
 	const getImgUrlArr = (str) => {
 		// const serverPrefix = 'http://127.0.0.1:3011';
 		const serverPrefix = 'https://dzrlab.top/';
-		const prefix = '/img';
+		const prefix = '/public/img';
 		const splitStr = str.split(prefix);
 		splitStr.shift();
 
