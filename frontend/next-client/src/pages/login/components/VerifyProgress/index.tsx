@@ -6,7 +6,7 @@ interface Props {
 	setDisableSubmit: rcSetFn<boolean>;
 }
 
-const randomStepArr = [0.5, 1, 1.5];
+const randomStepArr = [0.25, 0.5, 0.75, 1, 1.25];
 
 const VerifyProgress = (props: Props) => {
 	const { setDisableSubmit } = props;
@@ -77,7 +77,13 @@ const VerifyProgress = (props: Props) => {
 	};
 
 	return (
-		<div className={styles.verifyWrapper} onMouseDown={onVerifyMouseDown} onMouseUp={onVerifyMouseUp}>
+		<div
+			className={styles.verifyWrapper}
+			onMouseDown={onVerifyMouseDown}
+			onMouseUp={onVerifyMouseUp}
+			onTouchEnd={onVerifyMouseUp}
+			onTouchStart={onVerifyMouseDown}
+		>
 			<div className={styles.verifyTrigger} style={{ width: progressPercent + '%' }} />
 			<div className={styles.verifyBox} ref={verifyBoxRef}>
 				Press &amp; Hold until verified

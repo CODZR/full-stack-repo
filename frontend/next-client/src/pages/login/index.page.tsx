@@ -36,13 +36,15 @@ const Login: React.FC = () => {
 			setTimeout(() => {
 				if (data.username === 'admin' && data.password === 'admin123456') {
 					resolve(true);
-					toast({ status: 'success', title: 'Welcome to health grow system.' });
-					router.push('/article/qianziwen');
+					toast({ status: 'success', title: 'Welcome, have a nice day.' });
+					setTimeout(() => {
+						router.push('/article/qianziwen');
+					}, 800);
 				} else {
 					toast({ status: 'error', title: 'Wrong username or password.' });
 					reject('Wrong username or password.');
 				}
-			}, 1200);
+			}, 800);
 		});
 		// const response = await LoginService.loginAccessToken({
 		// 	formData: data
