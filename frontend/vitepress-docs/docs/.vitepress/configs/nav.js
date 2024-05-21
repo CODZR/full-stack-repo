@@ -49,6 +49,7 @@ export const nav = [ // menu
     title: 'Technology',
     submenu: [
       { text: '学习链接', link: '/blog/technology/links' },
+      { text: 'Chrome调试', link: '/blog/technology/chrome' },
       { text: '快捷键', link: '/blog/technology/shortcuts' },
       { text: '命令行', link: '/blog/technology/command' },
     ]
