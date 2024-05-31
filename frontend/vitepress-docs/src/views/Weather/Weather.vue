@@ -97,14 +97,6 @@
         </template>
       </div>
     </template>
-    <div class="is-hidden">
-      <button
-        class="co-button cursor-pointer mgt-5"
-        @click="showWeatherDialog()"
-      >
-        点击查看一周天气
-      </button>
-    </div>
 
     <div>
       <strong>体感温度：</strong>
@@ -135,7 +127,7 @@
   </div>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import axios from 'axios';
 import WeatherDialog from '@vcomp/Dialog.vue';
 import { Loading, Message } from '@vcomp/ui';
@@ -174,7 +166,7 @@ const props = defineProps({
 
 const { proxy } = getCurrentInstance();
 const convartedColor= ref([]);
-let location = null;   //定位功能获取的经纬度
+const location = null;   //定位功能获取的经纬度
 const position = ref({});   //经纬度查询获得的位置信息
 const weather = ref({});
 const bodyTemperature = ref(null);
@@ -215,7 +207,7 @@ const dealColdDivisorByTime = (time) =>  {
 
 const calBodyTemperature = () => {
   const w = weather.value;
-  const T = w.temp;
+  const T = +w.temp;
 
   let coldDivisor = 0.5; // 热时湿度大热，冷时湿度大冷, 雨雪更冷
   if (w.weather.includes('雨') || w.weather.includes('雪')) {
@@ -238,19 +230,7 @@ const calBodyTemperature = () => {
 onMounted(async () => {
   convartColor();
 
-  const ip = await getIpByIpify();
-  if (ip) {
-    getLocationByIpAPI(ip).then(data => {
-      const res = data.result;
-      const cityInfo = res.adInfo;
-      const locationData = data.result.location;
-      location = {
-        latitude: locationData.lat,
-        longitude: locationData.lng,
-      };
-      getWeather();
-    });
-  }
+  getWeather();
 });
 
 const convartColor = () => {
@@ -266,12 +246,12 @@ const convartColor = () => {
 
 
 const getDefaultWeather = () => {
-  Message.error('获取天气失败!自动获取默认余杭天气。');
+  Message.warn('获取地理位置失败!自动获取默认余杭天气。');
   getWeather('余杭');
 };
 
 const cityPosEnum = {
-  '余杭': { longitude: 120.01134, latitude: 30.27599 },
+  '余杭': { longitude: 120.00, latitude: 30.28 },
   '西湖': { longitude: 120.13040, latitude: 30.25924 },
   '北仑': { longitude: 121.94856, latitude: 29.89389 },
 };
@@ -293,6 +273,7 @@ const getWeather = async (city) => {
   try {
     Loading.show();
     const res = await axios.get(apiLink);
+    console.log('res: ', res);
     Loading.close();
     const weatherData = res.data.data;
     if (res.status === 200 && res.data.error === 0 && weatherData.weather) {
@@ -303,9 +284,7 @@ const getWeather = async (city) => {
       getDefaultWeather();
     }
 
-    weatherIframeLink.value = weather.value.city
-      ? `https://widget-page.qweather.net/h5/index.html?md=0123456&bg=1&lc=${weather.value.city}&key=506922bf101b43668f4db06f843b9fd2&v=_1662948186215`
-      : 'https://widget-page.qweather.net/h5/index.html?md=0123456&bg=1&lc=auto&key=506922bf101b43668f4db06f843b9fd2&v=_1662948186215';
+    weatherIframeLink.value = `https://devapi.qweather.com/v7/weather/now/${weather.value.city}/`;
   } catch (err) {
     console.log(err);
     Message.error('未知错误!');
@@ -361,27 +340,10 @@ const showWeatherDialog = () =>  {
 
 };
 
-function getIpByIpify() {
-  Loading.show();
-  return fetch('https://api.ipify.org/?format=json', {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  })
-    .then((res) => {
-      return res.text();
-    })
-    .then((res) => {
-      const ip = JSON.parse(res).ip;
-      return ip;
-    })
-    .catch((err) => {
-      console.log('getIpByIpify err: ', err);
-      getDefaultWeather();
-    })
-    .finally(() => Loading.close());
-}
+
+onMounted(()=> {
+  !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs)}}(document,'script','weatherwidget-io-js');
+});
 </script>
 
 <style scoped>

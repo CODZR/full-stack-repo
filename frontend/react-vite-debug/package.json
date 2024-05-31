@@ -1,0 +1,86 @@
+{
+	"name": "react-vite-debug",
+	"private": true,
+	"version": "0.0.0",
+	"scripts": {
+		"dev": "vite",
+		"beta": "vite --mode beta",
+		"build:dev": "tsc && vite build --mode development",
+		"build:beta": "tsc && vite build --mode beta",
+		"build:prod": "tsc && vite build --mode production",
+		"preview": "vite preview --port=8000",
+		"format": "pnpm lint:eslint && pnpm lint:prettier && pnpm lint:stylelint:module && tsc",
+		"lint:eslint": "eslint --fix --ext .js,.ts,.tsx ./",
+		"lint:prettier": "prettier --write --loglevel warn \"src/**/*.{js,ts,json,tsx,css,less,scss,html,md}\"",
+		"lint:stylelint:module": "stylelint --cache --fix \"**/*.{less,postcss,css}\"",
+		"lint:lint-staged": "lint-staged",
+		"release": "standard-version",
+		"commit": "pnpm format && git add -A && git-cz && git push",
+		"test": "pnpm format"
+	},
+	"dependencies": {
+		"react": "~18.2.0",
+		"react-dom": "~18.2.0",
+		"react-redux": "~8.1.3",
+		"react-router-dom": "~6.21.3"
+	},
+	"devDependencies": {
+		"@types/node": "~20.11.9",
+		"@types/react": "~18.2.48",
+		"@types/react-dom": "~18.2.18",
+		"@types/react-router-dom": "~5.3.3",
+		"@typescript-eslint/eslint-plugin": "~5.62.0",
+		"@typescript-eslint/parser": "~5.62.0",
+		"@vitejs/plugin-react": "~4.2.1",
+		"@wogns3623/eslint-plugin-better-exhaustive-deps": "~1.1.0",
+		"autoprefixer": "~10.4.17",
+		"commitizen": "~4.3.0",
+		"cz-git": "~1.8.0",
+		"eslint": "~8.56.0",
+		"eslint-config-prettier": "~8.10.0",
+		"eslint-plugin-import": "~2.29.1",
+		"eslint-plugin-prettier": "~4.2.1",
+		"eslint-plugin-react": "~7.33.2",
+		"eslint-plugin-react-hooks": "~4.6.0",
+		"eslint-plugin-simple-import-sort": "~10.0.0",
+		"eslint-plugin-unused-imports": "~2.0.0",
+		"less": "~4.2.0",
+		"less-plugin-import-node-modules": "~1.0.0",
+		"postcss": "~8.4.33",
+		"postcss-less": "~6.0.0",
+		"prettier": "~2.8.8",
+		"standard-version": "~9.5.0",
+		"stylelint": "~14.16.1",
+		"stylelint-config-css-modules": "4.0.0",
+		"stylelint-config-prettier": "~9.0.5",
+		"stylelint-config-recess-order": "~3.1.0",
+		"stylelint-config-recommended-less": "1.0.0",
+		"stylelint-config-standard": "~29.0.0",
+		"stylelint-config-styled-components": "~0.1.1",
+		"stylelint-less": "~1.0.0",
+		"stylelint-processor-styled-components": "~1.10.0",
+		"typescript": "5.1.3",
+		"unplugin-auto-import": "~0.16.7",
+		"vite": "~4.5.2",
+		"vite-plugin-commonjs": "~0.8.2",
+		"vite-plugin-compression": "~0.5.1",
+		"vite-plugin-eslint": "~1.8.1",
+		"vite-plugin-imp": "~2.4.0",
+		"vite-plugin-style-import": "~2.0.0",
+		"vite-plugin-svg-icons": "~2.0.1",
+		"vite-react-jsx": "~1.1.2"
+	},
+	"postcss": {
+		"plugins": {
+			"autoprefixer": {}
+		}
+	},
+	"engines": {
+		"node": ">=16.0.0"
+	},
+	"browserslist": [
+		"> 1%",
+		"last 2 versions",
+		"not dead"
+	]
+}
