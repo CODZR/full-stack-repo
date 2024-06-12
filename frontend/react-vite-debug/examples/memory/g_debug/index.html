@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>内存泄漏</title>
+</head>
+<body>
+    
+    <div id="content">0</div>
+    <button id="click"> click me!</button>
+
+    <script>
+        const click = document.getElementById('click')
+        const content = document.getElementById('content')
+        const arr = []
+
+        // 使用闭包
+        function add() {
+            let test = new Array(10000).fill('winter')
+            return function() {
+                return test
+            }
+        }
+
+        // 点击
+        click.addEventListener('click', function() {
+
+            // 执行 10次
+            arr.push(add())
+            arr.push(add())
+            arr.push(add())
+            arr.push(add())
+            arr.push(add())
+            arr.push(add())
+            arr.push(add())
+            arr.push(add())
+            arr.push(add())
+            arr.push(add())
+
+            content.innerHTML = arr.length
+        })
+    </script>
+</body>
+</html>
