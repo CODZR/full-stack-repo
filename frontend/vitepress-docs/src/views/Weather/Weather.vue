@@ -273,7 +273,6 @@ const getWeather = async (city) => {
   try {
     Loading.show();
     const res = await axios.get(apiLink);
-    console.log('res: ', res);
     Loading.close();
     const weatherData = res.data.data;
     if (res.status === 200 && res.data.error === 0 && weatherData.weather) {
