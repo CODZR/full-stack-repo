@@ -4,3 +4,4 @@ from app.schemas.user import *
 from app.schemas.blog import *
 from app.schemas.faq import *
 from app.schemas.hanzi import *
+from app.schemas.weather import *

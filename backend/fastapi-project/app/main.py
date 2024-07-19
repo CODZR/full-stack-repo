@@ -8,7 +8,7 @@ from app.db.base import engine
 
 from app.db.base_class import DeclarativeBase
 
-# from scheduler.invitation import invitation_scheduler
+from app.scheduler.weather import weather_scheduler
 from app.routes import router as api_router
 
 # from fastapi.staticfiles import StaticFiles
@@ -46,5 +46,5 @@ app.add_middleware(
 app.include_router(api_router)
 
 if __name__ == "__main__":
-    # invitation_scheduler.start()
+    weather_scheduler.start()
     uvicorn.run("main:app", host="0.0.0.0", port=7001)
