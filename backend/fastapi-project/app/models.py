@@ -1,5 +1,8 @@
 from datetime import datetime, timedelta
+import json
+from typing import List
 import uuid
+from pydantic import Json
 from sqlalchemy import (
     Column,
     DateTime,
@@ -14,6 +17,9 @@ from app.core.config import Settings
 
 from app.db.base_class import DeclarativeBase, IDMixin, TimestampMixin
 from sqlalchemy.orm import relationship
+
+from app.schemas.weather import WeatherMinutelySchema
+from app.utils.rwmodel import list_2_listStr
 
 
 class User(DeclarativeBase, IDMixin, TimestampMixin):
@@ -84,3 +90,40 @@ class Hanzi(DeclarativeBase, IDMixin):
     xgchengyu = Column(Text, nullable=False, comment="相关成语")
     xgsc = Column(Text, nullable=False, comment="相关诗词")
     kxzdpic = Column(String(255), nullable=False, comment="康熙字典原图")
+
+
+class WeatherMinutely(DeclarativeBase, IDMixin):
+    __tablename__ = "weather_minutely"
+    __table_args__ = {"extend_existing": True}
+
+    location = Column(String(64))
+    precipitation_2h = Column(String(64))
+    precipitation = Column(String(64))
+    probability = Column(String(64))
+    description = Column(String)
+    primary = Column(Integer, nullable=False)
+    forecast_keypoint = Column(String)
+    created_at = Column(DateTime, default=func.now())
+    updated_at = Column(DateTime, default=func.now(), onupdate=func.now())
+
+    def to_dict(self) -> dict:
+        validated_data_dict = WeatherMinutelySchema.model_validate(
+            self.__dict__
+        ).model_dump(exclude_none=True)
+        return validated_data_dict
+
+    def to_json(self) -> Json:
+        validated_data_json = WeatherMinutelySchema.model_validate(
+            self.__dict__
+        ).model_dump_json(exclude_none=True)
+        return json.loads(validated_data_json)
+
+
+class WeatherHourly(DeclarativeBase, IDMixin):
+    __tablename__ = "weather_hourly"
+    __table_args__ = {"extend_existing": True}
+
+    question = Column(String(255), nullable=False)
+    answer = Column(Text, nullable=False)
+    created_at = Column(DateTime, default=func.now())
+    updated_at = Column(DateTime, default=func.now(), onupdate=func.now())

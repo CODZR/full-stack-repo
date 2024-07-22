@@ -11,12 +11,13 @@ from app.services.oauth2 import get_current_user
 
 
 weather_router = APIRouter(tags=["Weather"])
-weather_crud = CRUDBase(model=models.Weather)
+weather_minutely_crud = CRUDBase(model=models.WeatherMinutely)
+weather_hourly_crud = CRUDBase(model=models.WeatherHourly)
 
 
 @weather_router.get("/weathers/hourly")
-def list_weathers(db: Session = Depends(get_db)) -> schemas.WeatherHourly:
-    db_weather = weather_crud.get_first(db)
+def list_weathers(db: Session = Depends(get_db)) -> schemas.WeatherHourlySchema:
+    db_weather = weather_hourly_crud.get_first(db)
     if db_weather:
         return db_weather
     else:
@@ -24,8 +25,8 @@ def list_weathers(db: Session = Depends(get_db)) -> schemas.WeatherHourly:
 
 
 @weather_router.get("/weathers/minutely")
-def list_weathers(db: Session = Depends(get_db)) -> schemas.WeatherMinutely:
-    db_weather = weather_crud.get_first(db)
+def list_weathers(db: Session = Depends(get_db)) -> schemas.WeatherMinutelySchema:
+    db_weather = weather_minutely_crud.get_first(db)
     if db_weather:
         return db_weather
     else:

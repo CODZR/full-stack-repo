@@ -1,3 +1,6 @@
+from app.models import WeatherMinutely
+
+
 minutely_data = {
     "status": "ok",  # 返回状态
     "api_version": "v2.6",  # API 版本
