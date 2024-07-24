@@ -96,9 +96,4 @@ isBlog: true
 
 ## 不太准，个人测试用
 
-<Page />
 
-<script setup>
-import Page from '@/views/Weather/Index.vue'
-
-</script>

@@ -1,83 +1,77 @@
+import type { CustomAxiosError, CustomAxiosInstance, CustomAxiosResponse } from 'axios';
 import axios from 'axios';
 
-// import { useUserStore } from '../store';
-import { toast } from '@comp/base/MyToast';
+import { jsonToHump, jsonToUnderLineParamsAndData } from './utils/format';
 
-// import 'element-plus/theme-chalk/src/loading.scss';
-import { jsonToHump, jsonToUnderline } from '@/utils/format';
+const baseURL = 'http://127.0.0.1:7001/api/';
 
-// const baseURL = String(import.meta.env.VITE_API_DOMAIN);
-
-const requester = axios.create({
-	// baseURL: 'https://dzrlab.top/api',
-	baseURL: 'https://api.dzrlab.top/api/',
+const config = {
+	baseURL: baseURL,
 	// baseURL: '/api',
-	timeout: 25000, // 设置超时时间
+	timeout: 50000, // 设置超时时间
 	withCredentials: true, // 允许携带cookie
 	headers: {
 		// 解决ie浏览器会自动缓存
 		'cache-control': 'no-cache'
 	}
-}) as any;
+};
 
-// request interceptor
-requester.interceptors.request.use(
-	(config) => {
-		const { method, url } = config;
-		jsonToUnderLineParamsAndData(config);
-		// config.headers['Authorization'] = 'Bearer ' + getToken();
+class RequestHttp {
+	service: CustomAxiosInstance;
+	public constructor(config) {
+		// 实例化axios
+		this.service = axios.create(config);
+		/**
+		 * @description 请求拦截器
+		 * 客户端发送请求 -> [请求拦截器] -> 服务器
+		 * token校验(JWT) : 接受服务器返回的token,存储到redux/本地储存当中
+		 */
+		this.service.interceptors.request.use(
+			// @ts-ignore
+			(config: CustomAxiosRequestConfig) => {
+				jsonToUnderLineParamsAndData(config);
 
-		return config;
-	},
-	(error) => {
-		// do something with request error
-		console.log(error); // for debug
-		return Promise.reject(error);
+				return config;
+			},
+			(error: CustomAxiosError) => {
+				console.log(error); // for debug
+				return Promise.reject(error);
+			}
+		);
+
+		/**
+		 * @description 响应拦截器
+		 *  服务器换返回信息 -> [拦截统一处理] -> 客户端JS获取到信息
+		 */
+		this.service.interceptors.response.use(
+			(response: CustomAxiosResponse) => {
+				const res = response.data;
+
+				jsonToHump(res);
+
+				return res;
+			},
+			async (error: CustomAxiosError) => {
+				return Promise.reject(error);
+			}
+		);
 	}
-);
 
-// response interceptor
-requester.interceptors.response.use(
-	/**
-	 * Determine the request status by custom code
-	 */
-	(response) => {
-		// eslint-disable-next-line no-undef
-		const res = response.data;
-		console.log('res: ', res);
-		if (response.status === 401) {
-			toast.error('The token has expired. Please log in again');
-		}
-		jsonToHump(res);
-		return res;
-	},
-	(error) => {
-		// eslint-disable-next-line no-undef
-		console.log('http ' + error); // for debug
-		toast.error(error.message);
-		return Promise.reject(error);
+	// * 常用请求方法封装
+	get<T = any>(url: string, params?: object, _object = {}): Promise<T> {
+		return this.service.get(url, { params, ..._object });
 	}
-);
-
-export default requester;
-
-const hump2Underline = (str: string) => str.replace(/([A-Z])/g, '_$1').toLowerCase();
-
-function jsonToUnderLineParamsAndData(config: any) {
-	let params = config.params;
-	if (params && typeof params[Symbol.iterator] === 'function') {
-		// 传入的params为URLSearchParams
-		let newParams = '';
-		for (const item of params) {
-			const newKey = hump2Underline(item[0]);
-			newParams += `&${newKey}=${item[1]}`;
-		}
-		params = new URLSearchParams(newParams); // 去除第一个&
-	} else {
-		jsonToUnderline(params);
+	post<T = any>(url: string, data?: object, _object = {}): Promise<T> {
+		return this.service.post(url, data, _object);
 	}
-	const data = config.data;
-	jsonToUnderline(data);
-	config.params = params;
-	config.data = data;
+	put<T = any>(url: string, data?: object, _object = {}): Promise<T> {
+		return this.service.put(url, data, _object);
+	}
+	delete<T = any>(url: string, params?: any, _object = {}): Promise<T> {
+		return this.service.delete(url, { params, ..._object });
+	}
 }
+
+const defaultRequest = new RequestHttp(config).service;
+
+export default defaultRequest;
