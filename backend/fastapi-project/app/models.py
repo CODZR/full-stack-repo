@@ -138,7 +138,7 @@ class WeatherHourly(DeclarativeBase, IDMixin):
     dswrf_24h = Column(String(255), comment="24h向下短波辐射通量")
     aqi_24h = Column(String(255), comment="24h国标AQI")
     pm25_24h = Column(String(255), comment="24h PM2.5浓度")
-    primary = int = None  # 主要预报
+    primary = Column(Integer, nullable=False, comment="主要预报")
     forecast_keypoint = Column(String(255), comment="预报关键点")
     created_at = Column(DateTime, default=func.now())
 
