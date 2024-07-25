@@ -2,33 +2,34 @@ export interface WeatherHourly {
 	id: number;
 	location: string; // 请求经纬度
 	description: string; // 预报描述
-	precipitation_value_24h: string; // 24h降水量数据
-	precipitation_probability_24h: string; // 24h降水概率数据
-	temperature_24h: string; // 24h地表2米气温
-	apparent_temperature_24h: string; // 24h体感温度
-	wind_speed_24h: string; // 24h地表10米风速
-	wind_direction_24h: string; // 24h地表10米风向
-	humidity_24h: string; // 24h地表2米相对湿度
-	cloudrate_24h: string; // 24h云量
-	skycon_24h: string; // 24h天气现象
-	pressure_24h: string; // 24h地面气压
-	visibility_24h: string; // 24h地表水平能见度
-	dswrf_24h: string; // 24h向下短波辐射通量
-	aqi_24h: string; // 24h国标AQI
-	pm25_24h: string; // 24h PM2.5浓度
+	firstHourDatetime: string; // 48h第一个h的时间
+	precipitationValueIn48h: string; // 48h降水量数据
+	precipitationProbabilityIn48h: string; // 48h降水概率数据
+	temperatureIn48h: string; // 48h地表2米气温
+	apparentTemperatureIn48h: string; // 48h体感温度
+	windSpeedIn48h: string; // 48h地表10米风速
+	windDirectionIn48h: string; // 48h地表10米风向
+	humidityIn48h: string; // 48h地表2米相对湿度
+	cloudrateIn48h: string; // 48h云量
+	skyconIn48h: string; // 48h天气现象
+	pressureIn48h: string; // 48h地面气压
+	visibilityIn48h: string; // 48h地表水平能见度
+	dswrfIn48h: string; // 48h向下短波辐射通量
+	aqiIn48h: string; // 48h国标AQI
+	pm25In48h: string; // 48h PM2.5浓度
 	primary: number; // 主要预报
-	forecast_keypoint: string; // 预报关键点
-	created_at: string;
+	forecastKeypoint: string; // 预报关键点
+	createdAt: string;
 }
 
 export interface WeatherMinutely {
 	id: number;
 	location: string; // 请求经纬度
-	precipitation_2h: string; // 未来2小时每分钟的雷达降水强度
+	precipitationIn2h: string; // 未来2小时每分钟的雷达降水强度
 	precipitation: string; // 未来1小时每分钟的雷达降水强度
 	probability: string; // 未来两小时每半小时的降水概率
 	description: string; // 预报描述
 	primary: number; // 主要预报
-	forecast_keypoint: string; // 预报关键点
-	created_at: string;
+	forecastKeypoint: string; // 预报关键点
+	createdAt: string;
 }

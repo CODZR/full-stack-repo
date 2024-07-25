@@ -25,9 +25,10 @@ def hourly_weather_scheduler():
     while retry_times <= MAX_RETRY:
         try:
             # hourly_api_url = (
-            #     API_BASE_URL + f"hourly?hourlysteps=24&token={CAI_YUN_API_TOKEN}"
+            #     API_BASE_URL + f"hourly?hourlysteps=48&token={CAI_YUN_API_TOKEN}"
             # )
             # data = requests.get(hourly_api_url).json()
+            # print(f"row: 30 - col: 13 data -> {data}")
             save_data_by_hourly_in_database(hourly_data)
             break
         except Exception:

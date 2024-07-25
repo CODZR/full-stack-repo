@@ -1,6 +1,7 @@
 import { WeatherHourly, WeatherMinutely } from '@/models/weather';
 import { fetchWeatherHourlyAPI, fetchWeatherMinutelyAPI } from '@/services/weather';
 import type { GetStaticProps } from 'next';
+import WindChart from './components/WindChart';
 
 export const getStaticProps: GetStaticProps = async () => {
 	const weatherHourly = await fetchWeatherHourlyAPI();
@@ -19,10 +20,13 @@ interface Props {
 	weatherMinutely: WeatherMinutely;
 }
 
-const WeatherPage = (props: Props) => {
-	console.log('props: ', props);
-
-	return <div></div>;
+const WeatherPage = ({ weatherHourly, weatherMinutely }: Props) => {
+	return (
+		<div>
+			<WindChart weatherHourly={weatherHourly} />
+			123
+		</div>
+	);
 };
 
 export default WeatherPage;
