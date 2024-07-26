@@ -23,7 +23,7 @@ export const CHART_OPTIONS = {
 			}
 		},
 		axisLabel: {
-			formatter: '{value} °C'
+			formatter: '{value} ℃'
 		}
 	},
 
@@ -32,38 +32,52 @@ export const CHART_OPTIONS = {
 		orient: 'horizontal',
 		left: 'center',
 		bottom: 10,
+		dimension: 2,
+		seriesIndex: 1,
 		pieces: [
 			{
+				gte: 37,
+				color: 'red',
+				label: '酷热（>=37℃）'
+			},
+			{
+				gte: 26,
+				lt: 37,
+				color: 'orange',
+				label: '高温（26-37℃）'
+			},
+			{
 				gte: 17,
-				color: '#18BF12',
-				label: '大风（>=17节）'
+				lt: 26,
+				color: 'lightgreen',
+				label: '凉爽（17-26℃）'
 			},
 			{
-				gte: 11,
-				lt: 17,
-				color: '#f4e9a3',
-				label: '中风（11  ~ 17 节）'
+				gte: 4,
+				lt: 16,
+				color: 'lightblue',
+				label: '低温（4-16℃）'
 			},
 			{
-				lt: 11,
-				color: '#D33C3E',
-				label: '微风（小于 11 节）'
+				lt: 4,
+				color: 'blue',
+				label: '严寒（<4℃）'
 			}
-		],
-		seriesIndex: 1,
-		dimension: 1
+		]
 	},
 	dataZoom: [
 		{
 			type: 'inside',
 			xAxisIndex: 0,
-			minSpan: 5
+			minSpan: 5,
+			end: 50
 		},
 		{
 			type: 'slider',
 			xAxisIndex: 0,
 			minSpan: 5,
-			bottom: 50
+			bottom: 50,
+			end: 50
 		}
 	]
 };

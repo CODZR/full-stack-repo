@@ -23,7 +23,7 @@ const TemperatureChart = ({ weatherHourly }: Props) => {
 
 	const options = {
 		title: {
-			text: '天气 风向 风速 气温 预报',
+			text: '48h气温/体感温度',
 			left: 'center'
 		},
 		tooltip: {
@@ -31,8 +31,10 @@ const TemperatureChart = ({ weatherHourly }: Props) => {
 			formatter: handleTooltipFormatter
 		},
 		grid: {
-			top: 160,
 			bottom: 125
+		},
+		dataSet: {
+			source: data
 		},
 		xAxis: CHART_OPTIONS['xAxis'],
 		yAxis: CHART_OPTIONS['yAxis'],
@@ -47,14 +49,8 @@ const TemperatureChart = ({ weatherHourly }: Props) => {
 					x: dims.time,
 					y: dims.temperature
 				},
-				markPoint: {
-					data: [
-						{ type: 'max', name: 'Max' },
-						{ type: 'min', name: 'Min' }
-					]
-				},
-				markLine: {
-					data: [{ type: 'average', name: 'Avg' }]
+				lineStyle: {
+					type: 'dotted'
 				}
 			},
 			{
@@ -70,16 +66,13 @@ const TemperatureChart = ({ weatherHourly }: Props) => {
 						{ type: 'max', name: 'Max' },
 						{ type: 'min', name: 'Min' }
 					]
-				},
-				markLine: {
-					data: [{ type: 'average', name: 'Avg' }]
 				}
 			}
 		]
 	};
 	useChart(temperatureChartRef, options);
 
-	return <div ref={temperatureChartRef} style={{ width: 800, height: 800 }} />;
+	return <div ref={temperatureChartRef} style={{ width: 600, height: 600 }} />;
 };
 
 export default TemperatureChart;

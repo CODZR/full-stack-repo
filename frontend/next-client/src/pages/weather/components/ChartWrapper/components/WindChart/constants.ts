@@ -66,7 +66,7 @@ export const CHART_OPTIONS = {
 	},
 	yAxis: {
 		type: 'value',
-		name: '风速（节）',
+		name: '风力等级',
 		nameLocation: 'middle',
 		nameGap: 35,
 		axisLine: {
@@ -80,7 +80,7 @@ export const CHART_OPTIONS = {
 			}
 		},
 		axisLabel: {
-			formatter: '{value} 节'
+			formatter: '{value} 级'
 		}
 	},
 	visualMap: {
@@ -90,36 +90,44 @@ export const CHART_OPTIONS = {
 		bottom: 10,
 		pieces: [
 			{
-				gte: 17,
-				color: '#18BF12',
-				label: '大风（>=17节）'
+				gte: 8,
+				color: 'red',
+				label: '大风（>=8级）'
 			},
 			{
-				gte: 11,
-				lt: 17,
+				gte: 5,
+				lt: 8,
+				color: 'orange',
+				label: '中风（5-7级）'
+			},
+			{
+				gte: 3,
+				lt: 5,
 				color: '#f4e9a3',
-				label: '中风（11  ~ 17 节）'
+				label: '微风（3-4级）'
 			},
 			{
-				lt: 11,
-				color: '#D33C3E',
-				label: '微风（小于 11 节）'
+				lt: 3,
+				color: 'lightgreen',
+				label: '轻风（<=2级）'
 			}
 		],
-		seriesIndex: 1,
+		seriesIndex: 0,
 		dimension: 1
 	},
 	dataZoom: [
 		{
 			type: 'inside',
 			xAxisIndex: 0,
-			minSpan: 5
+			minSpan: 5,
+			end: 50
 		},
 		{
 			type: 'slider',
 			xAxisIndex: 0,
 			minSpan: 5,
-			bottom: 50
+			bottom: 50,
+			end: 50
 		}
 	]
 };

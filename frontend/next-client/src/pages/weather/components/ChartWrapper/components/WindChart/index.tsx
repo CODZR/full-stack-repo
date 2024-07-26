@@ -23,7 +23,7 @@ const WindChart = ({ weatherHourly }: Props) => {
 
 	const options = {
 		title: {
-			text: '天气 风向 风速 气温 预报',
+			text: '48h风力/风向预报',
 			left: 'center'
 		},
 		tooltip: {
@@ -31,7 +31,6 @@ const WindChart = ({ weatherHourly }: Props) => {
 			formatter: handleTooltipFormatter
 		},
 		grid: {
-			top: 160,
 			bottom: 125
 		},
 		xAxis: CHART_OPTIONS['xAxis'],
@@ -67,7 +66,7 @@ const WindChart = ({ weatherHourly }: Props) => {
 	};
 	useChart(windChartRef, options);
 
-	return <div ref={windChartRef} style={{ width: 800, height: 800 }} />;
+	return <div ref={windChartRef} style={{ width: 600, height: 600 }} />;
 };
 
 export default WindChart;
