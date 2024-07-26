@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import * as echarts from 'echarts/core';
+
 import { useOnceEffect } from './useHooks';
 
 export const useChart = (chartRef, options, rendererType = 'svg' as const) => {

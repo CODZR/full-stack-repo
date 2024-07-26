@@ -7,8 +7,7 @@ import {
 	ModalContent,
 	ModalFooter,
 	ModalHeader,
-	ModalOverlay,
-	useBreakpointValue
+	ModalOverlay
 } from '@chakra-ui/react';
 
 interface Props extends ModalProps {

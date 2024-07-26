@@ -1,15 +1,7 @@
-export const ARROW_SIZE = 18;
-export const WEAHTER_ICON_SIZE = 45;
-
 export const dims = {
 	time: 0,
-	windSpeed: 1,
-	R: 2,
-	temperature: 3,
-	apparentTemperature: 4,
-	weatherIcon: 2,
-	minTemp: 3,
-	maxTemp: 4
+	temperature: 1,
+	apparentTemperature: 2
 };
 
 export const CHART_OPTIONS = {
@@ -22,41 +14,19 @@ export const CHART_OPTIONS = {
 			}
 		}
 	},
-	yAxis: [
-		{
-			type: 'value',
-			max: 45,
-			axisLine: {
-				lineStyle: {
-					color: '#015DD5'
-				}
-			},
-			axisLabel: {
-				formatter: '{value} °C'
+	yAxis: {
+		type: 'value',
+		max: 45,
+		axisLine: {
+			lineStyle: {
+				color: '#015DD5'
 			}
 		},
-		{
-			type: 'value',
-			name: '风速（节）',
-			nameLocation: 'middle',
-			nameGap: 35,
-			max: 27,
-			axisLine: {
-				lineStyle: {
-					color: '#666'
-				}
-			},
-			splitLine: {
-				lineStyle: {
-					color: '#ddd'
-				}
-			},
-			axisLabel: {
-				formatter: '{value} 节'
-			}
-		},
-		{}
-	],
+		axisLabel: {
+			formatter: '{value} °C'
+		}
+	},
+
 	visualMap: {
 		type: 'piecewise',
 		orient: 'horizontal',

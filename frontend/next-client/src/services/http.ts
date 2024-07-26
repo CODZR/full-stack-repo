@@ -1,4 +1,4 @@
-import type { CustomAxiosError, CustomAxiosInstance, CustomAxiosResponse } from 'axios';
+import type { AxiosInstance, CustomAxiosError, CustomAxiosResponse } from 'axios';
 import axios from 'axios';
 
 import { jsonToHump, jsonToUnderLineParamsAndData } from './utils/format';
@@ -17,7 +17,7 @@ const config = {
 };
 
 class RequestHttp {
-	service: CustomAxiosInstance;
+	service: AxiosInstance;
 	public constructor(config) {
 		// 实例化axios
 		this.service = axios.create(config);

@@ -7,6 +7,7 @@ node_modules
 .idea
 lib
 dist
+out
 /public
 /docs
 .husky
@@ -19,4 +20,3 @@ dist
 mock/*
 @types/auto-imports.d.ts
 
-/src/pages/Device/components/Modal/components/EditV1/components/V1
