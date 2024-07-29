@@ -7,6 +7,24 @@ export const handleTooltipFormatter = (params) => {
 	return [
 		formatDatetime(value[dims.time]),
 		'降雨量：' + value[dims.precipitationValue],
-		'降雨概率：' + value[dims.precipitationProbability]
+		`降雨概率：${+value[dims.precipitationProbability] * 100}%`
 	].join('<br>');
+};
+
+export const renderPrecipitationProbability = (param, api) => {
+	const value = api.value;
+	const precipitationValue = value(dims.precipitationValue);
+	const point = api.coord([value(dims.time), precipitationValue]);
+
+	return {
+		type: 'text',
+		position: point,
+		style: {
+			text: precipitationValue > 0.0606 ? `${value(dims.precipitationProbability) * 1000}%` : '',
+			y: -10,
+			x: -6,
+			fontSize: 8,
+			fill: '#333'
+		}
+	};
 };

@@ -3,6 +3,7 @@ import { useRef } from 'react';
 import { useChart } from '@/hooks/echarts';
 import { WeatherHourly } from '@/models/weather';
 import { COMMON_CHART_OPTIONS, dims, getChartOptions } from './constants';
+import { renderPrecipitationProbability } from './utils';
 
 interface Props {
 	weatherHourly: WeatherHourly;
@@ -17,7 +18,7 @@ const PrecipitationChart = ({ weatherHourly }: Props) => {
 		.map((_, idx) => [
 			new Date(firstHourTimetamp + idx * 60 * 60 * 1000),
 			weatherHourly.precipitationValueIn48h[idx],
-			weatherHourly.precipitationProbabilityIn48h[idx]
+			+weatherHourly.precipitationProbabilityIn48h[idx] / 1000
 		]);
 
 	const options = {
@@ -33,28 +34,15 @@ const PrecipitationChart = ({ weatherHourly }: Props) => {
 		},
 		yAxis: [
 			{
-				name: 'PrecipitationValue',
+				name: '降雨量',
 				type: 'value',
-				axisLine: {
-					lineStyle: {
-						color: '#015DD5'
-					}
-				},
 				axisLabel: {
 					formatter: '{value} mm／h'
-				}
-			},
-			{
-				name: 'PrecipitationProbability',
-				type: 'value',
-				axisLabel: {
-					formatter: '{value} %'
 				}
 			}
 		],
 		series: [
 			{
-				name: 'PrecipitationValue',
 				type: 'bar',
 				data: data,
 				yAxisIndex: 0,
@@ -64,10 +52,10 @@ const PrecipitationChart = ({ weatherHourly }: Props) => {
 				}
 			},
 			{
-				name: 'PrecipitationProbability',
-				type: 'line',
+				type: 'custom',
 				data: data,
-				yAxisIndex: 1,
+				yAxisIndex: 0,
+				renderItem: renderPrecipitationProbability,
 				encode: {
 					x: dims.time,
 					y: dims.precipitationProbability
@@ -77,7 +65,7 @@ const PrecipitationChart = ({ weatherHourly }: Props) => {
 	};
 	useChart(precipitationChartRef, options);
 
-	return <div ref={precipitationChartRef} style={{ width: 700, height: 600 }} />;
+	return <div ref={precipitationChartRef} style={{ width: 800, height: 300 }} />;
 };
 
 export default PrecipitationChart;

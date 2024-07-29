@@ -9,7 +9,6 @@ interface Props {
 }
 
 const AqiChart = ({ weatherHourly }: Props) => {
-	console.log('weatherHourly: ', weatherHourly);
 	const aqiChartRef = useRef(null);
 
 	const firstHourTimetamp = new Date(weatherHourly.firstHourDatetime).getTime();

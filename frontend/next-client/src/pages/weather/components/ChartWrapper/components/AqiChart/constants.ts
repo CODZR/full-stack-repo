@@ -1,6 +1,6 @@
 export const getChartOptions = (data) => ({
 	title: {
-		text: '余杭AQI（空气质量指数）',
+		text: '48h余杭AQI（空气质量指数）',
 		left: 'center'
 	},
 	tooltip: {
@@ -9,9 +9,6 @@ export const getChartOptions = (data) => ({
 	toolbox: {
 		right: 10,
 		feature: {
-			dataZoom: {
-				yAxisIndex: 'none'
-			},
 			restore: {},
 			saveAsImage: {}
 		}

@@ -2,7 +2,8 @@ import { useRef } from 'react';
 
 import { useChart } from '@/hooks/echarts';
 import { WeatherHourly } from '@/models/weather';
-import { getChartOptions } from './constants';
+import { COMMON_CHART_OPTIONS, dims, getChartOptions } from './constants';
+import { renderArrow } from './utils';
 
 interface Props {
 	weatherHourly: WeatherHourly;
@@ -17,10 +18,74 @@ const WindChart = ({ weatherHourly }: Props) => {
 		.map((_, idx) => [
 			new Date(firstHourTimetamp + idx * 60 * 60 * 1000),
 			weatherHourly.windSpeedIn48h[idx],
-			weatherHourly.windDirectionIn48h[idx]
+			weatherHourly.windDirectionIn48h[idx],
+			weatherHourly.aqiIn48h[idx]
 		]);
 
-	const options = getChartOptions(data);
+	const options = {
+		...COMMON_CHART_OPTIONS,
+		xAxis: {
+			type: 'time',
+			maxInterval: 3600 * 1000 * 24,
+			splitLine: {
+				lineStyle: {
+					color: '#ddd'
+				}
+			}
+		},
+		yAxis: [
+			{
+				type: 'value',
+				name: '风力等级',
+				nameLocation: 'middle',
+				nameGap: 35,
+				axisLabel: {
+					formatter: '{value} 级'
+				}
+			},
+			{
+				type: 'value',
+				name: 'AQI'
+			}
+		],
+		series: [
+			{
+				type: 'custom',
+				renderItem: renderArrow,
+				encode: {
+					x: dims.time,
+					y: dims.windSpeed
+				},
+				data: data,
+				z: 10
+			},
+			{
+				type: 'line',
+				symbol: 'none',
+				encode: {
+					x: dims.time,
+					y: dims.windSpeed
+				},
+				lineStyle: {
+					color: '#aaa',
+					type: 'dotted'
+				},
+				data: data,
+				z: 1
+			},
+			{
+				type: 'line',
+				symbol: 'none',
+				yAxisIndex: 1,
+				encode: {
+					x: dims.time,
+					y: dims.aqi
+				},
+				data: data,
+				z: 1
+			}
+		]
+	};
 	useChart(windChartRef, options);
 
 	return <div ref={windChartRef} style={{ width: 600, height: 600 }} />;

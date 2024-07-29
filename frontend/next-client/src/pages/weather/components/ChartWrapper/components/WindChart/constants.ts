@@ -5,7 +5,8 @@ export const ARROW_SIZE = 18;
 export const dims = {
 	time: 0,
 	windSpeed: 1,
-	windDirection: 2
+	windDirection: 2,
+	aqi: 3
 };
 
 // prettier-ignore
@@ -56,7 +57,7 @@ export const windLevelBrief = {
 	17: '超强台风'
 };
 
-export const getChartOptions = (data) => ({
+export const COMMON_CHART_OPTIONS = {
 	title: {
 		text: '48h风力/风向预报',
 		left: 'center'
@@ -68,60 +69,6 @@ export const getChartOptions = (data) => ({
 	grid: {
 		bottom: 125
 	},
-	xAxis: {
-		type: 'time',
-		maxInterval: 3600 * 1000 * 24,
-		splitLine: {
-			lineStyle: {
-				color: '#ddd'
-			}
-		}
-	},
-	yAxis: {
-		type: 'value',
-		name: '风力等级',
-		nameLocation: 'middle',
-		nameGap: 35,
-		axisLine: {
-			lineStyle: {
-				color: '#666'
-			}
-		},
-		splitLine: {
-			lineStyle: {
-				color: '#ddd'
-			}
-		},
-		axisLabel: {
-			formatter: '{value} 级'
-		}
-	},
-	series: [
-		{
-			type: 'custom',
-			renderItem: renderArrow,
-			encode: {
-				x: dims.time,
-				y: dims.windSpeed
-			},
-			data: data,
-			z: 10
-		},
-		{
-			type: 'line',
-			symbol: 'none',
-			encode: {
-				x: dims.time,
-				y: dims.windSpeed
-			},
-			lineStyle: {
-				color: '#aaa',
-				type: 'dotted'
-			},
-			data: data,
-			z: 1
-		}
-	],
 	visualMap: {
 		type: 'piecewise',
 		orient: 'horizontal',
@@ -169,4 +116,4 @@ export const getChartOptions = (data) => ({
 			end: 50
 		}
 	]
-});
+};
