@@ -1,3 +1,5 @@
+import { handleTooltipFormatter, renderArrow } from './utils';
+
 export const ARROW_SIZE = 18;
 
 export const dims = {
@@ -54,7 +56,18 @@ export const windLevelBrief = {
 	17: '超强台风'
 };
 
-export const CHART_OPTIONS = {
+export const getChartOptions = (data) => ({
+	title: {
+		text: '48h风力/风向预报',
+		left: 'center'
+	},
+	tooltip: {
+		trigger: 'axis',
+		formatter: handleTooltipFormatter
+	},
+	grid: {
+		bottom: 125
+	},
 	xAxis: {
 		type: 'time',
 		maxInterval: 3600 * 1000 * 24,
@@ -83,6 +96,32 @@ export const CHART_OPTIONS = {
 			formatter: '{value} 级'
 		}
 	},
+	series: [
+		{
+			type: 'custom',
+			renderItem: renderArrow,
+			encode: {
+				x: dims.time,
+				y: dims.windSpeed
+			},
+			data: data,
+			z: 10
+		},
+		{
+			type: 'line',
+			symbol: 'none',
+			encode: {
+				x: dims.time,
+				y: dims.windSpeed
+			},
+			lineStyle: {
+				color: '#aaa',
+				type: 'dotted'
+			},
+			data: data,
+			z: 1
+		}
+	],
 	visualMap: {
 		type: 'piecewise',
 		orient: 'horizontal',
@@ -130,4 +169,4 @@ export const CHART_OPTIONS = {
 			end: 50
 		}
 	]
-};
+});

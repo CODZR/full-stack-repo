@@ -8,22 +8,19 @@ interface Props {
 	weatherHourly: WeatherHourly;
 }
 
-const WindChart = ({ weatherHourly }: Props) => {
-	const windChartRef = useRef(null);
+const AqiChart = ({ weatherHourly }: Props) => {
+	console.log('weatherHourly: ', weatherHourly);
+	const aqiChartRef = useRef(null);
 
 	const firstHourTimetamp = new Date(weatherHourly.firstHourDatetime).getTime();
 	const data = new Array(48)
 		.fill(1)
-		.map((_, idx) => [
-			new Date(firstHourTimetamp + idx * 60 * 60 * 1000),
-			weatherHourly.windSpeedIn48h[idx],
-			weatherHourly.windDirectionIn48h[idx]
-		]);
+		.map((_, idx) => [new Date(firstHourTimetamp + idx * 60 * 60 * 1000), weatherHourly.aqiIn48h[idx]]);
 
 	const options = getChartOptions(data);
-	useChart(windChartRef, options);
+	useChart(aqiChartRef, options);
 
-	return <div ref={windChartRef} style={{ width: 600, height: 600 }} />;
+	return <div ref={aqiChartRef} style={{ width: 600, height: 600 }} />;
 };
 
-export default WindChart;
+export default AqiChart;

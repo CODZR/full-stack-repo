@@ -1,10 +1,23 @@
+import { handleTooltipFormatter } from './utils';
+
 export const dims = {
 	time: 0,
 	temperature: 1,
 	apparentTemperature: 2
 };
 
-export const CHART_OPTIONS = {
+export const getChartOptions = (data) => ({
+	title: {
+		text: '48h气温（虚线）/体感温度（实线）',
+		left: 'center'
+	},
+	tooltip: {
+		trigger: 'axis',
+		formatter: handleTooltipFormatter
+	},
+	grid: {
+		bottom: 125
+	},
 	xAxis: {
 		type: 'time',
 		maxInterval: 3600 * 1000 * 24,
@@ -26,7 +39,35 @@ export const CHART_OPTIONS = {
 			formatter: '{value} ℃'
 		}
 	},
-
+	series: [
+		{
+			name: '温度',
+			type: 'line',
+			data: data,
+			encode: {
+				x: dims.time,
+				y: dims.temperature
+			},
+			lineStyle: {
+				type: 'dotted'
+			}
+		},
+		{
+			name: '体感温度',
+			type: 'line',
+			data: data,
+			encode: {
+				x: dims.time,
+				y: dims.apparentTemperature
+			},
+			markPoint: {
+				data: [
+					{ type: 'max', name: 'Max' },
+					{ type: 'min', name: 'Min' }
+				]
+			}
+		}
+	],
 	visualMap: {
 		type: 'piecewise',
 		orient: 'horizontal',
@@ -80,4 +121,4 @@ export const CHART_OPTIONS = {
 			end: 50
 		}
 	]
-};
+});

@@ -1,5 +1,5 @@
 /* eslint-disable max-lines */
-import { CustomChart, LineChart } from 'echarts/charts';
+import { CustomChart, LineChart, BarChart } from 'echarts/charts';
 import {
 	DataZoomComponent,
 	GridComponent,
@@ -7,7 +7,8 @@ import {
 	TooltipComponent,
 	VisualMapComponent,
 	MarkLineComponent,
-	MarkPointComponent
+	MarkPointComponent,
+	LegendComponent
 } from 'echarts/components';
 import * as echarts from 'echarts/core';
 import { UniversalTransition } from 'echarts/features';
@@ -18,17 +19,20 @@ import WindChart from './components/WindChart';
 
 import { WeatherHourly } from '@/models/weather';
 import { Flex } from '@chakra-ui/react';
-import { wrap } from 'framer-motion';
+import AqiChart from './components/AqiChart';
+import PrecipitationChart from './components/PrecipitationChart';
 
 echarts.use([
 	TitleComponent,
 	TooltipComponent,
+	LegendComponent,
 	GridComponent,
 	VisualMapComponent,
 	DataZoomComponent,
 	MarkLineComponent,
 	MarkPointComponent,
 	LineChart,
+	BarChart,
 	CustomChart,
 	SVGRenderer,
 	UniversalTransition
@@ -43,6 +47,8 @@ const ChartWrapper = ({ weatherHourly }: Props) => {
 		<Flex gap={32} wrap="wrap">
 			<TemperatureChart weatherHourly={weatherHourly} />
 			<WindChart weatherHourly={weatherHourly} />
+			<PrecipitationChart weatherHourly={weatherHourly} />
+			<AqiChart weatherHourly={weatherHourly} />
 		</Flex>
 	);
 };
