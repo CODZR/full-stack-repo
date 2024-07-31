@@ -1,12 +1,12 @@
 export const dims = {
 	time: 0,
-	aqi: 1,
-	pm25: 2
+	pressure: 1,
+	humidity: 2
 };
 
 export const COMMON_CHART_OPTIONS = {
 	title: {
-		text: '48h余杭AQI/PM25',
+		text: '48h余杭气压/湿度',
 		left: 'center'
 	},
 	tooltip: {
@@ -28,41 +28,31 @@ export const COMMON_CHART_OPTIONS = {
 		orient: 'horizontal',
 		left: 'center',
 		bottom: 10,
-		seriesIndex: 0,
+		seriesIndex: 1,
 		pieces: [
 			{
-				gt: 0,
-				lte: 50,
-				color: '#93CE07'
+				gte: 90,
+				color: 'darkred',
+				label: '极湿（>90%）'
 			},
 			{
-				gt: 50,
-				lte: 100,
-				color: '#FBDB0F'
+				gte: 70,
+				lt: 90,
+				color: 'red',
+				label: '潮湿（70-90%）'
 			},
 			{
-				gt: 100,
-				lte: 150,
-				color: '#FC7D02'
+				gte: 60,
+				lt: 70,
+				color: 'orange',
+				label: '较湿（60-70%）'
 			},
 			{
-				gt: 150,
-				lte: 200,
-				color: '#FD0100'
-			},
-			{
-				gt: 200,
-				lte: 300,
-				color: '#AA069F'
-			},
-			{
-				gt: 300,
-				color: '#AC3B2A'
+				lt: 60,
+				color: 'green',
+				label: '舒适（<60%）'
 			}
-		],
-		outOfRange: {
-			color: '#999'
-		}
+		]
 	},
 	dataZoom: [
 		{

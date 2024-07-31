@@ -3,6 +3,7 @@ import { useRef } from 'react';
 import { useChart } from '@/hooks/echarts';
 import { WeatherHourly } from '@/models/weather';
 import { COMMON_CHART_OPTIONS, dims } from './constants';
+import { renderPrecipitationProbability, renderWeather } from './utils';
 
 interface Props {
 	weatherHourly: WeatherHourly;
@@ -17,7 +18,10 @@ const TemperatureChart = ({ weatherHourly }: Props) => {
 		.map((_, idx) => [
 			new Date(firstHourTimetamp + idx * 60 * 60 * 1000),
 			weatherHourly.temperatureIn48h[idx],
-			weatherHourly.apparentTemperatureIn48h[idx]
+			weatherHourly.apparentTemperatureIn48h[idx],
+			weatherHourly.precipitationValueIn48h[idx],
+			+weatherHourly.precipitationProbabilityIn48h[idx] / 1000,
+			weatherHourly.skyconIn48h[idx]
 		]);
 
 	const options = {
@@ -31,18 +35,27 @@ const TemperatureChart = ({ weatherHourly }: Props) => {
 				}
 			}
 		},
-		yAxis: {
-			type: 'value',
-			max: 45,
-			axisLine: {
-				lineStyle: {
-					color: '#015DD5'
+		yAxis: [
+			{
+				type: 'value',
+				name: '温度',
+				axisLine: {
+					lineStyle: {
+						color: '#015DD5'
+					}
+				},
+				axisLabel: {
+					formatter: '{value} ℃'
 				}
 			},
-			axisLabel: {
-				formatter: '{value} ℃'
+			{
+				name: '降雨量',
+				type: 'value',
+				axisLabel: {
+					formatter: '{value} mm／h'
+				}
 			}
-		},
+		],
 		series: [
 			{
 				name: '温度',
@@ -70,12 +83,37 @@ const TemperatureChart = ({ weatherHourly }: Props) => {
 						{ type: 'min', name: 'Min' }
 					]
 				}
+			},
+			{
+				type: 'bar',
+				data: data,
+				yAxisIndex: 1,
+				encode: {
+					x: dims.time,
+					y: dims.precipitationValue
+				}
+			},
+			{
+				type: 'custom',
+				data: data,
+				yAxisIndex: 1,
+				renderItem: renderPrecipitationProbability,
+				encode: {
+					x: dims.time,
+					y: dims.precipitationProbability
+				}
+			},
+			{
+				type: 'custom',
+				renderItem: renderWeather,
+				data: data,
+				z: 11
 			}
 		]
 	};
 	useChart(temperatureChartRef, options);
 
-	return <div ref={temperatureChartRef} style={{ width: 700, height: 600 }} />;
+	return <div ref={temperatureChartRef} style={{ width: 800, height: 500 }} />;
 };
 
 export default TemperatureChart;

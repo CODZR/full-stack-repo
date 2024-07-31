@@ -25,8 +25,8 @@ export interface WeatherHourly {
 export interface WeatherMinutely {
 	id: number;
 	location: string; // 请求经纬度
-	precipitationIn2h: string; // 未来2小时每分钟的雷达降水强度
-	precipitation: string; // 未来1小时每分钟的雷达降水强度
+	precipitationIn2h: string[]; // 未来2小时每分钟的雷达降水强度
+	precipitation: string[]; // 未来1小时每分钟的雷达降水强度
 	probability: string; // 未来两小时每半小时的降水概率
 	description: string; // 预报描述
 	primary: number; // 主要预报

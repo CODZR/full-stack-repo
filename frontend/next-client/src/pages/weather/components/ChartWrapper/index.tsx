@@ -17,11 +17,12 @@ import { SVGRenderer } from 'echarts/renderers';
 import TemperatureChart from './components/TemperatureChart';
 import WindChart from './components/WindChart';
 
-import { WeatherHourly } from '@/models/weather';
+import { WeatherHourly, WeatherMinutely } from '@/models/weather';
 import { Flex } from '@chakra-ui/react';
 import AqiChart from './components/AqiChart';
 import PrecipitationChart from './components/PrecipitationChart';
 import WeatherInfo from './components/WeahterInfo';
+import PressureHumidityChart from './components/PressureHumidityChart';
 
 echarts.use([
 	TitleComponent,
@@ -41,19 +42,20 @@ echarts.use([
 
 interface Props {
 	weatherHourly: WeatherHourly;
+	weatherMinutely: WeatherMinutely;
 }
 
-const ChartWrapper = ({ weatherHourly }: Props) => {
+const ChartWrapper = ({ weatherHourly, weatherMinutely }: Props) => {
 	return (
 		<>
 			<Flex gap={64} wrap="wrap" align="center">
-				<WeatherInfo weatherHourly={weatherHourly} />
-				<PrecipitationChart weatherHourly={weatherHourly} />
+				<WeatherInfo weatherHourly={weatherHourly} weatherMinutely={weatherMinutely} />
+				<TemperatureChart weatherHourly={weatherHourly} />
 			</Flex>
 			<Flex gap={32} wrap="wrap">
-				<TemperatureChart weatherHourly={weatherHourly} />
 				<WindChart weatherHourly={weatherHourly} />
 				<AqiChart weatherHourly={weatherHourly} />
+				<PressureHumidityChart weatherHourly={weatherHourly} />
 			</Flex>
 		</>
 	);

@@ -1,12 +1,11 @@
-import { handleTooltipFormatter, renderArrow } from './utils';
+import { handleTooltipFormatter } from './utils';
 
 export const ARROW_SIZE = 18;
 
 export const dims = {
 	time: 0,
 	windSpeed: 1,
-	windDirection: 2,
-	aqi: 3
+	windDirection: 2
 };
 
 // prettier-ignore

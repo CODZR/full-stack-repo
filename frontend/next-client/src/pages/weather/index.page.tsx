@@ -25,7 +25,7 @@ interface Props {
 const WeatherPage = ({ weatherHourly, weatherMinutely }: Props) => {
 	return (
 		<div>
-			<ChartWrapper weatherHourly={weatherHourly} />
+			<ChartWrapper weatherHourly={weatherHourly} weatherMinutely={weatherMinutely} />
 		</div>
 	);
 };
