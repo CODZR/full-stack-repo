@@ -28,6 +28,7 @@ export const COMMON_CHART_OPTIONS = {
 		orient: 'horizontal',
 		left: 'center',
 		bottom: 10,
+		dimension: 1,
 		seriesIndex: 0,
 		pieces: [
 			{

@@ -116,7 +116,7 @@ export const COMMON_CHART_OPTIONS = {
 			orient: 'vertical',
 			top: 'center',
 			right: 0,
-			dimension: 1,
+			dimension: 3,
 			seriesIndex: 2,
 			pieces: [
 				{
