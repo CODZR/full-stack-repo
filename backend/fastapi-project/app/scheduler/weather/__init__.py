@@ -27,6 +27,7 @@ def hourly_weather_scheduler():
                 API_BASE_URL + f"hourly?hourlysteps=48&token={CAI_YUN_API_TOKEN}"
             )
             hourly_data = requests.get(hourly_api_url).json()
+            print(f"row: 29 - col: 13 hourly_data -> {hourly_data}")
             save_data_by_hourly_in_database(hourly_data)
             break
         except Exception:
@@ -43,6 +44,7 @@ def minutely_weather_scheduler():
         try:
             minutely_api_url = API_BASE_URL + f"minutely?token={CAI_YUN_API_TOKEN}"
             minutely_data = requests.get(minutely_api_url).json()
+            print(f"row: 45 - col: 13 minutely_data -> {minutely_data}")
             save_data_by_minutely_in_database(minutely_data)
             break
         except Exception:
