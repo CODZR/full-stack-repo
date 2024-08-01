@@ -6,7 +6,6 @@ import requests
 
 from app.core.logger import logger
 from .utils import save_data_by_hourly_in_database, save_data_by_minutely_in_database
-from .data import *
 
 weather_scheduler = BackgroundScheduler()
 longitude = "120.00"
@@ -24,11 +23,10 @@ def hourly_weather_scheduler():
     retry_times = 0
     while retry_times <= MAX_RETRY:
         try:
-            # hourly_api_url = (
-            #     API_BASE_URL + f"hourly?hourlysteps=48&token={CAI_YUN_API_TOKEN}"
-            # )
-            # data = requests.get(hourly_api_url).json()
-            # print(f"row: 30 - col: 13 data -> {data}")
+            hourly_api_url = (
+                API_BASE_URL + f"hourly?hourlysteps=48&token={CAI_YUN_API_TOKEN}"
+            )
+            hourly_data = requests.get(hourly_api_url).json()
             save_data_by_hourly_in_database(hourly_data)
             break
         except Exception:
@@ -43,8 +41,8 @@ def minutely_weather_scheduler():
     retry_times = 0
     while retry_times <= MAX_RETRY:
         try:
-            # minutely_api_url = API_BASE_URL + f"minutely?token={CAI_YUN_API_TOKEN}"
-            # data = requests.get(minutely_api_url).json()
+            minutely_api_url = API_BASE_URL + f"minutely?token={CAI_YUN_API_TOKEN}"
+            minutely_data = requests.get(minutely_api_url).json()
             save_data_by_minutely_in_database(minutely_data)
             break
         except Exception:
@@ -54,8 +52,8 @@ def minutely_weather_scheduler():
             continue
 
 
-# weather_scheduler.add_job(hourly_weather_scheduler, "interval", minutes=10)
-# weather_scheduler.add_job(minutely_weather_scheduler, "interval", minutes=0.1)
-# weather_scheduler.start()
-# minutely_weather_scheduler()
-# hourly_weather_scheduler()
+weather_scheduler.add_job(hourly_weather_scheduler, "interval", minutes=24 * 60)
+weather_scheduler.add_job(minutely_weather_scheduler, "interval", minutes=24 * 60)
+weather_scheduler.start()
+minutely_weather_scheduler()
+hourly_weather_scheduler()

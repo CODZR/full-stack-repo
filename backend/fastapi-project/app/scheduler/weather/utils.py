@@ -181,28 +181,34 @@ def save_data_by_minutely_in_database(weather_minutely_data):
 
     try:
         result = weather_minutely_data["result"]
-        if result:
-            minutely = result["minutely"] or {}
+        try:
+            if result["forecast_keypoint"]:
+                minutely = result["minutely"]
+                weather_minutely = {
+                    "location": list_2_listStr(weather_minutely_data["location"]),
+                    "precipitation_in_2h": list_2_listStr(minutely["precipitation_2h"]),
+                    "precipitation": list_2_listStr(minutely["precipitation"]),
+                    "probability": list_2_listStr(minutely["probability"]),
+                    "description": minutely["description"],
+                    "primary": result["primary"],
+                    "forecast_keypoint": result["forecast_keypoint"],
+                }
+        except KeyError:
             weather_minutely = {
                 "location": list_2_listStr(weather_minutely_data["location"]),
-                "precipitation_in_2h": list_2_listStr(minutely["precipitation_2h"]),
-                "precipitation": list_2_listStr(minutely["precipitation"]),
-                "probability": list_2_listStr(minutely["probability"]),
-                "description": minutely["description"],
                 "primary": result["primary"],
-                "forecast_keypoint": result["forecast_keypoint"],
             }
 
-            try:
-                WeatherMinutelySchema.model_validate(weather_minutely)
-            except ValidationError as e:
-                logger.error(f"Validation error: {e}")
-                return
-            else:
-                with db_session() as session:
-                    data = WeatherMinutely(**weather_minutely)
-                    session.add(data)
+        try:
+            WeatherMinutelySchema.model_validate(weather_minutely)
+        except ValidationError as e:
+            logger.error(f"Validation error: {e}")
+            return
+        else:
+            with db_session() as session:
+                data = WeatherMinutely(**weather_minutely)
+                session.add(data)
 
-                    session.commit()
+                session.commit()
     except Exception as e:
         logger.error(f"Save data by minutely failed: {e}")
