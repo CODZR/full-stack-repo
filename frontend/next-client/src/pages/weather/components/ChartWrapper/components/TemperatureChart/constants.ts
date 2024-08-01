@@ -59,7 +59,7 @@ export const WEATHER_NAME_MAP = {
 
 export const COMMON_CHART_OPTIONS = {
 	title: {
-		text: '48h气温（虚线）/体感温度（实线）',
+		text: '48h天气预报',
 		left: 'center'
 	},
 	tooltip: {
@@ -67,9 +67,8 @@ export const COMMON_CHART_OPTIONS = {
 		formatter: handleTooltipFormatter
 	},
 	grid: {
-		top: 150,
-		right: 125,
-		bottom: 125
+		top: 80,
+		bottom: 175
 	},
 
 	visualMap: [
@@ -77,7 +76,7 @@ export const COMMON_CHART_OPTIONS = {
 			type: 'piecewise',
 			orient: 'horizontal',
 			left: 'center',
-			bottom: 10,
+			bottom: 90,
 			dimension: 2,
 			seriesIndex: 1,
 			pieces: [
@@ -113,9 +112,9 @@ export const COMMON_CHART_OPTIONS = {
 		},
 		{
 			type: 'piecewise',
-			orient: 'vertical',
-			top: 'center',
-			right: 0,
+			orient: 'horizontal',
+			bottom: 115,
+			left: 'center',
 			dimension: 3,
 			seriesIndex: 2,
 			pieces: [
