@@ -3,7 +3,7 @@ import axios from 'axios';
 
 import { jsonToHump, jsonToUnderLineParamsAndData } from './utils/format';
 
-const baseURL = 'http://127.0.0.1:7001/api/';
+const baseURL = 'https://api.dzrlab.top/api/';
 
 const config = {
 	baseURL: baseURL,
