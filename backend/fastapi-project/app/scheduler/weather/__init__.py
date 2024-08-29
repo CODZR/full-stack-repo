@@ -54,8 +54,8 @@ def minutely_weather_scheduler():
             continue
 
 
-weather_scheduler.add_job(hourly_weather_scheduler, "interval", minutes=24 * 60)
-weather_scheduler.add_job(minutely_weather_scheduler, "interval", minutes=24 * 60)
-weather_scheduler.start()
-minutely_weather_scheduler()
-hourly_weather_scheduler()
+# weather_scheduler.add_job(hourly_weather_scheduler, "interval", minutes=24 * 60)
+# weather_scheduler.add_job(minutely_weather_scheduler, "interval", minutes=24 * 60)
+# weather_scheduler.start()
+# minutely_weather_scheduler()
+# hourly_weather_scheduler()

@@ -1,7 +1,6 @@
 import json
 from cachetools import TTLCache
 from chalicelib import EMPTY_RESPONSE, SLACK_RESPOND_MESSAGE_QUEUE_NAME, app, is_dev
-from controllers.slack import handlers as slack_handlers
 from extensions.ext_ttlcache import ttl_cache
 from urllib.parse import unquote, parse_qs
 
