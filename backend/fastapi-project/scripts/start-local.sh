@@ -17,5 +17,5 @@ LOG_LEVEL=${LOG_LEVEL:-$DEFAULT_LOG_LEVEL}
 LOG_CONFIG=${LOG_CONFIG:-$DEFAULT_LOG_CONFIG}
 
 # Start Uvicorn with live reload
-echo poetry run uvicorn --reload --proxy-headers --host $HOST --port $PORT --log-config $LOG_CONFIG "$APP_MODULE" --log-level $LOG_LEVEL
+# echo poetry run uvicorn --reload --proxy-headers --host $HOST --port $PORT --log-config $LOG_CONFIG "$APP_MODULE" --log-level $LOG_LEVEL
 exec poetry run uvicorn --reload --proxy-headers --host $HOST --port $PORT --log-config $LOG_CONFIG "$APP_MODULE" --log-level $LOG_LEVEL
