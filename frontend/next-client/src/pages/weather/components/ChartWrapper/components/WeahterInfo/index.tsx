@@ -1,5 +1,7 @@
 import { WeatherHourly, WeatherMinutely } from '@/models/weather';
 import { getCurrentWeatherInfo } from './utils';
+import { WEATHER_ICON_MAP, WEATHER_NAME_MAP } from '../TemperatureChart/constants';
+import { Flex } from '@chakra-ui/react';
 
 interface Props {
 	weatherHourly: WeatherHourly;
@@ -15,9 +17,13 @@ const WeatherInfo = ({ weatherHourly, weatherMinutely }: Props) => {
 			<p>
 				<strong>城市：余杭区爱力中心附近</strong>
 			</p>
-			<p>
-				<strong>天气：{curWeather.skycon}</strong>
-			</p>
+			<strong>
+				<Flex align="center" gap={5}>
+					天气：
+					<img src={WEATHER_ICON_MAP[curWeather.skycon]} />
+					<span>{WEATHER_NAME_MAP[curWeather.skycon]}</span>
+				</Flex>
+			</strong>
 			<p>
 				<strong>一小时内下雨概率：[{weatherMinutely.precipitation.join(', ')}]</strong>
 			</p>

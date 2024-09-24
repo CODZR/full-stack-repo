@@ -2,7 +2,7 @@ from typing import Any, Dict, Generic, List, Optional, Type, TypeVar, Union
 
 from fastapi.encoders import jsonable_encoder
 from pydantic import BaseModel
-from sqlalchemy import desc
+from sqlalchemy import asc, desc
 from sqlalchemy.orm import Session
 from datetime import datetime
 
@@ -27,7 +27,7 @@ class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
         return db.query(self.model).get(obj_id)
 
     def get_first(self, db: Session) -> Optional[ModelType]:
-        return db.query(self.model).order_by(desc(self.model.created_at)).first()
+        return db.query(self.model).order_by(asc(self.model.created_at)).first()
 
     def get_by_field(self, db: Session, field: str, value: Any) -> Optional[ModelType]:
         return db.query(self.model).filter(getattr(self.model, field) == value).first()

@@ -8,7 +8,8 @@ import {
 	VisualMapComponent,
 	MarkLineComponent,
 	MarkPointComponent,
-	LegendComponent
+	LegendComponent,
+	ToolboxComponent
 } from 'echarts/components';
 import * as echarts from 'echarts/core';
 import { UniversalTransition } from 'echarts/features';
@@ -31,6 +32,7 @@ echarts.use([
 	GridComponent,
 	VisualMapComponent,
 	DataZoomComponent,
+	ToolboxComponent,
 	MarkLineComponent,
 	MarkPointComponent,
 	LineChart,
