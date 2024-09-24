@@ -1,4 +1,4 @@
-export const commonEnv = {
+const commonEnv = {
 	// title
 	VITE_GLOB_APP_TITLE: 'Health grow app',
 
@@ -18,20 +18,39 @@ export const commonEnv = {
 	VITE_DROP_CONSOLE: true
 };
 
-export const devEnv = {
+const devEnv = {
 	NODE_ENV: 'development',
-	VITE_REST_BASE_URL: 'https://api.dzrlab.top/'
+	VITE_REST_BASE_URL: 'https://api.dzrlab.top/api/'
+	// VITE_REST_BASE_URL: 'http://127.0.0.1:7001/api/'
 };
-export const betaEnv = {
+
+const betaEnv = {
 	NODE_ENV: 'beta',
 	VITE_REST_BASE_URL: 'https://api.dzrlab.top/api/'
 };
 
-export const prodEnv = {
+const prodEnv = {
 	NODE_ENV: 'production',
 	VITE_REST_BASE_URL: 'https://api.dzrlab.top/api/'
 };
 
-export type EnvSettings = {
-	NODE_ENV?: string;
+function getEnvSettingsByMode(mode) {
+	let envSettings = commonEnv;
+	if (mode === 'development') {
+		envSettings = { ...commonEnv, ...devEnv }; // 使用展开运算符来合并对象
+	} else if (mode === 'beta') {
+		envSettings = { ...commonEnv, ...betaEnv };
+	} else if (mode === 'production') {
+		envSettings = { ...commonEnv, ...prodEnv };
+	}
+	return envSettings;
+}
+
+// 导出常量和函数
+module.exports = {
+	commonEnv,
+	devEnv,
+	betaEnv,
+	prodEnv,
+	getEnvSettingsByMode
 };

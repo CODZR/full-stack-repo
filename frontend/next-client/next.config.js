@@ -1,4 +1,5 @@
 const path = require('path');
+const { getEnvSettingsByMode } = require('./env.ts');
 
 module.exports = {
 	output: 'export',
@@ -13,7 +14,14 @@ module.exports = {
 	typescript: {
 		ignoreBuildErrors: true
 	},
-	webpack: (config, { buildId, dev, isServer, defaultLoaders, nextRuntime, webpack }) => {
+	webpack: (config, { webpack }) => {
+		const NODE_ENV = process.env.NODE_ENV || 'development';
+		const envSettings = getEnvSettingsByMode(NODE_ENV);
+		const safeEnv = Object.assign(
+			Object.fromEntries(Object.entries(process.env).filter(([k]) => k.startsWith('VITE_'))),
+			envSettings
+		);
+
 		config.resolve.alias = {
 			...config.resolve.alias,
 			'@': path.resolve(__dirname, 'src'),
@@ -24,8 +32,12 @@ module.exports = {
 		config.plugins.push(
 			new webpack.ProvidePlugin({
 				React: 'react'
+			}),
+			new webpack.DefinePlugin({
+				'process.env': JSON.stringify(safeEnv) // 这会将 env 变量传入代码中
 			})
 		);
+
 		config.module.rules.push({
 			test: /\.css$/,
 			use: ['style-loader', 'css-loader']
