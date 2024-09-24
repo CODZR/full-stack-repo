@@ -27,7 +27,7 @@ class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
         return db.query(self.model).get(obj_id)
 
     def get_first(self, db: Session) -> Optional[ModelType]:
-        return db.query(self.model).order_by(asc(self.model.created_at)).first()
+        return db.query(self.model).order_by(desc(self.model.created_at)).first()
 
     def get_by_field(self, db: Session, field: str, value: Any) -> Optional[ModelType]:
         return db.query(self.model).filter(getattr(self.model, field) == value).first()

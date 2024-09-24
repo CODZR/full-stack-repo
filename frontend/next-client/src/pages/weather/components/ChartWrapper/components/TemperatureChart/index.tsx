@@ -10,18 +10,27 @@ interface Props {
 }
 
 const TemperatureChart = ({ weatherHourly }: Props) => {
+	const {
+		firstHourDatetime,
+		temperatureIn48h,
+		apparentTemperatureIn48h,
+		precipitationProbabilityIn48h,
+		precipitationValueIn48h,
+		skyconIn48h
+	} = weatherHourly;
+
 	const temperatureChartRef = useRef(null);
 
-	const firstHourTimetamp = new Date(weatherHourly.firstHourDatetime).getTime();
+	const firstHourTimetamp = new Date(firstHourDatetime).getTime();
 	const data = new Array(48)
 		.fill(1)
 		.map((_, idx) => [
 			new Date(firstHourTimetamp + idx * 60 * 60 * 1000),
-			weatherHourly.temperatureIn48h[idx],
-			weatherHourly.apparentTemperatureIn48h[idx],
-			weatherHourly.precipitationValueIn48h[idx],
-			+weatherHourly.precipitationProbabilityIn48h[idx] / 1000,
-			weatherHourly.skyconIn48h[idx]
+			temperatureIn48h[idx],
+			apparentTemperatureIn48h[idx],
+			+precipitationProbabilityIn48h[idx] > 20 ? precipitationValueIn48h[idx] : 0,
+			+precipitationProbabilityIn48h[idx] / 1000,
+			skyconIn48h[idx]
 		]);
 
 	const options = {

@@ -21,7 +21,6 @@ import WindChart from './components/WindChart';
 import { WeatherHourly, WeatherMinutely } from '@/models/weather';
 import { Flex } from '@chakra-ui/react';
 import AqiChart from './components/AqiChart';
-import PrecipitationChart from './components/PrecipitationChart';
 import WeatherInfo from './components/WeahterInfo';
 import PressureHumidityChart from './components/PressureHumidityChart';
 
