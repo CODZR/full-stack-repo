@@ -59,7 +59,7 @@ export const WEATHER_NAME_MAP = {
 
 export const COMMON_CHART_OPTIONS = {
 	title: {
-		text: '48h天气预报',
+		text: '48h天气预报(每日6.00更新)',
 		left: 'center'
 	},
 	tooltip: {

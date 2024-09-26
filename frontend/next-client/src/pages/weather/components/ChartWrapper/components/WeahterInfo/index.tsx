@@ -14,7 +14,7 @@ const WeatherInfo = ({ weatherHourly, weatherMinutely }: Props) => {
 
 	return (
 		<Box ml={[0, 0, 8]} mt={[0, 0, 4]}>
-			<h2>实时天气</h2>
+			<h2>天气概况（每小时更新）</h2>
 			<p>
 				<strong>城市：余杭区爱力中心附近</strong>
 			</p>
@@ -49,6 +49,7 @@ const WeatherInfo = ({ weatherHourly, weatherMinutely }: Props) => {
 			<p>
 				<strong>PM25: {curWeather.pm25}</strong>
 			</p>
+			<p>数据来源：彩云天气API</p>
 		</Box>
 	);
 };
