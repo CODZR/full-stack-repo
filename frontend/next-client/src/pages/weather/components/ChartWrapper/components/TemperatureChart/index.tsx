@@ -122,7 +122,7 @@ const TemperatureChart = ({ weatherHourly }: Props) => {
 	};
 	useChart(temperatureChartRef, options);
 
-	return <div ref={temperatureChartRef} style={{ width: 800, height: 500 }} />;
+	return <div ref={temperatureChartRef} style={{ width: 1000, height: 500 }} />;
 };
 
 export default TemperatureChart;

@@ -80,7 +80,7 @@ const AqiChart = ({ weatherHourly }: Props) => {
 	};
 	useChart(aqiChartRef, options);
 
-	return <div ref={aqiChartRef} style={{ width: 600, height: 300 }} />;
+	return <div ref={aqiChartRef} style={{ width: 500, height: 300 }} />;
 };
 
 export default AqiChart;

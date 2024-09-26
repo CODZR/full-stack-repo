@@ -49,11 +49,11 @@ interface Props {
 const ChartWrapper = ({ weatherHourly, weatherMinutely }: Props) => {
 	return (
 		<>
-			<Flex align="center" gap={64} wrap="wrap">
+			<Flex gap={32} wrap="wrap">
 				<WeatherInfo weatherHourly={weatherHourly} weatherMinutely={weatherMinutely} />
 				<TemperatureChart weatherHourly={weatherHourly} />
 			</Flex>
-			<Flex gap={32} wrap="wrap">
+			<Flex gap={8} wrap="wrap">
 				<WindChart weatherHourly={weatherHourly} />
 				<AqiChart weatherHourly={weatherHourly} />
 				<PressureHumidityChart weatherHourly={weatherHourly} />

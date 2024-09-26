@@ -1,8 +1,9 @@
 import Head from 'next/head';
 
 import { Providers } from './components/ChakraProvider';
-import ToastContainer from '@/components/base/MyToast';
 import Navbar from './components/Navbar';
+import ToastContainer from '@/components/base/MyToast';
+import { Box } from '@chakra-ui/react';
 
 export const metadata = {
 	title: 'Health grow client',
@@ -28,7 +29,7 @@ export default function DefaultLayout(props: Props) {
 			<Providers>
 				<>
 					{showNavbar && <Navbar />}
-					{children}
+					<Box padding="32px 16px">{children}</Box>
 				</>
 			</Providers>
 			<ToastContainer />

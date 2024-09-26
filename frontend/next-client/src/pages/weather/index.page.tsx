@@ -2,9 +2,9 @@ import type { GetStaticProps } from 'next';
 
 import ChartWrapper from './components/ChartWrapper';
 
+import RootLayout from '@/layouts';
 import { WeatherHourly, WeatherMinutely } from '@/models/weather';
 import { fetchWeatherHourlyAPI, fetchWeatherMinutelyAPI } from '@/services/weather';
-import RootLayout from '@/layouts';
 
 export const getStaticProps: GetStaticProps = async () => {
 	const weatherHourly = await fetchWeatherHourlyAPI();

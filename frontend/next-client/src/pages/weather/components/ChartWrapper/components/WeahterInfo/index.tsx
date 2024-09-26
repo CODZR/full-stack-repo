@@ -1,4 +1,4 @@
-import { Flex } from '@chakra-ui/react';
+import { Box, Flex } from '@chakra-ui/react';
 
 import { WeatherHourly, WeatherMinutely } from '@/models/weather';
 import { WEATHER_ICON_MAP, WEATHER_NAME_MAP } from '../TemperatureChart/constants';
@@ -13,7 +13,7 @@ const WeatherInfo = ({ weatherHourly, weatherMinutely }: Props) => {
 	const curWeather = getCurrentWeatherInfo(weatherHourly);
 
 	return (
-		<div>
+		<Box ml={8} mt={4}>
 			<h2>实时天气</h2>
 			<p>
 				<strong>城市：余杭区爱力中心附近</strong>
@@ -49,7 +49,7 @@ const WeatherInfo = ({ weatherHourly, weatherMinutely }: Props) => {
 			<p>
 				<strong>PM25: {curWeather.pm25}</strong>
 			</p>
-		</div>
+		</Box>
 	);
 };
 

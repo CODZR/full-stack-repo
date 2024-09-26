@@ -68,7 +68,7 @@ const WindChart = ({ weatherHourly }: Props) => {
 	};
 	useChart(windChartRef, options);
 
-	return <div ref={windChartRef} style={{ width: 600, height: 300 }} />;
+	return <div ref={windChartRef} style={{ width: 500, height: 300 }} />;
 };
 
 export default WindChart;

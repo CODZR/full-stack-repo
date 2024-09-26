@@ -79,7 +79,7 @@ const PressureHumidityChart = ({ weatherHourly }: Props) => {
 	};
 	useChart(pressureHumidityChartRef, options);
 
-	return <div ref={pressureHumidityChartRef} style={{ width: 600, height: 300 }} />;
+	return <div ref={pressureHumidityChartRef} style={{ width: 500, height: 300 }} />;
 };
 
 export default PressureHumidityChart;

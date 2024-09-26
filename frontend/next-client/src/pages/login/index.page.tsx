@@ -11,7 +11,7 @@ import { MyButton } from '@/components';
 
 import '@/assets/css/global.css';
 
-import Logo from '@/assets/images/fastapi-logo.svg';
+import Logo from '@/assets/images/favicon.png';
 import { Body_login_login_access_token as AccessToken } from '@/client/models/Body_login_login_access_token';
 import DefaultLayout from '@/layouts';
 
