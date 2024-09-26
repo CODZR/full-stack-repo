@@ -1,5 +1,6 @@
-import { Flex, Link, Text } from '@chakra-ui/react';
+import { Flex, Link } from '@chakra-ui/react';
 import Image from 'next/image';
+
 import ExternalSvg from '@/assets/images/external.svg';
 
 interface Props {
@@ -13,10 +14,10 @@ const MenuItem = (props: Props) => {
 	const { children, isExternal, to = '/' } = props;
 
 	return (
-		<Link href={to} isExternal={isExternal}>
-			<Flex gap={1}>
+		<Link href={to} isExternal={isExternal} w="100%">
+			<Flex gap={1} justify="center" marginLeft={1} w="max-content">
 				{children}
-				{isExternal && <Image src={ExternalSvg} alt="external svg" />}
+				{isExternal && <Image alt="external svg" src={ExternalSvg} />}
 			</Flex>
 		</Link>
 	);

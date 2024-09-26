@@ -1,9 +1,9 @@
 import React from 'react';
 
-import MenuLinks from './components/MenuLinks';
-import NavBarContainer from './components/NavbarContainer';
-import MenuToggle from './components/MenuToggle';
 import HomeLogo from './components/HomeLogo';
+import MenuLinks from './components/MenuLinks';
+import MenuToggle from './components/MenuToggle';
+import NavBarContainer from './components/NavbarContainer';
 
 const NavBar = (props) => {
 	const [isOpen, setIsOpen] = React.useState(false);

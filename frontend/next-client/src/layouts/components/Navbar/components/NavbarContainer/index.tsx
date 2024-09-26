@@ -7,14 +7,14 @@ const NavBarContainer = ({ children, ...props }) => {
 			as="nav"
 			bg="#fff"
 			boxShadow="0 10px 20px #00000008"
-			color={['white', 'white', 'primary.700', 'primary.700']}
+			color="black"
 			justify="space-between"
+			p={4}
 			position="sticky"
 			top={0}
-			zIndex={999}
-			p={4}
 			w="100%"
 			wrap="wrap"
+			zIndex={999}
 			{...props}
 		>
 			{children}

@@ -1,9 +1,9 @@
+import { Box } from '@chakra-ui/react';
 import Head from 'next/head';
 
 import { Providers } from './components/ChakraProvider';
 import Navbar from './components/Navbar';
 import ToastContainer from '@/components/base/MyToast';
-import { Box } from '@chakra-ui/react';
 
 export const metadata = {
 	title: 'Health grow client',

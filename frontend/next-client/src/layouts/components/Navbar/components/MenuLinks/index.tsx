@@ -1,8 +1,6 @@
-import ExternalSvg from '@/assets/images/external.svg';
-import { Box, Button, Flex, Stack } from '@chakra-ui/react';
+import { Box, Button, Stack } from '@chakra-ui/react';
 
 import MenuItem from './components/MenuItem';
-import Image from 'next/image';
 
 const MenuLinks = ({ isOpen }) => {
 	return (
@@ -22,8 +20,8 @@ const MenuLinks = ({ isOpen }) => {
 				</MenuItem>
 				<MenuItem to="/login" isLast>
 					<Button
-						bg={['white', 'white', 'primary.500', 'primary.500']}
-						color={['primary.500', 'primary.500', 'white', 'white']}
+						bg="primary.500"
+						color="white"
 						rounded="md"
 						_hover={{
 							bg: ['primary.100', 'primary.100', 'primary.600', 'primary.600']
