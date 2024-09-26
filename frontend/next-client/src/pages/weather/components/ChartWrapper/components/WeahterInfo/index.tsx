@@ -13,7 +13,7 @@ const WeatherInfo = ({ weatherHourly, weatherMinutely }: Props) => {
 	const curWeather = getCurrentWeatherInfo(weatherHourly);
 
 	return (
-		<Box ml={8} mt={4}>
+		<Box ml={[0, 0, 8]} mt={[0, 0, 4]}>
 			<h2>实时天气</h2>
 			<p>
 				<strong>城市：余杭区爱力中心附近</strong>
