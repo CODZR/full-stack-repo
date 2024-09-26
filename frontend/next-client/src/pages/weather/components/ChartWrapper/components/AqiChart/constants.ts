@@ -70,14 +70,14 @@ export const COMMON_CHART_OPTIONS = {
 			type: 'inside',
 			xAxisIndex: 0,
 			minSpan: 5,
-			end: 50
+			end: 35
 		},
 		{
 			type: 'slider',
 			xAxisIndex: 0,
 			minSpan: 5,
 			bottom: 50,
-			end: 50
+			end: 35
 		}
 	]
 };
