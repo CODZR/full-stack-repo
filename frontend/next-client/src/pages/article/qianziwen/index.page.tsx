@@ -3,7 +3,7 @@ import { useState } from 'react';
 import ZiCard from './components/ZiCard';
 import MyModal from '@/components/base/MyModal';
 
-import Layout from '@/layout';
+import DeafultLayout from '@/layouts/default';
 import { searchHanziAPI } from '@/services/hanzi';
 import { cls } from '@/utils';
 import { body, title } from './utils';
@@ -34,7 +34,7 @@ const QianziwenPage = () => {
 	};
 
 	return (
-		<Layout>
+		<DeafultLayout>
 			<div className={styles.pageWrapper}>
 				<p className={styles.title}>{title}</p>
 
@@ -50,11 +50,11 @@ const QianziwenPage = () => {
 					))}
 				</div>
 
-				<MyModal isOpen={openSearchHanziDialog} onClose={closeSearchHanziDialog}>
+				<MyModal open={openSearchHanziDialog} onClose={closeSearchHanziDialog}>
 					<ZiCard wenzi={wenziObj} />
 				</MyModal>
 			</div>
-		</Layout>
+		</DeafultLayout>
 	);
 };
 

@@ -1,26 +1,19 @@
-import { Container } from '@chakra-ui/react';
+import { Card } from '@nextui-org/card';
+
+import { Flex } from '@/components';
 
 interface Props {
 	children: JSX.Element;
 }
 
-const LoginWraper = ({ children }: Props) => {
+const LoginWrapper = ({ children }: Props) => {
 	return (
-		<Container centerContent>
-			<Container
-				alignItems="stretch"
-				as="form"
-				gap={4}
-				h="100vh"
-				justifyContent="center"
-				maxW="sm"
-				w={500}
-				centerContent
-			>
+		<Flex align="center" justify="center" style={{ height: '100vh' }}>
+			<Card className="login-card" style={{ width: '500px', padding: '20px' }}>
 				{children}
-			</Container>
-		</Container>
+			</Card>
+		</Flex>
 	);
 };
 
-export default LoginWraper;
+export default LoginWrapper;

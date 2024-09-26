@@ -2,6 +2,7 @@ import type { GetStaticProps } from 'next';
 
 import ChartWrapper from './components/ChartWrapper';
 
+import DefaultLayout from '@/layouts/default';
 import { WeatherHourly, WeatherMinutely } from '@/models/weather';
 import { fetchWeatherHourlyAPI, fetchWeatherMinutelyAPI } from '@/services/weather';
 
@@ -24,9 +25,9 @@ interface Props {
 
 const WeatherPage = ({ weatherHourly, weatherMinutely }: Props) => {
 	return (
-		<div>
+		<DefaultLayout>
 			<ChartWrapper weatherHourly={weatherHourly} weatherMinutely={weatherMinutely} />
-		</div>
+		</DefaultLayout>
 	);
 };
 

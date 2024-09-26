@@ -4,6 +4,7 @@ import axios from 'axios';
 import { jsonToHump, jsonToUnderLineParamsAndData } from './utils/format';
 
 const baseURL = process.env.VITE_REST_BASE_URL;
+console.log('baseURL: ', baseURL);
 
 const config = {
 	baseURL: baseURL,

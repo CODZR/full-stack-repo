@@ -1,36 +1,33 @@
-import type { ModalProps } from '@chakra-ui/react';
-import {
-	Button,
-	Modal,
-	ModalBody,
-	ModalCloseButton,
-	ModalContent,
-	ModalFooter,
-	ModalHeader,
-	ModalOverlay
-} from '@chakra-ui/react';
+import { Button } from '@nextui-org/button';
+import type { ModalProps } from '@nextui-org/modal';
+import { Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, useDisclosure } from '@nextui-org/modal';
 
 interface Props extends ModalProps {
+	open: boolean;
+	onOk?: () => void;
 	children: JSX.Element;
 }
 
-const MyModal = (props: Props) => {
-	const { isOpen, onClose, children } = props;
+const MyModal = ({ open, children, onOk }: Props) => {
+	const { onOpenChange } = useDisclosure();
 
 	return (
-		<Modal {...props} closeOnOverlayClick={false} isOpen={isOpen} onClose={onClose}>
-			<ModalOverlay />
-			<ModalContent maxW="min(90%, 1024px)">
-				<ModalHeader>Create your account</ModalHeader>
-				<ModalCloseButton />
-				<ModalBody pb={6}>{children}</ModalBody>
-
-				<ModalFooter>
-					<Button colorScheme="blue" mr={3}>
-						Save
-					</Button>
-					<Button onClick={onClose}>Cancel</Button>
-				</ModalFooter>
+		<Modal isOpen={open} onOpenChange={onOpenChange}>
+			<ModalContent>
+				{(onClose) => (
+					<>
+						<ModalHeader>
+							<p>Create your account</p>
+						</ModalHeader>
+						<ModalBody>{children}</ModalBody>
+						<ModalFooter>
+							<Button onClick={onClose}>Cancel</Button>
+							<Button color="primary" onClick={onOk}>
+								Save
+							</Button>
+						</ModalFooter>
+					</>
+				)}
 			</ModalContent>
 		</Modal>
 	);

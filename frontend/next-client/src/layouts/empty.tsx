@@ -1,7 +1,5 @@
 import Head from 'next/head';
-
-import { Providers } from './components/ChakraProvider';
-import ToastContainer from '@/components/base/MyToast';
+import { ToastContainer } from 'react-toastify';
 
 export const metadata = {
 	title: 'Health grow client',
@@ -14,7 +12,7 @@ interface Props {
 	children?: JSX.Element;
 }
 
-export default function RootLayout(props: Props) {
+export default function EmptyLayout(props: Props) {
 	const { title, description, children } = props;
 
 	return (
@@ -23,7 +21,7 @@ export default function RootLayout(props: Props) {
 				<title>{title || metadata.title}</title>
 				<meta content={description || metadata.description} name="description" />
 			</Head>
-			<Providers>{children}</Providers>
+			{children}
 			<ToastContainer />
 		</main>
 	);

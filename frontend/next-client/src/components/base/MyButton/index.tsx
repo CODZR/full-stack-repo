@@ -1,13 +1,6 @@
 import React, { useState } from 'react';
-import type { ButtonProps } from '@chakra-ui/react';
-import { Button } from '@chakra-ui/react';
-
-enum buttonSchema {
-	default = 'teal',
-	primary = 'messenger',
-	danger = 'red',
-	success = 'green'
-}
+import type { ButtonProps } from '@nextui-org/button';
+import { Button } from '@nextui-org/button';
 
 interface Props extends ButtonProps {
 	width?: number | string;
@@ -22,15 +15,13 @@ interface Props extends ButtonProps {
 }
 
 const MyButton = (props: Props) => {
-	const { schema, className, disabled = false, loading = false, children, onClick } = props;
+	const { className, disabled = false, loading = false, children, onClick } = props;
 
 	const [btnLoading, setBtnLoading] = useState(loading);
 
 	// useEffect(() => {
 	// 	setBtnLoading(loading);
 	// }, [loading]);
-
-	const btnTheme = buttonSchema[schema || 'default'];
 
 	const onDisabledBtnClick = async (e: NewClickEvent) => {
 		if (disabled) {
@@ -53,12 +44,9 @@ const MyButton = (props: Props) => {
 	return (
 		<Button
 			{...props}
-			_hover={{ opacity: 0.8, cursor: isDisabled ? 'not-allowed' : 'pointer' }}
 			className={className}
-			colorScheme={btnTheme}
+			disabled={isDisabled}
 			isLoading={btnLoading}
-			opacity={isDisabled ? 0.8 : 1}
-			variant={schema === 'default' ? 'outline' : 'solid'}
 			onClick={onDisabledBtnClick}
 		>
 			{children}

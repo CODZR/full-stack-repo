@@ -1,13 +1,9 @@
-import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
-import {
-	Center,
-	FormControl,
-	Icon,
-	Input,
-	InputGroup,
-	InputRightElement,
-	useBoolean
-} from '@chakra-ui/react';
+import { useState } from 'react';
+import { Input } from '@nextui-org/input';
+import Image from 'next/image';
+
+import EyeSvg from '@/assets/images/eye.svg';
+import EyeOffSvg from '@/assets/images/eye-off.svg';
 
 interface Props {
 	register: any;
@@ -15,31 +11,25 @@ interface Props {
 
 const SignForm = (props: Props) => {
 	const { register } = props;
-
-	const [show, setShow] = useBoolean();
+	const [show, setShow] = useState(false);
 
 	return (
-		<FormControl id="password">
-			<InputGroup>
-				<Input {...register('password')} placeholder="Password" type={show ? 'text' : 'password'} />
-				<InputRightElement
-					color="gray.400"
-					_hover={{
-						cursor: 'pointer'
-					}}
-					onClick={setShow.toggle}
-				>
-					<Icon aria-label={show ? 'Hide password' : 'Show password'}>
-						{show ? <ViewOffIcon /> : <ViewIcon />}
-					</Icon>
-				</InputRightElement>
-			</InputGroup>
-			<Center>
-				{/* <ChakraLink as={NextRouterLink} color="blue.500" href="/recover-password" mt={2}>
-			Forgot password?
-		</ChakraLink> */}
-			</Center>
-		</FormControl>
+		<Input
+			{...register('password')}
+			css={{ width: '100%' }}
+			label="Password"
+			placeholder="Password"
+			endContent={
+				<>
+					{show ? (
+						<Image alt="eye off svg" src={EyeOffSvg} onClick={() => setShow(true)} />
+					) : (
+						<Image alt="eye svg" src={EyeSvg} onClick={() => setShow(false)} />
+					)}
+				</>
+			}
+			type={show ? 'text' : 'password'}
+		/>
 	);
 };
 

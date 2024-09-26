@@ -3,7 +3,7 @@ import DefaultLayout from '@/layouts/default';
 const ArticlePage = () => {
 	return (
 		<DefaultLayout>
-			<div>123</div>
+			<div>test</div>
 		</DefaultLayout>
 	);
 };
