@@ -1,28 +1,28 @@
 /* eslint-disable max-lines */
-import { CustomChart, LineChart, BarChart } from 'echarts/charts';
+import { Flex } from '@chakra-ui/react';
+import { BarChart, CustomChart, LineChart } from 'echarts/charts';
 import {
 	DataZoomComponent,
 	GridComponent,
-	TitleComponent,
-	TooltipComponent,
-	VisualMapComponent,
+	LegendComponent,
 	MarkLineComponent,
 	MarkPointComponent,
-	LegendComponent,
-	ToolboxComponent
+	TitleComponent,
+	ToolboxComponent,
+	TooltipComponent,
+	VisualMapComponent
 } from 'echarts/components';
 import * as echarts from 'echarts/core';
 import { UniversalTransition } from 'echarts/features';
 import { SVGRenderer } from 'echarts/renderers';
 
+import AqiChart from './components/AqiChart';
+import PressureHumidityChart from './components/PressureHumidityChart';
 import TemperatureChart from './components/TemperatureChart';
+import WeatherInfo from './components/WeahterInfo';
 import WindChart from './components/WindChart';
 
 import { WeatherHourly, WeatherMinutely } from '@/models/weather';
-import { Flex } from '@chakra-ui/react';
-import AqiChart from './components/AqiChart';
-import WeatherInfo from './components/WeahterInfo';
-import PressureHumidityChart from './components/PressureHumidityChart';
 
 echarts.use([
 	TitleComponent,
@@ -49,7 +49,7 @@ interface Props {
 const ChartWrapper = ({ weatherHourly, weatherMinutely }: Props) => {
 	return (
 		<>
-			<Flex gap={64} wrap="wrap" align="center">
+			<Flex align="center" gap={64} wrap="wrap">
 				<WeatherInfo weatherHourly={weatherHourly} weatherMinutely={weatherMinutely} />
 				<TemperatureChart weatherHourly={weatherHourly} />
 			</Flex>

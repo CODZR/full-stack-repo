@@ -4,7 +4,7 @@ import { Spinner } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 
 import { useOnceEffect } from '@/hooks/useHooks';
-import Layout from '@/layout';
+import DefaultLayout from '@/layouts';
 import { ROUTE_PATH_MAP } from '@/models/global/constants';
 
 export default function Home() {
@@ -21,7 +21,7 @@ export default function Home() {
 	});
 
 	return (
-		<Layout>
+		<DefaultLayout>
 			<Spinner
 				color="blue.500"
 				emptyColor="gray.200"
@@ -33,6 +33,6 @@ export default function Home() {
 				top="50%"
 				transform="translate(-50%, -50%)"
 			/>
-		</Layout>
+		</DefaultLayout>
 	);
 }

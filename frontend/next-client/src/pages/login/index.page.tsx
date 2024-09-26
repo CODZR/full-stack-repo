@@ -13,7 +13,7 @@ import '@/assets/css/global.css';
 
 import Logo from '@/assets/images/fastapi-logo.svg';
 import { Body_login_login_access_token as AccessToken } from '@/client/models/Body_login_login_access_token';
-import Layout from '@/layout';
+import DefaultLayout from '@/layouts';
 
 const Login: React.FC = () => {
 	const router = useRouter();
@@ -53,7 +53,7 @@ const Login: React.FC = () => {
 	};
 
 	return (
-		<Layout>
+		<DefaultLayout showNavbar={false}>
 			<LoginWrapper>
 				<>
 					<Image alt="FastAPI logo" height={65} src={Logo} width={352} priority />
@@ -67,7 +67,7 @@ const Login: React.FC = () => {
 					</MyButton>
 				</>
 			</LoginWrapper>
-		</Layout>
+		</DefaultLayout>
 	);
 };
 

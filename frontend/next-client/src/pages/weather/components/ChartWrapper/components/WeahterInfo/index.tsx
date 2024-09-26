@@ -1,7 +1,8 @@
-import { WeatherHourly, WeatherMinutely } from '@/models/weather';
-import { getCurrentWeatherInfo } from './utils';
-import { WEATHER_ICON_MAP, WEATHER_NAME_MAP } from '../TemperatureChart/constants';
 import { Flex } from '@chakra-ui/react';
+
+import { WeatherHourly, WeatherMinutely } from '@/models/weather';
+import { WEATHER_ICON_MAP, WEATHER_NAME_MAP } from '../TemperatureChart/constants';
+import { getCurrentWeatherInfo } from './utils';
 
 interface Props {
 	weatherHourly: WeatherHourly;

@@ -1,10 +1,10 @@
-import Layout from '@/layout';
+import DefaultLayout from '@/layouts';
 
 const ArticlePage = () => {
 	return (
-		<Layout>
+		<DefaultLayout>
 			<div>123</div>
-		</Layout>
+		</DefaultLayout>
 	);
 };
 
