@@ -1,8 +1,9 @@
-import { Box, Flex } from '@chakra-ui/react';
+import { useMemo } from 'react';
+import { Box, Flex, Tag } from '@chakra-ui/react';
 
 import { WeatherHourly, WeatherMinutely } from '@/models/weather';
-import { WEATHER_ICON_MAP, WEATHER_NAME_MAP } from '../TemperatureChart/constants';
-import { getCurrentWeatherInfo } from './utils';
+import { WEATHER_ICON_MAP, WEATHER_NAME_MAP, WEATHER_SENSE_MAP } from '../TemperatureChart/constants';
+import { getCurrentWeatherInfo, getHumiditySense } from './utils';
 
 interface Props {
 	weatherHourly: WeatherHourly;
@@ -10,7 +11,11 @@ interface Props {
 }
 
 const WeatherInfo = ({ weatherHourly, weatherMinutely }: Props) => {
-	const curWeather = getCurrentWeatherInfo(weatherHourly);
+	const curWeather = useMemo(() => getCurrentWeatherInfo(weatherHourly), [weatherHourly]);
+	const { skycon, temperature, apparentTemperature, humidity, pressure, aqi, pm25 } = curWeather;
+
+	const humiditySense = getHumiditySense(+humidity * 100);
+	const skyconSense = WEATHER_SENSE_MAP[skycon];
 
 	return (
 		<Box ml={[0, 0, 8]} mt={[0, 0, 4]}>
@@ -19,10 +24,15 @@ const WeatherInfo = ({ weatherHourly, weatherMinutely }: Props) => {
 				<strong>城市：余杭区爱力中心附近</strong>
 			</p>
 			<strong>
-				<Flex align="center" gap={5}>
+				<Flex align="center" gap={1}>
 					天气：
-					<img src={WEATHER_ICON_MAP[curWeather.skycon]} />
-					<span>{WEATHER_NAME_MAP[curWeather.skycon]}</span>
+					<img src={WEATHER_ICON_MAP[skycon]} />
+					<span>{WEATHER_NAME_MAP[skycon]}</span>
+					{skyconSense && (
+						<Tag variant="solid" colorScheme={skyconSense.includes('+') ? 'red' : 'cyan'}>
+							{skyconSense}
+						</Tag>
+					)}
 				</Flex>
 			</strong>
 			<p>
@@ -32,22 +42,27 @@ const WeatherInfo = ({ weatherHourly, weatherMinutely }: Props) => {
 				<strong>两小时内下雨概率：[{weatherMinutely.precipitationIn2h.join(', ')}]</strong>
 			</p>
 			<p>
-				<strong>温度：{curWeather.temperature}℃</strong>
+				<strong>温度：{temperature}℃</strong>
 			</p>
 			<p>
-				<strong>体感温度：{curWeather.apparentTemperature}℃</strong>
+				<strong>体感温度：{apparentTemperature}℃</strong>
+			</p>
+			<Flex align="center" gap={1}>
+				<strong>湿度：{+humidity * 100}%</strong>
+				{humiditySense && (
+					<Tag variant="solid" colorScheme={humiditySense === '+' ? 'red' : 'cyan'}>
+						{humiditySense}
+					</Tag>
+				)}
+			</Flex>
+			<p>
+				<span>气压：{Math.floor(+pressure / 100)} hPa</span>
 			</p>
 			<p>
-				<strong>湿度：{curWeather.humidity}%</strong>
+				<span>空气质量指数：{aqi}</span>
 			</p>
 			<p>
-				<strong>气压：{Math.floor(+curWeather.pressure / 100)} hPa</strong>
-			</p>
-			<p>
-				<strong>空气质量指数：{curWeather.aqi}</strong>
-			</p>
-			<p>
-				<strong>PM25: {curWeather.pm25}</strong>
+				<span>PM25: {pm25}</span>
 			</p>
 			<p>数据来源：彩云天气API</p>
 		</Box>

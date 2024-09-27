@@ -32,25 +32,25 @@ export const COMMON_CHART_OPTIONS = {
 		pieces: [
 			{
 				gte: 90,
-				color: 'darkred',
+				color: 'blue',
 				label: '极湿（>90%）'
 			},
 			{
-				gte: 70,
-				lt: 90,
-				color: 'red',
-				label: '潮湿（70-90%）'
-			},
-			{
 				gte: 60,
-				lt: 70,
-				color: 'orange',
-				label: '较湿（60-70%）'
+				lt: 90,
+				color: 'cyan',
+				label: '较湿（60-90%）'
 			},
 			{
+				gte: 30,
 				lt: 60,
 				color: 'green',
 				label: '舒适（<60%）'
+			},
+			{
+				lt: 30,
+				color: 'red',
+				label: '干燥（<30%）'
 			}
 		]
 	},

@@ -16,7 +16,8 @@ const TemperatureChart = ({ weatherHourly }: Props) => {
 		apparentTemperatureIn48h,
 		precipitationProbabilityIn48h,
 		precipitationValueIn48h,
-		skyconIn48h
+		skyconIn48h,
+		humidityIn48h
 	} = weatherHourly;
 
 	const temperatureChartRef = useRef(null);
@@ -30,7 +31,8 @@ const TemperatureChart = ({ weatherHourly }: Props) => {
 			apparentTemperatureIn48h[idx],
 			+precipitationProbabilityIn48h[idx] > 20 ? precipitationValueIn48h[idx] : 0,
 			+precipitationProbabilityIn48h[idx] / 1000,
-			skyconIn48h[idx]
+			skyconIn48h[idx],
+			+humidityIn48h[idx] * 100
 		]);
 
 	const options = {

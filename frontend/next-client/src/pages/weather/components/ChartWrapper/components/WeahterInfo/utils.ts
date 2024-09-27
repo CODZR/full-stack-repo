@@ -1,19 +1,46 @@
 import { WeatherHourly } from '@/models/weather';
 
 export const getCurrentWeatherInfo = (weatherHourly: WeatherHourly) => {
+	const {
+		firstHourDatetime,
+		temperatureIn48h,
+		apparentTemperatureIn48h,
+		windSpeedIn48h,
+		windDirectionIn48h,
+		humidityIn48h,
+		cloudrateIn48h,
+		visibilityIn48h,
+		dswrfIn48h,
+		skyconIn48h,
+		pressureIn48h,
+		aqiIn48h,
+		pm25In48h
+	} = weatherHourly;
+
+	const firstHourDate = new Date(firstHourDatetime);
+	const now = new Date();
+
+	const diffInHours = Math.floor((now.getTime() - firstHourDate.getTime()) / (1000 * 60 * 60));
+
 	return {
-		firstHourDatetime: weatherHourly.firstHourDatetime,
-		temperature: weatherHourly.temperatureIn48h[0],
-		apparentTemperature: weatherHourly.apparentTemperatureIn48h[0],
-		windSpeed: weatherHourly.windSpeedIn48h[0],
-		windDirection: weatherHourly.windDirectionIn48h[0],
-		humidity: weatherHourly.humidityIn48h[0],
-		cloudrate: weatherHourly.cloudrateIn48h[0],
-		visibility: weatherHourly.visibilityIn48h[0],
-		dswrf: weatherHourly.dswrfIn48h[0],
-		skycon: weatherHourly.skyconIn48h[0],
-		pressure: weatherHourly.pressureIn48h[0],
-		aqi: weatherHourly.aqiIn48h[0],
-		pm25: weatherHourly.pm25In48h[0]
+		firstHourDatetime: firstHourDatetime,
+		temperature: temperatureIn48h[diffInHours],
+		apparentTemperature: apparentTemperatureIn48h[diffInHours],
+		windSpeed: windSpeedIn48h[diffInHours],
+		windDirection: windDirectionIn48h[diffInHours],
+		humidity: humidityIn48h[diffInHours],
+		cloudrate: cloudrateIn48h[diffInHours],
+		visibility: visibilityIn48h[diffInHours],
+		dswrf: dswrfIn48h[diffInHours],
+		skycon: skyconIn48h[diffInHours],
+		pressure: pressureIn48h[diffInHours],
+		aqi: aqiIn48h[diffInHours],
+		pm25: pm25In48h[diffInHours]
 	};
+};
+
+export const getHumiditySense = (humidity: number) => {
+	if (humidity < 30) return '-';
+	if (humidity > 60) return '+';
+	return '';
 };

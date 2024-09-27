@@ -9,6 +9,7 @@ export const handleTooltipFormatter = (params) => {
 		`天气：${WEATHER_NAME_MAP[value[dims.skycon]]}`,
 		'气温：' + value[dims.temperature],
 		'体感温度：' + value[dims.apparentTemperature],
+		`湿度：${value[dims.humidyty]}%`,
 		'降雨量：' + value[dims.precipitationValue],
 		`降雨概率：${+value[dims.precipitationProbability] * 100}%`
 	].join('<br>');
