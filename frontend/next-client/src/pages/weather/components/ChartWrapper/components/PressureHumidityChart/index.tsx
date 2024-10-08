@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { useChart } from '@/hooks/echarts';
 import { WeatherHourly } from '@/models/weather';
@@ -11,11 +11,16 @@ interface Props {
 const PressureHumidityChart = ({ weatherHourly }: Props) => {
 	const pressureHumidityChartRef = useRef(null);
 
-	const firstHourTimetamp = new Date(weatherHourly.firstHourDatetime).getTime();
+	const [firstHourTimestamp, setFirstHourTimestamp] = useState(0);
+
+	useEffect(() => {
+		setFirstHourTimestamp(new Date(weatherHourly.firstHourDatetime).getTime());
+	}, [weatherHourly.firstHourDatetime]);
+
 	const data = new Array(48)
 		.fill(1)
 		.map((_, idx) => [
-			new Date(firstHourTimetamp + idx * 60 * 60 * 1000),
+			new Date(firstHourTimestamp + idx * 60 * 60 * 1000),
 			Math.floor(+weatherHourly.pressureIn48h[idx] / 100),
 			+weatherHourly.humidityIn48h[idx] * 100
 		]);

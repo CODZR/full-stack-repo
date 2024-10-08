@@ -29,7 +29,7 @@ const WeatherInfo = ({ weatherHourly, weatherMinutely }: Props) => {
 					<img src={WEATHER_ICON_MAP[skycon]} />
 					<span>{WEATHER_NAME_MAP[skycon]}</span>
 					{skyconSense && (
-						<Tag variant="solid" colorScheme={skyconSense.includes('+') ? 'red' : 'cyan'}>
+						<Tag colorScheme={skyconSense.includes('+') ? 'red' : 'cyan'} variant="solid">
 							{skyconSense}
 						</Tag>
 					)}
@@ -48,9 +48,9 @@ const WeatherInfo = ({ weatherHourly, weatherMinutely }: Props) => {
 				<strong>体感温度：{apparentTemperature}℃</strong>
 			</p>
 			<Flex align="center" gap={1}>
-				<strong>湿度：{+humidity * 100}%</strong>
+				<strong>湿度：{(+humidity * 100).toFixed(1)}%</strong>
 				{humiditySense && (
-					<Tag variant="solid" colorScheme={humiditySense === '+' ? 'red' : 'cyan'}>
+					<Tag colorScheme={humiditySense === '+' ? 'red' : 'cyan'} variant="solid">
 						{humiditySense}
 					</Tag>
 				)}

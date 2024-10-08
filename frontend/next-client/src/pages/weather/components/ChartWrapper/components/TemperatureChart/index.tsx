@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { useChart } from '@/hooks/echarts';
 import { WeatherHourly } from '@/models/weather';
@@ -22,15 +22,20 @@ const TemperatureChart = ({ weatherHourly }: Props) => {
 
 	const temperatureChartRef = useRef(null);
 
-	const firstHourTimetamp = new Date(firstHourDatetime).getTime();
+	const [firstHourTimestamp, setFirstHourTimestamp] = useState(0);
+
+	useEffect(() => {
+		setFirstHourTimestamp(new Date(firstHourDatetime).getTime());
+	}, [firstHourDatetime]);
+
 	const data = new Array(48)
 		.fill(1)
 		.map((_, idx) => [
-			new Date(firstHourTimetamp + idx * 60 * 60 * 1000),
+			new Date(firstHourTimestamp + idx * 60 * 60 * 1000),
 			temperatureIn48h[idx],
 			apparentTemperatureIn48h[idx],
 			+precipitationProbabilityIn48h[idx] > 20 ? precipitationValueIn48h[idx] : 0,
-			+precipitationProbabilityIn48h[idx] / 1000,
+			+precipitationProbabilityIn48h[idx] / 100,
 			skyconIn48h[idx],
 			+humidityIn48h[idx] * 100
 		]);
