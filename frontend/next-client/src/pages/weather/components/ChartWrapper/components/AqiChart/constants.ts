@@ -20,6 +20,8 @@ export const COMMON_CHART_OPTIONS = {
 		}
 	},
 	grid: {
+		left: 32,
+		right: 20,
 		bottom: 125
 	},
 
@@ -32,33 +34,32 @@ export const COMMON_CHART_OPTIONS = {
 		seriesIndex: 0,
 		pieces: [
 			{
-				gt: 0,
-				lte: 50,
-				color: '#93CE07'
+				lt: 50,
+				color: '#93CE07',
+				label: '优'
 			},
 			{
-				gt: 50,
-				lte: 100,
-				color: '#FBDB0F'
+				gte: 50,
+				lt: 100,
+				color: '#FBDB0F',
+				label: '良'
 			},
 			{
-				gt: 100,
-				lte: 150,
-				color: '#FC7D02'
+				gte: 100,
+				lt: 150,
+				color: '#FC7D02',
+				label: '轻度污染'
 			},
 			{
-				gt: 150,
-				lte: 200,
-				color: '#FD0100'
+				gte: 150,
+				lt: 200,
+				color: '#FD0100',
+				label: '中度污染'
 			},
 			{
-				gt: 200,
-				lte: 300,
-				color: '#AA069F'
-			},
-			{
-				gt: 300,
-				color: '#AC3B2A'
+				gte: 200,
+				color: 'AA069F',
+				label: '重度污染'
 			}
 		],
 		outOfRange: {

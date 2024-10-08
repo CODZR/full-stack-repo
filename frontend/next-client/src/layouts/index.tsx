@@ -29,7 +29,7 @@ export default function DefaultLayout(props: Props) {
 			<Providers>
 				<>
 					{showNavbar && <Navbar />}
-					<Box padding="32px 16px">{children}</Box>
+					<Box padding="32px 8px">{children}</Box>
 				</>
 			</Providers>
 			<ToastContainer />

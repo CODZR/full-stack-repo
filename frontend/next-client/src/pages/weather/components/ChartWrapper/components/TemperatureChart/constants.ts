@@ -90,16 +90,25 @@ export const COMMON_CHART_OPTIONS = {
 		trigger: 'axis',
 		formatter: handleTooltipFormatter
 	},
+	toolbox: {
+		right: 10,
+		feature: {
+			restore: {},
+			saveAsImage: {}
+		}
+	},
 	grid: {
 		top: 80,
+		left: 38,
+		right: 36,
 		bottom: 175
 	},
-
 	visualMap: [
 		{
 			type: 'piecewise',
 			orient: 'horizontal',
 			left: 'center',
+			itemHeight: 5,
 			bottom: 90,
 			dimension: 2,
 			seriesIndex: 1,
@@ -107,30 +116,30 @@ export const COMMON_CHART_OPTIONS = {
 				{
 					gte: 37,
 					color: 'red',
-					label: '酷热（>=37℃）'
+					label: '酷热'
 				},
 				{
 					gte: 26,
 					lt: 37,
 					color: 'orange',
-					label: '高温（26-37℃）'
+					label: '高温'
 				},
 				{
 					gte: 17,
 					lt: 26,
 					color: 'lightgreen',
-					label: '凉爽（17-26℃）'
+					label: '凉爽'
 				},
 				{
 					gte: 4,
 					lt: 16,
 					color: 'cyan',
-					label: '低温（4-16℃）'
+					label: '低温'
 				},
 				{
 					lt: 4,
 					color: 'blue',
-					label: '严寒（<4℃）'
+					label: '寒冷'
 				}
 			]
 		},
@@ -166,7 +175,7 @@ export const COMMON_CHART_OPTIONS = {
 					label: '小雨'
 				},
 				{
-					lte: 0.0606,
+					lt: 0.0606,
 					color: 'lightgreen',
 					label: '无雨'
 				}

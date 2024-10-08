@@ -31,7 +31,9 @@ const AqiChart = ({ weatherHourly }: Props) => {
 			data: data,
 			maxInterval: 3600 * 1000 * 24
 		},
-		yAxis: {},
+		yAxis: {
+			name: '国标指数'
+		},
 		series: [
 			{
 				name: 'AQI',

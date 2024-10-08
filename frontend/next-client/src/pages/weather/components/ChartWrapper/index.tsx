@@ -17,6 +17,7 @@ import { UniversalTransition } from 'echarts/features';
 import { SVGRenderer } from 'echarts/renderers';
 
 import AqiChart from './components/AqiChart';
+import ComparisonTable from './components/ComparisonTable';
 import PressureHumidityChart from './components/PressureHumidityChart';
 import TemperatureChart from './components/TemperatureChart';
 import WeatherInfo from './components/WeahterInfo';
@@ -58,6 +59,8 @@ const ChartWrapper = ({ weatherHourly, weatherMinutely }: Props) => {
 				<AqiChart weatherHourly={weatherHourly} />
 				<PressureHumidityChart weatherHourly={weatherHourly} />
 			</Flex>
+
+			<ComparisonTable />
 		</>
 	);
 };

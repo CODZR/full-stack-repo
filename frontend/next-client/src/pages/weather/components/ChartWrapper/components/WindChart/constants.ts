@@ -65,7 +65,16 @@ export const COMMON_CHART_OPTIONS = {
 		trigger: 'axis',
 		formatter: handleTooltipFormatter
 	},
+	toolbox: {
+		right: 10,
+		feature: {
+			restore: {},
+			saveAsImage: {}
+		}
+	},
 	grid: {
+		left: 40,
+		right: 20,
 		bottom: 125
 	},
 	visualMap: {
@@ -77,24 +86,24 @@ export const COMMON_CHART_OPTIONS = {
 			{
 				gte: 8,
 				color: 'red',
-				label: '大风（>=8级）'
+				label: '大风'
 			},
 			{
 				gte: 5,
 				lt: 8,
 				color: 'orange',
-				label: '中风（5-7级）'
+				label: '中风'
 			},
 			{
 				gte: 3,
 				lt: 5,
 				color: '#f4e9a3',
-				label: '微风（3-4级）'
+				label: '微风'
 			},
 			{
 				lt: 3,
 				color: 'lightgreen',
-				label: '轻风（<=2级）'
+				label: '轻风'
 			}
 		],
 		seriesIndex: 0,

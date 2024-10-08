@@ -20,6 +20,7 @@ export const COMMON_CHART_OPTIONS = {
 		}
 	},
 	grid: {
+		left: 62,
 		bottom: 125
 	},
 
@@ -33,24 +34,24 @@ export const COMMON_CHART_OPTIONS = {
 			{
 				gte: 90,
 				color: 'blue',
-				label: '极湿（>90%）'
+				label: '极湿'
 			},
 			{
 				gte: 60,
 				lt: 90,
 				color: 'cyan',
-				label: '较湿（60-90%）'
+				label: '潮湿'
 			},
 			{
 				gte: 30,
 				lt: 60,
 				color: 'green',
-				label: '舒适（<60%）'
+				label: '舒适'
 			},
 			{
 				lt: 30,
 				color: 'red',
-				label: '干燥（<30%）'
+				label: '干燥'
 			}
 		]
 	},
