@@ -1,9 +1,11 @@
-import { Box } from '@chakra-ui/react';
+import { useEffect, useState } from 'react';
+import { Box, Flex, Spinner } from '@chakra-ui/react';
 import Head from 'next/head';
 
 import { Providers } from './components/ChakraProvider';
 import Navbar from './components/Navbar';
 import ToastContainer from '@/components/base/MyToast';
+import CenterSpinner from './components/Navbar/components/CenterSpinner';
 
 export const metadata = {
 	title: 'Health grow client',
@@ -20,6 +22,12 @@ interface Props {
 export default function DefaultLayout(props: Props) {
 	const { showNavbar = true, title, description, children } = props;
 
+	const [mounted, setMounted] = useState(false);
+
+	useEffect(() => {
+		setMounted(true);
+	}, []);
+
 	return (
 		<main>
 			<Head>
@@ -27,10 +35,14 @@ export default function DefaultLayout(props: Props) {
 				<meta content={description || metadata.description} name="description" />
 			</Head>
 			<Providers>
-				<>
-					{showNavbar && <Navbar />}
-					<Box padding="32px 8px">{children}</Box>
-				</>
+				{mounted ? (
+					<>
+						{showNavbar && <Navbar />}
+						<Box padding="32px 8px">{children}</Box>
+					</>
+				) : (
+					<CenterSpinner />
+				)}
 			</Providers>
 			<ToastContainer />
 		</main>

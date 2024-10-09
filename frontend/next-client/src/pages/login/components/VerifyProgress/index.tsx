@@ -6,7 +6,7 @@ interface Props {
 	setDisableSubmit: rcSetFn<boolean>;
 }
 
-const randomStepArr = [0.25, 0.5, 0.75, 1, 1.25];
+const randomStepArr = [0.2, 0.4, 0.6, 0.8, 1];
 
 const VerifyProgress = (props: Props) => {
 	const { setDisableSubmit } = props;

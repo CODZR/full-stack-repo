@@ -1,24 +1,26 @@
 'use client';
 
 import { Spinner } from '@chakra-ui/react';
-import { useRouter } from 'next/router';
 
-import { useOnceEffect } from '@/hooks/useHooks';
 import DefaultLayout from '@/layouts';
-import { ROUTE_PATH_MAP } from '@/models/global/constants';
+import { IS_LOGIN_KEY, ROUTE_PATH_MAP } from '@/models/global/constants';
+import { useEffect } from 'react';
 
 export default function Home() {
-	const router = useRouter();
-
-	useOnceEffect(() => {
+	useEffect(() => {
 		if (location.pathname === ROUTE_PATH_MAP.HOME) {
+			const isLogined = window.localStorage.getItem(IS_LOGIN_KEY);
 			setTimeout(() => {
-				router.push(ROUTE_PATH_MAP.LOGIN);
+				if (isLogined) {
+					location.replace(ROUTE_PATH_MAP.QIAN_ZI_WEN);
+				} else {
+					location.replace(ROUTE_PATH_MAP.LOGIN);
+				}
 			}, 300);
 		} else {
-			router.push(location.pathname);
+			location.replace(location.pathname);
 		}
-	});
+	}, []);
 
 	return (
 		<DefaultLayout>

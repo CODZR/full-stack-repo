@@ -14,6 +14,7 @@ import '@/assets/css/global.css';
 import Logo from '@/assets/images/favicon.png';
 import { Body_login_login_access_token as AccessToken } from '@/client/models/Body_login_login_access_token';
 import DefaultLayout from '@/layouts';
+import { IS_LOGIN_KEY, ROUTE_PATH_MAP } from '@/models/global/constants';
 
 const Login: React.FC = () => {
 	const router = useRouter();
@@ -36,9 +37,10 @@ const Login: React.FC = () => {
 			setTimeout(() => {
 				if (data.username === 'admin' && data.password === 'admin123456') {
 					resolve(true);
+					window.localStorage.setItem(IS_LOGIN_KEY, 'true');
 					toast({ status: 'success', title: 'Welcome, have a nice day.' });
 					setTimeout(() => {
-						router.push('/article/qianziwen');
+						router.push(ROUTE_PATH_MAP.QIAN_ZI_WEN);
 					}, 800);
 				} else {
 					toast({ status: 'error', title: 'Wrong username or password.' });
@@ -49,7 +51,7 @@ const Login: React.FC = () => {
 		// const response = await LoginService.loginAccessToken({
 		// 	formData: data
 		// });
-		// localStorage.setItem('access_token', response.access_token);
+		// window.localStorage.setItem('access_token', response.access_token);
 	};
 
 	return (

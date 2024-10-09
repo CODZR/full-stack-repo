@@ -1,4 +1,3 @@
-import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import {
 	Center,
 	FormControl,
@@ -8,6 +7,9 @@ import {
 	InputRightElement,
 	useBoolean
 } from '@chakra-ui/react';
+
+import ViewIcon from './assets/ViewIcon';
+import ViewOffIcon from './assets/ViewOffIcon';
 
 interface Props {
 	register: any;
@@ -30,7 +32,7 @@ const SignForm = (props: Props) => {
 					onClick={setShow.toggle}
 				>
 					<Icon aria-label={show ? 'Hide password' : 'Show password'}>
-						{show ? <ViewOffIcon /> : <ViewIcon />}
+						{show ? <ViewOffIcon w={16} h={16} /> : <ViewIcon w={16} h={16} />}
 					</Icon>
 				</InputRightElement>
 			</InputGroup>
