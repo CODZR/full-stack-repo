@@ -17,7 +17,6 @@ import DefaultLayout from '@/layouts';
 import { IS_LOGIN_KEY, ROUTE_PATH_MAP } from '@/models/global/constants';
 
 const Login: React.FC = () => {
-	const router = useRouter();
 	const toast = useToast();
 
 	const [disableSubmit, setDisableSubmit] = useState(true);
@@ -40,7 +39,7 @@ const Login: React.FC = () => {
 					window.localStorage.setItem(IS_LOGIN_KEY, 'true');
 					toast({ status: 'success', title: 'Welcome, have a nice day.' });
 					setTimeout(() => {
-						router.push(ROUTE_PATH_MAP.QIAN_ZI_WEN);
+						location.replace(ROUTE_PATH_MAP.QIAN_ZI_WEN);
 					}, 800);
 				} else {
 					toast({ status: 'error', title: 'Wrong username or password.' });

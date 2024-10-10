@@ -2,10 +2,6 @@ const path = require('path');
 const { getEnvSettingsByMode } = require('./env.ts');
 
 module.exports = {
-	output: 'export',
-	images: {
-		unoptimized: true
-	},
 	swcMinify: true,
 	pageExtensions: ['page.js', 'page.tsx', 'page.ts'],
 	eslint: {
