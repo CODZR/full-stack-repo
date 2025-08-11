@@ -5,7 +5,7 @@
 	"scripts": {
 		"dev": "next dev --port=3011",
 		"build": "next build",
-		"start": "next start",
+		"start": "next start --port=3001",
 		"lint": "next lint",
 		"buildsta": "next build && next export",
 		"format": "pnpm lint:eslint && pnpm lint:prettier && tsc",
