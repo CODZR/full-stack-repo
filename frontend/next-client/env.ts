@@ -20,18 +20,18 @@ const commonEnv = {
 
 const devEnv = {
 	NODE_ENV: 'development',
-	VITE_REST_BASE_URL: 'https://api.dzrlab.top/api/'
+	VITE_REST_BASE_URL: 'https://api.dzrlab.space/api/'
 	// VITE_REST_BASE_URL: 'http://127.0.0.1:7001/api/'
 };
 
 const betaEnv = {
 	NODE_ENV: 'beta',
-	VITE_REST_BASE_URL: 'https://api.dzrlab.top/api/'
+	VITE_REST_BASE_URL: 'https://api.dzrlab.space/api/'
 };
 
 const prodEnv = {
 	NODE_ENV: 'production',
-	VITE_REST_BASE_URL: 'https://api.dzrlab.top/api/'
+	VITE_REST_BASE_URL: 'https://api.dzrlab.space/api/'
 };
 
 function getEnvSettingsByMode(mode) {

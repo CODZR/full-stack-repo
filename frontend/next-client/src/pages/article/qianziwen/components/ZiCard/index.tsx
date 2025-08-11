@@ -11,7 +11,7 @@ const ZiCard = (props: Props) => {
 		if (!str) return [];
 
 		// const serverPrefix = 'http://127.0.0.1:3011';
-		const serverPrefix = 'https://dzrlab.top/public';
+		const serverPrefix = 'https://dzrlab.space/public';
 		const prefix = '/img';
 		const splitStr = str.split(prefix);
 		splitStr.shift();

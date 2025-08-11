@@ -34,7 +34,7 @@ export const nav = [ // menu
       {
         title: '文章',
         items: [ 
-          { text: '千字文', link: 'https://dzrlab.top/article/qianziwen' },
+          { text: '千字文', link: 'https://dzrlab.space/article/qianziwen' },
         ]
       },
     ]

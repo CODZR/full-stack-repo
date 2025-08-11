@@ -5,7 +5,7 @@ actionText: Get Started
 actionLink: /blog/guide/
 
 altActionText: See Dashboard
-altActionLink: https://dzrlab.top/dashboard/#/health/imgs
+altActionLink: https://dzrlab.space/dashboard/#/health/imgs
 ---
 
 <Page />

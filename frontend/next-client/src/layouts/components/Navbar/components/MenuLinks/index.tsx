@@ -26,7 +26,7 @@ const MenuLinks = ({ isOpen }) => {
 				<MenuItem to="/">Home</MenuItem>
 				<MenuItem to="/weather/">Weather</MenuItem>
 				<MenuItem to="/article/qianziwen/">Qian Ziwen</MenuItem>
-				<MenuItem to="https://test.dzrlab.top/blog/food/" isExternal>
+				<MenuItem to="https://test.dzrlab.space/blog/food/" isExternal>
 					Diet
 				</MenuItem>
 				<MenuItem to="/login/" isLast>

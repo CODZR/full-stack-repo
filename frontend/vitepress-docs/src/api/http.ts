@@ -9,8 +9,8 @@ import { Message } from '@/components/ui';
 // const baseURL = String(import.meta.env.VITE_API_DOMAIN);
 
 const requester = axios.create({
-	// baseURL: 'https://dzrlab.top/api',
-	baseURL: 'https://api.dzrlab.top/api/',
+	// baseURL: 'https://dzrlab.space/api',
+	baseURL: 'https://api.dzrlab.space/api/',
 	// baseURL: '/api',
 	timeout: 25000, // 设置超时时间
 	withCredentials: true, // 允许携带cookie

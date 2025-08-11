@@ -31,8 +31,8 @@ app = FastAPI(lifespan=lifespan, debug=True)
 origins = [
     "http://localhost:3010",
     "http://localhost:3011",
-    "https://dzrlab.top",
-    "https://test.dzrlab.top",
+    "https://dzrlab.space",
+    "https://test.dzrlab.space",
 ]
 
 app.add_middleware(
