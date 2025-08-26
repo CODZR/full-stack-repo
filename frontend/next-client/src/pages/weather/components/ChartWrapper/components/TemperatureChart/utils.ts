@@ -24,7 +24,7 @@ export const renderPrecipitationProbability = (param, api) => {
 		type: 'text',
 		position: point,
 		style: {
-			text: precipitationValue > 0.0606 ? `${value(dims.precipitationProbability) * 1000}%` : '',
+			text: precipitationValue > 0.0606 ? `${value(dims.precipitationProbability) * 100}%` : '',
 			y: -10,
 			x: -6,
 			fontSize: 8,
