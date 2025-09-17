@@ -20,8 +20,8 @@ const commonEnv = {
 
 const devEnv = {
 	NODE_ENV: 'development',
-	VITE_REST_BASE_URL: 'https://api.dzrlab.space/api/'
-	// VITE_REST_BASE_URL: 'http://127.0.0.1:7001/api/'
+	// VITE_REST_BASE_URL: 'https://api.dzrlab.space/api/'
+	VITE_REST_BASE_URL: 'http://127.0.0.1:7001/api/'
 };
 
 const betaEnv = {

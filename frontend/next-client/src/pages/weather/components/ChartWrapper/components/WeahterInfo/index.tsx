@@ -21,7 +21,7 @@ const WeatherInfo = ({ weatherHourly, weatherMinutely }: Props) => {
 		<Box ml={[0, 0, 8]} mt={[0, 0, 4]}>
 			<h2>天气概况（每小时更新）</h2>
 			<p>
-				<strong>城市：余杭区爱力中心附近</strong>
+				<strong>城市：西双版纳附近</strong>
 			</p>
 			<strong>
 				<Flex align="center" gap={1}>

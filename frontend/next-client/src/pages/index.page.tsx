@@ -8,11 +8,11 @@ import { useEffect } from 'react';
 
 export default function Home() {
 	useEffect(() => {
-		if (location.pathname === ROUTE_PATH_MAP.HOME) {
+		if (location.pathname === '/') {
 			const isLogined = window.localStorage.getItem(IS_LOGIN_KEY);
 			setTimeout(() => {
 				if (isLogined) {
-					location.replace(ROUTE_PATH_MAP.QIAN_ZI_WEN);
+					location.replace(ROUTE_PATH_MAP.HOME);
 				} else {
 					location.replace(ROUTE_PATH_MAP.LOGIN);
 				}

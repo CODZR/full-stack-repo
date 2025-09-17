@@ -60,5 +60,19 @@ class Settings(BaseSettings):
     )
     INVITATION_URL_MAX_AGE: int = os.getenv("INVITATION_URL_MAX_AGE", 1)
 
+    # 阿里云短信
+    ALIYUN_ACCESS_KEY_ID: str = os.getenv("ALIYUN_ACCESS_KEY_ID", "")
+    ALIYUN_ACCESS_KEY_SECRET: str = os.getenv("ALIYUN_ACCESS_KEY_SECRET", "")
+    ALIYUN_SMS_ENDPOINT: str = os.getenv("ALIYUN_SMS_ENDPOINT", "dysmsapi.aliyuncs.com")
+    ALIYUN_SMS_SIGN_NAME: str = os.getenv("ALIYUN_SMS_SIGN_NAME", "lingshuzhilian")
+    ALIYUN_SMS_TEMPLATE_CODE: str = os.getenv(
+        "ALIYUN_SMS_TEMPLATE_CODE", "SMS_494825249"
+    )
+    ALIYUN_SMS_PHONE_NUMBER: str = os.getenv("ALIYUN_SMS_PHONE_NUMBER", "13800001111")
+
+    # dify
+    API_KEY: str = os.getenv("DIFY_API_KEY", "your-secret-key")
+    RATE_LIMIT: int = int(os.getenv("RATE_LIMIT", "5"))  # 每分钟最大请求数
+
 
 settings = Settings()

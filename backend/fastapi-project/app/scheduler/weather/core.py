@@ -10,9 +10,8 @@ from app.core.logger import logger
 from .helper import save_data_by_hourly_in_database, save_data_by_minutely_in_database
 
 weather_scheduler = BackgroundScheduler()
-longitude = "120.00"
-latitude = "30.28"
-
+longitude = "100.89"
+latitude = "22.08"
 API_BASE_URL = (
     f"https://api.caiyunapp.com/v2.6/TAkhjf8d1nlSlspN/{longitude},{latitude}/"
 )
