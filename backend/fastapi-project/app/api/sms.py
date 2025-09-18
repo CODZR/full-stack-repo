@@ -17,7 +17,7 @@ from app.services.sms import AliyunSMSService
 api_key_header = APIKeyHeader(name="X-API-KEY")
 
 
-sms_router = APIRouter(tags=["Hanzi"])
+sms_router = APIRouter(tags=["Sms"])
 
 
 async def verify_api_key(api_key: str = Depends(api_key_header)):
@@ -32,7 +32,7 @@ async def verify_api_key(api_key: str = Depends(api_key_header)):
 # --------------------------
 # 路由和业务逻辑
 # --------------------------
-@sms_router.post("/dify-webhook", response_model=SMSResponse)
+@sms_router.post("/sms/dify-webhook", response_model=SMSResponse)
 async def handle_dify_webhook(
     payload: DifyWebhookPayload,
     request: Request,
