@@ -1,8 +1,9 @@
 [tool.poetry]
-name = "fastapi-project"
-version = "0.1.0"
+name = "app"
+version = "0.2.0"
 description = ""
 authors = ["Admin <admin@example.com>"]
+
 
 [[tool.poetry.source]]
 name = "mirrors"
@@ -10,44 +11,39 @@ url = "https://pypi.tuna.tsinghua.edu.cn/simple/"
 priority = "default"
 
 [tool.poetry.dependencies]
-python = "^3.11.7"
-fastapi = "^0.104.1"
-python-multipart = "^0.0.6"
-email-validator = "^2.1.0.post1"
-passlib = {extras = ["bcrypt"], version = "^1.6.5"}
-tenacity = "^8.2.3"
-pydantic = "2.5.3"
-emails = "^0.6"
-gunicorn = "^21.2.0"
-jinja2 = "^3.1.2"
-python-jose = {extras = ["cryptography"], version = "^3.3.0"}
-httpx = "^0.25.1"
-psycopg2 = "^2.9.9"
+python = "~3.11.7"
+fastapi = "~0.104.1"
+python-multipart = "~0.0.6"
+email-validator = "~2.1.0.post1"
+passlib = {extras = ["bcrypt"], version = "~1.6.5"}
+tenacity = "~8.2.3"
+pydantic = "~2.5.3"
+pydantic-settings = "~2.2.1"
+emails = "~0.6"
+gunicorn = "~21.2.0"
+jinja2 = "~3.1.2"
+python-jose = {extras = ["cryptography"], version = "~3.3.0"}
+httpx = "~0.25.1"
+psycopg2 = "~2.9.9"
 casbin = "1.36.0"
 casbin-sqlalchemy-adapter = "0.5.2"
-apscheduler = "^3.10.4"
-itsdangerous = "^2.1.2"
-fastapi-mail = "^1.4.1"
-python-json-logger = "^2.0.7"
-uvicorn = "^0.24.0.post1"
-supervisor = "^4.2.5"
-wechaty = "^0.10.7"
-alibabacloud-dysmsapi20170525 = "^4.2.0"
-yarl = "^1.20.1"
-propcache = "^0.3.2"
-aiohttp = "^3.12.15"
-attrs = "^25.3.0"
-aiohappyeyeballs = "^2.6.1"
-typing-inspection = "^0.4.1"
+apscheduler = "~3.10.4"
+itsdangerous = "~2.1.2"
+fastapi-mail = "~1.4.1"
+python-json-logger = "~2.0.7"
+uvicorn = "~0.24.0.post1"
+supervisor = "~4.2.5"
+wechaty = "~0.10.7"
+urllib3 = "^2.5.0"
 
 [tool.poetry.group.dev.dependencies]
-mypy = "^1.7.0"
-black = "^24.4.0"
-isort = "^5.12.0"
-autoflake = "^2.2.1"
-pytest = "^7.4.3"
-pytest-cov = "^4.1.0"
-python-dotenv = "^1.0.1"
+mypy = "~1.7.0"
+black = "~24.4.0"
+isort = "~5.12.0"
+autoflake = "~2.2.1"
+pytest = "~7.4.3"
+pytest-cov = "~4.1.0"
+python-dotenv = "~1.0.1"
 
 
 [tool.isort]
