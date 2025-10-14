@@ -4,12 +4,10 @@ Enterprise-grade FastAPI service for processing Dify notifications and sending S
 """
 
 from fastapi import APIRouter, Request, HTTPException, Depends, logger, status
-from fastapi.responses import JSONResponse
-from fastapi.middleware.cors import CORSMiddleware
 from fastapi.security import APIKeyHeader
 from app.core.config import settings
 
-from app.schemas.sms import DifyWebhookPayload, SMSResponse
+from app.schemas.sms import DifyWebhookPayload, SMSErrorResponse, SMSResponse
 from app.services.sms import AliyunSMSService
 
 
@@ -22,7 +20,7 @@ sms_router = APIRouter(tags=["Sms"])
 
 async def verify_api_key(api_key: str = Depends(api_key_header)):
     """验证API密钥"""
-    if api_key != settings.API_KEY:
+    if api_key != settings.DIFY_API_KEY:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid API Key"
         )
@@ -38,37 +36,37 @@ async def handle_dify_webhook(
     request: Request,
     api_key: str = Depends(verify_api_key),
 ):
-    """
-    处理Dify平台的Webhook请求并发送短信通知
-
-    Parameters:
-    - payload: Dify平台发送的Webhook数据
-    - request: FastAPI请求对象
-    - api_key: 验证的API密钥
-
-    Returns:
-    - 阿里云短信发送结果
-    """
     try:
-        logger.info(f"Received Dify webhook: {payload.dict()}")
+        print(f"Received Dify webhook: {payload.model_dump()}")
 
-        # 构造短信内容
-        sms_content = f"Dify通知-会话:{payload.conversation_id[:8]}... 内容:{payload.content[:20]}..."
+        # sms_content = f"你好，请查看新订单: {payload.conversation_id[:8]}"
 
-        # 发送短信
         sms_service = AliyunSMSService()
-        response = await sms_service.send_sms(sms_content)
+        response = await sms_service.send_sms(payload.conversation_id, payload.phone)
 
-        logger.info(f"SMS sent successfully: {response.dict()}")
+        # 3. 检查响应状态
+        if response.code != "OK":
+            error_detail = SMSErrorResponse(
+                error_code=response.code,
+                error_message=response.message,
+                request_id=response.request_id,
+            )
+            print(f"SMS send failed: {error_detail.model_dump()}")
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail=error_detail.model_dump(),
+            )
+
+        print(f"SMS sent successfully. Request ID: {response.request_id}")
         return response
 
     except HTTPException:
-        raise
+        raise  # 直接抛出已有的HTTP异常
     except Exception as e:
-        logger.error(f"Error processing webhook: {str(e)}", exc_info=True)
+        logger.error(f"Unexpected error: {str(e)}", exc_info=True)
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail="Internal server error",
+            detail={"error_code": "INTERNAL_ERROR", "error_message": "服务器内部错误"},
         )
 
 

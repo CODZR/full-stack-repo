@@ -1,3 +1,4 @@
+import json
 from fastapi import HTTPException, logger, status
 
 from app.core.config import settings
@@ -27,7 +28,7 @@ class AliyunSMSService:
         )
         return Dysmsapi20170525Client(config_openapi)
 
-    async def send_sms(self, content: str) -> SMSResponse:
+    async def send_sms(self, conversation_id: str, phone: str) -> SMSResponse:
         """
         发送短信
         :param content: 短信内容
@@ -37,7 +38,22 @@ class AliyunSMSService:
             phone_numbers=settings.ALIYUN_SMS_PHONE_NUMBER,
             sign_name=settings.ALIYUN_SMS_SIGN_NAME,
             template_code=settings.ALIYUN_SMS_TEMPLATE_CODE,
-            template_param=f'{{"content":"{content}"}}',
+            template_param=json.dumps(
+                {
+                    # "conversation_id": conversation_id[:8],
+                    # "phone": phone,
+                    "code": conversation_id[-6:],
+                }
+            ),
+        )
+        print(settings.ALIYUN_SMS_TEMPLATE_CODE)
+        print(
+            json.dumps(
+                {
+                    "conversation_id": conversation_id[:8],
+                    "phone": phone[-4:],
+                }
+            )
         )
 
         runtime = util_models.RuntimeOptions()

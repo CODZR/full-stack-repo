@@ -71,7 +71,7 @@ class Settings(BaseSettings):
     ALIYUN_SMS_PHONE_NUMBER: str = os.getenv("ALIYUN_SMS_PHONE_NUMBER", "13800001111")
 
     # dify
-    API_KEY: str = os.getenv("DIFY_API_KEY", "your-secret-key")
+    DIFY_API_KEY: str = os.getenv("DIFY_API_KEY", "your-secret-key")
     RATE_LIMIT: int = int(os.getenv("RATE_LIMIT", "5"))  # 每分钟最大请求数
 
 
