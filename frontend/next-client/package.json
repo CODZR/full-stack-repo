@@ -23,14 +23,15 @@
 		"axios": "^1.6.8",
 		"echarts": "^5.5.1",
 		"framer-motion": "^11.3.2",
+		"ibm-gantt-chart-react": "^0.5.33",
 		"next": "14.2.5",
-		"react": "18.3.1",
-		"react-dom": "18.3.1",
+		"react": "19.2.0",
+		"react-dom": "19.2.0",
 		"react-hook-form": "^7.52.1",
 		"sharp": "^0.33.5"
 	},
 	"devDependencies": {
-		"@types/react": "18.3.3",
+		"@types/react": "19.2.0",
 		"@typescript-eslint/eslint-plugin": "^7.16.0",
 		"@typescript-eslint/parser": "^7.16.0",
 		"@wogns3623/eslint-plugin-better-exhaustive-deps": "^1.1.0",

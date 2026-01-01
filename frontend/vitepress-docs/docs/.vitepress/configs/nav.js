@@ -48,6 +48,8 @@ export const nav = [ // menu
   {
     title: 'Technology',
     submenu: [
+      { text: '手写代码', link: '/blog/technology/handwritten' },
+      { text: '速记', link: '/blog/technology/stenography' },
       { text: '学习链接', link: '/blog/technology/links' },
       { text: 'Chrome调试', link: '/blog/technology/chrome' },
       { text: '快捷键', link: '/blog/technology/shortcuts' },
